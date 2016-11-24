@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2BE60D4A-710F-40EF-8996-AA103249A9D6}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PacificCoral.Droid</RootNamespace>
+    <AssemblyName>PacificCoral.Droid</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidApplication>true</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
+    <AndroidStoreUncompressedFileExtensions />
+    <MandroidI18n />
+    <JavaMaximumHeapSize />
+    <JavaOptions />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <BundleAssemblies>False</BundleAssemblies>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <Debugger>Xamarin</Debugger>
+    <AotAssemblies>False</AotAssemblies>
+    <EnableLLVM>False</EnableLLVM>
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <EnableProguard>False</EnableProguard>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <BundleAssemblies>False</BundleAssemblies>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+    <Debugger>Xamarin</Debugger>
+    <AotAssemblies>False</AotAssemblies>
+    <EnableLLVM>False</EnableLLVM>
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <EnableProguard>False</EnableProguard>
+    <DebugSymbols>False</DebugSymbols>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FormsViewGroup, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.166-pre4\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Unity.4.0.1\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.Core.6.3.0-pre1\lib\MonoAndroid10\Prism.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism.Forms, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.Forms.6.3.0-pre1\lib\MonoAndroid1.0\Prism.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism.Unity.Forms, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.Unity.Forms.6.3.0-pre1\lib\MonoAndroid1.0\Prism.Unity.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PropertyChanged, Version=1.52.1.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PropertyChanged.Fody.1.52.1\Lib\netstandard10\PropertyChanged.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Calculate.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.Calculate.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Calculate.Portable">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.Calculate.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Portable">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.Compression.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Data.Portable">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.Data.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DataSource.Portable">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.DataSource.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DocIO.Portable">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.DocIO.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.GridCommon.Portable">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.GridCommon.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Linq.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.Linq.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.OfficeChart.Portable">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.OfficeChart.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Portable">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.Pdf.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Presentation.Portable">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.Presentation.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBarcode.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfBarcode.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBarcode.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfBarcode.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBarcode.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfBarcode.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfBusyIndicator.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfBusyIndicator.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfBusyIndicator.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfCalendar.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfCalendar.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfCalendar.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCarousel.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfCarousel.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCarousel.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfCarousel.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCarousel.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfCarousel.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfChart.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfChart.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfChart.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfDataGrid.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfDataGrid.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfDataGrid.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGauge.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfGauge.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGauge.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfGauge.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGauge.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfGauge.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGridConverter.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfGridConverter.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGridConverter.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfGridConverter.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfKanban.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfKanban.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfKanban.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfKanban.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfKanban.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfKanban.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfMaps.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfMaps.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfMaps.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfMaps.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfMaps.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfMaps.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNavigationDrawer.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNavigationDrawer.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNavigationDrawer.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNavigationDrawer.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNavigationDrawer.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNavigationDrawer.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericTextBox.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNumericTextBox.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericTextBox.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNumericTextBox.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericTextBox.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNumericTextBox.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericUpDown.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNumericUpDown.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericUpDown.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNumericUpDown.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericUpDown.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNumericUpDown.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPdfViewer.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfPdfViewer.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPdfViewer.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfPdfViewer.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPullToRefresh.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfPullToRefresh.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPullToRefresh.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfPullToRefresh.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPullToRefresh.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfPullToRefresh.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRadialMenu.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRadialMenu.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRangeSlider.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRangeSlider.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRangeSlider.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRangeSlider.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRangeSlider.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRangeSlider.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRating.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRating.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRating.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRotator.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRotator.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRotator.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRotator.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRotator.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRotator.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSchedule.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfSchedule.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSchedule.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfSchedule.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSchedule.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfSchedule.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSparkline.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfSparkline.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSparkline.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfSparkline.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSparkline.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfSparkline.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfTreeMap.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfTreeMap.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfTreeMap.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfTreeMap.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfTreeMap.XForms.Android">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfTreeMap.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Portable">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.XlsIO.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ObjectModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Android.Support.Animated.Vector.Drawable.23.3.0\lib\MonoAndroid403\Xamarin.Android.Support.Animated.Vector.Drawable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Design, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Android.Support.Design.23.3.0\lib\MonoAndroid43\Xamarin.Android.Support.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Android.Support.v4.23.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.AppCompat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Android.Support.v7.AppCompat.23.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.CardView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Android.Support.v7.CardView.23.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.CardView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.MediaRouter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Android.Support.v7.MediaRouter.23.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.RecyclerView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Android.Support.v7.RecyclerView.23.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Vector.Drawable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\lib\MonoAndroid403\Xamarin.Android.Support.Vector.Drawable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.166-pre4\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.166-pre4\lib\MonoAndroid10\Xamarin.Forms.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform.Android, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.166-pre4\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.3.166-pre4\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Tabbar.axml" />
+    <AndroidResource Include="Resources\layout\Toolbar.axml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PacificCoral\PacificCoral.csproj">
+      <Project>{bc1b37b3-af53-445f-9c30-fb10d1bd2567}</Project>
+      <Name>PacificCoral</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\coral.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\trackmileage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\graphic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\baywinds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\items.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\viewaccounts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\details.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\customerPhoto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\customersTitle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\graphic2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\backbutton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\accounttitle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\location.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\additem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\tabbedpages.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\notactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\accounttabbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\dashboardtabbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\itemstabbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\accounttabbardisabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\dashboardtabbardisabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\itemstabbardisabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="SyncfusionEssentialStudio">
+      <Visible>False</Visible>
+      <Version>14.3.0.52</Version>
+    </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.3.166-pre4\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.3.166-pre4\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Fody.1.29.2\build\dotnet\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Fody.1.29.2\build\dotnet\Fody.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\Xamarin.Forms.2.3.3.166-pre4\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.166-pre4\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
+  <Import Project="..\..\packages\Fody.1.29.2\build\dotnet\Fody.targets" Condition="Exists('..\..\packages\Fody.1.29.2\build\dotnet\Fody.targets')" />
+</Project>

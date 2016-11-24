@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+			 xmlns:control="clr-namespace:PacificCoral.Controls;assembly=PacificCoral"
+             x:Class="PacificCoral.Views.CustomerAccountView" BackgroundColor="#F5F5F5" >
+
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness"
+                    iOS="0, 20, 0, 0"/>
+	</ContentPage.Padding>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>			
+		</Grid.RowDefinitions>
+
+		<ScrollView Grid.Row="0">
+			<StackLayout>
+				<Grid BackgroundColor="White" Margin="20,5">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
+
+					<Image Grid.Column="0" Source="backbutton.png">
+						<Image.GestureRecognizers>
+							<TapGestureRecognizer Command="{Binding BackCommand}"/>
+						</Image.GestureRecognizers>
+					</Image>
+					<Image Grid.Column="1" Source="accounttitle.png" HeightRequest="40"/>
+					<Image Grid.Column="2" Source="edit.png" />
+				</Grid>
+
+				<Grid Margin="10,0" BackgroundColor="White">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+
+					<Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Source="customerPhoto.png" HeightRequest="50"/>
+					<Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Joe Stone Crab" FontAttributes="Bold" FontSize="Small"/>
+					<Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Adress: Miami, the USA" FontSize="Micro"/>
+					<Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="+39876534677" FontSize="Micro"/>
+					<Image Grid.Row="0" Grid.Column="3" Source="location.png" HeightRequest="15" WidthRequest="10" HorizontalOptions="CenterAndExpand"/>
+					<Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text=" Follow Up " BorderColor="#FAB758" BorderRadius="25" 
+						BackgroundColor="#FAB758" BorderWidth="1" />
+				</Grid>
+				<StackLayout Margin="10,-10">
+					<Image Source="additem.png"  HeightRequest="40" HorizontalOptions="StartAndExpand"/>
+					<Image Source="tabbedpages.png" HorizontalOptions="FillAndExpand"/>
+				</StackLayout>
+
+				<StackLayout Margin="10,20,10,0" BackgroundColor="White">
+					<ListView ItemsSource ="{Binding Sales}" HasUnevenRows="True" >
+						<ListView.ItemTemplate>
+							<DataTemplate>
+								<ViewCell>
+									<ViewCell.View>
+										<StackLayout Margin="0,5">
+											<Grid>
+												<Grid.RowDefinitions>
+													<RowDefinition Height="Auto"/>
+													<RowDefinition Height="Auto"/>
+													<RowDefinition Height="Auto"/>
+												</Grid.RowDefinitions>
+
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="Auto"/>
+													<ColumnDefinition Width="*"/>
+													<ColumnDefinition Width="*"/>
+													<ColumnDefinition Width="Auto"/>
+												</Grid.ColumnDefinitions>
+
+												<Label Grid.Column="0" Grid.Row="0" Text="{Binding Code}" FontAttributes="Bold" FontSize="Small"/>
+												<Label Grid.Column="1" Grid.Row="0" Text="{Binding Title}" FontAttributes="Bold" FontSize="Small" />
+												<Image Grid.Column="3" Grid.Row="0" Source="{Binding IndicatorUrl}" HeightRequest="10"/>
+												<Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding Shrimp}" FontSize="Micro"/>
+
+												<Label Grid.Column="0" Grid.Row="2" Text="Cases/week: 10" FontSize="Micro"/>
+
+											</Grid>
+
+										</StackLayout>
+									</ViewCell.View>
+								</ViewCell>
+							</DataTemplate>
+						</ListView.ItemTemplate>
+					</ListView>
+				</StackLayout>
+
+				
+			</StackLayout>
+		</ScrollView>
+		<control:NavigationPanel Grid.Row="1" ActivePage="Page1" VerticalOptions="End"/>
+	</Grid>
+	
+
+</ContentPage>

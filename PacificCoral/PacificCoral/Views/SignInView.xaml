@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="PacificCoral.Views.SignInView">
+
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness"
+                    iOS="0, 20, 0, 0"/>
+	</ContentPage.Padding>
+
+	<StackLayout >
+		<StackLayout Margin="10,5">
+			<Image Source="baywinds.png" HeightRequest="200" />
+		</StackLayout>
+		
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+
+			<StackLayout  Grid.Row="0" Grid.Column="0" Margin="20,10,0,0">
+				<Label Text="Email"/>
+			</StackLayout>
+			<StackLayout Grid.Row="0" Grid.Column="1" Margin="0,0,20,0">
+				<Entry FontSize="Small"/>
+			</StackLayout>	
+			
+
+			<StackLayout  Grid.Row="1" Grid.Column="0" Margin="20,10,0,0">
+				<Label Text="Password"/>
+			</StackLayout>
+			<StackLayout Grid.Row="1" Grid.Column="1" Margin="5,0,20,20">
+				<Entry IsPassword="True"  />
+			</StackLayout>
+			
+		</Grid>
+			
+		<Button Text="SIGN IN" TextColor="White" BorderRadius="25" BackgroundColor="#F7B054" HorizontalOptions="CenterAndExpand" x:Name="btn"
+			WidthRequest="200" Command="{Binding SignInCommand}"/>
+		<Label Text="Don't have an account?" HorizontalOptions="CenterAndExpand"/>
+		<Label Text="SIGN UP" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+		<StackLayout Margin="0,0,0,10">
+			<Image Source="coral.png" HeightRequest="170"/>
+		</StackLayout>
+
+	</StackLayout>
+</ContentPage>

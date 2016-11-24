@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PacificCoral.Controls.NavigationPanel">
+	<ContentView.Content>
+		<StackLayout HeightRequest ="50" BackgroundColor="#FAB758">
+			<Grid Margin="0,10">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<Image x:Name="image1" Grid.Column="0" Source="accounttabbardisabled.png" WidthRequest="20" />
+				<Image x:Name="image1Active" Grid.Column="0" Source="accounttabbar.png" WidthRequest="20"/>
+				<Image x:Name="image2" Grid.Column="1" Source="dashboardtabbardisabled.png" WidthRequest="20"/>
+				<Image x:Name="image2Active" Grid.Column="1" Source="dashboardtabbar.png" WidthRequest="20"/>
+				<Image x:Name="image3" Grid.Column="2" Source="itemstabbardisabled.png" WidthRequest="20"/>
+				<Image x:Name="image3Active" Grid.Column="2" Source="itemstabbar.png" WidthRequest="20"/>
+			</Grid>
+		</StackLayout>
+		
+	</ContentView.Content>
+</ContentView>

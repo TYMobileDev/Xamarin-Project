@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:control="clr-namespace:PacificCoral.Controls;assembly=PacificCoral"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             x:Class="PacificCoral.Views.DashBoardView">
+
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness"
+                    iOS="0, 20, 0, 0"/>
+  </ContentPage.Padding>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <ScrollView Grid.Row="0">
+      <StackLayout Margin="5">
+        <StackLayout Margin="20,5">
+          <Image Source="title.png"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand">
+          <Image Source="trackmileage.png" WidthRequest="100"/>
+          <Image Source="viewaccounts.png"  WidthRequest="100">
+            <Image.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding ViewAccountsCommand}"/>
+            </Image.GestureRecognizers>
+          </Image>
+          <Image Source="items.png"  WidthRequest="100"/>
+        </StackLayout>
+
+        <Grid HeightRequest="150">
+          <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <chart:SfChart.PrimaryAxis>
+              <chart:CategoryAxis>
+              </chart:CategoryAxis>
+            </chart:SfChart.PrimaryAxis>
+            <chart:SfChart.SecondaryAxis>
+              <chart:NumericalAxis>
+              </chart:NumericalAxis>
+            </chart:SfChart.SecondaryAxis>
+            <chart:SfChart.Series>
+              <chart:LineSeries
+                    ItemsSource="{Binding ChartItems}"
+                    XBindingPath="X"
+                    YBindingPath="Y"
+                    Color="#bababa">
+              </chart:LineSeries>
+              <chart:AreaSeries
+                    ItemsSource="{Binding ChartItems}"
+                    XBindingPath="X"
+                    YBindingPath="Y"
+                    Color="#ebebeb">
+                <chart:AreaSeries.DataMarker>
+                  <chart:ChartDataMarker MarkerColor="Black" MarkerHeight="10" MarkerWidth="10" LabelContent="YValue" ShowMarker="True" ShowLabel="False">
+                    <chart:ChartDataMarker.LabelStyle>
+                      <chart:DataMarkerLabelStyle Font="Small" TextColor="White" BackgroundColor="Black" LabelPosition="Center"/>
+                    </chart:ChartDataMarker.LabelStyle>
+                  </chart:ChartDataMarker>
+                </chart:AreaSeries.DataMarker>
+              </chart:AreaSeries>
+            </chart:SfChart.Series>
+          </chart:SfChart>
+        </Grid>
+        <Grid>
+          <Image Source="details.png" HorizontalOptions="EndAndExpand" HeightRequest="30">
+            <Image.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding DetailsCommand}"/>
+            </Image.GestureRecognizers>
+          </Image>
+        </Grid>
+        <Label Text="LOST SALES - PFG ATLANTA" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"/>
+        <StackLayout VerticalOptions="End">
+          <Label Text="SEP - OCT GAIN(LOSS)" TextColor="#F7B054" FontAttributes="Bold" FontSize="Small"/>
+          <ListView ItemsSource ="{Binding Sales}" HasUnevenRows="True" >
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <ViewCell.View>
+                    <StackLayout Margin="0,10,0,5">
+                      <Grid Margin="0,10,0,0">
+                        <Grid.RowDefinitions>
+                          <RowDefinition Height="*"/>
+                          <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Label Grid.Column="0" Grid.Row="0" Text="{Binding Code}" FontAttributes="Bold"/>
+                        <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Text="{Binding Shrimp}" FontSize="Small"/>
+
+                        <Label Grid.Column="0" Grid.Row="1" Text="{Binding Sep1}" FontSize="Small"/>
+                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding Sep2}" FontSize="Small"/>
+                        <Label Grid.Column="2" Grid.Row="1" Text="{Binding GL}" FontSize="Small"/>
+                      </Grid>
+
+                    </StackLayout>
+
+                  </ViewCell.View>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+        </StackLayout>
+
+      </StackLayout>
+    </ScrollView>
+    <control:NavigationPanel Grid.Row="1" ActivePage="Page2" VerticalOptions="End"/>
+  </Grid>
+</ContentPage>

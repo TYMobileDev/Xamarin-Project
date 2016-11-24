@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:control="clr-namespace:PacificCoral.Controls;assembly=PacificCoral"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             x:Class="PacificCoral.Views.DashBoard2View">
+
+
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness"
+                    iOS="0, 10, 0, 0"/>
+  </ContentPage.Padding>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <ScrollView Grid.Row="0">
+      <StackLayout Margin="5">
+        <Grid Margin="20,5,0,-10">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+
+          <Image Grid.Column="0" Source="backbutton.png">
+            <Image.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding BackCommand}"/>
+            </Image.GestureRecognizers>
+          </Image>
+          <Image Grid.Column="1" Source="title.png"/>
+        </Grid>
+        <Grid HeightRequest="150">
+          <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <chart:SfChart.PrimaryAxis>
+              <chart:CategoryAxis>
+              </chart:CategoryAxis>
+            </chart:SfChart.PrimaryAxis>
+            <chart:SfChart.SecondaryAxis>
+              <chart:NumericalAxis>
+              </chart:NumericalAxis>
+            </chart:SfChart.SecondaryAxis>
+            <chart:SfChart.Series>
+              <chart:LineSeries
+                    ItemsSource="{Binding ChartItems}"
+                    XBindingPath="X"
+                    YBindingPath="Y"
+                    Color="#bababa">
+              </chart:LineSeries>
+              <chart:AreaSeries
+                    ItemsSource="{Binding ChartItems}"
+                    XBindingPath="X"
+                    YBindingPath="Y"
+                    Color="#ebebeb">
+                <chart:AreaSeries.DataMarker>
+                  <chart:ChartDataMarker MarkerColor="Black" MarkerHeight="10" MarkerWidth="10" LabelContent="YValue" ShowMarker="True" ShowLabel="False">
+                    <chart:ChartDataMarker.LabelStyle>
+                      <chart:DataMarkerLabelStyle Font="Small" TextColor="White" BackgroundColor="Black" LabelPosition="Center"/>
+                    </chart:ChartDataMarker.LabelStyle>
+                  </chart:ChartDataMarker>
+                </chart:AreaSeries.DataMarker>
+              </chart:AreaSeries>
+            </chart:SfChart.Series>
+          </chart:SfChart>
+        </Grid>
+        <!--<Image Source="graphic2.png"/>-->
+        <Grid>
+          <Image Source="details.png" HorizontalOptions="EndAndExpand" HeightRequest="30"/>
+        </Grid>
+        <Label Text="LOST SALES - PFG ATLANTA" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"/>
+
+        <StackLayout  HeightRequest="270">
+          <Label Text="SEP - OCT GAIN(LOSS)" TextColor="#F7B054" FontAttributes="Bold" FontSize="Small"/>
+          <ListView ItemsSource ="{Binding Sales}" HasUnevenRows="True" >
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <ViewCell.View>
+                    <StackLayout Margin="0,5">
+                      <Grid Margin="0,10,0,0">
+                        <Grid.RowDefinitions>
+                          <RowDefinition Height="Auto"/>
+                          <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Label Grid.Column="0" Grid.Row="0" Text="{Binding Code}" FontAttributes="Bold" FontSize="Medium"/>
+                        <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Text="{Binding Shrimp}" FontSize="Small"/>
+
+                        <Label Grid.Column="0" Grid.Row="1" Text="{Binding Sep1}" FontSize="Small"/>
+                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding Sep2}" FontSize="Small"/>
+                        <Label Grid.Column="2" Grid.Row="1" Text="{Binding GL}" FontSize="Small"/>
+                      </Grid>
+
+                    </StackLayout>
+                  </ViewCell.View>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+
+          <StackLayout Margin="0,0,0,30">
+            <Label Text="Deviations" FontSize="Medium" TextColor="#8B572A" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+              </Grid.RowDefinitions>
+
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+
+              <Label Grid.Row="0" Grid.Column="0" Text="Pending Aproval" FontSize="Small" HorizontalOptions="EndAndExpand"/>
+              <Label Grid.Row="1" Grid.Column="0"  Text="Expiring" FontSize="Small" HorizontalOptions="EndAndExpand"/>
+              <Grid Grid.Row="0" Grid.Column="1" Margin="10,0" >
+                <Label Text="12" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
+              </Grid>
+              <Grid Grid.Row="1" Grid.Column="1" Margin="10,0" >
+                <Label Text="53" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
+              </Grid>
+
+            </Grid>
+          </StackLayout>
+
+        </StackLayout>
+      </StackLayout>
+    </ScrollView>
+    <control:NavigationPanel Grid.Row="1" ActivePage="Page2" VerticalOptions="End"/>
+  </Grid>
+</ContentPage>
