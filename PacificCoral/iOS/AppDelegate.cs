@@ -4,6 +4,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
+using HockeyApp.iOS;
 
 namespace PacificCoral.iOS
 {
@@ -22,6 +23,9 @@ namespace PacificCoral.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+			var manager = BITHockeyManager.SharedHockeyManager;
+			manager.Configure("701628f406864a08b48065298650f55a");
+			manager.StartManager();
             global::Xamarin.Forms.Forms.Init();
             //initialising of chart renderer
             new SfChartRenderer();

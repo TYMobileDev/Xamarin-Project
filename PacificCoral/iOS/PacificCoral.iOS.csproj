@@ -63,9 +63,9 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution: Sergii Gerasymenko (6XMYH77MJ3)</CodesignKey>
+    <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>4b49f7b8-566f-4453-ba44-f808f3f32dd1</CodesignProvision>
+    <CodesignProvision></CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -137,6 +137,32 @@
       <HintPath>..\..\packages\Prism.Forms.6.3.0-pre1\lib\Xamarin.iOS1.0\Prism.Forms.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform.iOS, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="Prism.Unity.Forms">
+      <HintPath>..\..\packages\Prism.Unity.Forms.6.3.0-pre1\lib\Xamarin.iOS1.0\Prism.Unity.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="PropertyChanged">
+      <HintPath>..\..\packages\PropertyChanged.Fody.1.52.1\lib\netstandard10\PropertyChanged.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.Calculate.iOS">
       <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.Calculate.iOS.dll</HintPath>
     </Reference>
@@ -158,215 +184,6 @@
     <Reference Include="Syncfusion.Presentation.Portable">
       <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.Presentation.Portable.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfBarcode.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfBarcode.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfBarcode.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfBarcode.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfBarcode.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfBarcode.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfBusyIndicator.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfBusyIndicator.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfBusyIndicator.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfBusyIndicator.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfBusyIndicator.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfBusyIndicator.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfCalendar.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfCalendar.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfCalendar.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfCalendar.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfCalendar.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfCalendar.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfCarousel.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfCarousel.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfCarousel.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfCarousel.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfCarousel.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfCarousel.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfChart.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfChart.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfChart.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfChart.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfChart.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfChart.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfDataGrid.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfDataGrid.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfDataGrid.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfDataGrid.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfDataGrid.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfDataGrid.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfGauge.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfGauge.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfGauge.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfGauge.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfGauge.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfGauge.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfGridConverter.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfGridConverter.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfGridConverter.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfGridConverter.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfKanban.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfKanban.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfKanban.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfKanban.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfKanban.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfKanban.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfMaps.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfMaps.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfMaps.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfMaps.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfMaps.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfMaps.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNavigationDrawer.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNavigationDrawer.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNavigationDrawer.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNavigationDrawer.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNavigationDrawer.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNavigationDrawer.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNumericTextBox.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNumericTextBox.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNumericTextBox.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNumericTextBox.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNumericTextBox.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNumericTextBox.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNumericUpDown.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNumericUpDown.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNumericUpDown.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNumericUpDown.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNumericUpDown.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNumericUpDown.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfPdfViewer.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfPdfViewer.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfPdfViewer.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfPdfViewer.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfPullToRefresh.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfPullToRefresh.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfPullToRefresh.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfPullToRefresh.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfPullToRefresh.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfPullToRefresh.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRadialMenu.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRadialMenu.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRangeSlider.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRangeSlider.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRangeSlider.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRangeSlider.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRangeSlider.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRangeSlider.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRating.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRating.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRating.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRating.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRating.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRating.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRotator.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRotator.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRotator.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRotator.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRotator.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRotator.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSchedule.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfSchedule.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSchedule.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfSchedule.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSchedule.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfSchedule.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSparkline.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfSparkline.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSparkline.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfSparkline.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSparkline.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfSparkline.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfTreeMap.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfTreeMap.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfTreeMap.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfTreeMap.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfTreeMap.XForms.iOS">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfTreeMap.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.XlsIO.Portable">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.XlsIO.Portable.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform.iOS, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.2.127\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Xamarin.iOS" />
     <Reference Include="Syncfusion.SfAutoComplete.XForms">
       <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfAutoComplete.XForms.dll</HintPath>
     </Reference>
@@ -376,14 +193,203 @@
     <Reference Include="Syncfusion.SfAutocomplete.XForms.iOS">
       <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfAutocomplete.XForms.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfBarcode.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfBarcode.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBarcode.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfBarcode.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBarcode.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfBarcode.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfBusyIndicator.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfBusyIndicator.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfBusyIndicator.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfCalendar.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfCalendar.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfCalendar.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCarousel.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfCarousel.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCarousel.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfCarousel.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCarousel.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfCarousel.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfChart.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfChart.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfChart.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfDataGrid.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfDataGrid.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfDataGrid.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGauge.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfGauge.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGauge.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfGauge.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGauge.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfGauge.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGridConverter.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfGridConverter.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGridConverter.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfGridConverter.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfKanban.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfKanban.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfKanban.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfKanban.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfKanban.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfKanban.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfMaps.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfMaps.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfMaps.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfMaps.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfMaps.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfMaps.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNavigationDrawer.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNavigationDrawer.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNavigationDrawer.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNavigationDrawer.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNavigationDrawer.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNavigationDrawer.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericTextBox.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNumericTextBox.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericTextBox.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNumericTextBox.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericTextBox.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNumericTextBox.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericUpDown.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNumericUpDown.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericUpDown.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNumericUpDown.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericUpDown.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfNumericUpDown.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPdfViewer.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfPdfViewer.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPdfViewer.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfPdfViewer.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPullToRefresh.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfPullToRefresh.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPullToRefresh.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfPullToRefresh.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPullToRefresh.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfPullToRefresh.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRadialMenu.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRadialMenu.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRangeSlider.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRangeSlider.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRangeSlider.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRangeSlider.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRangeSlider.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRangeSlider.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRating.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRating.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRating.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRotator.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRotator.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRotator.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRotator.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRotator.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfRotator.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSchedule.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfSchedule.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSchedule.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfSchedule.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSchedule.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfSchedule.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSparkline.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfSparkline.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSparkline.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfSparkline.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfSparkline.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfSparkline.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfTreeMap.XForms">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfTreeMap.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfTreeMap.XForms.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfTreeMap.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfTreeMap.iOS">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.SfTreeMap.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Portable">
+      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Syncfusion.XlsIO.Portable.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.Platform.iOS">
       <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\ios-unified\Xamarin.Forms.Platform.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Prism.Unity.Forms">
-      <HintPath>..\..\packages\Prism.Unity.Forms.6.3.0-pre1\lib\Xamarin.iOS1.0\Prism.Unity.Forms.dll</HintPath>
+    <Reference Include="HockeySDK">
+      <HintPath>..\..\packages\HockeySDK.Xamarin.4.1.0\lib\Xamarin.iOS10\HockeySDK.dll</HintPath>
     </Reference>
-    <Reference Include="PropertyChanged">
-      <HintPath>..\..\packages\PropertyChanged.Fody.1.52.1\lib\netstandard10\PropertyChanged.dll</HintPath>
+    <Reference Include="HockeySDK.iOSBindings">
+      <HintPath>..\..\packages\HockeySDK.Xamarin.4.1.0\lib\Xamarin.iOS10\HockeySDK.iOSBindings.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
