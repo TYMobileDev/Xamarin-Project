@@ -22,8 +22,12 @@ namespace PacificCoral.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+			#if !DEBUG
+
 			CrashManager.Register(this, HOCKEY_APP_KEY);
 			MetricsManager.Register(Application, HOCKEY_APP_KEY);
+
+			#endif
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             //initialising of chart renderer
