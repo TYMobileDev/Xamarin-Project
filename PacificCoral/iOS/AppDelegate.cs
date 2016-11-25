@@ -24,7 +24,7 @@ namespace PacificCoral.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
 			var manager = BITHockeyManager.SharedHockeyManager;
-			manager.Configure("701628f406864a08b48065298650f55a");
+			manager.Configure("05c5c35d5d1a4bf49a1c72e592e17038");
 			manager.StartManager();
             global::Xamarin.Forms.Forms.Init();
             //initialising of chart renderer
