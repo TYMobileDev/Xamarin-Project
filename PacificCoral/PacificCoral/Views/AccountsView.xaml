@@ -1,22 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="PacificCoral.Views.AccountsView">
+             x:Class="PacificCoral.Views.AccountsView"
+			BackgroundColor="{StaticResource MainBgColor}">
 
-	<ContentPage.Padding>
-		<OnPlatform x:TypeArguments="Thickness"
-                    iOS="0, 20, 0, 0"/>
-	</ContentPage.Padding>
-
-	<StackLayout>
-		<Grid Margin="20,5">
+	<Grid RowSpacing="0">
+		<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Grid BackgroundColor="White" Grid.Row="0">
+			<Grid.Padding>
+				<OnPlatform x:TypeArguments="Thickness"
+                    iOS="15, 25, 15, 0" Android="15, 5, 15, 0"/>
+			</Grid.Padding>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto"/>
 				<ColumnDefinition Width="*"/>
 				<ColumnDefinition Width="Auto"/>
 			</Grid.ColumnDefinitions>
+
 
 			<Image Grid.Column="0" Source="backbutton.png">
 				<Image.GestureRecognizers>
@@ -26,26 +32,37 @@
 			<Image Grid.Column="1" Source="customersTitle.png" HeightRequest="50"/>
 			<Image Grid.Column="2" Source="plus.png"/>
 		</Grid>
-		
-		<SearchBar Placeholder="Search" HeightRequest="50" HorizontalTextAlignment="Center"/>
-		<ListView ItemsSource="{Binding Customers}" HasUnevenRows="True"  SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"
-			GroupDisplayBinding="{Binding Title}" IsGroupingEnabled="true" SeparatorVisibility="None"  >
-			<ListView.ItemTemplate>
+		<ContentView Grid.Row="1" BackgroundColor="White" Margin="5,5,5,0" HeightRequest="40">
+			<SearchBar VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Placeholder="Search" HeightRequest="50" HorizontalTextAlignment="Center"/>
+		</ContentView>
+		<p:ExtendedListView Grid.Row="2" VerticalOptions="Fill" SeparatorColor="Transparent" Margin="5,0,5,0" BackgroundColor="{StaticResource MainBgColor}" ItemsSource="{Binding Customers}" HasUnevenRows="True"  SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"
+			GroupDisplayBinding="{Binding Title}" IsGroupingEnabled="true" GroupShortNameBinding="{Binding Title}" >
+			<p:ExtendedListView.GroupHeaderTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<ContentView Margin="0,5,5,0" BackgroundColor="White" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="15,0,15,0">
+							<Label VerticalOptions="Center" FontFamily="{x:Static p:Styles.FontHNRegular}" TextColor="{StaticResource DefaultDarkColor}" FontSize="17" Text="{Binding Title}"/>
+						</ContentView>
+					</ViewCell>
+				</DataTemplate>
+			</p:ExtendedListView.GroupHeaderTemplate>
+			<p:ExtendedListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>
 						<ViewCell.View>
-							<StackLayout Margin="5" Orientation="Horizontal">
-								<Image Source="{Binding PhotoUrl}" HeightRequest="50"/>
+							<StackLayout Padding="5, 0" BackgroundColor="White" Orientation="Horizontal" Margin="0,0,5,0">
+								<Image Source="{Binding PhotoUrl}" HeightRequest="50" BackgroundColor="Transparent"/>
 								<StackLayout VerticalOptions="CenterAndExpand" Margin="0,10">
-									<Label Text="{Binding UserName}" FontAttributes="Bold" FontSize="Small"/>
-									<Label Text="{Binding Address}" FontSize="Micro"/>
-									<Label Text="{Binding PhoneNumber}" FontSize="Micro"/>
+									<Label Text="{Binding UserName}" TextColor="{StaticResource DefaultDarkColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="15"/>
+									<Label Text="{Binding Address}" TextColor="{StaticResource DefaultGreyColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="10"/>
+									<Label Text="{Binding PhoneNumber}" TextColor="{StaticResource DefaultGreyColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="13"/>
 								</StackLayout>
 							</StackLayout>
 						</ViewCell.View>
 					</ViewCell>
 				</DataTemplate>
-			</ListView.ItemTemplate>
-		</ListView>
-	</StackLayout>
+			</p:ExtendedListView.ItemTemplate>
+		</p:ExtendedListView>
+		<BoxView VerticalOptions="Start" Grid.Row="2" BackgroundColor="{StaticResource MainBgColor}" HeightRequest="5" MinimumHeightRequest="5"/>
+	</Grid>
 </ContentPage>

@@ -17,8 +17,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace PacificCoral.ViewModels
 {
-    [ImplementPropertyChanged]
-    public class AccountsViewModel: BindableBase
+	public class AccountsViewModel: BasePageViewModel
     {
         private readonly INavigationService _navigationService;
         private CustomerModel _selectedCustomer;
@@ -44,68 +43,67 @@ namespace PacificCoral.ViewModels
             }
         }
 
-        public ICommand BackCommand { get { return new DelegateCommand(async () => { await _navigationService.GoBackAsync(); }); } }
-        public List<PageTypeGroup> Customers { get; set; }
+		#region -- Public properties --
 
-        private static List<PageTypeGroup> PageTypeGroup()
-        {
-            var list = new List<PageTypeGroup>
-            {
-                new PageTypeGroup ("A"){
-                    new CustomerModel()
-                    {
-                        PhotoUrl = "customerPhoto.png",
-                        UserName = "User Name Z",
-                        Address = "Miami, the USA",
-                        PhoneNumber = "+39876534677"
-                    },
-                    new CustomerModel()
-                    {
-                        PhotoUrl = "customerPhoto.png",
-                        UserName = "User Name W",
-                        Address = "Miami, the USA",
-                        PhoneNumber = "+39876534677"
-                    },
-                    new CustomerModel()
-                    {
-                        PhotoUrl = "customerPhoto.png",
-                        UserName = "User Name C",
-                        Address = "Miami, the USA",
-                        PhoneNumber = "+39876534677"
-                    }
-                },
-                new PageTypeGroup ("B"){
-                    new CustomerModel()
-                    {
-                        PhotoUrl = "customerPhoto.png",
-                        UserName = "User Name D",
-                        Address = "Miami, the USA",
-                        PhoneNumber = "+39876534677"
-                    },
-                    new CustomerModel()
-                    {
-                        PhotoUrl = "customerPhoto.png",
-                        UserName = "User Name A",
-                        Address = "Miami, the USA",
-                        PhoneNumber = "+39876534677"
-                    },
-                    new CustomerModel()
-                    {
-                        PhotoUrl = "customerPhoto.png",
-                        UserName = "User Name F",
-                        Address = "Miami, the USA",
-                        PhoneNumber = "+39876534677"
-                    }
-                }
-            };
+		private List<PageTypeGroup> _Customers;
+
+		public List<PageTypeGroup> Customers
+		{
+			get { return _Customers; }
+			set { SetProperty(ref _Customers, value); }
+		}
+
+		public ICommand BackCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnBackCommandAsync); }
+		}
+
+
+		#endregion
+
+
+		#region -- Private helpers --
+
+		private async Task OnBackCommandAsync()
+		{
+			await _navigationService.GoBackAsync();
+		}
+
+		private static List<PageTypeGroup> PageTypeGroup()
+		{
+			var list = new List<PageTypeGroup>();
+			var A = (int)'A';
+			var r = new Random();
+			for (int i = 0; i < 26; i++)
+			{
+				var letter = ((char)(A + i)).ToString();
+				var group = new PageTypeGroup(letter);
+				var customersCount = r.Next(1, 8);
+				for (int j = 0; j < customersCount; j++)
+				{
+					group.Add(new CustomerModel()
+					{
+						PhotoUrl = "customerPhoto.png",
+						UserName = letter + " User Name " + j,
+						Address = "Miami, the USA",
+						PhoneNumber = "+39876534677"
+					});
+
+				}
+				list.Add(group);
+
+			}
+			list.Sort((x, y) => x.Title.CompareTo(y.Title));
 
 			foreach (var item in list)
 			{
-				item.Sort( (x, y) => x.UserName.CompareTo(y.UserName));
+				item.Sort((x, y) => x.UserName.CompareTo(y.UserName));
 
 			}
 
 			return list;
-        }
+		}
+
+		#endregion
     }
 }

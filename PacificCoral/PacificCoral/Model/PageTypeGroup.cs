@@ -14,8 +14,6 @@ namespace PacificCoral.Model
         {
             Title = title;
         }
-
-        public static IList<PageTypeGroup> All { private set; get; }
     }
    
 }

@@ -1,16 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:control="clr-namespace:PacificCoral.Controls;assembly=PacificCoral"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
-             x:Class="PacificCoral.Views.DashBoardView">
-
-  <ContentPage.Padding>
-    <OnPlatform x:TypeArguments="Thickness"
-                    iOS="0, 20, 0, 0"/>
-  </ContentPage.Padding>
+             x:Class="PacificCoral.Views.DashBoardView"
+			BackgroundColor="{StaticResource MainBgColor}">
 
   <Grid>
     <Grid.RowDefinitions>
@@ -20,21 +16,27 @@
 
     <ScrollView Grid.Row="0">
       <StackLayout Margin="5">
-        <StackLayout Margin="20,5">
-          <Image Source="title.png"/>
-        </StackLayout>
+		<StackLayout>
+		<StackLayout BackgroundColor="White">
+			<StackLayout.Padding>
+				<OnPlatform x:TypeArguments="Thickness"
+                    iOS="0, 20, 0, 0" Android="0"/>
+			</StackLayout.Padding>
+	        <StackLayout Margin="20,5">
+	          <Image Source="title.png"/>
+	        </StackLayout>
 
-        <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand">
-          <Image Source="trackmileage.png" WidthRequest="100"/>
-          <Image Source="viewaccounts.png"  WidthRequest="100">
-            <Image.GestureRecognizers>
-              <TapGestureRecognizer Command="{Binding ViewAccountsCommand}"/>
-            </Image.GestureRecognizers>
-          </Image>
-          <Image Source="items.png"  WidthRequest="100"/>
+	        <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand">
+	          <Image Source="trackmileage.png" WidthRequest="100"/>
+	          <Image Source="viewaccounts.png"  WidthRequest="100">
+	            <Image.GestureRecognizers>
+	              <TapGestureRecognizer Command="{Binding ViewAccountsCommand}"/>
+	            </Image.GestureRecognizers>
+	          </Image>
+	          <Image Source="items.png"  WidthRequest="100"/>
+        	</StackLayout>
         </StackLayout>
-
-        <Grid HeightRequest="150">
+        <Grid HeightRequest="150" BackgroundColor="White">
           <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <chart:SfChart.PrimaryAxis>
               <chart:CategoryAxis>
@@ -67,17 +69,22 @@
             </chart:SfChart.Series>
           </chart:SfChart>
         </Grid>
-        <Grid>
-          <Image Source="details.png" HorizontalOptions="EndAndExpand" HeightRequest="30">
-            <Image.GestureRecognizers>
-              <TapGestureRecognizer Command="{Binding DetailsCommand}"/>
-            </Image.GestureRecognizers>
-          </Image>
-        </Grid>
-        <Label Text="LOST SALES - PFG ATLANTA" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"/>
-        <StackLayout VerticalOptions="End">
-          <Label Text="SEP - OCT GAIN(LOSS)" TextColor="#F7B054" FontAttributes="Bold" FontSize="Small"/>
-          <ListView ItemsSource ="{Binding Sales}" HasUnevenRows="True" >
+			<StackLayout>
+				<StackLayout Orientation="Horizontal" HorizontalOptions="End" Padding="5">
+					<StackLayout.GestureRecognizers>
+		            	<TapGestureRecognizer Command="{Binding DetailsCommand}"/>
+		            </StackLayout.GestureRecognizers>
+					<Label Text="Details" TextColor="#E59006" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="15"/>
+					<Label Text=">" FontFamily="{x:Static p:Styles.FontHNRegular}" TextColor="{StaticResource DefaultDarkColor}" FontSize="15"/>
+				</StackLayout>
+	        	<Label Text="LOST SALES - PFG ATLANTA" HorizontalOptions="CenterAndExpand" FontFamily="{x:Static p:Styles.FontHNMedium}" TextColor="{StaticResource DefaultDarkColor}" FontSize="15"/>
+			</StackLayout>
+
+		</StackLayout>
+        <StackLayout VerticalOptions="End" BackgroundColor="White">
+          <Label Margin="5" Text="SEP - OCT GAIN(LOSS)" TextColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12"/>
+          <BoxView Style="{StaticResource HorizontalSeparatorStyle}"/>
+		<ListView ItemsSource ="{Binding Sales}" HasUnevenRows="True" SeparatorVisibility="None">
             <ListView.ItemTemplate>
               <DataTemplate>
                 <ViewCell>
