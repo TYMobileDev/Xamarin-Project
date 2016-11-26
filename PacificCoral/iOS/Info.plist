@@ -50,5 +50,13 @@
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
 	<string>PacificCoral</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Fonts/SFNSDisplayRegular.ttf</string>
+		<string>Fonts/HelveticaNeueBold.ttf</string>
+		<string>Fonts/HelveticaNeueLight.ttf</string>
+		<string>Fonts/HelveticaNeueMedium.ttf</string>
+		<string>Fonts/HelveticaNeueMedium.ttf</string>
+	</array>
 </dict>
 </plist>

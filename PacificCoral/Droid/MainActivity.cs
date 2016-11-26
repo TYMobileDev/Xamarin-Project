@@ -9,6 +9,7 @@ using Android.OS;
 using Syncfusion.SfChart.XForms.Droid;
 using HockeyApp.Android;
 using HockeyApp.Android.Metrics;
+using Acr.UserDialogs;
 
 namespace PacificCoral.Droid
 {
@@ -30,9 +31,10 @@ namespace PacificCoral.Droid
 			#endif
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+			UserDialogs.Init(Application);
             //initialising of chart renderer
             new SfChartRenderer();
-            LoadApplication(new App());
+            LoadApplication(new _App());
         }
     }
 }
