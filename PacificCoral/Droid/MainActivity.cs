@@ -34,7 +34,7 @@ namespace PacificCoral.Droid
 			UserDialogs.Init(Application);
             //initialising of chart renderer
             new SfChartRenderer();
-            LoadApplication(new _App());
+            LoadApplication(new App());
         }
     }
 }
