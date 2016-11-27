@@ -80,231 +80,8 @@
       <HintPath>..\..\packages\PropertyChanged.Fody.1.52.1\Lib\netstandard10\PropertyChanged.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Syncfusion.Calculate.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.Calculate.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Calculate.Portable">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.Calculate.Portable.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Compression.Portable">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.Compression.Portable.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Data.Portable">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.Data.Portable.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.DataSource.Portable">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.DataSource.Portable.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.DocIO.Portable">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.DocIO.Portable.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.GridCommon.Portable">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.GridCommon.Portable.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Linq.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.Linq.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.OfficeChart.Portable">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.OfficeChart.Portable.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Pdf.Portable">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.Pdf.Portable.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Presentation.Portable">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.Presentation.Portable.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfBarcode.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfBarcode.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfBarcode.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfBarcode.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfBarcode.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfBarcode.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfBusyIndicator.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfBusyIndicator.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfBusyIndicator.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfBusyIndicator.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfBusyIndicator.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfBusyIndicator.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfCalendar.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfCalendar.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfCalendar.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfCalendar.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfCalendar.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfCalendar.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfCarousel.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfCarousel.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfCarousel.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfCarousel.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfCarousel.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfCarousel.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfChart.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfChart.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfChart.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfChart.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfChart.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfChart.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfDataGrid.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfDataGrid.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfDataGrid.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfDataGrid.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfDataGrid.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfDataGrid.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfGauge.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfGauge.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfGauge.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfGauge.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfGauge.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfGauge.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfGridConverter.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfGridConverter.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfGridConverter.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfGridConverter.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfKanban.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfKanban.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfKanban.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfKanban.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfKanban.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfKanban.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfMaps.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfMaps.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfMaps.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfMaps.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfMaps.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfMaps.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNavigationDrawer.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNavigationDrawer.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNavigationDrawer.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNavigationDrawer.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNavigationDrawer.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNavigationDrawer.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNumericTextBox.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNumericTextBox.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNumericTextBox.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNumericTextBox.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNumericTextBox.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNumericTextBox.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNumericUpDown.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNumericUpDown.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNumericUpDown.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNumericUpDown.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNumericUpDown.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfNumericUpDown.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfPdfViewer.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfPdfViewer.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfPdfViewer.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfPdfViewer.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfPullToRefresh.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfPullToRefresh.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfPullToRefresh.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfPullToRefresh.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfPullToRefresh.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfPullToRefresh.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRadialMenu.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRadialMenu.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRangeSlider.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRangeSlider.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRangeSlider.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRangeSlider.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRangeSlider.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRangeSlider.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRating.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRating.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRating.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRating.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRating.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRating.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRotator.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRotator.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRotator.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRotator.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRotator.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfRotator.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSchedule.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfSchedule.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSchedule.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfSchedule.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSchedule.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfSchedule.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSparkline.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfSparkline.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSparkline.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfSparkline.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSparkline.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfSparkline.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfTreeMap.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfTreeMap.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfTreeMap.XForms">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfTreeMap.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfTreeMap.XForms.Android">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.SfTreeMap.XForms.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.XlsIO.Portable">
-      <HintPath>..\..\Components\SyncfusionEssentialStudio-14.3.0.52-trial\lib\android\Syncfusion.XlsIO.Portable.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ObjectModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -374,6 +151,15 @@
     </Reference>
     <Reference Include="Acr.UserDialogs.Interface">
       <HintPath>..\..\packages\Acr.UserDialogs.6.3.1\lib\MonoAndroid10\Acr.UserDialogs.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.Android">
+      <HintPath>..\..\Libs\android\Syncfusion.SfChart.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms.Android">
+      <HintPath>..\..\Libs\android\Syncfusion.SfChart.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms">
+      <HintPath>..\..\Libs\android\Syncfusion.SfChart.XForms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -485,12 +271,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\itemstabbardisabled.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="SyncfusionEssentialStudio">
-      <Visible>False</Visible>
-      <Version>14.3.0.52</Version>
-    </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
