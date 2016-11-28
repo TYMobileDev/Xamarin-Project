@@ -43,7 +43,7 @@ namespace PacificCoral.Controls
 
             var tapGestureRecognizer3 = new TapGestureRecognizer();
             tapGestureRecognizer3.Tapped += async (s, e) => {
-                await navigationService.NavigateAsync<DashBoard2View>();
+				await navigationService.NavigateAsync<InventoryView>();
                 //(App.Current.MainPage as NavigationPage).Navigation.PushAsync(new DashBoard2View());
             };
             image3.GestureRecognizers.Add(tapGestureRecognizer3);

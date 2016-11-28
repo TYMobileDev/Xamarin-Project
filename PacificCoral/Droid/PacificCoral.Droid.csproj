@@ -200,6 +200,12 @@
     <AndroidResource Include="Resources\drawable\tasks.png" />
     <AndroidResource Include="Resources\drawable\visits.png" />
     <AndroidResource Include="Resources\drawable\logVisit.png" />
+    <AndroidResource Include="Resources\drawable\account.png" />
+    <AndroidResource Include="Resources\drawable\car.png" />
+    <AndroidResource Include="Resources\drawable\titleLogo.png" />
+    <AndroidResource Include="Resources\drawable\checked.png" />
+    <AndroidResource Include="Resources\drawable\markerDark.png" />
+    <AndroidResource Include="Resources\drawable\zoom.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

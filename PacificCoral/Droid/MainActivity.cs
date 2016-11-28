@@ -9,6 +9,7 @@ using Syncfusion.SfChart.XForms.Droid;
 using HockeyApp.Android;
 using HockeyApp.Android.Metrics;
 using Acr.UserDialogs;
+using NControl.Controls.Droid;
 
 namespace PacificCoral.Droid
 {
@@ -31,6 +32,7 @@ namespace PacificCoral.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 			UserDialogs.Init(Application);
+			NControls.Init();
 			NControl.Droid.NControlViewRenderer.Init();
             //initialising of chart renderer
             new SfChartRenderer();

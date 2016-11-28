@@ -12,7 +12,7 @@ using Prism.Navigation;
 
 namespace PacificCoral.ViewModels
 {
-    public class CustomerAccountViewModel: BindableBase
+	public class CustomerAccountViewModel: BasePageViewModel
     {
         private readonly INavigationService _navigationService;
 
@@ -28,7 +28,7 @@ namespace PacificCoral.ViewModels
                     Title = "EMPIRE",
                     IndicatorUrl = "active.png",
                     Shrimp = "SHRIM TGR 8/12 HDLS/ON",
-
+					Prospect = true
                 },
                  new SalesModel()
                 {
@@ -36,6 +36,7 @@ namespace PacificCoral.ViewModels
                     Title = "EMPIRE",
                     IndicatorUrl = "notactive.png",
                     Shrimp = "SHRIM TGR 21/25 RPDT/ON",
+					Deviated = true
                 },
                  new SalesModel()
                 {
@@ -46,25 +47,53 @@ namespace PacificCoral.ViewModels
                 }
             };
 
-			var visits = new ObservableCollection<string>()
-			{"Visit 1",
-				"Visit 2"
-    
+			var visits = new ObservableCollection<VisitModel>()
+			{
+				new VisitModel
+				{
+					Title = "Initial Visit",
+					TimeStr = "3.00 PM",
+					DateStr = "October, 23th",
+					Description = "Presented Product"
+				},
+				new VisitModel
+				{
+					Title = "Follow Up Visit",
+					TimeStr = "3.00 PM",
+					DateStr = "October, 23th",
+					Description = "Showed grouper."
+				}
+
 			};
 
-			var tasks = new ObservableCollection<string>()
-			{"Task 1",
-				
-"Task 2",
-				
-"Task 3"			};
+			var tasks = new ObservableCollection<TaskModel>()
+			{
+				new TaskModel
+				{
+					Title = "Task 1",
+					Description = "Replace one bag of shrimp",
+					TimeStr = "3.00 PM",
+					DateStr = "October, 23th",
+					IsDone = true
+				},
+				new TaskModel
+				{
+					Title = "Task 2",
+					Description = "Replace one bag of shrimp",
+					TimeStr = "3.00 PM",
+					DateStr = "October, 23th"
+				}
+
+			};
          
             Sales = sales;
 			Visits = visits;
 			Tasks = tasks;
+			Title = "PFG Atlanta";
         }
 
 		#region -- Public properties --
+
 
 		private int _ActivePageIndex;
 
@@ -82,17 +111,17 @@ namespace PacificCoral.ViewModels
 			set { SetProperty(ref _Sales, value); }
 		}
 
-		private IEnumerable<string> _Visits;
+		private IEnumerable<VisitModel> _Visits;
 
-		public IEnumerable<string> Visits
+		public IEnumerable<VisitModel> Visits
 		{
 			get { return _Visits; }
 			set { SetProperty(ref _Visits, value); }
 		}
 
-		private IEnumerable<string> _Tasks;
+		private IEnumerable<TaskModel> _Tasks;
 
-		public IEnumerable<string> Tasks
+		public IEnumerable<TaskModel> Tasks
 		{
 			get { return _Tasks; }
 			set { SetProperty(ref _Tasks, value); }

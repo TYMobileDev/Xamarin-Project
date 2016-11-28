@@ -8,6 +8,21 @@
              x:Class="PacificCoral.Views.DashBoardView"
 			BackgroundColor="{StaticResource MainBgColor}">
 
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="tabButtonImageStyle" TargetType="Image">
+	            <Setter Property="HeightRequest" Value="15" />
+	            <Setter Property="WidthRequest" Value="15" />
+	            <Setter Property="HorizontalOptions" Value="Center" />
+	        </Style>
+			<Style x:Key="tabButtonLabelStyle" TargetType="Label">
+	           <Setter Property="HorizontalOptions" Value="Center" />
+	            <Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
+	            <Setter Property="FontSize" Value="11" />
+	            <Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+	        </Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
 	<Grid>
 	    <Grid.RowDefinitions>
 	      <RowDefinition Height="*"/>
@@ -24,15 +39,31 @@
 		          <Image Source="title.png"/>
 		        </StackLayout>
 
-		        <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand">
-		          <Image Source="trackmileage.png" WidthRequest="100"/>
-		          <Image Source="viewaccounts.png"  WidthRequest="100">
-		            <Image.GestureRecognizers>
-		              <TapGestureRecognizer Command="{Binding ViewAccountsCommand}"/>
-		            </Image.GestureRecognizers>
-		          </Image>
-		          <Image Source="items.png"  WidthRequest="100"/>
-	        	</StackLayout>
+	        	<Grid ColumnSpacing="10" BackgroundColor="White" HorizontalOptions="Fill" HeightRequest="60">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+		         	<p:ClickableContentView Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Fill">
+						<StackLayout VerticalOptions="Center">
+								<Image Source="car" Style="{StaticResource tabButtonImageStyle}"/>
+								<Label Text="Track mileage" Style="{StaticResource tabButtonLabelStyle}"/>
+						</StackLayout>
+					</p:ClickableContentView>
+					<p:ClickableContentView Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill" Command="{Binding ViewAccountsCommand}">
+						<StackLayout VerticalOptions="Center">
+								<Image Source="account" Style="{StaticResource tabButtonImageStyle}"/>
+								<Label Text="View accounts" Style="{StaticResource tabButtonLabelStyle}"/>
+						</StackLayout>
+					</p:ClickableContentView>
+					<p:ClickableContentView Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill">
+						<StackLayout VerticalOptions="Center">
+								<Image Source="items" Style="{StaticResource tabButtonImageStyle}"/>
+								<Label Text="Items" Style="{StaticResource tabButtonLabelStyle}"/>
+						</StackLayout>
+					</p:ClickableContentView>
+				</Grid>
 	        </StackLayout>
 			<!-- List -->
 			<ListView ItemsSource ="{Binding Sales}" HasUnevenRows="True" SeparatorVisibility="None" BackgroundColor="White" Header="{Binding .}">

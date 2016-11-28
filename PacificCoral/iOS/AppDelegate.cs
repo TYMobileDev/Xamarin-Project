@@ -5,6 +5,7 @@ using Foundation;
 using UIKit;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
 using HockeyApp.iOS;
+using NControl.Controls.iOS;
 
 namespace PacificCoral.iOS
 {
@@ -32,6 +33,7 @@ namespace PacificCoral.iOS
 			#endif
 
             global::Xamarin.Forms.Forms.Init();
+			NControls.Init();
 			NControl.iOS.NControlViewRenderer.Init();
             //initialising of chart renderer
             new SfChartRenderer();

@@ -37,6 +37,17 @@
 			<Style x:Key="BaseButtonStyle" TargetType="Button">
 	            <Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
 	        </Style>
+			<Style x:Key="titleLabelStyle" TargetType="Label">
+	           <Setter Property="HorizontalOptions" Value="Center" />
+	            <Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
+	            <Setter Property="FontSize" Value="15" />
+	            <Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+	        </Style>
+			<Style x:Key="titleLogoStyle" TargetType="Image">
+	           <Setter Property="HorizontalOptions" Value="Center" />
+	            <Setter Property="Source" Value="titleLogo" />
+	            <Setter Property="HeightRequest" Value="20" />
+	        </Style>
 		</ResourceDictionary>
 	</Application.Resources>
 </unity:PrismApplication>

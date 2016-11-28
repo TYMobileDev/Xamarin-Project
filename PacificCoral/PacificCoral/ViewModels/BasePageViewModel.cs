@@ -6,6 +6,14 @@ namespace PacificCoral
 	{
 		#region -- Public properties --
 
+		private string _Title;
+
+		public string Title
+		{
+			get { return _Title; }
+			set { SetProperty(ref _Title, value); }
+		}
+
 		private bool _IsBusy;
 
 		public bool IsBusy
