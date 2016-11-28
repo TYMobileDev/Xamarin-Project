@@ -7,8 +7,9 @@
 [Oo]bj/
 [Bb]in/
 packages/
-components/
+Components/
 TestResults/
+.droidres/
 
 # globs
 Makefile.in
