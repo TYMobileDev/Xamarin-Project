@@ -8,6 +8,7 @@ namespace PacificCoral
 	public class Checkbox : RoundCornerView
 	{
 		private Image _checked;
+
 		public Checkbox()
 		{
 			_checked = new Image
@@ -15,8 +16,10 @@ namespace PacificCoral
 				Source = "checked",
 				//HeightRequest = 15,
 				//WidthRequest = 15,
+				VerticalOptions = LayoutOptions.Center,
+				HorizontalOptions = LayoutOptions.Center,
 				InputTransparent = true,
-				Opacity = 0
+				Opacity = 0,
 			};
 			Padding = new Thickness(3);
 			this.BorderColor = Color.FromHex("#979797");

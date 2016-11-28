@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Prism.Mvvm;
 using Prism.Navigation;
+using PacificCoral.Extensions;
 
 namespace PacificCoral.ViewModels
 {
@@ -137,6 +138,11 @@ namespace PacificCoral.ViewModels
 			get { return SingleExecutionCommand.FromFunc(OnActionCommandAsync); }
 		}
 
+		public ICommand ShowCustomerLocationCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnShowCustomerLocationCommandAsync); }
+		}
+
 		#endregion
 
 		#region -- Private helpers --
@@ -149,6 +155,11 @@ namespace PacificCoral.ViewModels
 		private async Task OnActionCommandAsync()
 		{
 
+		}
+
+		private async Task OnShowCustomerLocationCommandAsync()
+		{
+			await _navigationService.NavigateAsync<PinLocationView>();
 		}
 
 		#endregion

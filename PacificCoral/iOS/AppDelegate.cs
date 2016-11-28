@@ -33,6 +33,7 @@ namespace PacificCoral.iOS
 			#endif
 
             global::Xamarin.Forms.Forms.Init();
+			Xamarin.FormsMaps.Init();
 			NControls.Init();
 			NControl.iOS.NControlViewRenderer.Init();
             //initialising of chart renderer

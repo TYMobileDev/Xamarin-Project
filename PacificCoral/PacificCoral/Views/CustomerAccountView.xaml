@@ -73,7 +73,7 @@
 				<Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Joe Stone Crab" FontAttributes="Bold" FontSize="Small"/>
 				<Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Adress: Miami, the USA" FontSize="Micro"/>
 				<Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="+39876534677" FontSize="Micro"/>
-				<p:ClickableContentView Grid.Row="0" Grid.Column="3" Padding="5" HorizontalOptions="End">
+				<p:ClickableContentView Grid.Row="0" Grid.Column="3" Padding="5" HorizontalOptions="End" Command="{Binding ShowCustomerLocationCommand}">
 					<Image Source="location" HeightRequest="25" WidthRequest="20"/>
 				</p:ClickableContentView>
 				<Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text="Follow Up " BorderColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" TextColor="{StaticResource DefaultGreyColor}" WidthRequest="100" HeightRequest="26" BorderRadius="13" 
