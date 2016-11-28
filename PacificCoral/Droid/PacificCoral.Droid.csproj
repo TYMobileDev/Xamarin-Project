@@ -161,6 +161,24 @@
     <Reference Include="Syncfusion.SfChart.XForms">
       <HintPath>..\..\Libs\android\Syncfusion.SfChart.XForms.dll</HintPath>
     </Reference>
+    <Reference Include="NGraphics.Android">
+      <HintPath>..\..\packages\NGraphics.0.4.0\lib\MonoAndroid10\NGraphics.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="NGraphics">
+      <HintPath>..\..\packages\NGraphics.0.4.0\lib\MonoAndroid10\NGraphics.dll</HintPath>
+    </Reference>
+    <Reference Include="NControl">
+      <HintPath>..\..\packages\NControl.0.9.0.1\lib\MonoAndroid10\NControl.dll</HintPath>
+    </Reference>
+    <Reference Include="NControl.Droid">
+      <HintPath>..\..\packages\NControl.0.9.0.1\lib\MonoAndroid10\NControl.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="NControl.Controls">
+      <HintPath>..\..\packages\NControl.Controls.0.9.3.3\lib\MonoAndroid10\NControl.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="NControl.Controls.Droid">
+      <HintPath>..\..\packages\NControl.Controls.0.9.3.3\lib\MonoAndroid10\NControl.Controls.Droid.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -179,6 +197,9 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\tasks.png" />
+    <AndroidResource Include="Resources\drawable\visits.png" />
+    <AndroidResource Include="Resources\drawable\logVisit.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

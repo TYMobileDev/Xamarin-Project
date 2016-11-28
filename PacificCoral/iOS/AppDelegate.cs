@@ -32,6 +32,7 @@ namespace PacificCoral.iOS
 			#endif
 
             global::Xamarin.Forms.Forms.Init();
+			NControl.iOS.NControlViewRenderer.Init();
             //initialising of chart renderer
             new SfChartRenderer();
             LoadApplication(new App());

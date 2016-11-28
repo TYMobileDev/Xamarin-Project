@@ -7,20 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
-using PropertyChanged;
-using Xamarin.Forms;
 
 namespace PacificCoral.ViewModels
 {
-    [ImplementPropertyChanged]
     public class CustomerAccountViewModel: BindableBase
     {
         private readonly INavigationService _navigationService;
-
-        public CustomerAccountViewModel() { }
 
         public CustomerAccountViewModel(INavigationService navigationService)
         {
@@ -52,11 +46,82 @@ namespace PacificCoral.ViewModels
                 }
             };
 
+			var visits = new ObservableCollection<string>()
+			{"Visit 1",
+				"Visit 2"
+    
+			};
+
+			var tasks = new ObservableCollection<string>()
+			{"Task 1",
+				
+"Task 2",
+				
+"Task 3"			};
          
             Sales = sales;
+			Visits = visits;
+			Tasks = tasks;
         }
 
-        public ObservableCollection<SalesModel> Sales { get; set; }
-        public ICommand BackCommand { get { return new DelegateCommand(async () => { await _navigationService.GoBackAsync(); }); } }
-    }
+		#region -- Public properties --
+
+		private int _ActivePageIndex;
+
+		public int ActivePageIndex
+		{
+			get { return _ActivePageIndex; }
+			set { SetProperty(ref _ActivePageIndex, value); }
+		}
+
+		private IEnumerable<SalesModel> _Sales;
+
+		public IEnumerable<SalesModel> Sales
+		{
+			get { return _Sales; }
+			set { SetProperty(ref _Sales, value); }
+		}
+
+		private IEnumerable<string> _Visits;
+
+		public IEnumerable<string> Visits
+		{
+			get { return _Visits; }
+			set { SetProperty(ref _Visits, value); }
+		}
+
+		private IEnumerable<string> _Tasks;
+
+		public IEnumerable<string> Tasks
+		{
+			get { return _Tasks; }
+			set { SetProperty(ref _Tasks, value); }
+		}
+
+		public ICommand BackCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnBackCommandAsync); }
+		}
+
+		public ICommand ActionCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnActionCommandAsync); }
+		}
+
+		#endregion
+
+		#region -- Private helpers --
+
+		private async Task OnBackCommandAsync()
+		{
+			await _navigationService.GoBackAsync();
+		}
+
+		private async Task OnActionCommandAsync()
+		{
+
+		}
+
+		#endregion
+	}
 }

@@ -31,6 +31,7 @@ namespace PacificCoral.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 			UserDialogs.Init(Application);
+			NControl.Droid.NControlViewRenderer.Init();
             //initialising of chart renderer
             new SfChartRenderer();
             LoadApplication(new App());

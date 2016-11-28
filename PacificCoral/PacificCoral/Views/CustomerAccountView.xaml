@@ -1,110 +1,132 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
 			 xmlns:control="clr-namespace:PacificCoral.Controls;assembly=PacificCoral"
-             x:Class="PacificCoral.Views.CustomerAccountView" BackgroundColor="#F5F5F5" >
+             x:Class="PacificCoral.Views.CustomerAccountView" BackgroundColor="{StaticResource MainBgColor}" >
 
-	<ContentPage.Padding>
-		<OnPlatform x:TypeArguments="Thickness"
-                    iOS="0, 20, 0, 0"/>
-	</ContentPage.Padding>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<p:IntToObjectConverter x:Key="pageIndexToActionTitleConverter" Val0="Add item" Val1="Log a Visit" Val2="Add item" />
+			<p:IntToObjectConverter x:Key="pageIndexToActionImageConverter" Val0="addItem" Val1="logVisit" Val2="addItem" />
+			<Style x:Key="tabButtonImageStyle" TargetType="Image">
+	            <Setter Property="HeightRequest" Value="15" />
+	            <Setter Property="WidthRequest" Value="15" />
+	            <Setter Property="HorizontalOptions" Value="Center" />
+	        </Style>
+			<Style x:Key="tabButtonLabelStyle" TargetType="Label">
+	           <Setter Property="HorizontalOptions" Value="Center" />
+	            <Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
+	            <Setter Property="FontSize" Value="11" />
+	            <Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+	        </Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
 
-	<Grid>
+	<Grid RowSpacing="0">
 		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="Auto"/>			
 		</Grid.RowDefinitions>
+		<Grid BackgroundColor="White" Grid.Row="0">
+			<Grid.Padding>
+				<OnPlatform x:TypeArguments="Thickness"
+                    iOS="15, 25, 15, 0" Android="15, 5, 15, 0"/>
+			</Grid.Padding>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
 
-		<ScrollView Grid.Row="0">
-			<StackLayout>
-				<Grid BackgroundColor="White" Margin="20,5">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="*"/>
-						<ColumnDefinition Width="Auto"/>
-					</Grid.ColumnDefinitions>
 
-					<Image Grid.Column="0" Source="backbutton.png">
-						<Image.GestureRecognizers>
-							<TapGestureRecognizer Command="{Binding BackCommand}"/>
-						</Image.GestureRecognizers>
-					</Image>
-					<Image Grid.Column="1" Source="accounttitle.png" HeightRequest="40"/>
-					<Image Grid.Column="2" Source="edit.png" />
-				</Grid>
+			<Image Grid.Column="0" Source="backbutton.png">
+				<Image.GestureRecognizers>
+					<TapGestureRecognizer Command="{Binding BackCommand}"/>
+				</Image.GestureRecognizers>
+			</Image>
+			<Image Grid.Column="1" Source="customersTitle.png" HeightRequest="50"/>
+			<Image Grid.Column="2" Source="edit.png"/>
+		</Grid>
+		<StackLayout Grid.Row="1" Padding="0" Margin="0, 0.5, 0, 0">
+			<Grid BackgroundColor="White" Padding="10">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
 
-				<Grid Margin="10,0" BackgroundColor="White">
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-					</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
 
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="*"/>
-						<ColumnDefinition Width="*"/>
-						<ColumnDefinition Width="*"/>
-						<ColumnDefinition Width="*"/>
-					</Grid.ColumnDefinitions>
+				<Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Source="customerPhoto.png" HeightRequest="50"/>
+				<Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Joe Stone Crab" FontAttributes="Bold" FontSize="Small"/>
+				<Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Adress: Miami, the USA" FontSize="Micro"/>
+				<Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="+39876534677" FontSize="Micro"/>
+				<Image Grid.Row="0" Grid.Column="3" Source="location.png" HeightRequest="15" WidthRequest="10" HorizontalOptions="CenterAndExpand"/>
+				<Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text="Follow Up " BorderColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" TextColor="{StaticResource DefaultGreyColor}" WidthRequest="100" HeightRequest="30" BorderRadius="15" 
+					BackgroundColor="Transparent" BorderWidth="1" />
+			</Grid>
 
-					<Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Source="customerPhoto.png" HeightRequest="50"/>
-					<Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Joe Stone Crab" FontAttributes="Bold" FontSize="Small"/>
-					<Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Adress: Miami, the USA" FontSize="Micro"/>
-					<Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="+39876534677" FontSize="Micro"/>
-					<Image Grid.Row="0" Grid.Column="3" Source="location.png" HeightRequest="15" WidthRequest="10" HorizontalOptions="CenterAndExpand"/>
-					<Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text=" Follow Up " BorderColor="#FAB758" BorderRadius="25" 
-						BackgroundColor="#FAB758" BorderWidth="1" />
-				</Grid>
-				<StackLayout Margin="10,-10">
-					<Image Source="additem.png"  HeightRequest="40" HorizontalOptions="StartAndExpand"/>
-					<Image Source="tabbedpages.png" HorizontalOptions="FillAndExpand"/>
-				</StackLayout>
+			<ContentView BackgroundColor="White" Margin="5">
+				<p:ClickableContentView Command="{Binding ActionCommand}" Padding="10">
+					<StackLayout Orientation="Horizontal" Spacing="10">
+						<Image Source="{Binding ActivePageIndex,Converter={StaticResource pageIndexToActionImageConverter}}" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" />
+						<Label Text="{Binding ActivePageIndex,Converter={StaticResource pageIndexToActionTitleConverter}}" VerticalOptions="Center"/>
+					</StackLayout>
+				</p:ClickableContentView>
+			</ContentView>
+			
+			<p:TabStrip VerticalOptions="FillAndExpand" ActivePageIndex="{Binding ActivePageIndex,Mode=TwoWay}" TabIndicatorColor="{StaticResource DefaultGreyColor}" TabHeight="45">
+				<p:TabStrip.Children>
+					<p:TabItem>
+						<p:TabItem.ButtonView>
+							<StackLayout VerticalOptions="Center">
+								<Image Source="items" Style="{StaticResource tabButtonImageStyle}"/>
+								<Label Text="Items" Style="{StaticResource tabButtonLabelStyle}"/>
+							</StackLayout>
+						</p:TabItem.ButtonView>
+						<p:TabItem.View>
+							<ListView ItemsSource="{Binding Sales}">
+							</ListView>
+						</p:TabItem.View>
+					</p:TabItem>
+					<p:TabItem>
+						<p:TabItem.ButtonView>
+							<StackLayout VerticalOptions="Center">
+								<Image Source="visits" Style="{StaticResource tabButtonImageStyle}"/>
+								<Label Text="Visits" Style="{StaticResource tabButtonLabelStyle}"/>
+							</StackLayout>
+						</p:TabItem.ButtonView>
+						<p:TabItem.View>
+							<ListView ItemsSource="{Binding Visits}">
+							</ListView>
+						</p:TabItem.View>
+					</p:TabItem>
+					<p:TabItem>
+						<p:TabItem.ButtonView>
+							<StackLayout VerticalOptions="Center">
+								<Image Source="tasks" Style="{StaticResource tabButtonImageStyle}"/>
+								<Label Text="Tasks" Style="{StaticResource tabButtonLabelStyle}"/>
+							</StackLayout>
+						</p:TabItem.ButtonView>
+						<p:TabItem.View>
+							<ListView ItemsSource="{Binding Tasks}">
+							</ListView>
+						</p:TabItem.View>
+					</p:TabItem>
+				</p:TabStrip.Children>
+			</p:TabStrip>
 
-				<StackLayout Margin="10,20,10,0" BackgroundColor="White">
-					<ListView ItemsSource ="{Binding Sales}" HasUnevenRows="True" >
-						<ListView.ItemTemplate>
-							<DataTemplate>
-								<ViewCell>
-									<ViewCell.View>
-										<StackLayout Margin="0,5">
-											<Grid>
-												<Grid.RowDefinitions>
-													<RowDefinition Height="Auto"/>
-													<RowDefinition Height="Auto"/>
-													<RowDefinition Height="Auto"/>
-												</Grid.RowDefinitions>
-
-												<Grid.ColumnDefinitions>
-													<ColumnDefinition Width="Auto"/>
-													<ColumnDefinition Width="*"/>
-													<ColumnDefinition Width="*"/>
-													<ColumnDefinition Width="Auto"/>
-												</Grid.ColumnDefinitions>
-
-												<Label Grid.Column="0" Grid.Row="0" Text="{Binding Code}" FontAttributes="Bold" FontSize="Small"/>
-												<Label Grid.Column="1" Grid.Row="0" Text="{Binding Title}" FontAttributes="Bold" FontSize="Small" />
-												<Image Grid.Column="3" Grid.Row="0" Source="{Binding IndicatorUrl}" HeightRequest="10"/>
-												<Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding Shrimp}" FontSize="Micro"/>
-
-												<Label Grid.Column="0" Grid.Row="2" Text="Cases/week: 10" FontSize="Micro"/>
-
-											</Grid>
-
-										</StackLayout>
-									</ViewCell.View>
-								</ViewCell>
-							</DataTemplate>
-						</ListView.ItemTemplate>
-					</ListView>
-				</StackLayout>
-
-				
-			</StackLayout>
-		</ScrollView>
-		<control:NavigationPanel Grid.Row="1" ActivePage="Page1" VerticalOptions="End"/>
+		</StackLayout>
+		<control:NavigationPanel Grid.Row="2" ActivePage="Page1" VerticalOptions="End"/>
 	</Grid>
 	
 
