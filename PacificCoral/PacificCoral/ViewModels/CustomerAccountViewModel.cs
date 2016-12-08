@@ -143,6 +143,21 @@ namespace PacificCoral.ViewModels
 			get { return SingleExecutionCommand.FromFunc(OnShowCustomerLocationCommandAsync); }
 		}
 
+		public ICommand ItemSelectedCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnItemSelectedCommandAsync); }
+		}
+
+		public ICommand VisitSelectedCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnVisitSelectedCommandAsync); }
+		}
+
+		public ICommand TaskSelectedCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnTaskSelectedCommandAsync); }
+		}
+
 		#endregion
 
 		#region -- Private helpers --
@@ -160,6 +175,27 @@ namespace PacificCoral.ViewModels
 		private async Task OnShowCustomerLocationCommandAsync()
 		{
 			await _navigationService.NavigateAsync<PinLocationView>();
+		}
+
+		private Task OnItemSelectedCommandAsync(object obj)
+		{
+			var param = new NavigationParameters();
+			param.Add(nameof(SalesModel), obj);
+			return _navigationService.NavigateAsync<ItemView>(param);
+		}
+
+		private Task OnVisitSelectedCommandAsync(object obj)
+		{
+			var param = new NavigationParameters();
+			param.Add(nameof(VisitModel), obj);
+			return _navigationService.NavigateAsync<VisitView>(param);
+		}
+
+		private Task OnTaskSelectedCommandAsync(object obj)
+		{
+			var param = new NavigationParameters();
+			param.Add(nameof(TaskModel), obj);
+			return _navigationService.NavigateAsync<TaskView>(param);
 		}
 
 		#endregion

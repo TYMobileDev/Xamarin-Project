@@ -24,12 +24,12 @@
 			</Grid.ColumnDefinitions>
 
 
-			<p:ClickableContentView Grid.Column="0" Padding="5" Command="{Binding BackCommand}">
-				<Image Source="backbutton"/>
-			</p:ClickableContentView>
 			<StackLayout Grid.Column="0" Grid.ColumnSpan="3">
 				<Label Style="{StaticResource titleLabelStyle}" Text="{Binding Title}"/>
 			</StackLayout>
+			<p:ClickableContentView Grid.Column="0" Padding="5" Command="{Binding BackCommand}">
+				<Image Source="backbutton"/>
+			</p:ClickableContentView>
 			<p:ClickableContentView Grid.Column="2" Padding="5">
 				<Label Text="Save" Style="{StaticResource titleLabelStyle}"/>
 			</p:ClickableContentView>

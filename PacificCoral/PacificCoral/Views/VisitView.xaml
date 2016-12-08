@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<p:BaseDetailView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:controls="clr-namespace:PacificCoral.Controls;assembly=PacificCoral"
+		xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		x:Class="PacificCoral.VisitView">
+
+	<p:BaseDetailView.ViewView>
+		<StackLayout Spacing="0">
+			<StackLayout Orientation="Horizontal" Padding="10" HorizontalOptions="Fill">
+				<Label Text="Date" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Label Text="{Binding Model.Title,Converter={StaticResource DateTimeConverter}}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Padding="10">
+				<Label Text="Description (optional)" Style="{StaticResource DetailSectionTitleStyle}" />
+				<Label Text="{Binding Model.Description}" Style="{StaticResource DetailSectionLabelStyle}" />
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+		</StackLayout>
+	</p:BaseDetailView.ViewView>
+	<p:BaseDetailView.EditView>
+		<StackLayout Spacing="0">
+			<StackLayout Padding="10" HorizontalOptions="Fill">
+				<Label Text="Type of visit" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="1*" />
+						<ColumnDefinition Width="4*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+					<p:Checkbox Grid.Row="0" Grid.Column="0" IsChecked="{Binding Cutting}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+					<StackLayout Grid.Row="0" Grid.Column="1" Spacing="0">
+						<Label Text="Cutting" Style="{StaticResource DetailSectionLabelStyle}" />
+						<Label Text="(When they leave sample product with a prospective 
+client at the same time as competition)" Style="{StaticResource DetailSectionTitleStyle}" FontSize="11" />
+					</StackLayout>
+					<p:Checkbox Grid.Row="1" Grid.Column="0" IsChecked="{Binding IsCustomTitle}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
+					<Label Grid.Row="1" Grid.Column="1" Text="Custom title" Style="{StaticResource DetailSectionLabelStyle}" />
+				</Grid>
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<Grid Padding="10" HorizontalOptions="Fill">
+				<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Fill" Spacing="0">
+					<DatePicker Format="M,d" Date="{Binding Date}" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" WidthRequest="100" />
+					<TimePicker Format="h:mm" Time="{Binding Time}" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" WidthRequest="40" />
+				</StackLayout>
+				<Label Grid.Row="0" Grid.Column="0" Text="{Binding Model.Title,Converter={StaticResource DateTimeConverter}}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalTextAlignment="End" VerticalTextAlignment="Center" InputTransparent="true" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+				<Label Grid.Row="0" Grid.Column="0" Text="Date" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="FillAndExpand" Style="{StaticResource DetailSectionTitleStyle}"/>
+			</Grid>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Padding="10">
+				<Label Text="Description (optional)" Style="{StaticResource DetailSectionTitleStyle}" />
+				<Label Text="{Binding Model.Description}" Style="{StaticResource DetailSectionLabelStyle}" />
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+		</StackLayout>
+	</p:BaseDetailView.EditView>
+</p:BaseDetailView>

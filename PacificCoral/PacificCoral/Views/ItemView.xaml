@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<p:BaseDetailView xmlns="http://xamarin.com/schemas/2014/forms"
+		xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		x:Class="PacificCoral.ItemView">
+	<p:BaseDetailView.ViewView>
+		<StackLayout Spacing="0">
+			<StackLayout Orientation="Horizontal" Padding="10, 15" HorizontalOptions="Fill">
+				<Label Text="Brand" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Label Text="{Binding Model.Title}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Orientation="Horizontal" Padding="10, 15" HorizontalOptions="Fill">
+				<Label Text="Item Number" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Label Text="{Binding Model.Code}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Orientation="Horizontal" Padding="10, 15" HorizontalOptions="Fill">
+				<Label Text="Item Name" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Label Text="{Binding Model.Shrimp}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Orientation="Horizontal" Padding="10, 15" HorizontalOptions="Fill">
+				<Label Text="Number of Cases Shipped" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Label Text="10" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Orientation="Horizontal" Padding="10, 15" HorizontalOptions="Fill">
+				<Label Text="Usage" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Label Text="Month to Month" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Orientation="Horizontal" Padding="10, 15" HorizontalOptions="Fill">
+				<Label Text="Confirm From" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Label Text="{Binding Model.Title}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<Grid Padding="10, 15">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+					<Label Text="Prospect:" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+					<p:Checkbox IsChecked="{Binding Model.Prospect}" />
+				</StackLayout>
+				<StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+					<Label Text="Deviated:" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+					<p:Checkbox IsChecked="{Binding Model.Deviated}" />
+				</StackLayout>
+				<StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+					<Label Text="Sub:" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+					<p:Checkbox IsChecked="{Binding Model.Sub}" />
+				</StackLayout>
+			</Grid>
+		</StackLayout>
+	</p:BaseDetailView.ViewView>
+	<p:BaseDetailView.EditView>
+		<StackLayout Spacing="0">
+			<StackLayout Orientation="Horizontal" Padding="10, 15" HorizontalOptions="Fill">
+				<Label Text="Brand" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Label Text="{Binding Model.Title}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Orientation="Horizontal" Padding="10, 15" HorizontalOptions="Fill">
+				<Label Text="Item Number" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Label Text="{Binding Model.Code}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Orientation="Horizontal" Padding="10, 15" HorizontalOptions="Fill">
+				<Label Text="Item Name" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Label Text="{Binding Model.Shrimp}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Orientation="Horizontal" Padding="10, 15" HorizontalOptions="Fill">
+				<Label Text="Number of Cases Shipped" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Label Text="10" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Orientation="Horizontal" Padding="10, 15" HorizontalOptions="Fill">
+				<Label Text="Usage" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Label Text="Month to Month" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Orientation="Horizontal" Padding="10, 15" HorizontalOptions="Fill">
+				<Label Text="Confirm From" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Label Text="{Binding Model.Title}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<Grid Padding="10, 15">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+					<Label Text="Prospect:" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+					<p:Checkbox IsChecked="{Binding Model.Prospect}" />
+				</StackLayout>
+				<StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+					<Label Text="Deviated:" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+					<p:Checkbox IsChecked="{Binding Model.Deviated}" />
+				</StackLayout>
+				<StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+					<Label Text="Sub:" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+					<p:Checkbox IsChecked="{Binding Model.Sub}" />
+				</StackLayout>
+			</Grid>
+		</StackLayout>
+	</p:BaseDetailView.EditView>
+</p:BaseDetailView>
+

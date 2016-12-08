@@ -13,6 +13,8 @@ namespace PacificCoral
 
 		public string DateStr { get; set; }
 
+		public DateTime Date { get; set; }
+
 		#endregion
 	}
 }

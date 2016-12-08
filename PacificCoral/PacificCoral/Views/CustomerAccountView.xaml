@@ -99,7 +99,7 @@
 							</StackLayout>
 						</p:TabItem.ButtonView>
 						<p:TabItem.View>
-							<ListView ItemsSource="{Binding Sales}" HasUnevenRows="true" SeparatorVisibility="None">
+							<p:ExtendedListView ItemsSource="{Binding Sales}" HasUnevenRows="true" SeparatorVisibility="None" TappedCommand="{Binding ItemSelectedCommand}">
 								<ListView.ItemTemplate>
 									<DataTemplate>
 										<ViewCell>
@@ -134,7 +134,7 @@
 										</ViewCell>
 									</DataTemplate>
 								</ListView.ItemTemplate>
-							</ListView>
+							</p:ExtendedListView>
 						</p:TabItem.View>
 					</p:TabItem>
 					<p:TabItem>
@@ -145,7 +145,7 @@
 							</StackLayout>
 						</p:TabItem.ButtonView>
 						<p:TabItem.View>
-							<ListView ItemsSource="{Binding Visits}" HasUnevenRows="true" SeparatorVisibility="None">
+							<p:ExtendedListView ItemsSource="{Binding Visits}" HasUnevenRows="true" SeparatorVisibility="None" TappedCommand="{Binding VisitSelectedCommand}">
 								<ListView.ItemTemplate>
 									<DataTemplate>
 										<ViewCell>
@@ -168,7 +168,7 @@
 										</ViewCell>
 									</DataTemplate>
 								</ListView.ItemTemplate>
-							</ListView>
+							</p:ExtendedListView>
 						</p:TabItem.View>
 					</p:TabItem>
 					<p:TabItem>
@@ -179,7 +179,7 @@
 							</StackLayout>
 						</p:TabItem.ButtonView>
 						<p:TabItem.View>
-							<ListView ItemsSource="{Binding Tasks}" HasUnevenRows="true" SeparatorVisibility="None">
+							<p:ExtendedListView ItemsSource="{Binding Tasks}" HasUnevenRows="true" SeparatorVisibility="None" TappedCommand="{Binding TaskSelectedCommand}">
 								<ListView.ItemTemplate>
 									<DataTemplate>
 										<ViewCell>
@@ -202,7 +202,7 @@
 										</ViewCell>
 									</DataTemplate>
 								</ListView.ItemTemplate>
-							</ListView>
+							</p:ExtendedListView>
 						</p:TabItem.View>
 					</p:TabItem>
 				</p:TabStrip.Children>
