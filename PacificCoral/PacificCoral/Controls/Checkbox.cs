@@ -49,7 +49,7 @@ namespace PacificCoral
 
 		public override bool TouchesBegan(System.Collections.Generic.IEnumerable<NGraphics.Point> points)
 		{
-			return base.TouchesBegan(points);
+			return true;
 		}
 
 		public override bool TouchesEnded(System.Collections.Generic.IEnumerable<NGraphics.Point> points)

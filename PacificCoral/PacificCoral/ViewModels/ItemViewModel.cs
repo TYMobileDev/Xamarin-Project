@@ -11,7 +11,7 @@ namespace PacificCoral
 		public ItemViewModel(INavigationService navigationService) : base(navigationService)
 		{
 			//TODO: fix that
-			Title = "Initial Visit";
+			Title = "Item";
 		}
 
 		#region -- Public properties --

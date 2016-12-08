@@ -6352,8 +6352,8 @@ namespace PacificCoral.Droid
 			// aapt resource value: 0x7f0200e7
 			public const int notactive = 2130837735;
 			
-			// aapt resource value: 0x7f0200f4
-			public const int notification_template_icon_bg = 2130837748;
+			// aapt resource value: 0x7f0200f5
+			public const int notification_template_icon_bg = 2130837749;
 			
 			// aapt resource value: 0x7f0200e8
 			public const int pinLocationMarker = 2130837736;
@@ -6383,13 +6383,16 @@ namespace PacificCoral.Droid
 			public const int trackmileage = 2130837744;
 			
 			// aapt resource value: 0x7f0200f1
-			public const int viewaccounts = 2130837745;
+			public const int uploadImage = 2130837745;
 			
 			// aapt resource value: 0x7f0200f2
-			public const int visits = 2130837746;
+			public const int viewaccounts = 2130837746;
 			
 			// aapt resource value: 0x7f0200f3
-			public const int zoom = 2130837747;
+			public const int visits = 2130837747;
+			
+			// aapt resource value: 0x7f0200f4
+			public const int zoom = 2130837748;
 			
 			static Drawable()
 			{

@@ -10,7 +10,7 @@ namespace PacificCoral
 		public VisitViewModel(INavigationService navigationService) : base(navigationService)
 		{
 			//TODO: fix that
-			Title = "Initial Visit";
+			Title = "Visit";
 		}
 
 		#region -- Public properties --

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<p:BaseDetailView xmlns="http://xamarin.com/schemas/2014/forms"
+		xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		x:Class="PacificCoral.AccountView">
+			<p:BaseDetailView.ViewView>
+		<StackLayout Spacing="0">
+			<StackLayout Orientation="Horizontal" Padding="10" HorizontalOptions="Fill">
+				<Label Text="Date" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Label Text="{Binding Model.Title,Converter={StaticResource DateTimeConverter}}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Padding="10">
+				<Label Text="Description (optional)" Style="{StaticResource DetailSectionTitleStyle}" />
+				<Label Text="{Binding Model.Description}" Style="{StaticResource DetailSectionLabelStyle}" />
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+		</StackLayout>
+	</p:BaseDetailView.ViewView>
+	<p:BaseDetailView.EditView>
+		<StackLayout Spacing="0">
+			<ContentView Padding="20">
+				<p:ClickableContentView>
+					
+				</p:ClickableContentView>
+			</ContentView>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Padding="10, 15">
+				<Label Text="Customer ID" Style="{StaticResource DetailSectionTitleStyle}" />
+				<Label Text="{Binding Model.CustomerId}" Style="{StaticResource DetailSectionLabelStyle}" />
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Padding="10, 15">
+				<StackLayout>
+				<Label Text="AMMA" Style="{StaticResource DetailSectionTitleStyle}" />
+				<Label Text="Point of Contact at Company" Style="{StaticResource DetailSectionTitleStyle}" FontSize="11"/>
+				</StackLayout>
+				<Label Text="{Binding Model.AMMA}" Style="{StaticResource DetailSectionLabelStyle}" />
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Padding="10, 15">
+				<Label Text="PhoneNumber" Style="{StaticResource DetailSectionTitleStyle}" />
+				<Label Text="{Binding Model.PhoneNumber}" Style="{StaticResource DetailSectionLabelStyle}" />
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+			<StackLayout Padding="10, 15">
+				<Label Text="Location" Style="{StaticResource DetailSectionTitleStyle}" />
+				<Label Text="{Binding Model.Location}" Style="{StaticResource DetailSectionLabelStyle}" />
+			</StackLayout>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
+		</StackLayout>
+	</p:BaseDetailView.EditView>
+</p:BaseDetailView>

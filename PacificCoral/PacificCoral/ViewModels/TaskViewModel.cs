@@ -11,7 +11,7 @@ namespace PacificCoral
 		public TaskViewModel(INavigationService navigationService) : base(navigationService)
 		{
 			//TODO: fix that
-			Title = "Add Task";
+			Title = "Task";
 		}
 
 		#region -- Public properties --
