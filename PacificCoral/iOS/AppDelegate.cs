@@ -6,6 +6,8 @@ using UIKit;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
 using HockeyApp.iOS;
 using NControl.Controls.iOS;
+using FFImageLoading.Forms.Touch;
+using FFImageLoading;
 
 namespace PacificCoral.iOS
 {
@@ -38,6 +40,7 @@ namespace PacificCoral.iOS
 			NControl.iOS.NControlViewRenderer.Init();
             //initialising of chart renderer
             new SfChartRenderer();
+			CachedImageRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

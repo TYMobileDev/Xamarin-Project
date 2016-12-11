@@ -24,18 +24,23 @@
 			</Grid.ColumnDefinitions>
 
 
-			<Image Grid.Column="0" Source="backbutton.png">
-				<Image.GestureRecognizers>
-					<TapGestureRecognizer Command="{Binding BackCommand}"/>
-				</Image.GestureRecognizers>
-			</Image>
-			<Image Grid.Column="1" Source="customersTitle.png" HeightRequest="50"/>
-			<Image Grid.Column="2" Source="plus.png"/>
+			<StackLayout Grid.Column="0" Grid.ColumnSpan="3">
+				<Image Style="{StaticResource titleLogoStyle}"/>
+				<Label Style="{StaticResource titleLabelStyle}" Text="{Binding Title}"/>
+			</StackLayout>
+			<p:ClickableContentView Grid.Column="0" Style="{StaticResource NavbarItemStyle}" Command="{Binding BackCommand}">
+				<Image Source="backbutton"/>
+			</p:ClickableContentView>
+			<p:ClickableContentView Grid.Column="2" Style="{StaticResource NavbarItemStyle}" Command="{Binding AddCommand}">
+				<Image Source="plus"/>
+			</p:ClickableContentView>
 		</Grid>
+
+		
 		<ContentView Grid.Row="1" BackgroundColor="White" Margin="5,5,5,0" HeightRequest="40">
-			<SearchBar VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Placeholder="Search" HeightRequest="50" HorizontalTextAlignment="Center"/>
+			<p:ExtendedSearchBar VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Placeholder="Search" HeightRequest="50" HorizontalTextAlignment="Center"/>
 		</ContentView>
-		<p:ExtendedListView Grid.Row="2" VerticalOptions="Fill" SeparatorColor="Transparent" Margin="5,0,5,0" BackgroundColor="{StaticResource MainBgColor}" ItemsSource="{Binding Customers}" HasUnevenRows="True"  SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"
+		<p:ExtendedListView Grid.Row="2" VerticalOptions="Fill" SeparatorColor="Transparent" Margin="5,0,5,0" BackgroundColor="{StaticResource MainBgColor}" ItemsSource="{Binding Customers}" HasUnevenRows="True" TappedCommand="{Binding CustomerSelectedCommand}"
 			GroupDisplayBinding="{Binding Title}" IsGroupingEnabled="true" GroupShortNameBinding="{Binding Title}" >
 			<p:ExtendedListView.GroupHeaderTemplate>
 				<DataTemplate>

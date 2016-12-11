@@ -12,15 +12,13 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using PropertyChanged;
 using Xamarin.Forms;
+using PacificCoral.Extensions;
 
 namespace PacificCoral.ViewModels
 {
-    [ImplementPropertyChanged]
-    public class DashBoard2ViewModel: BindableBase
+	public class DashBoard2ViewModel: BasePageViewModel
     {
         private readonly INavigationService _navigationService;
-
-        public DashBoard2ViewModel() { }
 
         public DashBoard2ViewModel(INavigationService navigationService)
         {
@@ -43,10 +41,36 @@ namespace PacificCoral.ViewModels
             ChartItems.Add(new ChartSourceItem() { X = 16, Y = 460 });
         }
 
+		#region -- Public properties --
 
-        public ICommand BackCommand { get { return new DelegateCommand(async () => { await _navigationService.GoBackAsync(); }); } }
+		public ObservableCollection<ChartSourceItem> ChartItems { get; set; }
+		public ObservableCollection<SalesModel> Sales { get; set; }
 
-        public ObservableCollection<ChartSourceItem> ChartItems { get; set; }
-        public ObservableCollection<SalesModel> Sales { get; set; }
+		public ICommand DetailsCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnDetailsCommandAsync); }
+		}
+
+		public ICommand BackCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnBackCommandAsync); }
+		}
+
+		#endregion
+
+		#region -- Private helpers --
+
+
+		private Task OnDetailsCommandAsync()
+		{
+			return _navigationService.NavigateAsync<LostSaleDetailsView>();
+		}
+
+		private Task OnBackCommandAsync()
+		{
+			return _navigationService.GoBackAsync();
+		}
+
+		#endregion
     }
 }

@@ -21,6 +21,15 @@
 	            <Setter Property="MinimumHeightRequest" Value="0.5" />
 	            <Setter Property="BackgroundColor" Value="{StaticResource DefaultGreyColor}" />
 	        </Style>
+			<Style x:Key="NavbarItemStyle" TargetType="ContentView">
+	            <Setter Property="HeightRequest" Value="20" />
+	            <Setter Property="MinimumHeightRequest" Value="20" />
+	            <Setter Property="WidthRequest" Value="20" />
+	            <Setter Property="MinimumWidthRequest" Value="20" />
+	            <Setter Property="Padding" Value="5" />
+	            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+	            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+	        </Style>
 			<Style x:Key="FormRowTitleStyle" TargetType="Label">
 	            <Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
 	            <Setter Property="TextColor" Value="{StaticResource DefaultGreyColor}" />
@@ -64,6 +73,9 @@
 
 			<!-- Converters -->
 			<p:DateTimeConverter x:Key="DateTimeConverter" />
+			<p:ShortDateTimeConverter x:Key="ShortDateTimeConverter" />
+			<p:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
+			<p:ObjectToBoolConverter x:Key="ObjectToBoolConverter" />
 		</ResourceDictionary>
 	</Application.Resources>
 </unity:PrismApplication>

@@ -20,27 +20,11 @@ namespace PacificCoral.ViewModels
 	public class AccountsViewModel: BasePageViewModel
     {
         private readonly INavigationService _navigationService;
-        private CustomerModel _selectedCustomer;
 
         public AccountsViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
             Customers = PageTypeGroup();
-        }
-        public AccountsViewModel() { }
-
-        public CustomerModel SelectedCustomer
-        {
-            get { return _selectedCustomer; }
-            set
-            {
-                if (_selectedCustomer != value)
-                {
-                    //terrible logic! need to be changed
-                    _selectedCustomer = null;
-                    _navigationService.NavigateAsync<CustomerAccountView>();
-                }
-            }
         }
 
 		#region -- Public properties --
@@ -53,21 +37,25 @@ namespace PacificCoral.ViewModels
 			set { SetProperty(ref _Customers, value); }
 		}
 
+		public ICommand CustomerSelectedCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnCustomerSelectedCommandAsync); }
+		}
+
 		public ICommand BackCommand
 		{
 			get { return SingleExecutionCommand.FromFunc(OnBackCommandAsync); }
 		}
 
+		public ICommand AddCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnAddCommandAsync); }
+		}
 
 		#endregion
 
 
 		#region -- Private helpers --
-
-		private async Task OnBackCommandAsync()
-		{
-			await _navigationService.GoBackAsync();
-		}
 
 		private static List<PageTypeGroup> PageTypeGroup()
 		{
@@ -102,6 +90,24 @@ namespace PacificCoral.ViewModels
 			}
 
 			return list;
+		}
+
+		private Task OnCustomerSelectedCommandAsync(object customerObj)
+		{
+			var model = customerObj as CustomerModel;
+			var param = new NavigationParameters();
+			param.Add(nameof(CustomerModel), model);
+			return _navigationService.NavigateAsync<CustomerAccountView>(param);
+		}
+
+		private Task OnBackCommandAsync()
+		{
+			return _navigationService.GoBackAsync();
+		}
+
+		private Task OnAddCommandAsync()
+		{
+			return _navigationService.NavigateAsync<AccountView>();
 		}
 
 		#endregion

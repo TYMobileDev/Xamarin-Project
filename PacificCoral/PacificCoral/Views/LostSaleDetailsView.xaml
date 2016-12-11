@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<p:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+		xmlns:controls="clr-namespace:PacificCoral.Controls;assembly=PacificCoral"
+		xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		x:Class="PacificCoral.LostSaleDetailsView"
+		BackgroundColor="{StaticResource MainBgColor}">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="rowTitleStyle" TargetType="Label">
+				<Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
+	            <Setter Property="TextColor" Value="{StaticResource DefaultGreyColor}" />
+				<Setter Property="HorizontalOptions" Value="Fill" />
+				<Setter Property="FontSize" Value="15" />
+			</Style>
+			<Style x:Key="rowDetailsStyle" TargetType="Label">
+				<Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
+	            <Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+				<Setter Property="HorizontalOptions" Value="Fill" />
+				<Setter Property="FontSize" Value="15" />
+			</Style>
+			<Style x:Key="detailsTitleStyle" TargetType="Label">
+				<Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNMedium}" />
+	            <Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+				<Setter Property="HorizontalOptions" Value="Fill" />
+				<Setter Property="HorizontalTextAlignment" Value="Center" />
+				<Setter Property="FontSize" Value="15" />
+			</Style>
+			<Style x:Key="detailsSubtitleStyle" TargetType="Label">
+				<Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNMedium}" />
+	            <Setter Property="TextColor" Value="{StaticResource DefaultGreyColor}" />
+				<Setter Property="HorizontalOptions" Value="Fill" />
+				<Setter Property="HorizontalTextAlignment" Value="Center" />
+				<Setter Property="FontSize" Value="11" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	
+	<Grid RowSpacing="0">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>			
+		</Grid.RowDefinitions>
+		<Grid BackgroundColor="White" Grid.Row="0">
+			<Grid.Padding>
+				<OnPlatform x:TypeArguments="Thickness"
+                    iOS="15, 25, 15, 0" Android="15, 5, 15, 0"/>
+			</Grid.Padding>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+
+
+			<Image Grid.Column="0" Grid.ColumnSpan="3" Source="baywinds" HorizontalOptions="CenterAndExpand" HeightRequest="90"/>
+			<p:ClickableContentView Grid.Column="0" Style="{StaticResource NavbarItemStyle}" Command="{Binding BackCommand}" VerticalOptions="Start">
+				<Image Source="backbutton"/>
+			</p:ClickableContentView>
+		</Grid>
+		<StackLayout Grid.Row="1" Spacing="0" Margin="0, 15, 0, 0">
+			<Label Text="{Binding DetailsTitle}" Style="{StaticResource detailsTitleStyle}"/>
+			<Label Text="{Binding DetailsSubtitle}" Style="{StaticResource detailsSubtitleStyle}"/>
+			<p:ExtendedListView Margin="0, 15, 0, 0" ItemsSource="{Binding Items}" IsGroupingEnabled="true" HasUnevenRows="true" SeparatorVisibility="None" BackgroundColor="White" VerticalOptions="Fill">
+				<ListView.GroupHeaderTemplate>
+					<DataTemplate>
+						<ViewCell>
+	                		<ViewCell.View>
+						        <Grid BackgroundColor="White" Padding="10, 5">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="*"/>
+										<ColumnDefinition Width="*"/>
+										<ColumnDefinition Width="*"/>
+									</Grid.ColumnDefinitions>
+									<Grid.RowDefinitions>
+										<RowDefinition Height="Auto"/>
+										<RowDefinition Height="Auto"/>
+									</Grid.RowDefinitions>
+									<Label Grid.Row="0" Grid.Column="0" Text="Customer" Style="{StaticResource rowTitleStyle}" FontSize="13" />
+									<Label Grid.Row="1" Grid.Column="0" Text="{Binding StartTitle}" Style="{StaticResource rowDetailsStyle}" TextColor="#E79919" />
+									<Label Grid.Row="1" Grid.Column="1" Text="{Binding EndTitle}" Style="{StaticResource rowDetailsStyle}" TextColor="#E79919" HorizontalTextAlignment="Center" />
+									<Label Grid.Row="1" Grid.Column="2" Text="Change" Style="{StaticResource rowDetailsStyle}" TextColor="#E79919" HorizontalTextAlignment="End" />
+						        </Grid>
+							</ViewCell.View>
+	                	</ViewCell>
+					</DataTemplate>
+				</ListView.GroupHeaderTemplate>
+	            <ListView.ItemTemplate>
+	              <DataTemplate>
+	                <ViewCell>
+	                  <ViewCell.View>
+	                    <Grid BackgroundColor="White" Padding="10, 5">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="*"/>
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto"/>
+								<RowDefinition Height="Auto"/>
+							</Grid.RowDefinitions>
+							<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Customer}" Style="{StaticResource rowTitleStyle}"/>
+							<Label Grid.Row="1" Grid.Column="0" Text="{Binding Start}" Style="{StaticResource rowDetailsStyle}" />
+							<Label Grid.Row="1" Grid.Column="1" Text="{Binding End}" Style="{StaticResource rowDetailsStyle}" HorizontalTextAlignment="Center"/>
+							<Label Grid.Row="1" Grid.Column="2" Text="{Binding Change}" Style="{StaticResource rowDetailsStyle}" HorizontalTextAlignment="End"/>
+				      	</Grid>
+	                  </ViewCell.View>
+	                </ViewCell>
+	              </DataTemplate>
+	            </ListView.ItemTemplate>
+			</p:ExtendedListView>
+		</StackLayout>
+		<controls:NavigationPanel Grid.Row="2" ActivePage="Page2" VerticalOptions="End"/>
+	</Grid>
+</p:BaseContentPage>

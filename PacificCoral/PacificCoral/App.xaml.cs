@@ -6,6 +6,8 @@ using Xamarin.Forms.Xaml;
 using Prism.Navigation;
 using PacificCoral.Views;
 using PacificCoral.ViewModels;
+using Plugin.Media.Abstractions;
+using Plugin.Media;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace PacificCoral
@@ -42,6 +44,7 @@ namespace PacificCoral
 		{
 			Container.RegisterInstance<INavigationService>(Container.Resolve<Prism.Unity.Navigation.UnityPageNavigationService>());
 			Container.RegisterInstance<IUserDialogs>(UserDialogs.Instance);
+			Container.RegisterInstance<IMedia>(CrossMedia.Current);
 
 			var userMocks = true;
 			if (userMocks)
@@ -64,6 +67,11 @@ namespace PacificCoral
 			Container.RegisterTypeForNavigation<VisitView, VisitViewModel>();
 			Container.RegisterTypeForNavigation<TaskView, TaskViewModel>();
 			Container.RegisterTypeForNavigation<ItemView, ItemViewModel>();
+			Container.RegisterTypeForNavigation<AccountView, AccountViewModel>();
+			Container.RegisterTypeForNavigation<LostSaleDetailsView, LostSaleDetailsViewModel>();
+			Container.RegisterTypeForNavigation<TrackMileageView, TrackMileageViewModel>();
+			Container.RegisterTypeForNavigation<OrdersView, OrdersViewModel>();
+			Container.RegisterTypeForNavigation<InventoryItemView, InventoryItemViewModel>();
 		}
 
 		protected override void OnStart()

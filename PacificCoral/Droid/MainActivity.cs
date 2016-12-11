@@ -10,6 +10,7 @@ using HockeyApp.Android;
 using HockeyApp.Android.Metrics;
 using Acr.UserDialogs;
 using NControl.Controls.Droid;
+using FFImageLoading.Forms.Droid;
 
 namespace PacificCoral.Droid
 {
@@ -37,6 +38,7 @@ namespace PacificCoral.Droid
 			NControl.Droid.NControlViewRenderer.Init();
             //initialising of chart renderer
             new SfChartRenderer();
+			CachedImageRenderer.Init();
             LoadApplication(new App());
         }
     }

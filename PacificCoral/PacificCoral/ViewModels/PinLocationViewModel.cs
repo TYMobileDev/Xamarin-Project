@@ -13,11 +13,11 @@ namespace PacificCoral
 		{
 			_navigationService = navigationService;
 			Title = "Pin Location";
-			PinLocation = new PinLocation
-			{
-				Latitude = 55.6761,
-				Longitude = 12.5683
-			};
+			//PinLocation = new PinLocation
+			//{
+			//	Latitude = 55.6761,
+			//	Longitude = 12.5683
+			//};
 		}
 
 		#region -- Public properties --

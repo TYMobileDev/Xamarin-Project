@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
@@ -27,12 +27,10 @@
             <ColumnDefinition Width="*"/>
           </Grid.ColumnDefinitions>
 
-          <Image Grid.Column="0" Source="backbutton.png">
-            <Image.GestureRecognizers>
-              <TapGestureRecognizer Command="{Binding BackCommand}"/>
-            </Image.GestureRecognizers>
-          </Image>
           <Image Grid.Column="1" Source="title.png"/>
+			<p:ClickableContentView Grid.Column="0" Style="{StaticResource NavbarItemStyle}" Command="{Binding BackCommand}">
+				<Image Source="backbutton"/>
+			</p:ClickableContentView>
         </Grid>
         <Grid HeightRequest="150">
           <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
@@ -68,9 +66,9 @@
           </chart:SfChart>
         </Grid>
         <!--<Image Source="graphic2.png"/>-->
-        <Grid>
+        <p:ClickableContentView Command="{Binding DetailsCommand}">
           <Image Source="details.png" HorizontalOptions="EndAndExpand" HeightRequest="30"/>
-        </Grid>
+        </p:ClickableContentView>
         <Label Text="LOST SALES - PFG ATLANTA" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"/>
 
         <StackLayout  HeightRequest="270">

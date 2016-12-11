@@ -67,14 +67,14 @@
 				<Image Style="{StaticResource titleLogoStyle}"/>
 				<Label Style="{StaticResource titleLabelStyle}" Text="{Binding Title}"/>
 			</StackLayout>
-			<p:ClickableContentView Grid.Column="0" Padding="5" Command="{Binding BackCommand}">
+			<p:ClickableContentView Grid.Column="0" Style="{StaticResource NavbarItemStyle}" Command="{Binding BackCommand}">
 				<Image Source="backbutton"/>
 			</p:ClickableContentView>
-			<p:ClickableContentView Grid.Column="2" Padding="5" Command="{Binding StartEditingCommand}" IsVisible="{Binding Mode,Converter={StaticResource ViewModeToBoolConverter}}">
+			<p:ClickableContentView Grid.Column="2" Style="{StaticResource NavbarItemStyle}" Command="{Binding StartEditingCommand}" IsVisible="{Binding Mode,Converter={StaticResource ViewModeToBoolConverter}}">
 				<Image Source="edit"/>
 			</p:ClickableContentView>
 			<p:ClickableContentView Grid.Column="2" Padding="5" Command="{Binding SaveChangesCommand}" IsVisible="{Binding Mode,Converter={StaticResource EditModeToBoolConverter}}">
-				<Label Text="Save" />
+				<Label Text="Save" VerticalTextAlignment="Center" VerticalOptions="FillAndExpand"/>
 			</p:ClickableContentView>
 		</Grid>
 		<Grid Grid.Row="1" x:Name="_contentContainer" Margin="0, 0.5, 0, 0" VerticalOptions="Fill" HorizontalOptions="Fill" >

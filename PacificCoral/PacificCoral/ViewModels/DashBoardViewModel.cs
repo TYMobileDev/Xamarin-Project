@@ -9,20 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
-using PropertyChanged;
 using Xamarin.Forms;
 
 namespace PacificCoral.ViewModels
 {
-    [ImplementPropertyChanged]
-    public class DashBoardViewModel : BindableBase
+	public class DashBoardViewModel : BasePageViewModel
     {
         private readonly INavigationService _navigationService;
-
-        public DashBoardViewModel() { }
 
         public DashBoardViewModel(INavigationService navigationService)
         {
@@ -46,15 +40,57 @@ namespace PacificCoral.ViewModels
             ChartItems.Add(new ChartSourceItem() { X = 14, Y = 450 });
             ChartItems.Add(new ChartSourceItem() { X = 16, Y = 460 });
         }
+
+		#region -- Public properties --
+
         public ObservableCollection<ChartSourceItem> ChartItems { get; set; }
+
         public ObservableCollection<SalesModel> Sales { get; set; }
-        public ICommand ViewAccountsCommand
-        {
-            get { return new DelegateCommand(async () => { await _navigationService.NavigateAsync<AccountsView>(); }); }
-        }
-        public ICommand DetailsCommand
-        {
-            get { return new DelegateCommand(async () => { await _navigationService.NavigateAsync<DashBoard2View>(); }); }
-        }
+
+		public ICommand ViewTrackMileageCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnViewTrackMileageCommandAsync); }
+		}
+
+		public ICommand ViewAccountsCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnViewAccountsCommandAsync); }
+		}
+
+		public ICommand ViewOrdersCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnViewOrdersCommandAsync); }
+		}
+
+		public ICommand DetailsCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnDetailsCommandAsync); }
+		}
+
+		#endregion
+
+		#region -- Private helpers --
+
+		private Task OnViewTrackMileageCommandAsync()
+		{
+			return _navigationService.NavigateAsync<TrackMileageView>();
+		}
+
+		private Task OnViewAccountsCommandAsync()
+		{
+			return _navigationService.NavigateAsync<AccountsView>();
+		}
+
+		private Task OnViewOrdersCommandAsync()
+		{
+			return _navigationService.NavigateAsync<OrdersView>();
+		}
+
+		private Task OnDetailsCommandAsync()
+		{
+			return _navigationService.NavigateAsync<DashBoard2View>();;
+		}
+
+		#endregion
     }
 }

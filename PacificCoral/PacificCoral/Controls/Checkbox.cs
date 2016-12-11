@@ -19,7 +19,7 @@ namespace PacificCoral
 				VerticalOptions = LayoutOptions.Center,
 				HorizontalOptions = LayoutOptions.Center,
 				InputTransparent = true,
-				Opacity = 0,
+				Opacity = 0
 			};
 			Padding = new Thickness(3);
 			this.BorderColor = Color.FromHex("#979797");
@@ -27,7 +27,11 @@ namespace PacificCoral
 			this.CornerRadius = 4;
 			this.IsClippedToBounds = true;
 			HeightRequest = 15;
+			MinimumHeightRequest = 15;
 			WidthRequest = 15;
+			MinimumWidthRequest = 15;
+			VerticalOptions = LayoutOptions.Center;
+			HorizontalOptions = LayoutOptions.Center;
 
 			Content = _checked;
 		}
@@ -46,6 +50,15 @@ namespace PacificCoral
 		#endregion
 
 		#region -- Overrides --
+
+		protected override void LayoutChildren(double x, double y, double width, double height)
+		{
+			base.LayoutChildren(x, y, width, height);
+			if (Device.OS == TargetPlatform.Android)
+			{
+				_checked.Layout(Bounds);
+			}
+		}
 
 		public override bool TouchesBegan(System.Collections.Generic.IEnumerable<NGraphics.Point> points)
 		{

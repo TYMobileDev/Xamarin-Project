@@ -13,7 +13,7 @@ using PacificCoral.Extensions;
 
 namespace PacificCoral.ViewModels
 {
-	public class CustomerAccountViewModel: BasePageViewModel
+	public class CustomerAccountViewModel: BasePageViewModel, INavigationAware
     {
         private readonly INavigationService _navigationService;
 
@@ -95,7 +95,6 @@ namespace PacificCoral.ViewModels
 
 		#region -- Public properties --
 
-
 		private int _ActivePageIndex;
 
 		public int ActivePageIndex
@@ -156,6 +155,29 @@ namespace PacificCoral.ViewModels
 		public ICommand TaskSelectedCommand
 		{
 			get { return SingleExecutionCommand.FromFunc(OnTaskSelectedCommandAsync); }
+		}
+
+		#endregion
+
+		#region -- INavigationAware implementation --
+
+		public void OnNavigatedFrom(NavigationParameters parameters)
+		{
+			
+		}
+
+		public void OnNavigatedTo(NavigationParameters parameters)
+		{
+			
+		}
+
+		public void OnNavigatingTo(NavigationParameters parameters)
+		{
+			var model = parameters.Get<CustomerModel>(nameof(CustomerModel));
+			if (model != null)
+			{
+				//TODO: use model
+			}
 		}
 
 		#endregion

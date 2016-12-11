@@ -1,51 +1,50 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <p:BaseDetailView xmlns="http://xamarin.com/schemas/2014/forms"
+		xmlns:nc="clr-namespace:NControl.Controls;assembly=NControl.Controls"
+		xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+		xmlns:ffTans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
 		xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 		x:Class="PacificCoral.AccountView">
-			<p:BaseDetailView.ViewView>
-		<StackLayout Spacing="0">
-			<StackLayout Orientation="Horizontal" Padding="10" HorizontalOptions="Fill">
-				<Label Text="Date" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
-				<Label Text="{Binding Model.Title,Converter={StaticResource DateTimeConverter}}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
-			</StackLayout>
-			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
-			<StackLayout Padding="10">
-				<Label Text="Description (optional)" Style="{StaticResource DetailSectionTitleStyle}" />
-				<Label Text="{Binding Model.Description}" Style="{StaticResource DetailSectionLabelStyle}" />
-			</StackLayout>
-			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
-		</StackLayout>
+	<p:BaseDetailView.ViewView>
+	<BoxView />
 	</p:BaseDetailView.ViewView>
 	<p:BaseDetailView.EditView>
 		<StackLayout Spacing="0">
-			<ContentView Padding="20">
-				<p:ClickableContentView>
-					
+			<ContentView Padding="20" HorizontalOptions="Center">
+				<p:ClickableContentView Command="{Binding ChangePhotoCommand}">
+					<nc:RoundCornerView CornerRadius="30">
+						<Image Source="{Binding Photo}" WidthRequest="60" HeightRequest="60" Aspect="AspectFill" />
+					</nc:RoundCornerView>
+					<!--<ff:CachedImage Source="{Binding Photo}" DownsampleToViewSize="true" WidthRequest="100" HeightRequest="100">
+						<ff:CachedImage.Transformations>
+							<ffTans:CircleTransformation />
+						</ff:CachedImage.Transformations>
+					</ff:CachedImage>-->
 				</p:ClickableContentView>
 			</ContentView>
 			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
-			<StackLayout Padding="10, 15">
+			<StackLayout Padding="10, 15" Orientation="Horizontal" HorizontalOptions="Fill">
 				<Label Text="Customer ID" Style="{StaticResource DetailSectionTitleStyle}" />
-				<Label Text="{Binding Model.CustomerId}" Style="{StaticResource DetailSectionLabelStyle}" />
+				<Label Text="{Binding Model.CustomerId}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" />
 			</StackLayout>
 			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
-			<StackLayout Padding="10, 15">
+			<StackLayout Padding="10, 15" Orientation="Horizontal" HorizontalOptions="Fill">
 				<StackLayout>
 				<Label Text="AMMA" Style="{StaticResource DetailSectionTitleStyle}" />
 				<Label Text="Point of Contact at Company" Style="{StaticResource DetailSectionTitleStyle}" FontSize="11"/>
 				</StackLayout>
-				<Label Text="{Binding Model.AMMA}" Style="{StaticResource DetailSectionLabelStyle}" />
+				<Label Text="{Binding Model.AMMA}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" />
 			</StackLayout>
 			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
-			<StackLayout Padding="10, 15">
+			<StackLayout Padding="10, 15" Orientation="Horizontal" HorizontalOptions="Fill">
 				<Label Text="PhoneNumber" Style="{StaticResource DetailSectionTitleStyle}" />
-				<Label Text="{Binding Model.PhoneNumber}" Style="{StaticResource DetailSectionLabelStyle}" />
+				<Label Text="{Binding Model.PhoneNumber}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" />
 			</StackLayout>
 			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
-			<StackLayout Padding="10, 15">
+			<StackLayout Padding="10, 15" Orientation="Horizontal" HorizontalOptions="Fill">
 				<Label Text="Location" Style="{StaticResource DetailSectionTitleStyle}" />
-				<Label Text="{Binding Model.Location}" Style="{StaticResource DetailSectionLabelStyle}" />
+				<Label Text="{Binding Model.Location}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" />
 			</StackLayout>
 			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
 		</StackLayout>

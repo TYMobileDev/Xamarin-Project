@@ -45,7 +45,7 @@
 						<ColumnDefinition Width="*"/>
 						<ColumnDefinition Width="*"/>
 					</Grid.ColumnDefinitions>
-		         	<p:ClickableContentView Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Fill">
+		         	<p:ClickableContentView Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Fill" Command="{Binding ViewTrackMileageCommand}">
 						<StackLayout VerticalOptions="Center">
 								<Image Source="car" Style="{StaticResource tabButtonImageStyle}"/>
 								<Label Text="Track mileage" Style="{StaticResource tabButtonLabelStyle}"/>
@@ -57,7 +57,7 @@
 								<Label Text="View accounts" Style="{StaticResource tabButtonLabelStyle}"/>
 						</StackLayout>
 					</p:ClickableContentView>
-					<p:ClickableContentView Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill">
+					<p:ClickableContentView Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill" Command="{Binding ViewOrdersCommand}">
 						<StackLayout VerticalOptions="Center">
 								<Image Source="items" Style="{StaticResource tabButtonImageStyle}"/>
 								<Label Text="Items" Style="{StaticResource tabButtonLabelStyle}"/>

@@ -9,15 +9,15 @@ namespace PacificCoral
 		public ExtendedMap()
 		{
 			//TODO: remove^ it just for testing
-			if (Device.OS == TargetPlatform.iOS)
-			{
+			//if (Device.OS == TargetPlatform.iOS)
+			//{
 				Pins.Add(new Pin
 				{
 					Position = new Position(55.6761, 12.5683),
 					Label = "Pin"
 				});
 				this.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(55.6761, 12.5683), Distance.FromKilometers(10)));
-			}
+			//}
 		}
 
 		#region -- Public properties --

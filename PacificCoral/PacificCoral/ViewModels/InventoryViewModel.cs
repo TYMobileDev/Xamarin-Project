@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using PacificCoral.Model;
+using Prism.Navigation;
+using PacificCoral.Extensions;
 
 namespace PacificCoral
 {
 	public class InventoryViewModel : BasePageViewModel
 	{
-		public InventoryViewModel()
+		private readonly INavigationService _navigationService;
+
+		public InventoryViewModel(INavigationService navigationService)
 		{
+			_navigationService = navigationService;
 			var sales = new ObservableCollection<SalesModel>()
 			{
 				new SalesModel()
@@ -49,11 +56,23 @@ namespace PacificCoral
 			set { SetProperty(ref _Sales, value); }
 		}
 
+		public ICommand ItemSelectedCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnItemSelectedCommandAsync); }
+		}
+
 		#endregion
 
 
 		#region -- Private helpers --
 
+		private Task OnItemSelectedCommandAsync(object itemObj)
+		{
+			var item = itemObj as SalesModel;
+			var param = new NavigationParameters();
+			param.Add(nameof(SalesModel), item);
+			return _navigationService.NavigateAsync<InventoryItemView>(param);
+		}
 
 		#endregion
 	}

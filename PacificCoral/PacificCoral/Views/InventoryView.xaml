@@ -19,29 +19,29 @@
                     iOS="15, 25, 15, 0" Android="15, 5, 15, 0"/>
 			</Grid.Padding>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="1*"/>
-				<ColumnDefinition Width="4*"/>
-				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="Auto"/>
 			</Grid.ColumnDefinitions>
 
 
-			<p:ClickableContentView Grid.Column="0" Padding="5" Command="{Binding BackCommand}">
+			<p:ClickableContentView Grid.Column="0" Style="{StaticResource NavbarItemStyle}" Command="{Binding BackCommand}">
 <!--				<Image Source="backbutton"/>-->
 			</p:ClickableContentView>
 			<StackLayout Grid.Column="0" Grid.ColumnSpan="3">
 				<Image Style="{StaticResource titleLogoStyle}"/>
 				<Label Style="{StaticResource titleLabelStyle}" Text="{Binding Title}"/>
 			</StackLayout>
-			<StackLayout Orientation="Horizontal" Grid.Column="2" Padding="5" Spacing="15">
-			<p:ClickableContentView>
-				<Image Source="plus"/>
-			</p:ClickableContentView>
-			<p:ClickableContentView>
-				<Image Source="zoom"/>
-			</p:ClickableContentView>
+			<StackLayout Orientation="Horizontal" Grid.Column="2" Spacing="15">
+				<p:ClickableContentView Style="{StaticResource NavbarItemStyle}">
+					<Image Source="plus"/>
+				</p:ClickableContentView>
+				<p:ClickableContentView Style="{StaticResource NavbarItemStyle}">
+					<Image Source="zoom"/>
+				</p:ClickableContentView>
 			</StackLayout>
 		</Grid>
-		<ListView Grid.Row="1" ItemsSource="{Binding Sales}" HasUnevenRows="true" SeparatorVisibility="None" Margin="0, 1, 0, 0">
+		<p:ExtendedListView Grid.Row="1" ItemsSource="{Binding Sales}" TappedCommand="{Binding ItemSelectedCommand}" HasUnevenRows="true" SeparatorVisibility="None" Margin="0, 1, 0, 0">
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<ViewCell>
@@ -78,10 +78,8 @@
 						</ViewCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>
-			</ListView>
+			</p:ExtendedListView>
 		
 		<control:NavigationPanel Grid.Row="2" ActivePage="Page3" VerticalOptions="End"/>
 	</Grid>
-	
-
 </ContentPage>

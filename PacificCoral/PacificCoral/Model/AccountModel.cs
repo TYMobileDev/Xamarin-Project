@@ -6,6 +6,14 @@ namespace PacificCoral
 	{
 		#region -- Public properties --
 
+		private byte[] _Photo;
+
+		public byte[] Photo
+		{
+			get { return _Photo; }
+			set { SetProperty(ref _Photo, value); }
+		}
+
 		private string _AccountName;
 
 		public string AccountName
