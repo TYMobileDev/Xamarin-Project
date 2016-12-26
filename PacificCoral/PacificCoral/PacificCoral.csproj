@@ -46,7 +46,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AccountsViewModel.cs" />
     <Compile Include="ViewModels\CustomerAccountViewModel.cs" />
-    <Compile Include="ViewModels\DashBoard2ViewModel.cs.cs" />
+    <Compile Include="ViewModels\DashBoard2ViewModel.cs" />
     <Compile Include="ViewModels\DashBoardViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="Views\AccountsView.xaml.cs">

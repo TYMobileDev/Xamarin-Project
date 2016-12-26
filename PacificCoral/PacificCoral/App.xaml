@@ -13,6 +13,7 @@
 			<Color x:Key="DefaultMainColor">#FAB758</Color>
 			<Color x:Key="NotactiveColor">#9B9B9B</Color>
 			<Color x:Key="MainBgColor">#F5F5F5</Color>
+			<Color x:Key="pumpkin">#e59006</Color>
 
 
 			<!-- Styles -->
