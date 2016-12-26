@@ -6,7 +6,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              x:Class="PacificCoral.Views.DashBoardView"
-			BackgroundColor="{StaticResource MainBgColor}">
+			 BackgroundColor="{StaticResource MainBgColor}">
 
 	<ContentPage.Resources>
 		<ResourceDictionary>
@@ -113,7 +113,7 @@
 							</StackLayout>
 					        <Label Text="LOST SALES - PFG ATLANTA" HorizontalOptions="CenterAndExpand" FontFamily="{x:Static p:Styles.FontHNMedium}" TextColor="{StaticResource DefaultDarkColor}" FontSize="15"/>
 						</StackLayout>
-						<Label Margin="5" Text="SEP - OCT GAIN(LOSS)" TextColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12"/>
+						<Label Margin="5" Text="SEP - OCT GAIN(LOSS)" TextColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" FontAttributes="Bold"/>
 			        	<BoxView Style="{StaticResource HorizontalSeparatorStyle}"/>
 					</StackLayout>
 				</DataTemplate>

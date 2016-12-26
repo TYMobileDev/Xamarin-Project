@@ -5,9 +5,9 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:control="clr-namespace:PacificCoral.Controls;assembly=PacificCoral"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
-             x:Class="PacificCoral.Views.DashBoard2View">
-
-
+             x:Class="PacificCoral.Views.DashBoard2View"
+			BackgroundColor="{StaticResource MainBgColor}">
+		
   <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness"
                     iOS="0, 10, 0, 0"/>
@@ -33,7 +33,7 @@
 			</p:ClickableContentView>
         </Grid>
         <Grid HeightRequest="150">
-          <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+          <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White">
             <chart:SfChart.PrimaryAxis>
               <chart:CategoryAxis>
               </chart:CategoryAxis>
@@ -64,48 +64,63 @@
               </chart:AreaSeries>
             </chart:SfChart.Series>
           </chart:SfChart>
-        </Grid>
-        <!--<Image Source="graphic2.png"/>-->
-        <p:ClickableContentView Command="{Binding DetailsCommand}">
-          <Image Source="details.png" HorizontalOptions="EndAndExpand" HeightRequest="30"/>
-        </p:ClickableContentView>
-        <Label Text="LOST SALES - PFG ATLANTA" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium"/>
+        </Grid>		
 
-        <StackLayout  HeightRequest="270">
-          <Label Text="SEP - OCT GAIN(LOSS)" TextColor="#F7B054" FontAttributes="Bold" FontSize="Small"/>
-          <ListView ItemsSource ="{Binding Sales}" HasUnevenRows="True" >
-            <ListView.ItemTemplate>
-              <DataTemplate>
-                <ViewCell>
-                  <ViewCell.View>
-                    <StackLayout Margin="0,5">
-                      <Grid Margin="0,10,0,0">
-                        <Grid.RowDefinitions>
-                          <RowDefinition Height="Auto"/>
-                          <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
+		<StackLayout  HeightRequest="270">
+					
+			<StackLayout BackgroundColor="{StaticResource MainBgColor}" Padding="0, 10">
+				<StackLayout Orientation="Horizontal" HorizontalOptions="End" Padding="5">
+					<StackLayout.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding DetailsCommand}"/>
+					</StackLayout.GestureRecognizers>
+					<Label Text="Details" TextColor="#E59006" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="15"/>
+					<Label Text=">" FontFamily="{x:Static p:Styles.FontHNRegular}" TextColor="{StaticResource DefaultDarkColor}" FontSize="15"/>
+				</StackLayout>
+				<Label Text="LOST SALES - PFG ATLANTA" HorizontalOptions="CenterAndExpand" FontFamily="{x:Static p:Styles.FontHNMedium}" TextColor="{StaticResource DefaultDarkColor}" FontSize="15"/>
+			</StackLayout>
+					
+			<ListView ItemsSource ="{Binding Sales}" HasUnevenRows="True" BackgroundColor="White" SeparatorVisibility="None" Header="{Binding .}">
+				<ListView.HeaderTemplate>
+					<DataTemplate>
+						<StackLayout Spacing="0">
+							<Label Margin="5" Text="SEP - OCT GAIN(LOSS)" TextColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" FontAttributes="Bold"/>
+				        	<BoxView Style="{StaticResource HorizontalSeparatorStyle}"/>
+						</StackLayout>
+					</DataTemplate>
+				</ListView.HeaderTemplate>
+	            <ListView.ItemTemplate>
+		            <DataTemplate>
+		                <ViewCell>
+			                <ViewCell.View>
+			                    <StackLayout >
+			                      <Grid Margin="10">
+														
+			                        <Grid.RowDefinitions>
+			                          <RowDefinition Height="Auto"/>
+			                          <RowDefinition Height="Auto"/>
+			                        </Grid.RowDefinitions>
 
-                        <Grid.ColumnDefinitions>
-                          <ColumnDefinition Width="*"/>
-                          <ColumnDefinition Width="*"/>
-                          <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-
-                        <Label Grid.Column="0" Grid.Row="0" Text="{Binding Code}" FontAttributes="Bold" FontSize="Medium"/>
-                        <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Text="{Binding Shrimp}" FontSize="Small"/>
-
-                        <Label Grid.Column="0" Grid.Row="1" Text="{Binding Sep1}" FontSize="Small"/>
-                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding Sep2}" FontSize="Small"/>
-                        <Label Grid.Column="2" Grid.Row="1" Text="{Binding GL}" FontSize="Small"/>
-                      </Grid>
-
-                    </StackLayout>
-                  </ViewCell.View>
-                </ViewCell>
-              </DataTemplate>
-            </ListView.ItemTemplate>
-          </ListView>
+			                        <Grid.ColumnDefinitions>
+			                          <ColumnDefinition Width="*"/>
+			                          <ColumnDefinition Width="*"/>
+			                          <ColumnDefinition Width="*"/>
+			                        </Grid.ColumnDefinitions>
+															
+			                        <Label Grid.Column="0" Grid.Row="0" Text="{Binding Code}" FontAttributes="Bold" FontSize="Medium"/>
+			                        <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Text="{Binding Shrimp}" FontSize="Small"/>
+			                        <Label Grid.Column="0" Grid.Row="1" Text="{Binding Sep1}" FontSize="Small"/>
+			                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding Sep2}" FontSize="Small"/>
+			                        <Label Grid.Column="2" Grid.Row="1" Text="{Binding GL}" FontSize="Small"/>
+														
+			                      </Grid>
+			                      <BoxView Style="{StaticResource HorizontalSeparatorStyle}"/>
+			                    </StackLayout>
+			                </ViewCell.View>
+		                </ViewCell>
+		            </DataTemplate>
+	            </ListView.ItemTemplate>
+	        </ListView>
+		</StackLayout>
 
           <StackLayout Margin="0,0,0,30">
             <Label Text="Deviations" FontSize="Medium" TextColor="#8B572A" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
@@ -128,12 +143,10 @@
               <Grid Grid.Row="1" Grid.Column="1" Margin="10,0" >
                 <Label Text="53" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
               </Grid>
-
             </Grid>
           </StackLayout>
-
+				
         </StackLayout>
-      </StackLayout>
     </ScrollView>
     <control:NavigationPanel Grid.Row="1" ActivePage="Page2" VerticalOptions="End"/>
   </Grid>
