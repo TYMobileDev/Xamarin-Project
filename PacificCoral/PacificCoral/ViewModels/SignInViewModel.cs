@@ -32,7 +32,8 @@ namespace PacificCoral.ViewModels
             {
                 return new DelegateCommand(async () =>
                 {
-                    await _navigationService.NavigateAsync<DashBoardView>();
+                    //await _navigationService.NavigateAsync<DashBoardView>();
+					await _navigationService.NavigateAsync("/Root");
                 });
             }
         }

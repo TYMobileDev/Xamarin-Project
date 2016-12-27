@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             xmlns:control="clr-namespace:PacificCoral.Controls;assembly=PacificCoral"
-             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
-             x:Class="PacificCoral.Views.DashBoard2View"
-			BackgroundColor="{StaticResource MainBgColor}">
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+        prism:ViewModelLocator.AutowireViewModel="True"
+        xmlns:control="clr-namespace:PacificCoral.Controls;assembly=PacificCoral"
+		xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+		x:Class="PacificCoral.Views.DashBoard2View"
+		BackgroundColor="{StaticResource MainBgColor}">
 		
   <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness"

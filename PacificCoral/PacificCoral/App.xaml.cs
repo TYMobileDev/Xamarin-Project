@@ -72,6 +72,7 @@ namespace PacificCoral
 			Container.RegisterTypeForNavigation<TrackMileageView, TrackMileageViewModel>();
 			Container.RegisterTypeForNavigation<OrdersView, OrdersViewModel>();
 			Container.RegisterTypeForNavigation<InventoryItemView, InventoryItemViewModel>();
+			Container.RegisterTypeForNavigation<RootPage>("Root");
 		}
 
 		protected override void OnStart()
