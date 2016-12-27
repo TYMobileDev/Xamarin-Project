@@ -16,16 +16,9 @@ namespace PacificCoral
 		{
 			ViewModelLocator.SetAutowireViewModel(this, true);
 
-			this.BarBackgroundColor = Color.Yellow;
-			this.BarTextColor = Color.Yellow;
-
-			ProfileView.SetTabColor(Color.FromHex("#FF5252"));
-
 			Children.Add(ProfileView);
 			Children.Add(DashBoardView);
 			Children.Add(InventoryView);
-			FixedMode = true;
-			BarTheme = BarThemeTypes.DarkWithAlpha;
 		}
 
 		#region -- INavigationAware implementation --
@@ -44,15 +37,5 @@ namespace PacificCoral
 		}
 
 		#endregion
-
-		public enum BarThemeTypes { Light, DarkWithAlpha, DarkWithoutAlpha }
-
-		public bool FixedMode { get; set; }
-		public BarThemeTypes BarTheme { get; set; }
-
-		public void RaiseCurrentPageChanged()
-		{
-			OnCurrentPageChanged();
-		}
 	}
 }

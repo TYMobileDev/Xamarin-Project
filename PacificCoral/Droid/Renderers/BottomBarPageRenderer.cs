@@ -131,10 +131,12 @@ namespace PacificCoral.Droid.Renderers
 
 					// create bottomBar control
 					_bottomBar = BottomNavigationBar.BottomBar.Attach(_frameLayout, null);
+
+					_bottomBar.MaxFixedTabCount = 2;
+
 					_bottomBar.NoTabletGoodness();
 					_bottomBar.LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
 					_bottomBar.SetOnTabClickListener(this);
-					_bottomBar.SetActiveTabColor(Color.FromRgb(250, 183, 88).ToAndroid());
 
 					UpdateTabs();
 					UpdateBarBackgroundColor();
@@ -144,20 +146,6 @@ namespace PacificCoral.Droid.Renderers
 				if (bottomBarPage.CurrentPage != null)
 				{
 					SwitchContent(bottomBarPage.CurrentPage);
-				}
-
-				switch (bottomBarPage.BarTheme)
-				{
-					case RootPage.BarThemeTypes.Light:
-						break;
-					case RootPage.BarThemeTypes.DarkWithAlpha:
-						_bottomBar.UseDarkThemeWithAlpha(true);
-						break;
-					case RootPage.BarThemeTypes.DarkWithoutAlpha:
-						_bottomBar.UseDarkThemeWithAlpha(false);
-						break;
-					default:
-						throw new ArgumentOutOfRangeException();
 				}
 
 			}
@@ -270,7 +258,7 @@ namespace PacificCoral.Droid.Renderers
 			BottomBarTab[] tabs = Element.Children.Select(page =>
 			{
 				var tabIconId = ResourceManagerEx.IdFromTitle(page.Icon, ResourceManager.DrawableClass);
-				return new BottomBarTab(tabIconId, page.Title);
+				return new BottomBarTab(tabIconId, "");
 			}).ToArray();
 
 			_bottomBar.SetItems(tabs);
@@ -280,17 +268,7 @@ namespace PacificCoral.Droid.Renderers
 		{
 			for (int i = 0; i < Element.Children.Count; ++i)
 			{
-				Page page = Element.Children[i];
-
-				page.SetTabColor(Color.FromHex("#FF5252"));
-
-				Color? tabColor = page.GetTabColor();
-
-				if (tabColor != null)
-					_bottomBar.MapColorForTab(i, tabColor.Value.ToAndroid());
-				else
-					_bottomBar.MapColorForTab(i, StyleManager.GetAppResource<Color>("DefaultMainColor").ToAndroid());
-
+				_bottomBar.MapColorForTab(i, StyleManager.GetAppResource<Color>("DefaultMainColor").ToAndroid());
 			}
 		}
 

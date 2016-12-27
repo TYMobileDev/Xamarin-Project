@@ -6,9 +6,7 @@
 		xmlns:control="clr-namespace:PacificCoral.Controls;assembly=PacificCoral"
 		x:Class="PacificCoral.InventoryView"
 		BackgroundColor="{StaticResource MainBgColor}"
-		Title="Inventory"
 		Icon="itemstabbar.png">
-
 
 	<Grid RowSpacing="0">
 		<Grid.RowDefinitions>

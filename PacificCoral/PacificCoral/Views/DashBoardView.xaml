@@ -7,8 +7,7 @@
 		xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
 		x:Class="PacificCoral.Views.DashBoardView"
 		BackgroundColor="{StaticResource MainBgColor}"
-		Icon="dashboardtabbar.png"
-		Title="Home">
+		Icon="dashboardtabbar.png">
 
 	<ContentPage.Resources>
 		<ResourceDictionary>

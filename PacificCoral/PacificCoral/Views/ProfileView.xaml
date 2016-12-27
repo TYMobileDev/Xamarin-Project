@@ -3,8 +3,7 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 		x:Class="PacificCoral.ProfileView"
 		BackgroundColor="{StaticResource MainBgColor}"
-		Icon="accounttabbar.png"
-		Title="Profile">
+		Icon="accounttabbar.png">
 	
 	<ContentPage.Content>
 	</ContentPage.Content>

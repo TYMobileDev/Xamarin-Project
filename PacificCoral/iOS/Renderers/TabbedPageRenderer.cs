@@ -17,9 +17,9 @@ namespace PacificCoral.iOS
 
 			//TODO: work only for iOS 10+ 
 			if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
-				TabBar.UnselectedItemTintColor = StyleManager.GetAppResource<Color>("DefaultMainColor").ToUIColor();
+				TabBar.UnselectedItemTintColor = Color.FromRgb(251, 215, 169).ToUIColor();
 
-			TabBar.BarTintColor = UIColor.FromRGB(250, 183, 88);
+			TabBar.BarTintColor = StyleManager.GetAppResource<Color>("DefaultMainColor").ToUIColor();
 		}
 	}
 }

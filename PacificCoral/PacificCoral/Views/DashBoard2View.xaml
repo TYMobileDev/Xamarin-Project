@@ -10,7 +10,7 @@
 		
   <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness"
-                    iOS="0, 10, 0, 0"/>
+			iOS="0, 10, 0, 0"/>
   </ContentPage.Padding>
 
   <Grid>
