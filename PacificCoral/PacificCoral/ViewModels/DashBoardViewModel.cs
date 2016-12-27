@@ -23,9 +23,9 @@ namespace PacificCoral.ViewModels
             _navigationService = navigationService;
 
             var sales = new ObservableCollection<SalesModel>();
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < 5; i++)
             {
-                sales.Add(new SalesModel() { Code = "421127", Shrimp = "SHRIMP WHT 71/90", Sep1 = "SEP::63451", Sep2 = "SEP::63451", GL = "G(L)(21,335)" });
+                sales.Add(new SalesModel() { Code = "421127", Shrimp = "SHRIMP WHT 71/90", Sep1 = "SEP::63,451", Sep2 = "SEP::63,451", GL = "G(L)(21,335)" });
             }
             Sales = sales;
 
