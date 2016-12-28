@@ -111,5 +111,6 @@ namespace PacificCoral.ViewModels
 		}
 
 		#endregion
+
     }
 }

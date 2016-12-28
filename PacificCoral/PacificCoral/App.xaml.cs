@@ -27,7 +27,7 @@ namespace PacificCoral
 		{
 			InitializeComponent();
 
-			MainPage = new SignInView
+			MainPage = new SignInView()
 			{
 				BindingContext = Resolve<SignInViewModel>()
 			};

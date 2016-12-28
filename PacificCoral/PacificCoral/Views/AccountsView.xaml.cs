@@ -13,8 +13,10 @@ namespace PacificCoral.Views
     {
         public AccountsView()
         {
+			//NavigationPage.SetHasNavigationBar(this, false);
+			//NavigationPage.SetHasBackButton(this, false);
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
+
         }
     }
 }

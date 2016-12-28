@@ -11,6 +11,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using PropertyChanged;
 using Xamarin.Forms;
+using System.Linq.Expressions;
 
 namespace PacificCoral.ViewModels
 {
@@ -32,7 +33,7 @@ namespace PacificCoral.ViewModels
             {
                 return new DelegateCommand(async () =>
                 {
-                    //await _navigationService.NavigateAsync<DashBoardView>();
+					//await _navigationService.NavigateAsync<DashBoardView>();
 					await _navigationService.NavigateAsync("/Root");
                 });
             }

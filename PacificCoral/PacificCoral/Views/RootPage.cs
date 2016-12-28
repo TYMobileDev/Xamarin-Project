@@ -8,9 +8,14 @@ namespace PacificCoral
 {
 	public class RootPage : TabbedPage, INavigationAware
 	{
-		private Page ProfileView = new ProfileView();
-		private Page DashBoardView = new DashBoardView();
-		private Page InventoryView = new InventoryView();
+		private Page ProfileView = new NavigationPage(new ProfileView()) { Icon ="accounttabbar", Title = "1" };
+		private Page DashBoardView = new NavigationPage(new DashBoardView()) { Icon = "dashboardtabbar", Title = "2" };
+		private Page InventoryView = new NavigationPage(new InventoryView()) { Icon = "itemstabbar", Title = "3" };
+
+		//private Page ProfileView = new ProfileView() { Icon = "accounttabbar", Title="1" };
+		//private Page DashBoardView = new DashBoardView() { Icon = "dashboardtabbar", Title = "2" };
+		//private Page InventoryView = new InventoryView() { Icon = "itemstabbar", Title = "3" };
+
 
 		public RootPage()
 		{
@@ -25,10 +30,12 @@ namespace PacificCoral
 
 		public void OnNavigatedFrom(NavigationParameters parameters)
 		{
+
 		}
 
 		public void OnNavigatingTo(NavigationParameters parameters)
 		{
+			//this.CurrentPage = DashBoardView;
 		}
 
 		public void OnNavigatedTo(NavigationParameters parameters)

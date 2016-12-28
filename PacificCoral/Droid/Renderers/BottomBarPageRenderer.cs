@@ -240,7 +240,7 @@ namespace PacificCoral.Droid.Renderers
 				return;
 			}
 
-			_bottomBar.SetActiveTabColor(Element.BarTextColor.ToAndroid());
+			//_bottomBar.SetActiveTabColor(Element.BarTextColor.ToAndroid());
 			// haven't found yet how to set text color for tab items on_bottomBar, doesn't seem to have a direct way
 		}
 
@@ -258,7 +258,7 @@ namespace PacificCoral.Droid.Renderers
 			BottomBarTab[] tabs = Element.Children.Select(page =>
 			{
 				var tabIconId = ResourceManagerEx.IdFromTitle(page.Icon, ResourceManager.DrawableClass);
-				return new BottomBarTab(tabIconId, "");
+				return new BottomBarTab(tabIconId, page.Title);
 			}).ToArray();
 
 			_bottomBar.SetItems(tabs);
