@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Prism.Navigation;
 using System.Collections.Generic;
+using System.Reflection;
+using System.ComponentModel;
 
 namespace PacificCoral
 {
@@ -95,6 +97,14 @@ namespace PacificCoral
 		protected virtual Task OnSaveChangesCommandAsync()
 		{
 			Mode = DetailsMode.View;
+
+			var type = this.GetType();
+			var propertyInfoList = type.GetRuntimeProperties();
+			foreach (var item in propertyInfoList)
+			{
+				OnPropertyChanged(new PropertyChangedEventArgs(item.Name));
+			}
+
 			return Task.FromResult<object>(null);
 		}
 

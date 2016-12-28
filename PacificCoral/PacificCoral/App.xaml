@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<unity:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms" xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
+<unity:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 		x:Class="PacificCoral.App"
-		xmlns:unity="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms">
-		<Application.Resources>
+		xmlns:unity="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+		xmlns:controls="clr-namespace:PacificCoral.Controls;assembly=PacificCoral">
+	
+	<Application.Resources>
 		<!-- Application resource dictionary -->
 		<ResourceDictionary>
 			<!-- Colors -->
-			<Color x:Key="DefaultGreyColor">#4A4A4A</Color>
+			<Color x:Key="DefaultGreyColor">#919191</Color>
 			<Color x:Key="DefaultDarkColor">Black</Color>
 			<Color x:Key="DefaultLightColor">White</Color>
 			<Color x:Key="DefaultMainColor">#FAB758</Color>
@@ -39,8 +42,8 @@
 	        </Style>
 			<Style x:Key="FormEntryStyle" TargetType="p:ExtendedEntry">
 	            <Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
-	            <Setter Property="TextColor" Value="{StaticResource DefaultGreyColor}" />
-				<Setter Property="FontSize" Value="18" />
+	            <Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+				<Setter Property="FontSize" Value="15" />
 				<Setter Property="BackgroundColor" Value="Transparent" />
 				<Setter Property="BorderWidth" Value="0" />
 	        </Style>
@@ -59,7 +62,6 @@
 	            <Setter Property="HeightRequest" Value="20" />
 	        </Style>
 
-
 			<Style x:Key="DetailSectionTitleStyle" TargetType="Label">
 	            <Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
 	            <Setter Property="TextColor" Value="{StaticResource DefaultGreyColor}" />
@@ -67,6 +69,14 @@
 	        </Style>
 			<Style x:Key="DetailSectionLabelStyle" BaseResourceKey="DetailSectionTitleStyle" TargetType="Label">
 	            <Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+				<Setter Property="Margin">
+					<Setter.Value>
+						<OnPlatform x:TypeArguments="Thickness"
+								iOS     ="0"
+								Android ="0, 10, 5, 10"
+								WinPhone="0" />
+					</Setter.Value>
+				</Setter>
 	        </Style>
 			<Style x:Key="DetailSectionSeparatorStyle" BaseResourceKey="HorizontalSeparatorStyle" TargetType="BoxView">
 	            <Setter Property="BackgroundColor" Value="{StaticResource MainBgColor}" />
@@ -77,6 +87,7 @@
 			<p:ShortDateTimeConverter x:Key="ShortDateTimeConverter" />
 			<p:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
 			<p:ObjectToBoolConverter x:Key="ObjectToBoolConverter" />
+			
 		</ResourceDictionary>
 	</Application.Resources>
 </unity:PrismApplication>
