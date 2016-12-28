@@ -4,7 +4,8 @@
 		xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 		x:Class="PacificCoral.LostSaleDetailsView"
-		BackgroundColor="{StaticResource MainBgColor}">
+		BackgroundColor="White">
+	
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<Style x:Key="rowTitleStyle" TargetType="Label">
@@ -42,7 +43,7 @@
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="Auto"/>			
 		</Grid.RowDefinitions>
-		<Grid BackgroundColor="White" Grid.Row="0">
+		<Grid Grid.Row="0">
 			<Grid.Padding>
 				<OnPlatform x:TypeArguments="Thickness"
                     iOS="15, 25, 15, 0" Android="15, 5, 15, 0"/>
@@ -62,12 +63,13 @@
 		<StackLayout Grid.Row="1" Spacing="0" Margin="0, 15, 0, 0">
 			<Label Text="{Binding DetailsTitle}" Style="{StaticResource detailsTitleStyle}"/>
 			<Label Text="{Binding DetailsSubtitle}" Style="{StaticResource detailsSubtitleStyle}"/>
-			<p:ExtendedListView Margin="0, 15, 0, 0" ItemsSource="{Binding Items}" IsGroupingEnabled="true" HasUnevenRows="true" SeparatorVisibility="None" BackgroundColor="White" VerticalOptions="Fill">
+						
+			<p:ExtendedListView Margin="0, 15, 0, 0" ItemsSource="{Binding Items}"  IsGroupingEnabled="true"  BackgroundColor="White" HasUnevenRows="true" VerticalOptions="Fill">
 				<ListView.GroupHeaderTemplate>
 					<DataTemplate>
 						<ViewCell>
 	                		<ViewCell.View>
-						        <Grid BackgroundColor="White" Padding="10, 5">
+								<Grid BackgroundColor="White" Padding="20, 0, 10, 0">
 									<Grid.ColumnDefinitions>
 										<ColumnDefinition Width="*"/>
 										<ColumnDefinition Width="*"/>
@@ -81,7 +83,7 @@
 									<Label Grid.Row="1" Grid.Column="0" Text="{Binding StartTitle}" Style="{StaticResource rowDetailsStyle}" TextColor="#E79919" />
 									<Label Grid.Row="1" Grid.Column="1" Text="{Binding EndTitle}" Style="{StaticResource rowDetailsStyle}" TextColor="#E79919" HorizontalTextAlignment="Center" />
 									<Label Grid.Row="1" Grid.Column="2" Text="Change" Style="{StaticResource rowDetailsStyle}" TextColor="#E79919" HorizontalTextAlignment="End" />
-						        </Grid>
+								</Grid>
 							</ViewCell.View>
 	                	</ViewCell>
 					</DataTemplate>
@@ -90,7 +92,7 @@
 	              <DataTemplate>
 	                <ViewCell>
 	                  <ViewCell.View>
-	                    <Grid BackgroundColor="White" Padding="10, 5">
+	                    <Grid Padding="20, 10, 10, 10">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="*"/>
 								<ColumnDefinition Width="*"/>
