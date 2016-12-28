@@ -73,6 +73,7 @@ namespace PacificCoral
 			Container.RegisterTypeForNavigation<OrdersView, OrdersViewModel>();
 			Container.RegisterTypeForNavigation<InventoryItemView, InventoryItemViewModel>();
 			Container.RegisterTypeForNavigation<RootPage>("Root");
+			Container.RegisterTypeForNavigation<NavigationRoot>("NavigationRoot");
 		}
 
 		protected override void OnStart()
