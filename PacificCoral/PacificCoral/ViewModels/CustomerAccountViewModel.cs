@@ -29,6 +29,8 @@ namespace PacificCoral.ViewModels
                     Title = "EMPIRE",
                     IndicatorUrl = "active.png",
                     Shrimp = "SHRIM TGR 8/12 HDLS/ON",
+					NumberCasesShipped = "10",
+					Usage = "Month to Month",
 					Prospect = true
                 },
                  new SalesModel()
@@ -37,6 +39,8 @@ namespace PacificCoral.ViewModels
                     Title = "EMPIRE",
                     IndicatorUrl = "notactive.png",
                     Shrimp = "SHRIM TGR 21/25 RPDT/ON",
+					NumberCasesShipped = "20",
+					Usage = "Month to Month",
 					Deviated = true
                 },
                  new SalesModel()
@@ -44,7 +48,9 @@ namespace PacificCoral.ViewModels
                     Code = "421096",
                     Title = "BAYWINDS",
                     IndicatorUrl = "active.png",
-                    Shrimp = "SHRIM TGR 31/35 RPDT/ON/PFOS FR",
+					NumberCasesShipped = "20",
+					Usage = "Month to Month",
+				    Shrimp = "SHRIM TGR 31/35 RPDT/ON/PFOS FR",
                 }
             };
 
