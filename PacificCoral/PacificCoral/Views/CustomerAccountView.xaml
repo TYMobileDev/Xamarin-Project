@@ -192,8 +192,8 @@
 													<Label Text="{Binding Title}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="15" TextColor="{StaticResource DefaultDarkColor}"/>
 													<Label Text="{Binding Description}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" TextColor="{StaticResource NotactiveColor}"/>
 													<StackLayout Orientation="Horizontal" Spacing="20">
-													<Label Text="{Binding TimeStr}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="13" TextColor="{StaticResource DefaultDarkColor}"/>
-													<Label Text="{Binding DateStr}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="13" TextColor="{StaticResource DefaultDarkColor}"/>
+														<Label Text="{Binding Date,StringFormat='{0:h:mm tt}'}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="13" TextColor="{StaticResource DefaultDarkColor}"/>
+														<Label Text="{Binding Date,StringFormat='{0:MMMM d, yyyy}'}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="13" TextColor="{StaticResource DefaultDarkColor}"/>
 													</StackLayout>
 												</StackLayout>
 												<BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource HorizontalSeparatorStyle}" VerticalOptions="End"/>
