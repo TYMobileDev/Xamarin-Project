@@ -14,6 +14,14 @@ namespace PacificCoral
 			Title = "Visit";
 		}
 
+		protected override void Init()
+		{
+			base.Init();
+			var dateFromModel = Model.Date;
+			Date = dateFromModel.Date;
+			Time = dateFromModel.TimeOfDay;
+		}
+
 		#region -- Public properties --
 
 		private DateTime _Date;
@@ -66,12 +74,7 @@ namespace PacificCoral
 
 		#endregion
 
-		protected override void Init()
-		{
-			base.Init();
-			Time = Model.Date.TimeOfDay;
-			Date = Model.Date.Date;
-		}
+
 
 		#region -- Private helpers --
 
