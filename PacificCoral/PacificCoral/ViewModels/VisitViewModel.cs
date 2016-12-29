@@ -14,8 +14,6 @@ namespace PacificCoral
 			Title = "Visit";
 		}
 
-
-
 		#region -- Public properties --
 
 		private DateTime _Date;
@@ -27,7 +25,6 @@ namespace PacificCoral
 			{ 
 				SetProperty(ref _Date, value); 
 				UpdateDateTime();
-				//UpdateDate();
 			}
 		}
 
@@ -47,7 +44,6 @@ namespace PacificCoral
 			set 
 			{ 
 				SetProperty(ref _Time, value); 
-				//UpdateTime();
 				UpdateDateTime();
 			}
 		}
@@ -70,32 +66,21 @@ namespace PacificCoral
 
 		#endregion
 
+		protected override void Init()
+		{
+			base.Init();
+			Time = Model.Date.TimeOfDay;
+			Date = Model.Date.Date;
+		}
+
 		#region -- Private helpers --
 
 		private void UpdateDateTime()
 		{
-			DateTimeFull = Date + Time;
+			DateTimeFull = Date.Date + Time;
 			if (Model != null)
 			{
-				//DateTimeFull = Model.Date;
-				//Time = Model.Date.TimeOfDay;
 				Model.Date = DateTimeFull;
-			}
-		}
-
-		private void UpdateTime()
-		{
-			if (Model != null)
-			{
-				Time = Model.Date.TimeOfDay;
-			}
-		}
-
-		private void UpdateDate()
-		{
-			if (Model != null)
-			{
-				//Time = Model.Date.;
 			}
 		}
 

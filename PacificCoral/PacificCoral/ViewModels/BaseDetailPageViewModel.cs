@@ -15,6 +15,12 @@ namespace PacificCoral
 		public BaseDetailPageViewModel(INavigationService navigationService)
 		{
 			_navigationService = navigationService;
+
+		}
+
+		protected virtual void Init()
+		{
+			
 		}
 
 		#region -- Public properties --
@@ -86,6 +92,8 @@ namespace PacificCoral
 			{
 				Mode = DetailsMode.View;
 			}
+
+			Init();
 		}
 
 		protected virtual Task OnStartEditingCommandAsync()
@@ -102,8 +110,7 @@ namespace PacificCoral
 			var propertyInfoList = type.GetRuntimeProperties();
 			foreach (var item in propertyInfoList)
 			{
-				//if(item.Name != nameof(Model))
-					OnPropertyChanged(new PropertyChangedEventArgs(item.Name));
+				OnPropertyChanged(new PropertyChangedEventArgs(item.Name));
 			}
 
 			return Task.FromResult<object>(null);
