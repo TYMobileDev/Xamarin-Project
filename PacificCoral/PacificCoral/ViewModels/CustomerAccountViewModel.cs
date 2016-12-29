@@ -59,18 +59,35 @@ namespace PacificCoral.ViewModels
 				new VisitModel
 				{
 					Title = "Initial Visit",
-					TimeStr = "3.00 PM",
-					DateStr = "October, 23th",
-					Description = "Presented Product"
+					TimeStr = "7.00 PM",
+					DateStr = "December, 23th",
+					Description = "Presented Product",
+					Date = DateTime.Today,
 				},
 				new VisitModel
 				{
 					Title = "Follow Up Visit",
 					TimeStr = "3.00 PM",
 					DateStr = "October, 23th",
-					Description = "Showed grouper."
+					Description = "Showed grouper.",
+					Date = DateTime.Now,
+				},
+				new VisitModel
+				{
+					Title = "Initial Visit",
+					TimeStr = "9.00 PM",
+					DateStr = "December, 23th",
+					Description = "Presented Product",
+					Date = DateTime.Today,
+				},
+				new VisitModel
+				{
+					Title = "Follow Up Visit",
+					TimeStr = "10.00 PM",
+					DateStr = "October, 23th",
+					Description = "Showed grouper.",
+					Date = DateTime.Now,
 				}
-
 			};
 
 			var tasks = new ObservableCollection<TaskModel>()
@@ -80,9 +97,9 @@ namespace PacificCoral.ViewModels
 					Title = "Task 1",
 					Description = "Replace one bag of shrimp",
 					TimeStr = "3.00 PM",
-					DateStr = "October, 23th",
 					IsDone = true,
 					Date = DateTime.Now,
+					DateStr = "December, 23th",
 				},
 				new TaskModel
 				{
@@ -105,9 +122,9 @@ namespace PacificCoral.ViewModels
 				{
 					Title = "Task 4",
 					Description = "Replace one bag of shrimp",
-					TimeStr = "5.00 PM",
-					DateStr = "October, 23th",
 					Date = DateTime.Now,
+					TimeStr = "5.00 PM",
+					DateStr = "October, 20th"
 				}
 			};
          

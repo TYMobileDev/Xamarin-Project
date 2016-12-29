@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace PacificCoral
 {
 	public class VisitModel
