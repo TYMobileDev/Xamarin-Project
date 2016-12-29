@@ -20,7 +20,20 @@ namespace PacificCoral
 		public DateTime Date
 		{
 			get { return _Date; }
-			set { SetProperty(ref _Date, value); }
+			set 
+			{ 
+				SetProperty(ref _Date, value); 
+				UpdateDateTime();
+				UpdateDate();
+			}
+		}
+
+		private DateTime _DateTimeFull;
+
+		public DateTime DateTimeFull
+		{
+			get { return _DateTimeFull; }
+			set { SetProperty(ref _DateTimeFull, value); }
 		}
 
 		private TimeSpan _Time;
@@ -28,28 +41,60 @@ namespace PacificCoral
 		public TimeSpan Time
 		{
 			get { return _Time; }
-			set { SetProperty(ref _Time, value); }
+			set 
+			{ 
+				SetProperty(ref _Time, value); 
+				UpdateTime();
+				UpdateDateTime();
+
+			}
 		}
 
-		private bool _Cutting;
+		//private bool _Cutting;
 
-		public bool Cutting
-		{
-			get { return _Cutting; }
-			set { SetProperty(ref _Cutting, value); }
-		}
+		//public bool Cutting
+		//{
+		//	get { return _Cutting; }
+		//	set { SetProperty(ref _Cutting, value); }
+		//}
 
-		private bool _IsCustomTitle;
+		//private bool _IsCustomTitle;
 
-		public bool IsCustomTitle
-		{
-			get { return _IsCustomTitle; }
-			set { SetProperty(ref _IsCustomTitle, value); }
-		}
+		//public bool IsCustomTitle
+		//{
+		//	get { return _IsCustomTitle; }
+		//	set { SetProperty(ref _IsCustomTitle, value); }
+		//}
 
 		#endregion
 
 		#region -- Private helpers --
+
+		private void UpdateDateTime()
+		{
+			if (Model != null)
+			{
+				DateTimeFull = Date + Time;
+				//Time = Model.Date.TimeOfDay;
+				Model.Date = DateTimeFull;
+			}
+		}
+
+		private void UpdateTime()
+		{
+			if (Model != null)
+			{
+				//Time = Model.Date.TimeOfDay;
+			}
+		}
+
+		private void UpdateDate()
+		{
+			if (Model != null)
+			{
+				//Time = Model.Date.;
+			}
+		}
 
 		#endregion
 	}

@@ -102,7 +102,8 @@ namespace PacificCoral
 			var propertyInfoList = type.GetRuntimeProperties();
 			foreach (var item in propertyInfoList)
 			{
-				OnPropertyChanged(new PropertyChangedEventArgs(item.Name));
+				//if(item.Name != nameof(Model))
+					OnPropertyChanged(new PropertyChangedEventArgs(item.Name));
 			}
 
 			return Task.FromResult<object>(null);

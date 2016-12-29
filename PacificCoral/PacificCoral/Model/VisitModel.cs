@@ -1,7 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
 namespace PacificCoral
 {
-	public class VisitModel
+	public class VisitModel : INotifyPropertyChanged
 	{
 		#region -- Public properties --
 
@@ -16,5 +19,15 @@ namespace PacificCoral
 		public DateTime Date { get; set; }
 
 		#endregion
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		//[NotifyPropertyChangedInvocator]
+		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+		{
+			PropertyChangedEventHandler handler = PropertyChanged;
+			if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+		}
+
 	}
 }

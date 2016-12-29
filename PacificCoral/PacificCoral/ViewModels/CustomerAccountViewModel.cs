@@ -59,16 +59,18 @@ namespace PacificCoral.ViewModels
 				new VisitModel
 				{
 					Title = "Initial Visit",
-					TimeStr = "3.00 PM",
-					DateStr = "October, 23th",
-					Description = "Presented Product"
+					TimeStr = "7.00 PM",
+					DateStr = "December, 23th",
+					Description = "Presented Product",
+					Date = DateTime.Today,
 				},
 				new VisitModel
 				{
 					Title = "Follow Up Visit",
 					TimeStr = "3.00 PM",
 					DateStr = "October, 23th",
-					Description = "Showed grouper."
+					Description = "Showed grouper.",
+					Date = DateTime.Now,
 				}
 
 			};
@@ -80,15 +82,15 @@ namespace PacificCoral.ViewModels
 					Title = "Task 1",
 					Description = "Replace one bag of shrimp",
 					TimeStr = "3.00 PM",
-					DateStr = "October, 23th",
+					DateStr = "December, 23th",
 					IsDone = true
 				},
 				new TaskModel
 				{
 					Title = "Task 2",
 					Description = "Replace one bag of shrimp",
-					TimeStr = "3.00 PM",
-					DateStr = "October, 23th"
+					TimeStr = "5.00 PM",
+					DateStr = "October, 20th"
 				}
 
 			};
