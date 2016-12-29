@@ -81,16 +81,34 @@ namespace PacificCoral.ViewModels
 					Description = "Replace one bag of shrimp",
 					TimeStr = "3.00 PM",
 					DateStr = "October, 23th",
-					IsDone = true
+					IsDone = true,
+					Date = DateTime.Now,
 				},
 				new TaskModel
 				{
 					Title = "Task 2",
 					Description = "Replace one bag of shrimp",
 					TimeStr = "3.00 PM",
-					DateStr = "October, 23th"
+					DateStr = "October, 23th",
+					Date = DateTime.Now,
+				},
+				new TaskModel
+				{
+					Title = "Task 3",
+					Description = "Replace one bag of shrimp",
+					TimeStr = "9.00 PM",
+					DateStr = "October, 23th",
+					IsDone = true,
+					Date = DateTime.Now,
+				},
+				new TaskModel
+				{
+					Title = "Task 4",
+					Description = "Replace one bag of shrimp",
+					TimeStr = "5.00 PM",
+					DateStr = "October, 23th",
+					Date = DateTime.Now,
 				}
-
 			};
          
             Sales = sales;
