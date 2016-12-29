@@ -63,6 +63,8 @@ namespace PacificCoral
 
 		#endregion
 
+		#region -- Overrides --
+
 		protected override void Init()
 		{
 			base.Init();
@@ -70,6 +72,8 @@ namespace PacificCoral
 			Date = dateFromModel.Date;
 			Time = dateFromModel.TimeOfDay;
 		}
+
+		#endregion
 
 		#region -- Private helpers --
 
