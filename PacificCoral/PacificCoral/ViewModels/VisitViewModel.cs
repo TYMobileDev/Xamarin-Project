@@ -1,7 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using Prism.Navigation;
 
 namespace PacificCoral
@@ -12,14 +9,6 @@ namespace PacificCoral
 		{
 			//TODO: fix that
 			Title = "Visit";
-		}
-
-		protected override void Init()
-		{
-			base.Init();
-			var dateFromModel = Model.Date;
-			Date = dateFromModel.Date;
-			Time = dateFromModel.TimeOfDay;
 		}
 
 		#region -- Public properties --
@@ -74,7 +63,13 @@ namespace PacificCoral
 
 		#endregion
 
-
+		protected override void Init()
+		{
+			base.Init();
+			var dateFromModel = Model.Date;
+			Date = dateFromModel.Date;
+			Time = dateFromModel.TimeOfDay;
+		}
 
 		#region -- Private helpers --
 
