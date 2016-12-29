@@ -15,6 +15,12 @@ namespace PacificCoral
 		public BaseDetailPageViewModel(INavigationService navigationService)
 		{
 			_navigationService = navigationService;
+
+		}
+
+		protected virtual void Init()
+		{
+			
 		}
 
 		#region -- Public properties --
@@ -86,6 +92,8 @@ namespace PacificCoral
 			{
 				Mode = DetailsMode.View;
 			}
+
+			Init();
 		}
 
 		protected virtual Task OnStartEditingCommandAsync()
