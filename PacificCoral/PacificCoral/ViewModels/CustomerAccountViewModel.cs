@@ -88,7 +88,6 @@ namespace PacificCoral.ViewModels
 					Description = "Showed grouper.",
 					Date = DateTime.Now,
 				}
-
 			};
 
 			var tasks = new ObservableCollection<TaskModel>()
@@ -98,17 +97,35 @@ namespace PacificCoral.ViewModels
 					Title = "Task 1",
 					Description = "Replace one bag of shrimp",
 					TimeStr = "3.00 PM",
+					IsDone = true,
+					Date = DateTime.Now,
 					DateStr = "December, 23th",
-					IsDone = true
 				},
 				new TaskModel
 				{
 					Title = "Task 2",
 					Description = "Replace one bag of shrimp",
+					TimeStr = "3.00 PM",
+					DateStr = "October, 23th",
+					Date = DateTime.Now,
+				},
+				new TaskModel
+				{
+					Title = "Task 3",
+					Description = "Replace one bag of shrimp",
+					TimeStr = "9.00 PM",
+					DateStr = "October, 23th",
+					IsDone = true,
+					Date = DateTime.Now,
+				},
+				new TaskModel
+				{
+					Title = "Task 4",
+					Description = "Replace one bag of shrimp",
+					Date = DateTime.Now,
 					TimeStr = "5.00 PM",
 					DateStr = "October, 20th"
 				}
-
 			};
          
             Sales = sales;
