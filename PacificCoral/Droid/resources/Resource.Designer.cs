@@ -6413,6 +6413,15 @@ namespace PacificCoral.Droid
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f0b00d7
+			public const int Lspinner = 2131427543;
+			
+			// aapt resource value: 0x7f0b00da
+			public const int SpinnerLayout = 2131427546;
+			
+			// aapt resource value: 0x7f0b00db
+			public const int SpinnerTextView = 2131427547;
+			
 			// aapt resource value: 0x7f0b00c5
 			public const int action0 = 2131427525;
 			
@@ -6839,6 +6848,9 @@ namespace PacificCoral.Droid
 			// aapt resource value: 0x7f0b0033
 			public const int parallax = 2131427379;
 			
+			// aapt resource value: 0x7f0b00d8
+			public const int parentLayoutSpinner = 2131427544;
+			
 			// aapt resource value: 0x7f0b0051
 			public const int parentPanel = 2131427409;
 			
@@ -6929,8 +6941,8 @@ namespace PacificCoral.Droid
 			// aapt resource value: 0x7f0b001e
 			public const int showTitle = 2131427358;
 			
-			// aapt resource value: 0x7f0b00d7
-			public const int sliding_tabs = 2131427543;
+			// aapt resource value: 0x7f0b00dc
+			public const int sliding_tabs = 2131427548;
 			
 			// aapt resource value: 0x7f0b0086
 			public const int snackbar_action = 2131427462;
@@ -6943,6 +6955,9 @@ namespace PacificCoral.Droid
 			
 			// aapt resource value: 0x7f0b0050
 			public const int spacer = 2131427408;
+			
+			// aapt resource value: 0x7f0b00d9
+			public const int spinner2 = 2131427545;
 			
 			// aapt resource value: 0x7f0b0008
 			public const int split_action_bar = 2131427336;
@@ -7007,8 +7022,8 @@ namespace PacificCoral.Droid
 			// aapt resource value: 0x7f0b0053
 			public const int title_template = 2131427411;
 			
-			// aapt resource value: 0x7f0b00d8
-			public const int toolbar = 2131427544;
+			// aapt resource value: 0x7f0b00dd
+			public const int toolbar = 2131427549;
 			
 			// aapt resource value: 0x7f0b003d
 			public const int top = 2131427389;
@@ -7344,13 +7359,19 @@ namespace PacificCoral.Droid
 			public const int select_dialog_singlechoice_material = 2130903106;
 			
 			// aapt resource value: 0x7f030043
-			public const int support_simple_spinner_dropdown_item = 2130903107;
+			public const int spinner = 2130903107;
 			
 			// aapt resource value: 0x7f030044
-			public const int Tabbar = 2130903108;
+			public const int SpinnerItemLayout = 2130903108;
 			
 			// aapt resource value: 0x7f030045
-			public const int Toolbar = 2130903109;
+			public const int support_simple_spinner_dropdown_item = 2130903109;
+			
+			// aapt resource value: 0x7f030046
+			public const int Tabbar = 2130903110;
+			
+			// aapt resource value: 0x7f030047
+			public const int Toolbar = 2130903111;
 			
 			static Layout()
 			{

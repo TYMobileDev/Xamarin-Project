@@ -233,6 +233,10 @@
     <Compile Include="Renderers\ExtendedMapRenderer.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Renderers\ExtendedSearchBarRenderer.cs" />
+    <Compile Include="Renderers\DropDownRenderer.cs" />
+    <Compile Include="Renderers\MyAppCompatSpinner.cs" />
+    <Compile Include="SpinnerAdapter.cs" />
+    <Compile Include="RectBorder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -260,6 +264,8 @@
     <AndroidResource Include="Resources\drawable\trackItem.png" />
     <AndroidResource Include="Resources\drawable\moon.png" />
     <AndroidResource Include="Resources\drawable\backbutton.png" />
+    <AndroidResource Include="Resources\layout\spinner.xml" />
+    <AndroidResource Include="Resources\layout\SpinnerItemLayout.axml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

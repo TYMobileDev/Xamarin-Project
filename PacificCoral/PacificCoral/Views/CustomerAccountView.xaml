@@ -53,7 +53,11 @@
 			</p:ClickableContentView>
 		</Grid>
 		<StackLayout Grid.Row="1" Padding="0" Margin="0, 0.5, 0, 0">
-			<Grid BackgroundColor="White" Padding="10">
+
+		<RelativeLayout>
+
+
+				<Grid BackgroundColor="Gray" Padding="10" x:Name="grid">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto"/>
 					<RowDefinition Height="Auto"/>
@@ -78,7 +82,46 @@
 				<Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text="Follow Up " BorderColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" TextColor="{StaticResource DefaultGreyColor}" WidthRequest="100" HeightRequest="26" BorderRadius="13" 
 					BackgroundColor="Transparent" BorderWidth="1" HorizontalOptions="End"/>
 			</Grid>
+				
+				
+<!--		<BoxView Color="Blue"
+        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=grid,Property=Y,Factor=1,Constant=20}"
+        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=grid,Property=X,Factor=1,Constant=20}"
+        RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Width,Factor=.5,Constant=0}"
+        RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Height,Factor=.5,Constant=0}" />-->
 
+			<p:AutoCompleteList  PlaceSelectedCommand="{Binding ActionCommand}"
+						WidthRequest="150"
+				RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+	            	ElementName=grid,Property=Y,Factor=1,Constant=60}"
+		        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
+		            ElementName=grid,Property=X,Factor=1,Constant=80}"/>
+				
+
+			</RelativeLayout>	
+
+
+<!--			<p:DropDownPicker Title="Primary ID" 
+					HeightRequest = "25"
+					DropDownHeight = "150"
+					SelectedText = ""
+					FontSize = "14"
+					CellHeight = "20"
+					SelectedBackgroundColor = "Olive"
+					SelectedTextColor = "White"
+					BorderColor = "Olive"
+					ArrowColor = "Blue"
+			Source="{Binding PrimaryID}"/>
+			
+			SourceItems="{Binding PrimaryID}"
+			-->
+
+
+			
 			<ContentView BackgroundColor="White" Margin="5">
 				<p:ClickableContentView Command="{Binding ActionCommand}" Padding="10">
 					<StackLayout Orientation="Horizontal" Spacing="10">
@@ -87,6 +130,7 @@
 					</StackLayout>
 				</p:ClickableContentView>
 			</ContentView>
+
 			
 			<p:TabStrip VerticalOptions="FillAndExpand" ActivePageIndex="{Binding ActivePageIndex,Mode=TwoWay}" TabIndicatorColor="{StaticResource DefaultGreyColor}" TabHeight="45">
 				<p:TabStrip.Children>
@@ -206,7 +250,6 @@
 					</p:TabItem>
 				</p:TabStrip.Children>
 			</p:TabStrip>
-
 		</StackLayout>
 		<control:NavigationPanel Grid.Row="2" ActivePage="Page1" VerticalOptions="End"/>
 	</Grid>
