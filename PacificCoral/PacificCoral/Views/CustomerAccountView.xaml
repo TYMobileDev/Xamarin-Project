@@ -52,76 +52,15 @@
 				<Image Source="edit"/>
 			</p:ClickableContentView>
 		</Grid>
-		<StackLayout Grid.Row="1" Padding="0" Margin="0, 0.5, 0, 0">
-
-		<RelativeLayout>
-
-
-				<Grid BackgroundColor="Gray" Padding="10" x:Name="grid">
-				<Grid.RowDefinitions>
-					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="Auto"/>
-				</Grid.RowDefinitions>
-
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*"/>
-					<ColumnDefinition Width="*"/>
-					<ColumnDefinition Width="*"/>
-					<ColumnDefinition Width="*"/>
-				</Grid.ColumnDefinitions>
-
-				<Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Source="customerPhoto.png" HeightRequest="50"/>
-				<Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Joe Stone Crab" FontAttributes="Bold" FontSize="Small"/>
-				<Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Adress: Miami, the USA" FontSize="Micro"/>
-				<Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="+39876534677" FontSize="Micro"/>
-				<p:ClickableContentView Grid.Row="0" Grid.Column="3" Padding="5" HorizontalOptions="End" Command="{Binding ShowCustomerLocationCommand}">
-					<Image Source="location" HeightRequest="25" WidthRequest="20"/>
-				</p:ClickableContentView>
-				<Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text="Follow Up " BorderColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" TextColor="{StaticResource DefaultGreyColor}" WidthRequest="100" HeightRequest="26" BorderRadius="13" 
-					BackgroundColor="Transparent" BorderWidth="1" HorizontalOptions="End"/>
-			</Grid>
-				
-				
-<!--		<BoxView Color="Blue"
-        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
-            ElementName=grid,Property=Y,Factor=1,Constant=20}"
-        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
-            ElementName=grid,Property=X,Factor=1,Constant=20}"
-        RelativeLayout.WidthConstraint="{ConstraintExpression
-            Type=RelativeToParent,Property=Width,Factor=.5,Constant=0}"
-        RelativeLayout.HeightConstraint="{ConstraintExpression
-            Type=RelativeToParent,Property=Height,Factor=.5,Constant=0}" />-->
-
-			<p:AutoCompleteList  PlaceSelectedCommand="{Binding ActionCommand}"
-						WidthRequest="150"
-				RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
-	            	ElementName=grid,Property=Y,Factor=1,Constant=60}"
-		        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
-		            ElementName=grid,Property=X,Factor=1,Constant=80}"/>
-				
-
-			</RelativeLayout>	
-
-
-<!--			<p:DropDownPicker Title="Primary ID" 
-					HeightRequest = "25"
-					DropDownHeight = "150"
-					SelectedText = ""
-					FontSize = "14"
-					CellHeight = "20"
-					SelectedBackgroundColor = "Olive"
-					SelectedTextColor = "White"
-					BorderColor = "Olive"
-					ArrowColor = "Blue"
-			Source="{Binding PrimaryID}"/>
+		
+	<Grid Grid.Row="1" Padding="0" Margin="0, 0.5, 0, 0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="2*"/>
+				<RowDefinition Height="4*"/>
+			</Grid.RowDefinitions>
 			
-			SourceItems="{Binding PrimaryID}"
-			-->
-
-
-			
+			<StackLayout Grid.Row="1">
+				
 			<ContentView BackgroundColor="White" Margin="5">
 				<p:ClickableContentView Command="{Binding ActionCommand}" Padding="10">
 					<StackLayout Orientation="Horizontal" Spacing="10">
@@ -171,7 +110,6 @@
 													<p:Checkbox IsChecked="{Binding Sub}" />
 												</StackLayout>
 
-												
 												<BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource HorizontalSeparatorStyle}" VerticalOptions="End"/>
 											</Grid>
 										</ViewCell>
@@ -250,7 +188,44 @@
 					</p:TabItem>
 				</p:TabStrip.Children>
 			</p:TabStrip>
-		</StackLayout>
+				</StackLayout>
+
+			<RelativeLayout Grid.Row="0">
+			<Grid BackgroundColor="White" Padding="10" x:Name="grid">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Source="customerPhoto.png" HeightRequest="70"/>
+				<Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Joe Stone Crab" FontAttributes="Bold" FontSize="Small"/>
+				<Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="PrimaryID" FontSize="Small"/>
+				<Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="Operating Partner(...)" FontSize="Small"/>
+				<p:ClickableContentView Grid.Row="0" Grid.Column="3" Padding="5" HorizontalOptions="End" Command="{Binding ShowCustomerLocationCommand}">
+					<Image Source="location" HeightRequest="25" WidthRequest="20"/>
+				</p:ClickableContentView>
+				<Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Follow Up" BorderColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" TextColor="{StaticResource DefaultGreyColor}" WidthRequest="100" HeightRequest="26" BorderRadius="13" 
+					BackgroundColor="Transparent" BorderWidth="1" HorizontalOptions="Start"/>
+			</Grid>
+
+			<p:AutoCompleteList
+						WidthRequest="150"
+						RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+							ElementName=grid,Property=Y,Factor=1,Constant=45}"
+						RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
+							ElementName=grid,Property=X,Factor=1,Constant=170}"/>
+			</RelativeLayout>
+		</Grid>
+		
 		<control:NavigationPanel Grid.Row="2" ActivePage="Page1" VerticalOptions="End"/>
 	</Grid>
 	
