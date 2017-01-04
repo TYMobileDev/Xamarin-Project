@@ -42,8 +42,8 @@ namespace PacificCoral
 
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = 1 });
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-			this.BackgroundColor = Color.Aqua;
-			//this.InputTransparent = false;
+			this.BackgroundColor = Color.White;
+			this.InputTransparent = false;
 
 			_list = new List<CustomerModel>
 				{

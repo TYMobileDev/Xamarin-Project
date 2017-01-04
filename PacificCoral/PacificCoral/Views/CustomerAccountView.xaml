@@ -206,26 +206,18 @@
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="0.5*"/>
 				</Grid.ColumnDefinitions>
-
-					
-				<Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Source="customerPhoto.png" HeightRequest="70"/>
-				<!--<Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Joe Stone Crab" FontAttributes="Bold" FontSize="Small"/>-->
-
-<!--				<Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="Operating Partner" FontSize="Small" InputTransparent="true"/>-->
-					
-				<p:ClickableContentView Grid.Row="0" Grid.Column="3" Padding="5" HorizontalOptions="End" Command="{Binding ShowCustomerLocationCommand}">
+					<Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Source="customerPhoto.png" HeightRequest="70"/>
+					<p:ClickableContentView Grid.Row="0" Grid.Column="3" Padding="5" HorizontalOptions="End" Command="{Binding ShowCustomerLocationCommand}">
 					<Image Source="location" HeightRequest="25" WidthRequest="20"/>
-				</p:ClickableContentView>
-
-				<Button Grid.Row="3" Grid.Column="0"  Text="Follow Up" BorderColor="{StaticResource DefaultMainColor}" 
+					</p:ClickableContentView>
+					<Button Grid.Row="3" Grid.Column="0"  Text="Follow Up" BorderColor="{StaticResource DefaultMainColor}" 
 							FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" 
 							TextColor="{StaticResource DefaultGreyColor}" WidthRequest="100" HeightRequest="26" 
 							BorderRadius="13"
 						BackgroundColor="Transparent" BorderWidth="1" HorizontalOptions="Start"/>
-
-					<RelativeLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="4"  Grid.ColumnSpan="2" BackgroundColor="Teal">
+					<RelativeLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="4"  Grid.ColumnSpan="2" BackgroundColor="White">
 					<Label x:Name="label" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Joe Stone Crab" FontAttributes="Bold" FontSize="Small"/>
-					<Label Grid.Row="1" Grid.Column="1" Margin="7" Grid.ColumnSpan="2" Text="PrimaryID" FontSize="Small" BackgroundColor="Maroon"
+					<Label Grid.Row="1" Grid.Column="1" Margin="7" Grid.ColumnSpan="2" Text="PrimaryID" FontSize="Small" BackgroundColor="White"
 								RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
 									ElementName=label,Property=Y,Factor=1,Constant=15}"
 								RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
@@ -248,10 +240,7 @@
 				</Grid>
 
 			</StackLayout>
-		</Grid>
-		
+		</Grid>	
 		<control:NavigationPanel Grid.Row="2" ActivePage="Page1" VerticalOptions="End"/>
 	</Grid>
-	
-
 </ContentPage>

@@ -7,8 +7,7 @@ namespace PacificCoral
 {
 	public class AutoCompleteList : Grid
 	{
-		private bool _textChangeItemSelected;
-		private ExtendedEntry _entry;
+		private Label _label;
 		private ListView _autoCompleteListView;
 		private IList<string> _list;
 
@@ -42,7 +41,7 @@ namespace PacificCoral
 
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = 1 });
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-			this.BackgroundColor = Color.Yellow;
+			this.BackgroundColor = Color.White;
 			this.InputTransparent = false;
 
 			_list = new List<string>
@@ -94,20 +93,26 @@ namespace PacificCoral
 				return new ViewCell { View = stack };
 			});
 
-			_entry = new ExtendedEntry
+			_label = new Label
 			{
 				FontSize = 13,
 				WidthRequest = 70,
+				Margin = new Thickness(0, 8, 0, 0),
 				Text = _list[0],
 			};
-			_entry.Focused += EntryUnfocused;
-			_entry.TextChanged += SearchTextChanged;
-			_entry.Unfocused += EntryUnfocused;
+
+			var tapGestureRecognizer = new TapGestureRecognizer();
+			tapGestureRecognizer.Tapped += (s, e) =>
+			{
+				Search();
+			};
+			_label.GestureRecognizers.Add(tapGestureRecognizer);
 
 			var image = new Image()
 			{
 				Source = "plus",
 				HorizontalOptions = LayoutOptions.Start,
+				Margin = new Thickness(0, 5, 0, 5),
 				HeightRequest=10,
 			};
 
@@ -116,7 +121,7 @@ namespace PacificCoral
 				Orientation = StackOrientation.Horizontal,
 				Children =
 				{
-					_entry,
+					_label,
 					image,
 				},
 			};
@@ -125,22 +130,9 @@ namespace PacificCoral
 			this.Children.Add(_autoCompleteListView, 0, 2, 1, 2);
 
 			_autoCompleteListView.ItemSelected += ItemSelected;
-
-			_textChangeItemSelected = false;
 		}
 
 		#region -- Private helpers --
-
-
-		private void SearchTextChanged(object sender, TextChangedEventArgs e)
-		{
-			if (_textChangeItemSelected)
-			{
-				_textChangeItemSelected = false;
-				return;
-			}
-			Search();
-		}
 
 		private async void Search()
 		{
@@ -173,22 +165,15 @@ namespace PacificCoral
 			HandleItemSelected(searchModel);
 		}
 
-		private async void HandleItemSelected(string model)
+		private void HandleItemSelected(string model)
 		{
 			if (model == null)
 				return;
 
-			_entry.Text = model;
+			_label.Text = model;
 
-			_textChangeItemSelected = true;
 			_autoCompleteListView.SelectedItem = null;
 			Reset();
-		}
-
-		private void EntryUnfocused(object sender, FocusEventArgs e)
-		{
-			if (e.IsFocused)
-				Search();
 		}
 
 		private void Reset()
@@ -196,8 +181,6 @@ namespace PacificCoral
 			_autoCompleteListView.ItemsSource = null;
 			_autoCompleteListView.IsVisible = false;
 			_autoCompleteListView.HeightRequest = 0;
-
-			_entry.Unfocus();
 		}
 
 		#endregion
