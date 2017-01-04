@@ -8,8 +8,6 @@ namespace PacificCoral
 {
 	public class DropDownList : Grid
 	{
-		private bool _textChangeItemSelected;
-		private ExtendedEntry _entry;
 		private ListView _autoCompleteListView;
 		private IList<CustomerModel> _list;
 
@@ -25,11 +23,11 @@ namespace PacificCoral
 		}
 
 		public static readonly BindableProperty SourceProperty =
-			BindableProperty.Create("SourceItems", typeof(IList<string>), typeof(AutoCompleteList), default(string), defaultBindingMode: BindingMode.TwoWay);
+			BindableProperty.Create("SourceItems", typeof(IList<CustomerModel>), typeof(AutoCompleteList), default(string), defaultBindingMode: BindingMode.TwoWay);
 
-		public IList<string> SourceItems
+		public IList<CustomerModel> SourceItems
 		{
-			get { return (IList<string>)GetValue(SourceProperty); }
+			get { return (IList<CustomerModel>)GetValue(SourceProperty); }
 			set { SetValue(SourceProperty, value); }
 		}
 
@@ -44,8 +42,8 @@ namespace PacificCoral
 
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = 1 });
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-			this.BackgroundColor = Color.Transparent;
-			this.InputTransparent = false;
+			this.BackgroundColor = Color.Aqua;
+			//this.InputTransparent = false;
 
 			_list = new List<CustomerModel>
 				{
@@ -123,31 +121,34 @@ namespace PacificCoral
 
 			});
 
-			_entry = new ExtendedEntry
+			var label = new Label()
 			{
+				Margin = new Thickness(0, 15, 0, 0),
+				Text = "Operating Partner",
 				FontSize = 13,
-				Placeholder = "Operating Partner",
-				BackgroundColor = Color.White,
-
 			};
-			_entry.Focused += EntryUnfocused;
-			_entry.TextChanged += SearchTextChanged;
-			_entry.Unfocused += EntryUnfocused;
+
+			var tapGestureRecognizer = new TapGestureRecognizer();
+			tapGestureRecognizer.Tapped += (s, e) =>
+			{
+				Search();
+			};
+			label.GestureRecognizers.Add(tapGestureRecognizer);
 
 			var image = new Image()
 			{
 				Source = "plus",
+				Margin = new Thickness(0, 15, 0, 0),
 				HorizontalOptions = LayoutOptions.Start,
 				HeightRequest = 10,
 			};
 
 			var stackHrz = new StackLayout()
 			{
-				//Opacity = Device.OnPlatform(0.1, 0, 0),
 				Orientation = StackOrientation.Horizontal,
 				Children =
 				{
-					_entry,
+					label,
 					image,
 				},
 			};
@@ -157,23 +158,11 @@ namespace PacificCoral
 
 			_autoCompleteListView.ItemSelected += ItemSelected;
 
-			_textChangeItemSelected = false;
 		}
 
 		#region -- Private helpers --
 
-
-		private void SearchTextChanged(object sender, TextChangedEventArgs e)
-		{
-			if (_textChangeItemSelected)
-			{
-				_textChangeItemSelected = false;
-				return;
-			}
-			Search();
-		}
-
-		private async void Search()
+		private void Search()
 		{
 			try
 			{
@@ -199,27 +188,9 @@ namespace PacificCoral
 		{
 			if (e.SelectedItem == null)
 				return;
-			var searchModel = (CustomerModel)e.SelectedItem;
-
-			HandleItemSelected(searchModel);
-		}
-
-		private async void HandleItemSelected(CustomerModel model)
-		{
-			if (model == null)
-				return;
-
-			//_entry.Text = model;
-
-			_textChangeItemSelected = true;
+			
 			_autoCompleteListView.SelectedItem = null;
 			Reset();
-		}
-
-		private void EntryUnfocused(object sender, FocusEventArgs e)
-		{
-			if (e.IsFocused)
-				Search();
 		}
 
 		private void Reset()
@@ -227,8 +198,6 @@ namespace PacificCoral
 			_autoCompleteListView.ItemsSource = null;
 			_autoCompleteListView.IsVisible = false;
 			_autoCompleteListView.HeightRequest = 0;
-
-			_entry.Unfocus();
 		}
 
 		#endregion

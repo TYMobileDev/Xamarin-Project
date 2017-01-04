@@ -42,7 +42,7 @@ namespace PacificCoral
 
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = 1 });
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-			this.BackgroundColor = Color.White;
+			this.BackgroundColor = Color.Yellow;
 			this.InputTransparent = false;
 
 			_list = new List<string>
@@ -83,7 +83,8 @@ namespace PacificCoral
 				};
 
 				var stack = new StackLayout()
-				{
+				{	
+					HeightRequest= 30,
 					Children = {
 						label,
 						separator,
@@ -96,8 +97,8 @@ namespace PacificCoral
 			_entry = new ExtendedEntry
 			{
 				FontSize = 13,
+				WidthRequest = 70,
 				Text = _list[0],
-				BackgroundColor = Color.White,
 			};
 			_entry.Focused += EntryUnfocused;
 			_entry.TextChanged += SearchTextChanged;

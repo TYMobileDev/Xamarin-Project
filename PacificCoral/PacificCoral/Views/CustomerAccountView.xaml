@@ -192,7 +192,7 @@
 
 			<StackLayout Grid.Row="0">
 				
-			<Grid BackgroundColor="White" Padding="10" x:Name="grid">
+			<Grid BackgroundColor="White" Padding="10">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="*"/>
 					<RowDefinition Height="*"/>
@@ -210,7 +210,7 @@
 					
 				<Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Source="customerPhoto.png" HeightRequest="70"/>
 				<!--<Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Joe Stone Crab" FontAttributes="Bold" FontSize="Small"/>-->
-				<Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="PrimaryID" FontSize="Small"/>
+
 <!--				<Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="Operating Partner" FontSize="Small" InputTransparent="true"/>-->
 					
 				<p:ClickableContentView Grid.Row="0" Grid.Column="3" Padding="5" HorizontalOptions="End" Command="{Binding ShowCustomerLocationCommand}">
@@ -223,26 +223,30 @@
 							BorderRadius="13"
 						BackgroundColor="Transparent" BorderWidth="1" HorizontalOptions="Start"/>
 
-					<RelativeLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="4" BackgroundColor="Green" Grid.ColumnSpan="2">
+					<RelativeLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="4"  Grid.ColumnSpan="2" BackgroundColor="Teal">
 					<Label x:Name="label" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Joe Stone Crab" FontAttributes="Bold" FontSize="Small"/>
+					<Label Grid.Row="1" Grid.Column="1" Margin="7" Grid.ColumnSpan="2" Text="PrimaryID" FontSize="Small" BackgroundColor="Maroon"
+								RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+									ElementName=label,Property=Y,Factor=1,Constant=15}"
+								RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+								ElementName=label,Property=X,Factor=1,Constant=-105}"/>
+
 					<p:DropDownList
 						WidthRequest="200"
 						RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
 							ElementName=label,Property=Y,Factor=1,Constant=55}"
 						RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
-							ElementName=label,Property=X,Factor=1,Constant=-70}"/>
+							ElementName=label,Property=X,Factor=1,Constant=-105}"/>
 					<p:AutoCompleteList
-						WidthRequest="150"
+						WidthRequest="120"
 						RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
-							ElementName=label,Property=Y,Factor=1,Constant=25}"
+							ElementName=label,Property=Y,Factor=1,Constant=15}"
 						RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
-							ElementName=label,Property=X,Factor=1,Constant=-90}"/>	
+							ElementName=label,Property=X,Factor=1,Constant=-30}"/>	
 
 					</RelativeLayout>
 				</Grid>
-				
-	
-				
+
 			</StackLayout>
 		</Grid>
 		
