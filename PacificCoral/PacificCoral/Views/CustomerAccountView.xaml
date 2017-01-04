@@ -191,6 +191,7 @@
 				</StackLayout>
 
 			<RelativeLayout Grid.Row="0">
+				
 			<Grid BackgroundColor="White" Padding="10" x:Name="grid">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto"/>
@@ -206,23 +207,31 @@
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
 
+					
 				<Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Source="customerPhoto.png" HeightRequest="70"/>
 				<Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Joe Stone Crab" FontAttributes="Bold" FontSize="Small"/>
 				<Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="PrimaryID" FontSize="Small"/>
-				<Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="Operating Partner(...)" FontSize="Small"/>
 				<p:ClickableContentView Grid.Row="0" Grid.Column="3" Padding="5" HorizontalOptions="End" Command="{Binding ShowCustomerLocationCommand}">
 					<Image Source="location" HeightRequest="25" WidthRequest="20"/>
 				</p:ClickableContentView>
-				<Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Follow Up" BorderColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" TextColor="{StaticResource DefaultGreyColor}" WidthRequest="100" HeightRequest="26" BorderRadius="13" 
+
+				<Button Grid.Row="3" Grid.Column="0"  Text="Follow Up" BorderColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" TextColor="{StaticResource DefaultGreyColor}" WidthRequest="100" HeightRequest="26" BorderRadius="13" 
 					BackgroundColor="Transparent" BorderWidth="1" HorizontalOptions="Start"/>
 			</Grid>
-
-			<p:AutoCompleteList
+				
+				<p:DropDownList
+						WidthRequest="200"
+						RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+							ElementName=grid,Property=Y,Factor=1,Constant=75}"
+						RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
+							ElementName=grid,Property=X,Factor=1,Constant=90}"/>
+				<p:AutoCompleteList
 						WidthRequest="150"
 						RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
 							ElementName=grid,Property=Y,Factor=1,Constant=45}"
 						RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
-							ElementName=grid,Property=X,Factor=1,Constant=170}"/>
+							ElementName=grid,Property=X,Factor=1,Constant=170}"/>	
+				
 			</RelativeLayout>
 		</Grid>
 		

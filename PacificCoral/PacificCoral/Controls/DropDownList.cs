@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace PacificCoral
 {
-	public class AutoCompleteList : Grid
+	public class DropDownList : Grid
 	{
 		private bool _textChangeItemSelected;
 		private ExtendedEntry _entry;
@@ -23,9 +23,9 @@ namespace PacificCoral
 			set { SetValue(ItemSelectedCommandProperty, value); }
 		}
 
-		public static readonly BindableProperty SourceProperty = 
-			BindableProperty.Create("SourceItems", typeof(IList<string>), typeof(AutoCompleteList), default(string), defaultBindingMode:BindingMode.TwoWay);
-		
+		public static readonly BindableProperty SourceProperty =
+			BindableProperty.Create("SourceItems", typeof(IList<string>), typeof(AutoCompleteList), default(string), defaultBindingMode: BindingMode.TwoWay);
+
 		public IList<string> SourceItems
 		{
 			get { return (IList<string>)GetValue(SourceProperty); }
@@ -34,33 +34,33 @@ namespace PacificCoral
 
 		#endregion
 
-		public AutoCompleteList()
+		public DropDownList()
 		{
+
 			this.RowDefinitions.Add(new RowDefinition() { Height = 35 });
 			this.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
 			this.RowSpacing = 0;
 
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = 1 });
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-			this.BackgroundColor = Color.White;
+			this.BackgroundColor = Color.Transparent;
 
 			_list = new List<string>
 				{
-					"1233455",
-					"3293920",
-					"5784758",
-					"1237777",
-					"4343437",
-					"3232327",
+					"John Smith",
+					"+390453412",
+					"Johnsmith@gmail.com",
+					"Address: 1234, Georgia, Georgia",
 				};
 
 			_autoCompleteListView = new ListView
 			{
 				IsVisible = false,
-				RowHeight = 30,
+				RowHeight = 27,
 				HeightRequest = 0,
 				BackgroundColor = StyleManager.GetAppResource<Color>("DefaultMainColor"),
 				VerticalOptions = LayoutOptions.Start,
+				SeparatorVisibility = SeparatorVisibility.None,
 			};
 			_autoCompleteListView.ItemTemplate = new DataTemplate(() =>
 			{
@@ -73,7 +73,7 @@ namespace PacificCoral
 			_entry = new ExtendedEntry
 			{
 				FontSize = 13,
-				Text = _list[0],
+				Placeholder = "Operating Partner",
 				BackgroundColor = Color.White,
 			};
 			_entry.Focused += EntryUnfocused;
@@ -84,7 +84,7 @@ namespace PacificCoral
 			{
 				Source = "plus",
 				HorizontalOptions = LayoutOptions.Start,
-				HeightRequest=10,
+				HeightRequest = 10,
 			};
 
 			var stackHrz = new StackLayout()
@@ -124,7 +124,7 @@ namespace PacificCoral
 			{
 				if (_list != null)
 				{
-					_autoCompleteListView.HeightRequest = _list.Count * 15;
+					_autoCompleteListView.HeightRequest = _list.Count * 30;
 					_autoCompleteListView.IsVisible = true;
 					_autoCompleteListView.ItemsSource = _list;
 				}
@@ -154,7 +154,7 @@ namespace PacificCoral
 			if (model == null)
 				return;
 
-			_entry.Text = model;
+			//_entry.Text = model;
 
 			_textChangeItemSelected = true;
 			_autoCompleteListView.SelectedItem = null;
