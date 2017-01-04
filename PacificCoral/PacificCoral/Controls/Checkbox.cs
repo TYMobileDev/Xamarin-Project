@@ -33,7 +33,7 @@ namespace PacificCoral
 			VerticalOptions = LayoutOptions.Center;
 			HorizontalOptions = LayoutOptions.Center;
 
-			Content = _checked;
+			//Content = _checked;
 		}
 
 		#region -- Public properties --
@@ -101,9 +101,18 @@ namespace PacificCoral
 		{
 			uint animationTime = 150;
 			if (IsChecked)
-				_checked.FadeTo(1, animationTime);
+			{
+				if (Content == null)
+					Content = _checked;
+				//_checked.Opacity = 0;
+				//_checked.FadeTo(1, animationTime);
+			}
 			else
-				_checked.FadeTo(0, animationTime);
+			{
+				Content = null;
+				//_checked.Opacity = 1;
+				//_checked.FadeTo(0, animationTime);
+			}
 		}
 
 		private void OnClicked()
