@@ -21,6 +21,13 @@ namespace PacificCoral.ViewModels
         {
             _navigationService = navigationService;
 
+			var primaryID = new ObservableCollection<string>
+			{
+				"1233455",
+				"3293920",
+				"5784758"
+			};
+
             var sales = new ObservableCollection<SalesModel>()
             {
                 new SalesModel() 
@@ -131,6 +138,7 @@ namespace PacificCoral.ViewModels
             Sales = sales;
 			Visits = visits;
 			Tasks = tasks;
+			PrimaryID = primaryID;
 			Title = "PFG Atlanta";
         }
 
@@ -142,6 +150,14 @@ namespace PacificCoral.ViewModels
 		{
 			get { return _ActivePageIndex; }
 			set { SetProperty(ref _ActivePageIndex, value); }
+		}
+
+		private IEnumerable<string> _PrimaryID;
+
+		public IEnumerable<string> PrimaryID
+		{
+			get { return _PrimaryID; }
+			set { SetProperty(ref _PrimaryID, value); }
 		}
 
 		private IEnumerable<SalesModel> _Sales;
