@@ -224,8 +224,20 @@
 						BackgroundColor="Transparent" BorderWidth="1" HorizontalOptions="Start"/>
 
 					<RelativeLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="4" BackgroundColor="Green" Grid.ColumnSpan="2">
+					<Label x:Name="label" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Joe Stone Crab" FontAttributes="Bold" FontSize="Small"/>
+					<p:DropDownList
+						WidthRequest="200"
+						RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+							ElementName=label,Property=Y,Factor=1,Constant=55}"
+						RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+							ElementName=label,Property=X,Factor=1,Constant=-70}"/>
+					<p:AutoCompleteList
+						WidthRequest="150"
+						RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+							ElementName=label,Property=Y,Factor=1,Constant=25}"
+						RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+							ElementName=label,Property=X,Factor=1,Constant=-90}"/>	
 
-						
 					</RelativeLayout>
 				</Grid>
 				
