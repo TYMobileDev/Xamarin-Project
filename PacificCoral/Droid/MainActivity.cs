@@ -12,13 +12,13 @@ using Acr.UserDialogs;
 using NControl.Controls.Droid;
 using FFImageLoading.Forms.Droid;
 
-using NControl.Controls.Droid;
 using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Android.Content;
 
+[assembly: UsesFeature("android.hardware.wifi", Required = false)]
 namespace PacificCoral.Droid
 {
     [Activity(Label = "PacificCoral", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]

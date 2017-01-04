@@ -24,26 +24,26 @@ namespace PacificCoral.iOS
         public bool IsConnected { get; set; }
         public void CheckNetworkConnection()
         {
-            InternetConnectionStatus();
+            UpdateNetworkStatus();
         }
         public bool IsOnline
         {
             get
             {
-
-                System.Net.NetworkInformation.Ping p = new System.Net.NetworkInformation.Ping();
-                try
-                {
-                    System.Net.NetworkInformation.PingReply pr = p.Send("8.8.8.8", 128);
-                    if (pr != null && pr.Status == System.Net.NetworkInformation.IPStatus.Success)
-                        return true;
-                    else
-                        return false;
-                }
-                catch
-                {
-                    return false;
-                }
+				return InternetConnectionStatus();
+				//System.Net.NetworkInformation.Ping p = new System.Net.NetworkInformation.Ping();
+    //            try
+				//{
+    //                System.Net.NetworkInformation.PingReply pr = p.Send("8.8.8.8", 128);
+    //                if (pr != null && pr.Status == System.Net.NetworkInformation.IPStatus.Success)
+    //                    return true;
+    //                else
+    //                    return false;
+    //            }
+				//catch (Exception ex)
+    //            {
+    //                return false;
+    //            }
             }
         }
 
