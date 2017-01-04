@@ -24,7 +24,7 @@ namespace PacificCoral
 		}
 
 		public static readonly BindableProperty SourceProperty = 
-			BindableProperty.Create("SourceItems", typeof(IList<string>), typeof(AutoCompleteList), default(string), defaultBindingMode:BindingMode.TwoWay);
+			BindableProperty.Create(nameof(SourceItems), typeof(IList<string>), typeof(AutoCompleteList), default(string), defaultBindingMode:BindingMode.TwoWay);
 		
 		public IList<string> SourceItems
 		{
@@ -43,6 +43,7 @@ namespace PacificCoral
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = 1 });
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
 			this.BackgroundColor = Color.White;
+			this.InputTransparent = false;
 
 			_list = new List<string>
 				{
@@ -61,13 +62,35 @@ namespace PacificCoral
 				HeightRequest = 0,
 				BackgroundColor = StyleManager.GetAppResource<Color>("DefaultMainColor"),
 				VerticalOptions = LayoutOptions.Start,
+				SeparatorVisibility = SeparatorVisibility.None,
+				InputTransparent = false,
 			};
 			_autoCompleteListView.ItemTemplate = new DataTemplate(() =>
 			{
-				var cell = new TextCell();
-				cell.SetBinding(TextCell.TextProperty, ".");
-				cell.TextColor = Color.Black;
-				return cell;
+				var label = new Label()
+				{
+					TextColor = Color.Black,
+					HorizontalTextAlignment = TextAlignment.Center,
+					FontSize = 12,
+				};
+				label.SetBinding(Label.TextProperty, ".");
+
+				var separator = new BoxView()
+				{
+					HeightRequest = 1,
+					BackgroundColor = StyleManager.GetAppResource<Color>("DefaultGreyColor"),
+					HorizontalOptions = LayoutOptions.FillAndExpand,
+				};
+
+				var stack = new StackLayout()
+				{
+					Children = {
+						label,
+						separator,
+					}
+				};
+
+				return new ViewCell { View = stack };
 			});
 
 			_entry = new ExtendedEntry

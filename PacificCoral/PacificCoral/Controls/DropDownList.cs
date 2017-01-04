@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
+using PacificCoral.Model;
 
 namespace PacificCoral
 {
@@ -10,7 +11,7 @@ namespace PacificCoral
 		private bool _textChangeItemSelected;
 		private ExtendedEntry _entry;
 		private ListView _autoCompleteListView;
-		private IList<string> _list;
+		private IList<CustomerModel> _list;
 
 		#region -- Public properties --
 
@@ -44,30 +45,82 @@ namespace PacificCoral
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = 1 });
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
 			this.BackgroundColor = Color.Transparent;
+			this.InputTransparent = false;
 
-			_list = new List<string>
+			_list = new List<CustomerModel>
 				{
-					"John Smith",
-					"+390453412",
-					"Johnsmith@gmail.com",
-					"Address: 1234, Georgia, Georgia",
+					new CustomerModel()
+					{
+						UserName="John Smith",
+						PhoneNumber = "+39876534677",
+						Address = "Miami, the USA",
+						Mail = "johnsmith@gmail.com",
+					}
 				};
 
 			_autoCompleteListView = new ListView
 			{
 				IsVisible = false,
-				RowHeight = 27,
+				RowHeight = 100,
 				HeightRequest = 0,
 				BackgroundColor = StyleManager.GetAppResource<Color>("DefaultMainColor"),
 				VerticalOptions = LayoutOptions.Start,
 				SeparatorVisibility = SeparatorVisibility.None,
+				InputTransparent = false,
 			};
 			_autoCompleteListView.ItemTemplate = new DataTemplate(() =>
 			{
-				var cell = new TextCell();
-				cell.SetBinding(TextCell.TextProperty, ".");
-				cell.TextColor = Color.Black;
-				return cell;
+				
+				var nameLabel = new Label()
+				{
+					FontAttributes = FontAttributes.Bold,
+					FontSize = 12,
+				};
+				nameLabel.SetBinding(Label.TextProperty, "UserName");
+
+				var phoneLabel = new Label()
+				{
+					FontSize = 12,
+				};
+				phoneLabel.SetBinding(Label.TextProperty, "PhoneNumber");
+
+				var mailLabel = new Label()
+				{
+					FontAttributes = FontAttributes.Bold,
+					FontSize = 12,
+				};
+				mailLabel.SetBinding(Label.TextProperty, "Mail");
+
+
+				var adressLabel = new Label()
+				{
+					FontSize = 12,
+				};
+				adressLabel.SetBinding(Label.TextProperty, "Address");
+
+				var stackAddress = new StackLayout()
+				{
+					Orientation = StackOrientation.Horizontal,
+					Children = {
+						new Label(){ Text = "Address: ", FontSize= 12, FontAttributes = FontAttributes.Bold },
+						adressLabel,
+					},
+				};
+
+				var stack = new StackLayout()
+				{
+					Margin = new Thickness(10, 10, 0, 0),
+					Children =
+					{
+						nameLabel,
+						phoneLabel,
+						mailLabel,
+						stackAddress
+					},
+				}; 
+
+				return new ViewCell { View = stack };
+
 			});
 
 			_entry = new ExtendedEntry
@@ -75,6 +128,7 @@ namespace PacificCoral
 				FontSize = 13,
 				Placeholder = "Operating Partner",
 				BackgroundColor = Color.White,
+
 			};
 			_entry.Focused += EntryUnfocused;
 			_entry.TextChanged += SearchTextChanged;
@@ -89,6 +143,7 @@ namespace PacificCoral
 
 			var stackHrz = new StackLayout()
 			{
+				//Opacity = Device.OnPlatform(0.1, 0, 0),
 				Orientation = StackOrientation.Horizontal,
 				Children =
 				{
@@ -124,7 +179,7 @@ namespace PacificCoral
 			{
 				if (_list != null)
 				{
-					_autoCompleteListView.HeightRequest = _list.Count * 30;
+					_autoCompleteListView.HeightRequest = _list.Count * 100;
 					_autoCompleteListView.IsVisible = true;
 					_autoCompleteListView.ItemsSource = _list;
 				}
@@ -144,12 +199,12 @@ namespace PacificCoral
 		{
 			if (e.SelectedItem == null)
 				return;
-			var searchModel = (string)e.SelectedItem;
+			var searchModel = (CustomerModel)e.SelectedItem;
 
 			HandleItemSelected(searchModel);
 		}
 
-		private async void HandleItemSelected(string model)
+		private async void HandleItemSelected(CustomerModel model)
 		{
 			if (model == null)
 				return;

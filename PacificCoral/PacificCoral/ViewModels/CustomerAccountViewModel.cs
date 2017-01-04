@@ -24,8 +24,8 @@ namespace PacificCoral.ViewModels
 			var primaryID = new ObservableCollection<string>
 			{
 				"1233455",
-				"32939203902",
-				"5784758478"
+				"3293920",
+				"5784758"
 			};
 
             var sales = new ObservableCollection<SalesModel>()

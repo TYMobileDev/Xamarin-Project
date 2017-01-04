@@ -152,8 +152,6 @@
     <Compile Include="Converters\ObjectToBoolConverter.cs" />
     <Compile Include="Converters\NullableObjectToObjectConverter.cs" />
     <Compile Include="Controls\ExtendedSearchBar.cs" />
-    <Compile Include="Controls\DropDownPicker.cs" />
-    <Compile Include="Controls\DropDownTapArgs.cs" />
     <Compile Include="Controls\AutoCompleteList.cs" />
     <Compile Include="Controls\RoundedContentView.cs" />
     <Compile Include="Helpers\StyleManager.cs" />
