@@ -7,15 +7,18 @@ using Xamarin.Forms;
 using System.IO;
 using Plugin.Media.Abstractions;
 using FFImageLoading;
+using Acr.UserDialogs;
 
 namespace PacificCoral
 {
 	public class AccountViewModel : BaseDetailPageViewModel<AccountModel>
 	{
+		private readonly IUserDialogs _dialogsService;
 		private readonly IMedia _mediapickerService;
 
-		public AccountViewModel(IMedia mediapickerService, INavigationService navigationService) : base(navigationService)
+		public AccountViewModel(IUserDialogs dialogsService, IMedia mediapickerService, INavigationService navigationService) : base(navigationService)
 		{
+			_dialogsService = dialogsService;
 			_mediapickerService = mediapickerService;
 			UpdatePhoto();
 			Title = "Account";
@@ -57,7 +60,22 @@ namespace PacificCoral
 
 		private async Task OnChangePhotoCommandAsync()
 		{
-			var file = await _mediapickerService.PickPhotoAsync();
+			var btnCamera = "From Camera";
+			var btnGallery = "From Gallery";
+			var res = await _dialogsService.ActionSheetAsync(null, "Cancel", null, null, btnCamera, btnGallery);
+
+
+			MediaFile file = null;
+			if (res == btnCamera)
+				file = await _mediapickerService.TakePhotoAsync(new StoreCameraMediaOptions
+				{
+					SaveToAlbum = false
+				});
+			else if (res == btnGallery)
+				file = await _mediapickerService.PickPhotoAsync();
+			else
+				return;
+			
 			if (file == null)
 				return;
 			var stream = file.GetStream();

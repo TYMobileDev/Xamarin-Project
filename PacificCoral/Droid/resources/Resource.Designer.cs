@@ -26,6 +26,9 @@ namespace PacificCoral.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.Id.agentWebView = global::PacificCoral.Droid.Resource.Id.agentWebView;
+			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.Layout.WebAuthenticationBroker = global::PacificCoral.Droid.Resource.Layout.WebAuthenticationBroker;
+			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.String.ApplicationName = global::PacificCoral.Droid.Resource.String.ApplicationName;
 			global::HockeyApp.Resource.Color.hockeyapp_background_header = global::PacificCoral.Droid.Resource.Color.hockeyapp_background_header;
 			global::HockeyApp.Resource.Color.hockeyapp_background_light = global::PacificCoral.Droid.Resource.Color.hockeyapp_background_light;
 			global::HockeyApp.Resource.Color.hockeyapp_background_white = global::PacificCoral.Droid.Resource.Color.hockeyapp_background_white;
@@ -6467,6 +6470,9 @@ namespace PacificCoral.Droid
 			// aapt resource value: 0x7f0b0017
 			public const int adjust_width = 2131427351;
 			
+			// aapt resource value: 0x7f0b00d9
+			public const int agentWebView = 2131427545;
+			
 			// aapt resource value: 0x7f0b0054
 			public const int alertTitle = 2131427412;
 			
@@ -7352,6 +7358,9 @@ namespace PacificCoral.Droid
 			// aapt resource value: 0x7f030045
 			public const int Toolbar = 2130903109;
 			
+			// aapt resource value: 0x7f030046
+			public const int WebAuthenticationBroker = 2130903110;
+			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -7364,6 +7373,9 @@ namespace PacificCoral.Droid
 		
 		public partial class String
 		{
+			
+			// aapt resource value: 0x7f080091
+			public const int ApplicationName = 2131230865;
 			
 			// aapt resource value: 0x7f08002e
 			public const int abc_action_bar_home_description = 2131230766;
