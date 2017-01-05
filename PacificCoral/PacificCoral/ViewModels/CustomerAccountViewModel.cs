@@ -38,8 +38,12 @@ namespace PacificCoral.ViewModels
                     Shrimp = "SHRIM TGR 8/12 HDLS/ON",
 					NumberCasesShipped = "10",
 					Usage = "Month to Month",
-					Prospect = true
-                },
+					Prospect = true,
+					Description = "This is a Description",
+					Substitute = "This is a Substitute",
+					DeviatedYes = true,
+					DeviatedNo = false,
+				},
                  new SalesModel()
                 {
                     Code = "157205",
@@ -48,7 +52,11 @@ namespace PacificCoral.ViewModels
                     Shrimp = "SHRIM TGR 21/25 RPDT/ON",
 					NumberCasesShipped = "20",
 					Usage = "Month to Month",
-					Deviated = true
+					Deviated = true,
+					Description = "This is a Description",
+					Substitute = "This is a Substitute",
+					DeviatedNo = true,
+					DeviatedYes = false,
                 },
                  new SalesModel()
                 {
@@ -58,6 +66,10 @@ namespace PacificCoral.ViewModels
 					NumberCasesShipped = "20",
 					Usage = "Month to Month",
 				    Shrimp = "SHRIM TGR 31/35 RPDT/ON/PFOS FR",
+					Description = "This is a Description",
+					Substitute = "This is a Substitute",
+					DeviatedYes = true,
+					DeviatedNo = false,
                 }
             };
 
