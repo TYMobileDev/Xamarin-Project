@@ -54,15 +54,13 @@ namespace PacificCoral.Droid
         public async Task<bool> Authenticate()
         {
             return await Authentication.DefaultAthenticator.Auth(new PlatformParameters(this));
-
-        }
+		}
         // required for Azure AD Auth to fire
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
-    {
-        base.OnActivityResult(requestCode, resultCode, data);
-        AuthenticationAgentContinuationHelper.SetAuthenticationAgentContinuationEventArgs(requestCode, resultCode, data);
-    }
-    }
-
+		{
+			base.OnActivityResult(requestCode, resultCode, data);
+			AuthenticationAgentContinuationHelper.SetAuthenticationAgentContinuationEventArgs(requestCode, resultCode, data);
+		}
+	}
 }
 

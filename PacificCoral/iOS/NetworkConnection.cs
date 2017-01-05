@@ -17,10 +17,11 @@ namespace PacificCoral.iOS
     public class NetworkConnection : INetworkConnection
     {
 
-/*        public NetworkConnection()
-        {
-            InternetConnectionStatus();
-        }*/
+        //public NetworkConnection()
+        //{
+        //    InternetConnectionStatus();
+        //}
+
         public bool IsConnected { get; set; }
         public void CheckNetworkConnection()
         {
@@ -147,5 +148,6 @@ namespace PacificCoral.iOS
             }
             return false;
         }
-    }
+    } 
+
 }
