@@ -33,6 +33,7 @@ namespace PacificCoral.iOS
 			manager.StartManager();
 
 			#endif
+			Authentication.DefaultAthenticator.Init(new AuthentificateImplementation());
 
             global::Xamarin.Forms.Forms.Init();
 			Xamarin.FormsMaps.Init();

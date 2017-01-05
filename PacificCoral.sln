@@ -191,6 +191,7 @@ Global
 		{95DC6225-3B39-4E29-815A-93124044569D}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{95DC6225-3B39-4E29-815A-93124044569D}.Release|x64.ActiveCfg = Release|iPhone
 		{95DC6225-3B39-4E29-815A-93124044569D}.Release|x86.ActiveCfg = Release|iPhone
+		{95DC6225-3B39-4E29-815A-93124044569D}.Ad-Hoc|Any CPU.Build.0 = Ad-Hoc|iPhone
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
