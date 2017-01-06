@@ -10,6 +10,7 @@ using FFImageLoading.Forms.Touch;
 using FFImageLoading;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using KeyboardOverlap.Forms.Plugin.iOSUnified;
 
 namespace PacificCoral.iOS
 {
@@ -40,6 +41,7 @@ namespace PacificCoral.iOS
 			Authentication.DefaultAthenticator.Init(new AuthentificateImplementation());
 
             global::Xamarin.Forms.Forms.Init();
+			KeyboardOverlapRenderer.Init();
 			Xamarin.FormsMaps.Init();
 			NControls.Init();
 			NControl.iOS.NControlViewRenderer.Init();

@@ -80,14 +80,16 @@ namespace PacificCoral.ViewModels
 					Title = "Initial Visit",
 					TimeStr = "3.00 PM",
 					DateStr = "October, 23th",
-					Description = "Presented Product"
+					Description = "Presented Product",
+					Date = DateTime.Now,
 				},
 				new VisitModel
 				{
 					Title = "Follow Up Visit",
 					TimeStr = "3.00 PM",
 					DateStr = "October, 23th",
-					Description = "Showed grouper."
+					Description = "Showed grouper.",
+					Date = DateTime.Now,
 				}
 			};
 

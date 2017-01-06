@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using Prism.Navigation;
 
 namespace PacificCoral
@@ -20,7 +18,19 @@ namespace PacificCoral
 		public DateTime Date
 		{
 			get { return _Date; }
-			set { SetProperty(ref _Date, value); }
+			set
+			{
+				SetProperty(ref _Date, value);
+				UpdateDateTime();
+			}
+		}
+
+		private DateTime _DateTimeFull;
+
+		public DateTime DateTimeFull
+		{
+			get { return _DateTimeFull; }
+			set { SetProperty(ref _DateTimeFull, value); }
 		}
 
 		private TimeSpan _Time;
@@ -28,7 +38,11 @@ namespace PacificCoral
 		public TimeSpan Time
 		{
 			get { return _Time; }
-			set { SetProperty(ref _Time, value); }
+			set
+			{
+				SetProperty(ref _Time, value);
+				UpdateDateTime();
+			}
 		}
 
 		private bool _Cutting;
@@ -62,6 +76,15 @@ namespace PacificCoral
 		#endregion
 
 		#region -- Private helpers --
+
+		private void UpdateDateTime()
+		{
+			DateTimeFull = Date.Date + Time;
+			if (Model != null)
+			{
+				Model.Date = DateTimeFull;
+			}
+		}
 
 		#endregion
 	}

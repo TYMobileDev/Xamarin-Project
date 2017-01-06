@@ -91,6 +91,8 @@ namespace PacificCoral
 			{
 				Mode = DetailsMode.View;
 			}
+
+			Init();
 		}
 
 		protected virtual Task OnStartEditingCommandAsync()
