@@ -73,22 +73,22 @@ namespace PacificCoral.ViewModels
 
 		private Task OnViewTrackMileageCommandAsync()
 		{
-			return _navigationService.NavigateAsync<TrackMileageView>();
+			return _navigationService.NavigateAsync("TrackMileageView", animated: false);
 		}
 
 		private Task OnViewAccountsCommandAsync()
 		{
-			return _navigationService.NavigateAsync<AccountsView>();
+			return _navigationService.NavigateAsync("AccountsView", animated: false);
 		}
 
 		private Task OnViewOrdersCommandAsync()
 		{
-			return _navigationService.NavigateAsync<OrdersView>();
+			return _navigationService.NavigateAsync("OrdersView", animated: false);
 		}
 
 		private Task OnDetailsCommandAsync()
 		{
-			return _navigationService.NavigateAsync("DashBoard2View", animated:false);;
+			return _navigationService.NavigateAsync("DashBoard2View", animated:false);
 		}
 
 		#endregion
