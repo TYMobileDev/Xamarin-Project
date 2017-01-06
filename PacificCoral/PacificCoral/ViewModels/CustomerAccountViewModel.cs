@@ -21,6 +21,13 @@ namespace PacificCoral.ViewModels
         {
             _navigationService = navigationService;
 
+			var primaryID = new ObservableCollection<string>
+			{
+				"1233455",
+				"3293920",
+				"5784758"
+			};
+
             var sales = new ObservableCollection<SalesModel>()
             {
                 new SalesModel() 
@@ -31,8 +38,12 @@ namespace PacificCoral.ViewModels
                     Shrimp = "SHRIM TGR 8/12 HDLS/ON",
 					NumberCasesShipped = "10",
 					Usage = "Month to Month",
-					Prospect = true
-                },
+					Prospect = true,
+					Description = "This is a Description",
+					Substitute = "This is a Substitute",
+					DeviatedYes = true,
+					DeviatedNo = false,
+				},
                  new SalesModel()
                 {
                     Code = "157205",
@@ -41,7 +52,11 @@ namespace PacificCoral.ViewModels
                     Shrimp = "SHRIM TGR 21/25 RPDT/ON",
 					NumberCasesShipped = "20",
 					Usage = "Month to Month",
-					Deviated = true
+					Deviated = true,
+					Description = "This is a Description",
+					Substitute = "This is a Substitute",
+					DeviatedNo = true,
+					DeviatedYes = false,
                 },
                  new SalesModel()
                 {
@@ -51,6 +66,10 @@ namespace PacificCoral.ViewModels
 					NumberCasesShipped = "20",
 					Usage = "Month to Month",
 				    Shrimp = "SHRIM TGR 31/35 RPDT/ON/PFOS FR",
+					Description = "This is a Description",
+					Substitute = "This is a Substitute",
+					DeviatedYes = true,
+					DeviatedNo = false,
                 }
             };
 
@@ -70,7 +89,6 @@ namespace PacificCoral.ViewModels
 					DateStr = "October, 23th",
 					Description = "Showed grouper."
 				}
-
 			};
 
 			var tasks = new ObservableCollection<TaskModel>()
@@ -80,22 +98,41 @@ namespace PacificCoral.ViewModels
 					Title = "Task 1",
 					Description = "Replace one bag of shrimp",
 					TimeStr = "3.00 PM",
-					DateStr = "October, 23th",
-					IsDone = true
+					IsDone = true,
+					Date = DateTime.Now,
+					DateStr = "December, 23th",
 				},
 				new TaskModel
 				{
 					Title = "Task 2",
 					Description = "Replace one bag of shrimp",
 					TimeStr = "3.00 PM",
-					DateStr = "October, 23th"
+					DateStr = "October, 23th",
+					Date = DateTime.Now,
+				},
+				new TaskModel
+				{
+					Title = "Task 3",
+					Description = "Replace one bag of shrimp",
+					TimeStr = "9.00 PM",
+					DateStr = "October, 23th",
+					IsDone = true,
+					Date = DateTime.Now,
+				},
+				new TaskModel
+				{
+					Title = "Task 4",
+					Description = "Replace one bag of shrimp",
+					Date = DateTime.Now,
+					TimeStr = "5.00 PM",
+					DateStr = "October, 20th"
 				}
-
 			};
          
             Sales = sales;
 			Visits = visits;
 			Tasks = tasks;
+			PrimaryID = primaryID;
 			Title = "PFG Atlanta";
         }
 
@@ -107,6 +144,14 @@ namespace PacificCoral.ViewModels
 		{
 			get { return _ActivePageIndex; }
 			set { SetProperty(ref _ActivePageIndex, value); }
+		}
+
+		private IEnumerable<string> _PrimaryID;
+
+		public IEnumerable<string> PrimaryID
+		{
+			get { return _PrimaryID; }
+			set { SetProperty(ref _PrimaryID, value); }
 		}
 
 		private IEnumerable<SalesModel> _Sales;

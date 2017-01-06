@@ -6,13 +6,13 @@
 
 	<p:BaseDetailView.ViewView>
 		<StackLayout Spacing="0">
-			<StackLayout Orientation="Horizontal" Padding="10" HorizontalOptions="Fill">
-				<Label Text="Date" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
-				<Label Text="{Binding Model.Title,Converter={StaticResource DateTimeConverter}}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+			<StackLayout Orientation="Horizontal" Padding="10, 15" HorizontalOptions="Fill">
+				<Label Text="Follow Up" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
+				<Label Text="{Binding Model.Date,StringFormat='{0:MMMM d, yyyy h:mm tt}'}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
 			</StackLayout>
 			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
-			<StackLayout Padding="10">
-				<Label Text="Description (optional)" Style="{StaticResource DetailSectionTitleStyle}" />
+			<StackLayout Padding="10, 15">
+				<Label Text="Notes (optional)" Style="{StaticResource DetailSectionTitleStyle}" />
 				<Label Text="{Binding Model.Description}" Style="{StaticResource DetailSectionLabelStyle}" />
 			</StackLayout>
 			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
@@ -20,6 +20,15 @@
 	</p:BaseDetailView.ViewView>
 	<p:BaseDetailView.EditView>
 		<StackLayout Spacing="0">
+			<Grid Padding="10, 15" HorizontalOptions="Fill">
+				<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Fill" Spacing="0" >
+					<DatePicker Format="MMMM d, yyyy" Date="{Binding Date}" Style="{StaticResource DatePickerStyle}" HorizontalOptions="EndAndExpand" WidthRequest="150"/>
+					<TimePicker Format="h:mm" Time="{Binding Time}" Style="{StaticResource TimePickerStyle}" HorizontalOptions="End" WidthRequest="70"/>
+				</StackLayout>
+				<Label Grid.Row="0" Grid.Column="0" Text="{Binding DateTimeFull,StringFormat='{0:MMMM d, yyyy h:mm tt}'}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalTextAlignment="End" VerticalTextAlignment="Center" InputTransparent="true" BackgroundColor="White"/>
+				<Label Grid.Row="0" Grid.Column="0" Text="Follow Up" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="FillAndExpand" Style="{StaticResource DetailSectionTitleStyle}"/>
+			</Grid>
+			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
 			<StackLayout Padding="10" HorizontalOptions="Fill">
 				<Label Text="Type of visit" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource DetailSectionTitleStyle}"/>
 				<Grid>
@@ -33,26 +42,16 @@
 					<p:Checkbox Grid.Row="0" Grid.Column="0" IsChecked="{Binding Cutting}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
 					<StackLayout Grid.Row="0" Grid.Column="1" Spacing="0">
 						<Label Text="Cutting" Style="{StaticResource DetailSectionLabelStyle}" />
-						<Label Text="(When they leave sample product with a prospective 
-client at the same time as competition)" Style="{StaticResource DetailSectionTitleStyle}" FontSize="11" />
+						<Label Text="(When they leave sample product with a prospective client at the same time as competition)" Style="{StaticResource DetailSectionTitleStyle}" FontSize="11" />
 					</StackLayout>
 					<p:Checkbox Grid.Row="1" Grid.Column="0" IsChecked="{Binding IsCustomTitle}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
 					<Label Grid.Row="1" Grid.Column="1" Text="Custom title" Style="{StaticResource DetailSectionLabelStyle}" />
 				</Grid>
 			</StackLayout>
 			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
-			<Grid Padding="10" HorizontalOptions="Fill">
-				<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Fill" Spacing="0">
-					<DatePicker Format="M,d" Date="{Binding Date}" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" WidthRequest="100" />
-					<TimePicker Format="h:mm" Time="{Binding Time}" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" WidthRequest="40" />
-				</StackLayout>
-				<Label Grid.Row="0" Grid.Column="0" Text="{Binding Model.Title,Converter={StaticResource DateTimeConverter}}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalTextAlignment="End" VerticalTextAlignment="Center" InputTransparent="true" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-				<Label Grid.Row="0" Grid.Column="0" Text="Date" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="FillAndExpand" Style="{StaticResource DetailSectionTitleStyle}"/>
-			</Grid>
-			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
-			<StackLayout Padding="10">
-				<Label Text="Description (optional)" Style="{StaticResource DetailSectionTitleStyle}" />
-				<Label Text="{Binding Model.Description}" Style="{StaticResource DetailSectionLabelStyle}" />
+			<StackLayout Padding="10, 15">
+				<Label Text="Notes (optional)" Style="{StaticResource DetailSectionTitleStyle}" />
+				<p:ExtendedEntry Text="{Binding Model.Description}" Style="{StaticResource FormEntryStyle}" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>	
 			</StackLayout>
 			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
 		</StackLayout>

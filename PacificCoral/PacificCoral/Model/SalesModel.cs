@@ -21,5 +21,9 @@ namespace PacificCoral.Model
         public bool Prospect { get; set; }
         public bool Deviated { get; set; }
         public bool Sub { get; set; }
+		public string Description { get; set; }
+		public string Substitute { get; set;}
+		public bool DeviatedYes { get; set; }
+		public bool DeviatedNo { get; set; }
     }
 }

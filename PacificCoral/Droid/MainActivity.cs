@@ -12,10 +12,17 @@ using Acr.UserDialogs;
 using NControl.Controls.Droid;
 using FFImageLoading.Forms.Droid;
 
+using Microsoft.WindowsAzure.MobileServices;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
+using Android.Content;
+
+[assembly: UsesFeature("android.hardware.wifi", Required = false)]
 namespace PacificCoral.Droid
 {
     [Activity(Label = "PacificCoral", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, IAuthenticate
     {
 		private const string HOCKEY_APP_KEY = "ba40a396342544f8abd152a3bc97f2e3";
         protected override void OnCreate(Bundle bundle)
@@ -36,11 +43,24 @@ namespace PacificCoral.Droid
 			UserDialogs.Init(Application);
 			NControls.Init();
 			NControl.Droid.NControlViewRenderer.Init();
+            // Initialize the authenticator before loading the app.
+            Authentication.DefaultAthenticator.Init((IAuthenticate)this);
             //initialising of chart renderer
             new SfChartRenderer();
 			CachedImageRenderer.Init();
             LoadApplication(new App());
         }
-    }
+
+        public async Task<bool> Authenticate()
+        {
+            return await Authentication.DefaultAthenticator.Auth(new PlatformParameters(this));
+		}
+        // required for Azure AD Auth to fire
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+		{
+			base.OnActivityResult(requestCode, resultCode, data);
+			AuthenticationAgentContinuationHelper.SetAuthenticationAgentContinuationEventArgs(requestCode, resultCode, data);
+		}
+	}
 }
 

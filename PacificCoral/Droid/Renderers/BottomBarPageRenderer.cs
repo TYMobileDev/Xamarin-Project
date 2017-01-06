@@ -258,7 +258,6 @@ namespace PacificCoral.Droid.Renderers
 			BottomBarTab[] tabs = Element.Children.Select(page =>
 			{
 				var tabIconId = ResourceManagerEx.IdFromTitle(page.Icon, ResourceManager.DrawableClass);
-				//return new BottomBarTab(tabIconId, "");
 				return new BottomBarTab(tabIconId, page.Title);
 			}).ToArray();
 

@@ -17,6 +17,11 @@ namespace PacificCoral
 			_navigationService = navigationService;
 		}
 
+		protected virtual void Init()
+		{
+
+		}
+
 		#region -- Public properties --
 
 		private DetailsMode _Mode;

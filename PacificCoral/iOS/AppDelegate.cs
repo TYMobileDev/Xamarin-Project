@@ -8,6 +8,8 @@ using HockeyApp.iOS;
 using NControl.Controls.iOS;
 using FFImageLoading.Forms.Touch;
 using FFImageLoading;
+using System.Threading.Tasks;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace PacificCoral.iOS
 {
@@ -33,6 +35,9 @@ namespace PacificCoral.iOS
 			manager.StartManager();
 
 			#endif
+
+			Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+			Authentication.DefaultAthenticator.Init(new AuthentificateImplementation());
 
             global::Xamarin.Forms.Forms.Init();
 			Xamarin.FormsMaps.Init();

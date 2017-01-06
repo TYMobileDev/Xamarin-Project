@@ -49,6 +49,18 @@ namespace PacificCoral
 
 		#endregion
 
+		#region -- Overrides --
+
+		protected override void Init()
+		{
+			base.Init();
+			var dateFromModel = Model.Date;
+			Date = dateFromModel.Date;
+			Time = dateFromModel.TimeOfDay;
+		}
+
+		#endregion
+
 		#region -- Private helpers --
 
 		#endregion
