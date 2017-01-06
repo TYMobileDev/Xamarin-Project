@@ -121,33 +121,28 @@
 	            </ListView.ItemTemplate>
 	        </ListView>
 		</StackLayout>
-
-          <StackLayout Margin="0,0,0,30">
-            <Label Text="Deviations" FontSize="Medium" TextColor="#8B572A" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-            <Grid>
-              <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-              </Grid.RowDefinitions>
-
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-              </Grid.ColumnDefinitions>
-
-              <Label Grid.Row="0" Grid.Column="0" Text="Pending Aproval" FontSize="Small" HorizontalOptions="EndAndExpand"/>
-              <Label Grid.Row="1" Grid.Column="0"  Text="Expiring" FontSize="Small" HorizontalOptions="EndAndExpand"/>
-              <Grid Grid.Row="0" Grid.Column="1" Margin="10,0" >
-                <Label Text="12" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
-              </Grid>
-              <Grid Grid.Row="1" Grid.Column="1" Margin="10,0" >
-                <Label Text="53" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
-              </Grid>
-            </Grid>
-          </StackLayout>
-				
-        </StackLayout>
-    </ScrollView>
-    <control:NavigationPanel Grid.Row="1" ActivePage="Page2" VerticalOptions="End"/>
-  </Grid>
+				<StackLayout Margin="0,0,0,30">
+					<Label Text="Deviations" FontSize="Medium" TextColor="#8B572A" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<Label Grid.Row="0" Grid.Column="0" Text="Pending Aproval" FontSize="Small" HorizontalOptions="EndAndExpand"/>
+						<Label Grid.Row="1" Grid.Column="0"  Text="Expiring" FontSize="Small" HorizontalOptions="EndAndExpand"/>
+						<Grid Grid.Row="0" Grid.Column="1" Margin="10,0" >
+							<Label Text="12" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
+						</Grid>
+						<Grid Grid.Row="1" Grid.Column="1" Margin="10,0" >
+							<Label Text="53" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
+						</Grid>
+					</Grid>
+				</StackLayout>
+			</StackLayout>
+		</ScrollView>
+	</Grid>
 </ContentPage>

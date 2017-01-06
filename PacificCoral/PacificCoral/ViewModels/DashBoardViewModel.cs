@@ -88,7 +88,7 @@ namespace PacificCoral.ViewModels
 
 		private Task OnDetailsCommandAsync()
 		{
-			return _navigationService.NavigateAsync<DashBoard2View>();;
+			return _navigationService.NavigateAsync("DashBoard2View", animated:false);;
 		}
 
 		#endregion

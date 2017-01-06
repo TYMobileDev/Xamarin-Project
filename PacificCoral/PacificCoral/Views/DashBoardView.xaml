@@ -148,6 +148,5 @@
 				</ListView.ItemTemplate>
 			</ListView>
 		</StackLayout>
-		<control:NavigationPanel Grid.Row="1" ActivePage="Page2" VerticalOptions="End"/>
 	</Grid>
 </ContentPage>

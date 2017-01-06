@@ -60,7 +60,7 @@ namespace PacificCoral
 			Container.RegisterTypeForNavigation<SignInView, SignInViewModel>();
 			Container.RegisterTypeForNavigation<AccountsView, AccountsViewModel>();
 			Container.RegisterTypeForNavigation<CustomerAccountView, CustomerAccountViewModel>();
-			Container.RegisterTypeForNavigation<DashBoard2View, DashBoard2ViewModel>();
+			Container.RegisterTypeForNavigation<DashBoard2View>("DashBoard2View");
 			Container.RegisterTypeForNavigation<DashBoardView, DashBoardViewModel>();
 			Container.RegisterTypeForNavigation<InventoryView, InventoryViewModel>();
 			Container.RegisterTypeForNavigation<PinLocationView, PinLocationViewModel>();
@@ -68,7 +68,7 @@ namespace PacificCoral
 			Container.RegisterTypeForNavigation<TaskView, TaskViewModel>();
 			Container.RegisterTypeForNavigation<ItemView, ItemViewModel>();
 			Container.RegisterTypeForNavigation<AccountView, AccountViewModel>();
-			Container.RegisterTypeForNavigation<LostSaleDetailsView, LostSaleDetailsViewModel>();
+			Container.RegisterTypeForNavigation<LostSaleDetailsView>("LostSaleDetailsView");
 			Container.RegisterTypeForNavigation<TrackMileageView, TrackMileageViewModel>();
 			Container.RegisterTypeForNavigation<OrdersView, OrdersViewModel>();
 			Container.RegisterTypeForNavigation<InventoryItemView, InventoryItemViewModel>();

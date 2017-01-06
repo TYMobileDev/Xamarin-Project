@@ -81,7 +81,6 @@
 			<ContentView Grid.Row="0" x:Name="_viewViewContainer" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="White" />
 			<ContentView Grid.Row="0" x:Name="_editViewContainer" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="White" />
 		</Grid>
-		<controls:NavigationPanel Grid.Row="2" ActivePage="Page1" VerticalOptions="End"/>
 	</Grid>
 </p:BaseContentPage>
 

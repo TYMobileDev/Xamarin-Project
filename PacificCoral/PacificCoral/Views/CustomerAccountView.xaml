@@ -206,10 +206,6 @@
 					</p:TabItem>
 				</p:TabStrip.Children>
 			</p:TabStrip>
-
 		</StackLayout>
-		<control:NavigationPanel Grid.Row="2" ActivePage="Page1" VerticalOptions="End"/>
 	</Grid>
-	
-
 </ContentPage>

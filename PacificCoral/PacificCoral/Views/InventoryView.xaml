@@ -43,44 +43,40 @@
 			</StackLayout>
 		</Grid>
 		<p:ExtendedListView Grid.Row="1" ItemsSource="{Binding Sales}" TappedCommand="{Binding ItemSelectedCommand}" HasUnevenRows="true" SeparatorVisibility="None" Margin="0, 1, 0, 0">
-				<ListView.ItemTemplate>
-					<DataTemplate>
-						<ViewCell>
-							<Grid Padding="0, 5, 0, 0" RowSpacing="0">
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="1*" />
-									<ColumnDefinition Width="1*" />
-									<ColumnDefinition Width="1*" />
-								</Grid.ColumnDefinitions>
-								<Grid.RowDefinitions>
-									<RowDefinition Height="Auto" />
-									<RowDefinition Height="Auto" />
-									<RowDefinition Height="Auto" />
-								</Grid.RowDefinitions>
-								<Label Grid.Row="0" Grid.Column="0" Margin="5, 0, 0, 0" Text="{Binding Code}" FontFamily="{x:Static p:Styles.FontHNMedium}" FontSize="15" TextColor="{StaticResource DefaultDarkColor}"/>
-								<Label Grid.Row="0" Grid.Column="1" Text="{Binding Title}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="13" TextColor="{StaticResource DefaultDarkColor}"/>
-								<p:ClickableContentView Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="5, 5, 10, 10" HorizontalOptions="End">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<Grid Padding="0, 5, 0, 0" RowSpacing="0">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="1*" />
+								<ColumnDefinition Width="1*" />
+								<ColumnDefinition Width="1*" />
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Label Grid.Row="0" Grid.Column="0" Margin="5, 0, 0, 0" Text="{Binding Code}" FontFamily="{x:Static p:Styles.FontHNMedium}" FontSize="15" TextColor="{StaticResource DefaultDarkColor}"/>
+							<Label Grid.Row="0" Grid.Column="1" Text="{Binding Title}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="13" TextColor="{StaticResource DefaultDarkColor}"/>
+							<p:ClickableContentView Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="5, 5, 10, 10" HorizontalOptions="End">
 									<Label Text="Add to Order" FontFamily="{x:Static p:Styles.FontHNMedium}" FontSize="12" TextColor="#D0021B" />
-								</p:ClickableContentView>
-								<Label Grid.Row="1" Grid.Column="0" Margin="5, 0, 0, 0" Grid.ColumnSpan="3" Text="{Binding Shrimp}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="10" TextColor="{StaticResource NotactiveColor}"/>
-								<Label Grid.Row="2" Grid.Column="0" Margin="5, 0, 0, 0" Text="cases/week: 10" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="10" TextColor="{StaticResource DefaultDarkColor}"/>
-								<StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0, 0, 10, 5">
-									<Label Text="Prospect: " Margin="5, 0, 0, 0" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="10" TextColor="{StaticResource DefaultDarkColor}"/>
-									<p:Checkbox IsChecked="{Binding Prospect}" />
-									<Label Text="Deviated: " Margin="5, 0, 0, 0" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="10" TextColor="{StaticResource DefaultDarkColor}"/>
-									<p:Checkbox IsChecked="{Binding Deviated}" />
-									<Label Text="Sun: " Margin="5, 0, 0, 0" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="10" TextColor="{StaticResource DefaultDarkColor}"/>
-									<p:Checkbox IsChecked="{Binding Sub}" />
-								</StackLayout>
-
-								
-								<BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource HorizontalSeparatorStyle}" VerticalOptions="End"/>
-							</Grid>
-						</ViewCell>
-					</DataTemplate>
-				</ListView.ItemTemplate>
-			</p:ExtendedListView>
-		
-		<control:NavigationPanel Grid.Row="2" ActivePage="Page3" VerticalOptions="End"/>
+							</p:ClickableContentView>
+							<Label Grid.Row="1" Grid.Column="0" Margin="5, 0, 0, 0" Grid.ColumnSpan="3" Text="{Binding Shrimp}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="10" TextColor="{StaticResource NotactiveColor}"/>
+							<Label Grid.Row="2" Grid.Column="0" Margin="5, 0, 0, 0" Text="cases/week: 10" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="10" TextColor="{StaticResource DefaultDarkColor}"/>
+							<StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0, 0, 10, 5">
+								<Label Text="Prospect: " Margin="5, 0, 0, 0" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="10" TextColor="{StaticResource DefaultDarkColor}"/>
+								<p:Checkbox IsChecked="{Binding Prospect}" />
+								<Label Text="Deviated: " Margin="5, 0, 0, 0" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="10" TextColor="{StaticResource DefaultDarkColor}"/>
+								<p:Checkbox IsChecked="{Binding Deviated}" />
+								<Label Text="Sun: " Margin="5, 0, 0, 0" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="10" TextColor="{StaticResource DefaultDarkColor}"/>
+								<p:Checkbox IsChecked="{Binding Sub}" />
+							</StackLayout>
+							<BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource HorizontalSeparatorStyle}" VerticalOptions="End"/>
+						</Grid>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</p:ExtendedListView>
 	</Grid>
 </ContentPage>

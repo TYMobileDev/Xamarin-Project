@@ -63,7 +63,7 @@ namespace PacificCoral.ViewModels
 
 		private Task OnDetailsCommandAsync()
 		{
-			return _navigationService.NavigateAsync<LostSaleDetailsView>();
+			return _navigationService.NavigateAsync("LostSaleDetailsView", animated:false);
 		}
 
 		private Task OnBackCommandAsync()
