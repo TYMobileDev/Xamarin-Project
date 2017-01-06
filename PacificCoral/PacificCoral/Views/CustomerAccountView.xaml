@@ -241,6 +241,5 @@
 
 			</StackLayout>
 		</Grid>	
-		<control:NavigationPanel Grid.Row="2" ActivePage="Page1" VerticalOptions="End"/>
 	</Grid>
 </ContentPage>

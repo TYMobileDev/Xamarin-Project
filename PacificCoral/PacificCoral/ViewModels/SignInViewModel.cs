@@ -1,16 +1,11 @@
 ﻿using PacificCoral.Views;
 using PacificCoral.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using PropertyChanged;
-using Xamarin.Forms;
 using PacificCoral.Helpers;
 using Acr.UserDialogs;
 
@@ -33,7 +28,6 @@ namespace PacificCoral.ViewModels
         {
             get
             {
-
                 return new DelegateCommand(async () =>
                 {
                     await LoginAsync();
@@ -55,7 +49,7 @@ namespace PacificCoral.ViewModels
                 }
                 if (Authentication.DefaultAthenticator.IsAuthenticated)
                 {
-                    await _navigationService.NavigateAsync<DashBoardView>();
+					await _navigationService.NavigateAsync("/Root");
                 }
                 else // authentication failure
                 {
@@ -72,7 +66,6 @@ namespace PacificCoral.ViewModels
                         UserDialogs.Instance.Alert("WARNING:  Failure logging in application to server.  Application will run in OFFLINE mode with limitted functionality.", "Login Problems");
                         await _navigationService.NavigateAsync<DashBoardView>();
                     }
-
                 }
             }
             else // offline
@@ -89,23 +82,12 @@ namespace PacificCoral.ViewModels
                     UserDialogs.Instance.Alert ("The phone is not connected to the internet and is unable to log into the server.  Check Wifi and cellular connection, and try again.","Connection Error");
                 }
             }
-
-
         }
-
 
         public bool WaitVisible
         {
-            get
-            {
-                return waitVisible;
-            }
-
-            set
-            {
-                SetProperty<bool>(ref waitVisible, value);
-                
-            }
+            get { return waitVisible;}
+            set {SetProperty<bool>(ref waitVisible, value);}
         }
     }
 }

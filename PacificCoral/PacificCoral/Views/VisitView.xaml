@@ -3,6 +3,7 @@
 		xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 		x:Class="PacificCoral.VisitView">
+
 	<p:BaseDetailView.ViewView>
 		<StackLayout Spacing="0">
 			<StackLayout Orientation="Horizontal" Padding="10, 15" HorizontalOptions="Fill">
@@ -17,7 +18,6 @@
 			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
 		</StackLayout>
 	</p:BaseDetailView.ViewView>
-	
 	<p:BaseDetailView.EditView>
 		<StackLayout Spacing="0">
 			<Grid Padding="10, 15" HorizontalOptions="Fill">

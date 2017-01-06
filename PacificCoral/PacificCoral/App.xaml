@@ -82,32 +82,6 @@
 	            <Setter Property="BackgroundColor" Value="{StaticResource MainBgColor}" />
 	        </Style>
 
-	        <Style x:Key="TimePickerStyle" TargetType="TimePicker">
-	            <Setter Property="TextColor" Value="White" />
-				<Setter Property="BackgroundColor" Value="Transparent"/>
-				<Setter Property="Opacity">
-					<Setter.Value>
-						<OnPlatform x:TypeArguments="x:Double"
-								iOS     ="0.1"
-								Android ="0"
-								WinPhone="0" />
-					</Setter.Value>
-				</Setter>
-	        </Style>
-
-	        <Style x:Key="DatePickerStyle" TargetType="DatePicker">
-	            <Setter Property="TextColor" Value="White" />
-				<Setter Property="BackgroundColor" Value="Transparent"/>
-				<Setter Property="Opacity">
-					<Setter.Value>
-						<OnPlatform x:TypeArguments="x:Double"
-								iOS     ="0.1"
-								Android ="0"
-								WinPhone="0" />
-					</Setter.Value>
-				</Setter>
-	        </Style>
-			
 			<!-- Converters -->
 			<p:DateTimeConverter x:Key="DateTimeConverter" />
 			<p:ShortDateTimeConverter x:Key="ShortDateTimeConverter" />

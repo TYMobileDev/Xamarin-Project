@@ -162,6 +162,10 @@
     <Compile Include="Controls\RoundedContentView.cs" />
     <Compile Include="Helpers\StyleManager.cs" />
     <Compile Include="Controls\DropDownList.cs" />
+    <Compile Include="Views\RootPage.cs" />
+    <Compile Include="Views\ProfileView.xaml.cs">
+      <DependentUpon>ProfileView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Mono.Android">
@@ -313,6 +317,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\InventoryItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProfileView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

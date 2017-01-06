@@ -108,7 +108,5 @@
 				</p:ExtendedListView.ItemTemplate>
 			</p:ExtendedListView>
 		</StackLayout>
-		<control:NavigationPanel Grid.Row="2" ActivePage="Page3" VerticalOptions="End"/>
 	</Grid>
-	
 </p:BaseContentPage>

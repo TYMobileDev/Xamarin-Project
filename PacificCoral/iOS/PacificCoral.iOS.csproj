@@ -107,6 +107,7 @@
     <None Include="packages.config" />
     <Compile Include="Renderers\ExtendedEntryRenderer.cs" />
     <Compile Include="Renderers\ExtendedListViewRenderer.cs" />
+    <Compile Include="Renderers\TabbedPageRenderer.cs" />
     <Compile Include="AuthentificateImplementation.cs" />
   </ItemGroup>
   <ItemGroup>

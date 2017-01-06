@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             xmlns:control="clr-namespace:PacificCoral.Controls;assembly=PacificCoral"
-             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
-             x:Class="PacificCoral.Views.DashBoard2View"
-			BackgroundColor="{StaticResource MainBgColor}">
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+        prism:ViewModelLocator.AutowireViewModel="True"
+        xmlns:control="clr-namespace:PacificCoral.Controls;assembly=PacificCoral"
+		xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+		x:Class="PacificCoral.Views.DashBoard2View"
+		BackgroundColor="{StaticResource MainBgColor}">
 		
   <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness"
-                    iOS="0, 10, 0, 0"/>
+			iOS="0, 10, 0, 0"/>
   </ContentPage.Padding>
 
   <Grid>
@@ -121,33 +121,28 @@
 	            </ListView.ItemTemplate>
 	        </ListView>
 		</StackLayout>
-
-          <StackLayout Margin="0,0,0,30">
-            <Label Text="Deviations" FontSize="Medium" TextColor="#8B572A" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-            <Grid>
-              <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-              </Grid.RowDefinitions>
-
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-              </Grid.ColumnDefinitions>
-
-              <Label Grid.Row="0" Grid.Column="0" Text="Pending Aproval" FontSize="Small" HorizontalOptions="EndAndExpand"/>
-              <Label Grid.Row="1" Grid.Column="0"  Text="Expiring" FontSize="Small" HorizontalOptions="EndAndExpand"/>
-              <Grid Grid.Row="0" Grid.Column="1" Margin="10,0" >
-                <Label Text="12" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
-              </Grid>
-              <Grid Grid.Row="1" Grid.Column="1" Margin="10,0" >
-                <Label Text="53" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
-              </Grid>
-            </Grid>
-          </StackLayout>
-				
-        </StackLayout>
-    </ScrollView>
-    <control:NavigationPanel Grid.Row="1" ActivePage="Page2" VerticalOptions="End"/>
-  </Grid>
+				<StackLayout Margin="0,0,0,30">
+					<Label Text="Deviations" FontSize="Medium" TextColor="#8B572A" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<Label Grid.Row="0" Grid.Column="0" Text="Pending Aproval" FontSize="Small" HorizontalOptions="EndAndExpand"/>
+						<Label Grid.Row="1" Grid.Column="0"  Text="Expiring" FontSize="Small" HorizontalOptions="EndAndExpand"/>
+						<Grid Grid.Row="0" Grid.Column="1" Margin="10,0" >
+							<Label Text="12" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
+						</Grid>
+						<Grid Grid.Row="1" Grid.Column="1" Margin="10,0" >
+							<Label Text="53" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
+						</Grid>
+					</Grid>
+				</StackLayout>
+			</StackLayout>
+		</ScrollView>
+	</Grid>
 </ContentPage>

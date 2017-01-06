@@ -10,6 +10,8 @@ namespace PacificCoral
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
+			//NavigationPage.SetHasBackButton(this, false);
+			//NavigationPage.SetHasNavigationBar(this, false);
 			var actionsHandler = BindingContext as IViewActionsHandler;
 			if (actionsHandler != null)
 				actionsHandler.OnAppearing();
