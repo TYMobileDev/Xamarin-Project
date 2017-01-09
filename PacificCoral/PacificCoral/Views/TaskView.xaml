@@ -31,8 +31,8 @@
 			<BoxView Style="{StaticResource DetailSectionSeparatorStyle}"/>
 			<Grid Padding="10, 15" HorizontalOptions="Fill">
 				<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Fill" Spacing="0">
-					<DatePicker Format="M,d" Date="{Binding Date}" HorizontalOptions="EndAndExpand" Style="{StaticResource DatePickerStyle}" WidthRequest="100" />
-					<TimePicker Format="h:mm" Time="{Binding Time}" HorizontalOptions="EndAndExpand" Style="{StaticResource TimePickerStyle}" WidthRequest="40" />
+					<DatePicker Format="M,d" Date="{Binding Date}" HorizontalOptions="EndAndExpand" Style="{StaticResource DatePickerStyle}" WidthRequest="150" />
+					<TimePicker Format="h:mm" Time="{Binding Time}" HorizontalOptions="End" Style="{StaticResource TimePickerStyle}" WidthRequest="70" />
 				</StackLayout>
 				<Label Grid.Row="0" Grid.Column="0" Text="{Binding DateTimeFull,StringFormat='{0:MMMM d, yyyy h:mm tt}'}" Style="{StaticResource DetailSectionLabelStyle}" HorizontalTextAlignment="End" VerticalTextAlignment="Center" InputTransparent="true" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
 				<Label Grid.Row="0" Grid.Column="0" Text="Date" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="FillAndExpand" Style="{StaticResource DetailSectionTitleStyle}"/>
