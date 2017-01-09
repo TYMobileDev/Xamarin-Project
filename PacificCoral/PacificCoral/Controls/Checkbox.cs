@@ -14,12 +14,9 @@ namespace PacificCoral
 			_checked = new Image
 			{
 				Source = "checked",
-				//HeightRequest = 15,
-				//WidthRequest = 15,
 				VerticalOptions = LayoutOptions.Center,
 				HorizontalOptions = LayoutOptions.Center,
 				InputTransparent = true,
-				Opacity = 0
 			};
 			Padding = new Thickness(3);
 			this.BorderColor = Color.FromHex("#979797");
@@ -32,8 +29,6 @@ namespace PacificCoral
 			MinimumWidthRequest = 15;
 			VerticalOptions = LayoutOptions.Center;
 			HorizontalOptions = LayoutOptions.Center;
-
-			//Content = _checked;
 		}
 
 		#region -- Public properties --
@@ -99,19 +94,14 @@ namespace PacificCoral
 
 		private void UpdateCheckedState()
 		{
-			uint animationTime = 150;
 			if (IsChecked)
 			{
 				if (Content == null)
 					Content = _checked;
-				//_checked.Opacity = 0;
-				//_checked.FadeTo(1, animationTime);
 			}
 			else
 			{
 				Content = null;
-				//_checked.Opacity = 1;
-				//_checked.FadeTo(0, animationTime);
 			}
 		}
 
