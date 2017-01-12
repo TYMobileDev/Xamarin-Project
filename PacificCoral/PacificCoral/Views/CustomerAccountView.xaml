@@ -8,7 +8,7 @@
 
 	<ContentPage.Resources>
 		<ResourceDictionary>
-			<p:IntToObjectConverter x:Key="pageIndexToActionTitleConverter" Val0="Add Item" Val1="Log a Visit" Val2="Add Task" />
+			<p:IntToObjectConverter x:Key="pageIndexToActionTitleConverter" Val0="Add Item" Val1="Log a Visit" Val2="Add Item" />
 			<p:IntToObjectConverter x:Key="pageIndexToActionImageConverter" Val0="addItem" Val1="logVisit" Val2="addItem" />
 			<Style x:Key="tabButtonImageStyle" TargetType="Image">
 	            <Setter Property="HeightRequest" Value="15" />

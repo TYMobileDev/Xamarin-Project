@@ -101,19 +101,12 @@ namespace PacificCoral
 				Text = _list[0],
 			};
 
-			var tapGestureRecognizer = new TapGestureRecognizer();
-			tapGestureRecognizer.Tapped += (s, e) =>
-			{
-				Search();
-			};
-			_label.GestureRecognizers.Add(tapGestureRecognizer);
-
 			var image = new Image()
 			{
-				Source = "plus",
+				Source = "arrow_down",
 				HorizontalOptions = LayoutOptions.Start,
 				Margin = new Thickness(0, 5, 0, 5),
-				HeightRequest=10,
+				HeightRequest = 7,
 			};
 
 			var stackHrz = new StackLayout()
@@ -125,6 +118,13 @@ namespace PacificCoral
 					image,
 				},
 			};
+
+			var tapGestureRecognizer = new TapGestureRecognizer();
+			tapGestureRecognizer.Tapped += (s, e) =>
+			{
+				Search();
+			};
+			stackHrz.GestureRecognizers.Add(tapGestureRecognizer);
 
 			this.Children.Add(stackHrz, 1, 0);
 			this.Children.Add(_autoCompleteListView, 0, 2, 1, 2);

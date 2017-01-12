@@ -38,7 +38,7 @@ namespace PacificCoral.ViewModels
             ChartItems.Add(new ChartSourceItem() { X = 10, Y = 300 });
             ChartItems.Add(new ChartSourceItem() { X = 12, Y = 400 });
 
-			Revenue = "+14,5%";
+			Revenue = "+14,49%";
         }
 
 		#region -- Public properties --

@@ -74,53 +74,55 @@
 					<DataTemplate>
 						<StackLayout Spacing="0">
 							<!-- Chart -->
-							<RelativeLayout>
-								<Grid HeightRequest="200" BackgroundColor="White"
-											RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
-												ElementName=stack,Property=Y,Factor=1,Constant=30}"
-											RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
-												ElementName=stack,Property=X,Factor=1,Constant=0}"
-										RelativeLayout.WidthConstraint="{ConstraintExpression
-											Type=RelativeToParent,Property=Width,Factor=1,Constant=0}">
-									<chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3">
-										<chart:SfChart.PrimaryAxis>
-											<chart:CategoryAxis>
-											</chart:CategoryAxis>
-										</chart:SfChart.PrimaryAxis>
-										<chart:SfChart.SecondaryAxis>
-											<chart:NumericalAxis>
-											</chart:NumericalAxis>
-										</chart:SfChart.SecondaryAxis>
-										<chart:SfChart.Series>
-											<chart:LineSeries
-													ItemsSource="{Binding ChartItems}"
-													XBindingPath="X"
-													YBindingPath="Y"
-													Color="#bababa">
-											</chart:LineSeries>
-											<chart:AreaSeries
-													ItemsSource="{Binding ChartItems}"
-													XBindingPath="X"
-													YBindingPath="Y"
-													Color="#ebebeb">
-												<chart:AreaSeries.DataMarker>
-													<chart:ChartDataMarker MarkerColor="Black" MarkerHeight="10" MarkerWidth="10" LabelContent="YValue" ShowMarker="True" ShowLabel="False">
-														<chart:ChartDataMarker.LabelStyle>
-															<chart:DataMarkerLabelStyle Font="Small" TextColor="White" BackgroundColor="Black" LabelPosition="Center"/>
-														</chart:ChartDataMarker.LabelStyle>
-													</chart:ChartDataMarker>
-												</chart:AreaSeries.DataMarker>
-											</chart:AreaSeries>
-										</chart:SfChart.Series>
-									</chart:SfChart>
-								</Grid>
-								<StackLayout Orientation="Horizontal" BackgroundColor="Transparent" x:Name="stack"
-										RelativeLayout.WidthConstraint="{ConstraintExpression
-											Type=RelativeToParent,Property=Width,Factor=1,Constant=0}">
-									<p:DropDownOPCOList Margin="20, 0, 0, 0" WidthRequest="200" x:Name="dropDownList" HorizontalOptions="CenterAndExpand"/>
-									<Label Text="{Binding Revenue}" FontSize="Small" TextColor="{StaticResource DefaultDarkColor}" HorizontalOptions="StartAndExpand" Margin="7" />
-								</StackLayout>
-							</RelativeLayout>
+							<StackLayout InputTransparent="true">
+								<RelativeLayout InputTransparent="true">
+									<Grid HeightRequest="200" BackgroundColor="White" InputTransparent="true"
+												RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+													ElementName=stack,Property=Y,Factor=1,Constant=30}"
+												RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
+													ElementName=stack,Property=X,Factor=1,Constant=0}"
+											RelativeLayout.WidthConstraint="{ConstraintExpression
+												Type=RelativeToParent,Property=Width,Factor=1,Constant=0}">
+										<chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3">
+											<chart:SfChart.PrimaryAxis>
+												<chart:CategoryAxis>
+												</chart:CategoryAxis>
+											</chart:SfChart.PrimaryAxis>
+											<chart:SfChart.SecondaryAxis>
+												<chart:NumericalAxis>
+												</chart:NumericalAxis>
+											</chart:SfChart.SecondaryAxis>
+											<chart:SfChart.Series>
+												<chart:LineSeries
+														ItemsSource="{Binding ChartItems}"
+														XBindingPath="X"
+														YBindingPath="Y"
+														Color="#bababa">
+												</chart:LineSeries>
+												<chart:AreaSeries
+														ItemsSource="{Binding ChartItems}"
+														XBindingPath="X"
+														YBindingPath="Y"
+														Color="#ebebeb">
+													<chart:AreaSeries.DataMarker>
+														<chart:ChartDataMarker MarkerColor="Black" MarkerHeight="10" MarkerWidth="10" LabelContent="YValue" ShowMarker="True" ShowLabel="False">
+															<chart:ChartDataMarker.LabelStyle>
+																<chart:DataMarkerLabelStyle Font="Small" TextColor="White" BackgroundColor="Black" LabelPosition="Center"/>
+															</chart:ChartDataMarker.LabelStyle>
+														</chart:ChartDataMarker>
+													</chart:AreaSeries.DataMarker>
+												</chart:AreaSeries>
+											</chart:SfChart.Series>
+										</chart:SfChart>
+									</Grid>
+									<StackLayout Orientation="Horizontal" BackgroundColor="Transparent" x:Name="stack"
+											RelativeLayout.WidthConstraint="{ConstraintExpression
+												Type=RelativeToParent,Property=Width,Factor=1,Constant=0}">
+										<p:DropDownOPCOList Margin="20, 0, 0, 0" WidthRequest="200" x:Name="dropDownList" HorizontalOptions="CenterAndExpand"/>
+										<Label Text="{Binding Revenue}" FontSize="Small" TextColor="{StaticResource DefaultDarkColor}" HorizontalOptions="StartAndExpand" Margin="7" />
+									</StackLayout>
+								</RelativeLayout>
+							</StackLayout>
 							<StackLayout BackgroundColor="{StaticResource MainBgColor}" Padding="0, 10">
 							<!--<StackLayout Orientation="Horizontal" HorizontalOptions="End" Padding="5">
 								<StackLayout.GestureRecognizers>
