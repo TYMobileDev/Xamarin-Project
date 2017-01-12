@@ -27,7 +27,6 @@
 
 
 			<p:ClickableContentView Grid.Column="0" Style="{StaticResource NavbarItemStyle}" Command="{Binding BackCommand}">
-<!--				<Image Source="backbutton"/>-->
 			</p:ClickableContentView>
 			<StackLayout Grid.Column="0" Grid.ColumnSpan="3">
 				<Image Style="{StaticResource titleLogoStyle}"/>
@@ -42,7 +41,7 @@
 				</p:ClickableContentView>
 			</StackLayout>
 		</Grid>
-		<p:ExtendedListView Grid.Row="1" ItemsSource="{Binding Sales}" TappedCommand="{Binding ItemSelectedCommand}" HasUnevenRows="true" SeparatorVisibility="None" Margin="0, 1, 0, 0">
+		<p:ExtendedListView Grid.Row="1" ItemsSource="{Binding Sales}" HasUnevenRows="true" SeparatorVisibility="None" Margin="0, 1, 0, 0"> <!--TappedCommand="{Binding ItemSelectedCommand}"-->
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>

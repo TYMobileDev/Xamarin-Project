@@ -58,7 +58,7 @@
 								<Label Text="View accounts" Style="{StaticResource tabButtonLabelStyle}"/>
 						</StackLayout>
 					</p:ClickableContentView>
-					<p:ClickableContentView Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill" Command="{Binding ViewOrdersCommand}">
+					<p:ClickableContentView Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill" > <!--Command="{Binding ViewOrdersCommand}"-->
 						<StackLayout VerticalOptions="Center">
 								<Image Source="items" Style="{StaticResource tabButtonImageStyle}"/>
 								<Label Text="Items" Style="{StaticResource tabButtonLabelStyle}"/>
@@ -105,13 +105,13 @@
 				          </chart:SfChart>
 				        </Grid>
 						<StackLayout BackgroundColor="{StaticResource MainBgColor}" Padding="0, 10">
-							<StackLayout Orientation="Horizontal" HorizontalOptions="End" Padding="5">
+<!--							<StackLayout Orientation="Horizontal" HorizontalOptions="End" Padding="5">
 								<StackLayout.GestureRecognizers>
 					            	<TapGestureRecognizer Command="{Binding DetailsCommand}"/>
 					            </StackLayout.GestureRecognizers>
 								<Label Text="Details" TextColor="#E59006" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="15"/>
 								<Label Text=">" FontFamily="{x:Static p:Styles.FontHNRegular}" TextColor="{StaticResource DefaultDarkColor}" FontSize="15"/>
-							</StackLayout>
+							</StackLayout>-->
 					        <Label Text="LOST SALES - PFG ATLANTA" HorizontalOptions="CenterAndExpand" FontFamily="{x:Static p:Styles.FontHNMedium}" TextColor="{StaticResource DefaultDarkColor}" FontSize="15"/>
 						</StackLayout>
 						<Label Margin="5" Text="SEP - OCT GAIN(LOSS)" TextColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" FontAttributes="Bold"/>
