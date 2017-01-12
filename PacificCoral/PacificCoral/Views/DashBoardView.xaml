@@ -24,100 +24,117 @@
 	        </Style>
 		</ResourceDictionary>
 	</ContentPage.Resources>
-	<Grid>
-	    <Grid.RowDefinitions>
-	      <RowDefinition Height="*"/>
-	      <RowDefinition Height="Auto"/>
-	    </Grid.RowDefinitions>
-		<StackLayout Grid.Row="0">
-			<!-- Header -->
-			<StackLayout BackgroundColor="White">
-				<StackLayout.Padding>
-					<OnPlatform x:TypeArguments="Thickness"
-	                    iOS="0, 20, 0, 0" Android="0"/>
-				</StackLayout.Padding>
-		        <StackLayout Margin="20,5">
-		          <Image Source="title.png"/>
-		        </StackLayout>
 
-	        	<Grid ColumnSpacing="10" BackgroundColor="White" HorizontalOptions="Fill" HeightRequest="60">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="*"/>
-						<ColumnDefinition Width="*"/>
-						<ColumnDefinition Width="*"/>
-					</Grid.ColumnDefinitions>
-		         	<p:ClickableContentView Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Fill" Command="{Binding ViewTrackMileageCommand}">
-						<StackLayout VerticalOptions="Center">
-								<Image Source="car" Style="{StaticResource tabButtonImageStyle}"/>
-								<Label Text="Track mileage" Style="{StaticResource tabButtonLabelStyle}"/>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<!-- Header -->
+		<StackLayout BackgroundColor="White" Grid.Row="0">
+			<StackLayout.Padding>
+				<OnPlatform x:TypeArguments="Thickness"
+					iOS="0, 20, 0, 20" Android="0"/>
+			</StackLayout.Padding>
+			<StackLayout Margin="20,5">
+				<Image Source="title.png"/>
+			</StackLayout>
+			<Grid ColumnSpacing="10" BackgroundColor="White" HorizontalOptions="Fill" HeightRequest="60">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+		         <p:ClickableContentView Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Fill" Command="{Binding ViewTrackMileageCommand}">
+					<StackLayout VerticalOptions="Center">
+						<Image Source="car" Style="{StaticResource tabButtonImageStyle}"/>
+						<Label Text="Track mileage" Style="{StaticResource tabButtonLabelStyle}"/>
 						</StackLayout>
-					</p:ClickableContentView>
-					<p:ClickableContentView Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill" Command="{Binding ViewAccountsCommand}">
-						<StackLayout VerticalOptions="Center">
-								<Image Source="account" Style="{StaticResource tabButtonImageStyle}"/>
-								<Label Text="View accounts" Style="{StaticResource tabButtonLabelStyle}"/>
-						</StackLayout>
-					</p:ClickableContentView>
-					<p:ClickableContentView Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill" > <!--Command="{Binding ViewOrdersCommand}"-->
-						<StackLayout VerticalOptions="Center">
-								<Image Source="items" Style="{StaticResource tabButtonImageStyle}"/>
-								<Label Text="Items" Style="{StaticResource tabButtonLabelStyle}"/>
-						</StackLayout>
-					</p:ClickableContentView>
-				</Grid>
-	        </StackLayout>
+				</p:ClickableContentView>
+				<p:ClickableContentView Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill" Command="{Binding ViewAccountsCommand}">
+					<StackLayout VerticalOptions="Center">
+						<Image Source="account" Style="{StaticResource tabButtonImageStyle}"/>
+						<Label Text="View accounts" Style="{StaticResource tabButtonLabelStyle}"/>
+					</StackLayout>
+				</p:ClickableContentView>
+				<p:ClickableContentView Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill" > <!--Command="{Binding ViewOrdersCommand}"-->
+					<StackLayout VerticalOptions="Center">
+						<Image Source="items" Style="{StaticResource tabButtonImageStyle}"/>
+						<Label Text="Items" Style="{StaticResource tabButtonLabelStyle}"/>
+					</StackLayout>
+				</p:ClickableContentView>
+			</Grid>
+		</StackLayout>
+
+		<StackLayout  Margin="5" Grid.Row="1">
 			<!-- List -->
 			<ListView ItemsSource ="{Binding Sales}" HasUnevenRows="True" SeparatorVisibility="None" BackgroundColor="White" Header="{Binding .}" Margin="7">
-			<ListView.HeaderTemplate>
-				<DataTemplate>
-					<StackLayout Spacing="0">		
-				        <Grid HeightRequest="150" BackgroundColor="White">
-				          <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-				            <chart:SfChart.PrimaryAxis>
-				              <chart:CategoryAxis>
-				              </chart:CategoryAxis>
-				            </chart:SfChart.PrimaryAxis>
-				            <chart:SfChart.SecondaryAxis>
-				              <chart:NumericalAxis>
-				              </chart:NumericalAxis>
-				            </chart:SfChart.SecondaryAxis>
-				            <chart:SfChart.Series>
-				              <chart:LineSeries
-				                    ItemsSource="{Binding ChartItems}"
-				                    XBindingPath="X"
-				                    YBindingPath="Y"
-				                    Color="#bababa">
-				              </chart:LineSeries>
-				              <chart:AreaSeries
-				                    ItemsSource="{Binding ChartItems}"
-				                    XBindingPath="X"
-				                    YBindingPath="Y"
-				                    Color="#ebebeb">
-				                <chart:AreaSeries.DataMarker>
-				                  <chart:ChartDataMarker MarkerColor="Black" MarkerHeight="10" MarkerWidth="10" LabelContent="YValue" ShowMarker="True" ShowLabel="False">
-				                    <chart:ChartDataMarker.LabelStyle>
-				                      <chart:DataMarkerLabelStyle Font="Small" TextColor="White" BackgroundColor="Black" LabelPosition="Center"/>
-				                    </chart:ChartDataMarker.LabelStyle>
-				                  </chart:ChartDataMarker>
-				                </chart:AreaSeries.DataMarker>
-				              </chart:AreaSeries>
-				            </chart:SfChart.Series>
-				          </chart:SfChart>
-				        </Grid>
-						<StackLayout BackgroundColor="{StaticResource MainBgColor}" Padding="0, 10">
-<!--							<StackLayout Orientation="Horizontal" HorizontalOptions="End" Padding="5">
+				<ListView.HeaderTemplate>
+					<DataTemplate>
+						<StackLayout Spacing="0">
+							<!-- Chart -->
+							<RelativeLayout>
+								<Grid HeightRequest="200" BackgroundColor="White"
+											RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+												ElementName=stack,Property=Y,Factor=1,Constant=30}"
+											RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
+												ElementName=stack,Property=X,Factor=1,Constant=0}"
+										RelativeLayout.WidthConstraint="{ConstraintExpression
+											Type=RelativeToParent,Property=Width,Factor=1,Constant=0}">
+									<chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3">
+										<chart:SfChart.PrimaryAxis>
+											<chart:CategoryAxis>
+											</chart:CategoryAxis>
+										</chart:SfChart.PrimaryAxis>
+										<chart:SfChart.SecondaryAxis>
+											<chart:NumericalAxis>
+											</chart:NumericalAxis>
+										</chart:SfChart.SecondaryAxis>
+										<chart:SfChart.Series>
+											<chart:LineSeries
+													ItemsSource="{Binding ChartItems}"
+													XBindingPath="X"
+													YBindingPath="Y"
+													Color="#bababa">
+											</chart:LineSeries>
+											<chart:AreaSeries
+													ItemsSource="{Binding ChartItems}"
+													XBindingPath="X"
+													YBindingPath="Y"
+													Color="#ebebeb">
+												<chart:AreaSeries.DataMarker>
+													<chart:ChartDataMarker MarkerColor="Black" MarkerHeight="10" MarkerWidth="10" LabelContent="YValue" ShowMarker="True" ShowLabel="False">
+														<chart:ChartDataMarker.LabelStyle>
+															<chart:DataMarkerLabelStyle Font="Small" TextColor="White" BackgroundColor="Black" LabelPosition="Center"/>
+														</chart:ChartDataMarker.LabelStyle>
+													</chart:ChartDataMarker>
+												</chart:AreaSeries.DataMarker>
+											</chart:AreaSeries>
+										</chart:SfChart.Series>
+									</chart:SfChart>
+								</Grid>
+								<StackLayout Orientation="Horizontal" BackgroundColor="Transparent" x:Name="stack"
+										RelativeLayout.WidthConstraint="{ConstraintExpression
+											Type=RelativeToParent,Property=Width,Factor=1,Constant=0}">
+									<p:DropDownOPCOList Margin="20, 0, 0, 0" WidthRequest="200" x:Name="dropDownList" HorizontalOptions="CenterAndExpand"/>
+									<Label Text="{Binding Revenue}" FontSize="Small" TextColor="{StaticResource DefaultDarkColor}" HorizontalOptions="StartAndExpand" Margin="7" />
+								</StackLayout>
+							</RelativeLayout>
+							<StackLayout BackgroundColor="{StaticResource MainBgColor}" Padding="0, 10">
+							<!--<StackLayout Orientation="Horizontal" HorizontalOptions="End" Padding="5">
 								<StackLayout.GestureRecognizers>
 					            	<TapGestureRecognizer Command="{Binding DetailsCommand}"/>
 					            </StackLayout.GestureRecognizers>
 								<Label Text="Details" TextColor="#E59006" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="15"/>
 								<Label Text=">" FontFamily="{x:Static p:Styles.FontHNRegular}" TextColor="{StaticResource DefaultDarkColor}" FontSize="15"/>
 							</StackLayout>-->
-					        <Label Text="LOST SALES - PFG ATLANTA" HorizontalOptions="CenterAndExpand" FontFamily="{x:Static p:Styles.FontHNMedium}" TextColor="{StaticResource DefaultDarkColor}" FontSize="15"/>
+								<Label Text="LOST SALES - PFG ATLANTA" HorizontalOptions="CenterAndExpand" FontFamily="{x:Static p:Styles.FontHNMedium}" TextColor="{StaticResource DefaultDarkColor}" FontSize="15"/>
+							</StackLayout>
+							<Label Margin="5" Text="SEP - OCT GAIN(LOSS)" TextColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" FontAttributes="Bold"/>
+							<BoxView Style="{StaticResource HorizontalSeparatorStyle}"/>
 						</StackLayout>
-						<Label Margin="5" Text="SEP - OCT GAIN(LOSS)" TextColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" FontAttributes="Bold"/>
-			        	<BoxView Style="{StaticResource HorizontalSeparatorStyle}"/>
-					</StackLayout>
-				</DataTemplate>
+					</DataTemplate>
 				</ListView.HeaderTemplate>
 				<ListView.ItemTemplate>
 					<DataTemplate>
@@ -146,6 +163,29 @@
 						</ViewCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>
+				<ListView.Footer>
+					<!--Deviations-->
+					<StackLayout BackgroundColor="{StaticResource MainBgColor}">
+						<Label Text="Deviations" FontSize="Medium" TextColor="#8B572A" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />				<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto"/>
+								<RowDefinition Height="Auto"/>
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="*"/>
+							</Grid.ColumnDefinitions>
+							<Label Grid.Row="0" Grid.Column="0" Text="Pending Aproval" FontSize="Small" HorizontalOptions="EndAndExpand"/>
+							<Label Grid.Row="1" Grid.Column="0"  Text="Expiring" FontSize="Small" HorizontalOptions="EndAndExpand"/>
+							<Grid Grid.Row="0" Grid.Column="1" Margin="10,0" >
+								<Label Text="12" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
+							</Grid>
+							<Grid Grid.Row="1" Grid.Column="1" Margin="10,0" >
+								<Label Text="53" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
+							</Grid>
+						</Grid>
+					</StackLayout>
+				</ListView.Footer>
 			</ListView>
 		</StackLayout>
 	</Grid>

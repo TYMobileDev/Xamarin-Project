@@ -325,6 +325,7 @@
     <AndroidResource Include="Resources\drawable\trackItem.png" />
     <AndroidResource Include="Resources\drawable\moon.png" />
     <AndroidResource Include="Resources\drawable\backbutton.png" />
+    <AndroidResource Include="Resources\drawable\arrow_down.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
