@@ -23,7 +23,7 @@ namespace PacificCoral.ViewModels
             _navigationService = navigationService;
 
             var sales = new ObservableCollection<SalesModel>();
-            for (var i = 0; i < 5; i++)
+            for (var i = 0; i < 15; i++)
             {
                 sales.Add(new SalesModel() { Code = "421127", Shrimp = "SHRIMP WHT 71/90", Sep1 = "SEP::63,451", Sep2 = "SEP::63,451", GL = "G(L)(21,335)" });
             }
@@ -37,8 +37,8 @@ namespace PacificCoral.ViewModels
             ChartItems.Add(new ChartSourceItem() { X = 8, Y = 110 });
             ChartItems.Add(new ChartSourceItem() { X = 10, Y = 300 });
             ChartItems.Add(new ChartSourceItem() { X = 12, Y = 400 });
-            ChartItems.Add(new ChartSourceItem() { X = 14, Y = 450 });
-            ChartItems.Add(new ChartSourceItem() { X = 16, Y = 460 });
+
+			Revenue = "+14,49%";
         }
 
 		#region -- Public properties --
@@ -46,6 +46,13 @@ namespace PacificCoral.ViewModels
         public ObservableCollection<ChartSourceItem> ChartItems { get; set; }
 
         public ObservableCollection<SalesModel> Sales { get; set; }
+
+		private string _Revenue;
+		public string Revenue
+		{
+			get { return _Revenue; }
+			set { SetProperty( ref _Revenue, value);}
+		}
 
 		public ICommand ViewTrackMileageCommand
 		{

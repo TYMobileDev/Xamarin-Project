@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace PacificCoral
 {
-	public class AutoCompleteList : Grid
+	public class DropDownOPCOList : Grid
 	{
 		private Label _label;
 		private ListView _autoCompleteListView;
@@ -22,9 +22,9 @@ namespace PacificCoral
 			set { SetValue(ItemSelectedCommandProperty, value); }
 		}
 
-		public static readonly BindableProperty SourceProperty = 
-			BindableProperty.Create(nameof(SourceItems), typeof(IList<string>), typeof(AutoCompleteList), default(string), defaultBindingMode:BindingMode.TwoWay);
-		
+		public static readonly BindableProperty SourceProperty =
+			BindableProperty.Create(nameof(SourceItems), typeof(IList<string>), typeof(AutoCompleteList), default(string), defaultBindingMode: BindingMode.TwoWay);
+
 		public IList<string> SourceItems
 		{
 			get { return (IList<string>)GetValue(SourceProperty); }
@@ -33,25 +33,25 @@ namespace PacificCoral
 
 		#endregion
 
-		public AutoCompleteList()
+		public DropDownOPCOList()
 		{
-			this.RowDefinitions.Add(new RowDefinition() { Height = 35 });
+			this.RowDefinitions.Add(new RowDefinition() { Height = 30 });
 			this.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
 			this.RowSpacing = 0;
 
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = 1 });
 			this.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-			this.BackgroundColor = Color.White;
+			this.BackgroundColor = Color.Transparent;
 			this.InputTransparent = false;
 
 			_list = new List<string>
 				{
-					"1233455",
-					"3293920",
-					"5784758",
-					"1237777",
-					"4343437",
-					"3232327",
+					"PFG Atlanta",
+					"PFG Columbia",
+					"PFG Atlanta 1",
+					"PFG Atlanta 2",
+					"PFG Atlanta 3",
+					"PFG Atlanta 4",
 				};
 
 			_autoCompleteListView = new ListView
@@ -82,8 +82,8 @@ namespace PacificCoral
 				};
 
 				var stack = new StackLayout()
-				{	
-					HeightRequest= 30,
+				{
+					HeightRequest = 20,
 					Children = {
 						label,
 						separator,
@@ -96,22 +96,23 @@ namespace PacificCoral
 			_label = new Label
 			{
 				FontSize = 13,
-				WidthRequest = 70,
 				Margin = new Thickness(0, 8, 0, 0),
 				Text = _list[0],
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
 			};
 
 			var image = new Image()
 			{
 				Source = "arrow_down",
-				HorizontalOptions = LayoutOptions.Start,
-				Margin = new Thickness(0, 5, 0, 5),
+				HorizontalOptions = LayoutOptions.StartAndExpand,
+				Margin = new Thickness(0, 0, 0, 0),
 				HeightRequest = 7,
 			};
 
 			var stackHrz = new StackLayout()
 			{
 				Orientation = StackOrientation.Horizontal,
+				BackgroundColor = Color.Transparent,
 				Children =
 				{
 					_label,
@@ -122,19 +123,19 @@ namespace PacificCoral
 			var tapGestureRecognizer = new TapGestureRecognizer();
 			tapGestureRecognizer.Tapped += (s, e) =>
 			{
-				Search();
+				Show();
 			};
 			stackHrz.GestureRecognizers.Add(tapGestureRecognizer);
 
-			this.Children.Add(stackHrz, 1, 0);
 			this.Children.Add(_autoCompleteListView, 0, 2, 1, 2);
+			this.Children.Add(stackHrz, 1, 0);
 
 			_autoCompleteListView.ItemSelected += ItemSelected;
 		}
 
 		#region -- Private helpers --
 
-		private async void Search()
+		private async void Show()
 		{
 			try
 			{
