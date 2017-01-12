@@ -74,8 +74,8 @@
 					<DataTemplate>
 						<StackLayout Spacing="0">
 							<!-- Chart -->
-							<StackLayout InputTransparent="true">
-								<RelativeLayout InputTransparent="true">
+							<StackLayout InputTransparent="false">
+								<RelativeLayout InputTransparent="false">
 									<Grid HeightRequest="200" BackgroundColor="White" InputTransparent="true"
 												RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
 													ElementName=stack,Property=Y,Factor=1,Constant=30}"
