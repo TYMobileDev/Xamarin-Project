@@ -10,6 +10,7 @@ using Android.Views;
 using Android.Widget;
 using PacificCoral.Droid;
 using PacificCoral.Helpers;
+using System.Net;
 
 
 using Xamarin.Forms;

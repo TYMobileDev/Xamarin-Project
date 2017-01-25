@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace PacificCoral.Helpers
 {
-    // based on https://www.codeproject.com/tips/870548/xamarin-forms-check-network-connectivity-in-ios-an
+
     public interface INetworkConnection
     {
         bool IsConnected { get; }
@@ -47,6 +47,7 @@ namespace PacificCoral.Helpers
         {
             get
             {
+                
                 return ((INetworkConnection)defaultConnection).IsOnline;
             }
         }

@@ -8,6 +8,9 @@ using Prism.Navigation;
 using PropertyChanged;
 using PacificCoral.Helpers;
 using Acr.UserDialogs;
+using System.Net.Http;
+using System.Collections.Generic;
+using System;
 
 namespace PacificCoral.ViewModels
 {
@@ -15,7 +18,8 @@ namespace PacificCoral.ViewModels
     public class SignInViewModel : BindableBase
     {
         private readonly INavigationService _navigationService;
-        private bool waitVisible = true;
+        private bool isOnline = false;
+        private bool waitVisible = false;
 
         public SignInViewModel() { }
 
@@ -49,7 +53,8 @@ namespace PacificCoral.ViewModels
                 }
                 if (Authentication.DefaultAthenticator.IsAuthenticated)
                 {
-					await _navigationService.NavigateAsync("/Root");
+                   // var s = await api();
+                    await _navigationService.NavigateAsync<DashBoardView>();
                 }
                 else // authentication failure
                 {
@@ -82,6 +87,19 @@ namespace PacificCoral.ViewModels
                     UserDialogs.Instance.Alert ("The phone is not connected to the internet and is unable to log into the server.  Check Wifi and cellular connection, and try again.","Connection Error");
                 }
             }
+        }
+        public async Task<List<string> > api()
+        {
+            try
+            {
+                var s = await DataManager.DefaultManager.CurrentClient.InvokeApiAsync<List<string >>("Data/GetOpcosForCurrentUser", HttpMethod.Get, new Dictionary<string, string>());
+                return s;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return null;
         }
 
         public bool WaitVisible

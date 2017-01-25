@@ -25,6 +25,7 @@ namespace PacificCoral
         private MobileServiceUser user;
         private static Authentication defaultAthenticator = new Authentication();
         private UserInfo userInfo;
+        private string currentUserID = string.Empty;
         public  IAuthenticate Authenticator { get; private set; }
 
         public static Authentication DefaultAthenticator
@@ -75,7 +76,25 @@ namespace PacificCoral
 
             set
             {
+                try
+                {
+                    CurrentUserID = value.DisplayableId.ToUpper().Trim();
+                }
+                catch { }
                 userInfo = value;
+            }
+        }
+
+        public string CurrentUserID
+        {
+            get
+            {
+                return currentUserID;
+            }
+
+            set
+            {
+                currentUserID = value;
             }
         }
 
@@ -97,20 +116,25 @@ namespace PacificCoral
             {
                 UserInfo = null;
                 AuthenticationContext ac = new AuthenticationContext(authority);
+                //ac.TokenCache.Clear();
                 AuthenticationResult ar = await ac.AcquireTokenAsync(resourceId, clientId,
                     new Uri(redirectUri), platform);
-                userInfo = ar.UserInfo;
+                UserInfo  = ar.UserInfo;
                 JObject payload = new JObject();
                 payload["access_token"] = ar.AccessToken;
                 user = await DataManager.DefaultManager.CurrentClient.LoginAsync(
                     MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory, payload);
                 isAuthenticated = true;
                 Helpers.Settings.LastLoggedinUser = userInfo.DisplayableId;
+                // get opcos
+                await DataManager.DefaultManager.initalizeOpcoTable();
+                // pull tables from server async
+                DataManager.DefaultManager.initializeStoreAsync();
                 return true;
             }
             catch (Exception ex)
             {
-               // UserDialogs.Instance.Alert(ex.ToString(), "Login Error");
+                UserDialogs.Instance.Alert(ex.ToString(), "Login Error");
             }
             return success;
 

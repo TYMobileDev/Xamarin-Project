@@ -18,6 +18,7 @@ namespace PacificCoral.Views
             {
                 InitializeComponent();
                 NavigationPage.SetHasNavigationBar(this, false);
+                //
             }
             catch (Exception ex)
             {

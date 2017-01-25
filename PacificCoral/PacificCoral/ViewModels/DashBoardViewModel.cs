@@ -14,11 +14,13 @@ using Xamarin.Forms;
 
 namespace PacificCoral.ViewModels
 {
+
+    
 	public class DashBoardViewModel : BasePageViewModel
     {
         private readonly INavigationService _navigationService;
-
-        public DashBoardViewModel(INavigationService navigationService)
+        private string _currentOpco = "";
+        public  DashBoardViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
 
@@ -30,22 +32,94 @@ namespace PacificCoral.ViewModels
             Sales = sales;
 
             //init fake data for chart
-            ChartItems  = new ObservableCollection<ChartSourceItem>();
-            ChartItems.Add(new ChartSourceItem() { X = 2, Y = 100 });
-            ChartItems.Add(new ChartSourceItem() { X = 4, Y = 200 });
-            ChartItems.Add(new ChartSourceItem() { X = 6, Y = 160 });
-            ChartItems.Add(new ChartSourceItem() { X = 8, Y = 110 });
-            ChartItems.Add(new ChartSourceItem() { X = 10, Y = 300 });
-            ChartItems.Add(new ChartSourceItem() { X = 12, Y = 400 });
 
-			Revenue = "+14,49%";
+            RefreshDashboardTables();
+
+            Opcos = DataManager.DefaultManager.OPCOs;
         }
 
 		#region -- Public properties --
 
-        public ObservableCollection<ChartSourceItem> ChartItems { get; set; }
+        private void RefreshDashboardTables()
+        {
+            OpcoSalesChartItemsAsync();
+
+            LostSalesPCSItemsAsync();
+
+            DeviationSummaryItemsAsync();
+        }
+
+        public ObservableCollection<OpcoSalesSummaries> OpcoSalesChartItems { get; set; }
+
+        private async void OpcoSalesChartItemsAsync()
+        {
+            try
+            {
+                _currentOpco  = await DataManager.DefaultManager.GetCurrentOpcoAsync();
+                OpcoSalesChartItems  = await DataManager.DefaultManager.getOpcoSalesSummaryForOpcoAsync(_currentOpco );
+                // calculate growth
+                double p1 = OpcoSalesChartItems.Where(p => p.Period >= 9).Sum(p => p.LBS);
+                double p2 = OpcoSalesChartItems.Where(p => p.Period >= 6 && p.Period<9).Sum(p => p.LBS);
+                Revenue = string.Format("QTR {0} = {1:N0} LBS", p1 > p2 ? "Growth" : "Loss", Math.Abs(p1 - p2));
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public ObservableCollection<DeviationSummary> DeviationSummaryItems {
+            get;
+            set; }
+
+        public ObservableCollection<LostSalesPCS > LostSalesPCSItems
+        {
+            get;
+            set; }
+
+        private async void LostSalesPCSItemsAsync()
+        {
+            try
+            {
+                _currentOpco  = await DataManager.DefaultManager.GetCurrentOpcoAsync();
+                LostSalesPCSItems = await DataManager.DefaultManager.getLostSalesPCSForOpcoAsync(_currentOpco );
+              
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private async void DeviationSummaryItemsAsync()
+        {
+            try
+            {
+                DeviationSummaryItems = await DataManager.DefaultManager.getDeviationSummaryAsync();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public ObservableCollection<RepOpcoMap > Opcos {
+            get;
+            set; }
 
         public ObservableCollection<SalesModel> Sales { get; set; }
+
+        public string CurrentOpco { get
+            {
+                return Globals.CurrentOpco == string.Empty ? "No Opco Selected" : Globals.CurrentOpco;
+            }
+            set
+            {
+                Globals.CurrentOpco = value;
+                SetProperty<string>(ref _currentOpco , value);
+                RefreshDashboardTables(); // update chart, lost sales, etc with current opco- calls asyn methods
+           }
+        }
 
 		private string _Revenue;
 		public string Revenue

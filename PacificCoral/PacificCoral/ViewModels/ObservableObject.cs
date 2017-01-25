@@ -10,7 +10,7 @@ namespace PacificCoral
 	/// Base class enabling INotifyPropertyChanged implementation and methods for setting property values.
 	/// Copied from Xamarin.Forms.Labs.Data.
 	/// </summary>
-	public abstract class ObservableObject : INotifyPropertyChanged
+	public abstract class ObservableObject :  INotifyPropertyChanged
 	{
 		/// <summary>
 		/// Occurs when property is changed.
