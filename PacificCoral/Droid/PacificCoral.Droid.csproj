@@ -297,7 +297,6 @@
     <Compile Include="Utils\PageController.cs" />
     <Compile Include="Utils\ReflectedProxy.cs" />
     <Compile Include="Utils\ResourceManagerEx.cs" />
-    <Compile Include="Helpers\Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
