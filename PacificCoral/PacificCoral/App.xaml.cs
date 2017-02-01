@@ -26,11 +26,12 @@ namespace PacificCoral
 		public App()
 		{
 			InitializeComponent();
-            MainPage = new SignInView
+			//         MainPage = new SignInView
 
-			{
-				BindingContext = Resolve<SignInViewModel>()
-			};
+			//{
+			//	BindingContext = Resolve<SignInViewModel>()
+			//};
+			MainPage = new DashBoardView();
 		}
 
 		#region -- Overrides --
@@ -60,7 +61,8 @@ namespace PacificCoral
 			Container.RegisterTypeForNavigation<AccountsView>("AccountsView");
 			Container.RegisterTypeForNavigation<CustomerAccountView, CustomerAccountViewModel>();
 			Container.RegisterTypeForNavigation<DashBoard2View>("DashBoard2View");
-			Container.RegisterTypeForNavigation<DashBoardView, DashBoardViewModel>();
+			//Container.RegisterTypeForNavigation<DashBoardView, DashBoardViewModel>();
+			Container.RegisterTypeForNavigation<DashBoardView>("DashBoardView");
 			Container.RegisterTypeForNavigation<InventoryView, InventoryViewModel>();
 			Container.RegisterTypeForNavigation<PinLocationView, PinLocationViewModel>();
 			Container.RegisterTypeForNavigation<VisitView, VisitViewModel>();

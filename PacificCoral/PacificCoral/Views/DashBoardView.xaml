@@ -1,237 +1,203 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral"
-		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 		xmlns:control="clr-namespace:PacificCoral.Controls;assembly=PacificCoral"
-		xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-		prism:ViewModelLocator.AutowireViewModel="True"
-		xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
-		x:Class="PacificCoral.Views.DashBoardView"
-		BackgroundColor="{StaticResource MainBgColor}"
+		xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+		prism:ViewModelLocator.AutowireViewModel="True" 
+		xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" 
+		x:Class="PacificCoral.Views.DashBoardView" 
+		BackgroundColor="{StaticResource MainBgColor}" 
 		Icon="dashboardtabbar">
-
-  <ContentPage.Resources>
-    <ResourceDictionary>
-      <Style x:Key="tabButtonImageStyle" TargetType="Image">
-        <Setter Property="HeightRequest" Value="15" />
-        <Setter Property="WidthRequest" Value="15" />
-        <Setter Property="HorizontalOptions" Value="Center" />
-      </Style>
-      <Style x:Key="tabButtonLabelStyle" TargetType="Label">
-        <Setter Property="HorizontalOptions" Value="Center" />
-        <Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
-        <Setter Property="FontSize" Value="11" />
-        <Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
-      </Style>
-    </ResourceDictionary>
-  </ContentPage.Resources>
-
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto"/>
-      <RowDefinition Height="Auto"/>
-    </Grid.RowDefinitions>
-
-    <!-- Header -->
-    <StackLayout BackgroundColor="White" Grid.Row="0">
-      <StackLayout.Padding>
-        <OnPlatform x:TypeArguments="Thickness"
-					iOS="0, 20, 0, 20" Android="0"/>
-      </StackLayout.Padding>
-      <StackLayout Margin="20,5">
-        <Image Source="title.png"/>
-      </StackLayout>
-      <Grid ColumnSpacing="10" BackgroundColor="White" HorizontalOptions="Fill" HeightRequest="60">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="*"/>
-          <ColumnDefinition Width="*"/>
-          <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
-        <p:ClickableContentView  Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Fill" Command="{Binding ViewTrackMileageCommand}">
-          <StackLayout VerticalOptions="Center">
-            <Image Source="car" Style="{StaticResource tabButtonImageStyle}"/>
-            <Label Text="Track mileage" Style="{StaticResource tabButtonLabelStyle}"/>
-          </StackLayout>
-        </p:ClickableContentView>
-        <p:ClickableContentView  Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill" Command="{Binding ViewAccountsCommand}">
-          <StackLayout VerticalOptions="Center">
-            <Image Source="account" Style="{StaticResource tabButtonImageStyle}"/>
-            <Label Text="View accounts" Style="{StaticResource tabButtonLabelStyle}"/>
-          </StackLayout>
-        </p:ClickableContentView>
-        <p:ClickableContentView  Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill" >
-          <!--Command="{Binding ViewOrdersCommand}"-->
-          <StackLayout VerticalOptions="Center">
-            <Image Source="items" Style="{StaticResource tabButtonImageStyle}"/>
-            <Label Text="Items" Style="{StaticResource tabButtonLabelStyle}"/>
-          </StackLayout>
-        </p:ClickableContentView>
-      </Grid>
-
-      <StackLayout   BackgroundColor="White" >
-        <control:BindablePicker Margin="0, 0, 0, 0" HeightRequest="40" WidthRequest="350" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand"
-          x:Name="OpcoPicker" 
-          BackgroundColor="#22888888"
-          ItemsSource="{Binding Path=Opcos}"
-          DisplayMemberPath="OPCO"
-          SelectedValuePath="OPCO"
-          SelectedValue="{Binding Path=CurrentOpco, Mode=TwoWay}" />
-      </StackLayout>
-
-    </StackLayout>
-    <StackLayout  Margin="5" Grid.Row="1">
-      <!-- List -->
-      <ListView ItemsSource ="{Binding LostSalesPCSItems}" HasUnevenRows="True" SeparatorVisibility="None" BackgroundColor="White" Header="{Binding .}" Margin="7">
-        <ListView.HeaderTemplate>
-          <DataTemplate>
-            <StackLayout Spacing="0">
-              <!-- Chart -->
-              <StackLayout InputTransparent="false">
-                <RelativeLayout InputTransparent="false">
-                  <Grid HeightRequest="200" BackgroundColor="White" InputTransparent="true"
-												RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
-													ElementName=stack,Property=Y,Factor=1,Constant=30}"
-												RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
-													ElementName=stack,Property=X,Factor=1,Constant=0}"
-											RelativeLayout.WidthConstraint="{ConstraintExpression
-												Type=RelativeToParent,Property=Width,Factor=1,Constant=0}">
-                    <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3">
-                      <chart:SfChart.PrimaryAxis>
-                        <chart:NumericalAxis   Minimum="0" Maximum="12" >
-                          <chart:NumericalAxis.Title>
-                            <chart:ChartAxisTitle Text="Running 30 Day Period" >
-                            </chart:ChartAxisTitle>
-                          </chart:NumericalAxis.Title>
-                        </chart:NumericalAxis>
-                      </chart:SfChart.PrimaryAxis>
-                      <chart:SfChart.SecondaryAxis>
-                        <chart:NumericalAxis RangePadding="Additional" >
-                          <chart:NumericalAxis.Title>
-                            <chart:ChartAxisTitle Text="LBS" >
-                            </chart:ChartAxisTitle>
-                          </chart:NumericalAxis.Title>
-                        </chart:NumericalAxis>
-                      </chart:SfChart.SecondaryAxis>
-                      <chart:SfChart.Series>
-                        <chart:LineSeries
-														ItemsSource="{Binding OpcoSalesChartItems}"
-														XBindingPath="Period"
-														YBindingPath="LBS"
-														Color="#bababa">
-                        </chart:LineSeries>
-                        <chart:AreaSeries
-														ItemsSource="{Binding OpcoSalesChartItems}"
-														XBindingPath="Period"
-														YBindingPath="LBS"
-														Color="#ebebeb">
-                          <chart:AreaSeries.DataMarker>
-                            <chart:ChartDataMarker MarkerColor="Black" MarkerHeight="10" MarkerWidth="10" LabelContent="YValue" ShowMarker="True" ShowLabel="False">
-                              <chart:ChartDataMarker.LabelStyle>
-                                <chart:DataMarkerLabelStyle Font="Small" TextColor="White" BackgroundColor="Black" LabelPosition="Center"/>
-                              </chart:ChartDataMarker.LabelStyle>
-                            </chart:ChartDataMarker>
-                          </chart:AreaSeries.DataMarker>
-                        </chart:AreaSeries>
-                      </chart:SfChart.Series>
-                    </chart:SfChart>
-                  </Grid>
-                  <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" x:Name="stack"
-											RelativeLayout.WidthConstraint="{ConstraintExpression
-												Type=RelativeToParent,Property=Width,Factor=1,Constant=0}">
-                            <!--control:BindablePicker  Margin="20, 0, 0, 0" WidthRequest="200"  HorizontalOptions="CenterAndExpand"
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="tabButtonImageStyle" TargetType="Image">
+				<Setter Property="HeightRequest" Value="15" />
+				<Setter Property="WidthRequest" Value="15" />
+				<Setter Property="HorizontalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="tabButtonLabelStyle" TargetType="Label">
+				<Setter Property="HorizontalOptions" Value="Center" />
+				<Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
+				<Setter Property="FontSize" Value="11" />
+				<Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<!-- Header -->
+		<StackLayout BackgroundColor="White" Grid.Row="0">
+			<StackLayout.Padding>
+				<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 20" Android="0" />
+			</StackLayout.Padding>
+			<StackLayout Margin="20,5">
+				<Image Source="title.png" />
+			</StackLayout>
+			<Grid ColumnSpacing="10" BackgroundColor="White" HorizontalOptions="Fill" HeightRequest="60">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<p:ClickableContentView Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Fill" Command="{Binding ViewTrackMileageCommand}">
+					<StackLayout VerticalOptions="Center">
+						<Image Source="car" Style="{StaticResource tabButtonImageStyle}" />
+						<Label Text="Track mileage" Style="{StaticResource tabButtonLabelStyle}" />
+					</StackLayout>
+				</p:ClickableContentView>
+				<p:ClickableContentView Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill" Command="{Binding ViewAccountsCommand}">
+					<StackLayout VerticalOptions="Center">
+						<Image Source="account" Style="{StaticResource tabButtonImageStyle}" />
+						<Label Text="View accounts" Style="{StaticResource tabButtonLabelStyle}" />
+					</StackLayout>
+				</p:ClickableContentView>
+				<p:ClickableContentView Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill">
+					<!--Command="{Binding ViewOrdersCommand}"-->
+					<StackLayout VerticalOptions="Center">
+						<Image Source="items" Style="{StaticResource tabButtonImageStyle}" />
+						<Label Text="Items" Style="{StaticResource tabButtonLabelStyle}" />
+					</StackLayout>
+				</p:ClickableContentView>
+			</Grid>
+			<StackLayout BackgroundColor="White">
+				<control:BindablePicker Margin="0, 0, 0, 0" HeightRequest="40" WidthRequest="350" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" x:Name="OpcoPicker" BackgroundColor="#22888888" ItemsSource="{Binding Path=Opcos}" DisplayMemberPath="OPCO" SelectedValuePath="OPCO"
+					SelectedValue="{Binding Path=CurrentOpco, Mode=TwoWay}" />
+			</StackLayout>
+		</StackLayout>
+		<StackLayout Margin="5" Grid.Row="1">
+			<!-- List -->
+			<ListView ItemsSource="{Binding LostSalesPCSItems}" HasUnevenRows="True" SeparatorVisibility="None" BackgroundColor="White" Header="{Binding .}" Margin="7">
+				<ListView.HeaderTemplate>
+					<DataTemplate>
+						<StackLayout Spacing="0">
+							<!-- Chart -->
+							<StackLayout InputTransparent="false">
+								<RelativeLayout InputTransparent="false">
+									<Grid HeightRequest="200" BackgroundColor="White" InputTransparent="true" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,&#xD;&#xA;													ElementName=stack,Property=Y,Factor=1,Constant=30}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,&#xD;&#xA;													ElementName=stack,Property=X,Factor=1,Constant=0}" RelativeLayout.WidthConstraint="{ConstraintExpression&#xD;&#xA;												Type=RelativeToParent,Property=Width,Factor=1,Constant=0}">
+										<chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3">
+											<chart:SfChart.PrimaryAxis>
+												<chart:NumericalAxis Minimum="0" Maximum="12">
+													<chart:NumericalAxis.Title>
+														<chart:ChartAxisTitle Text="Running 30 Day Period">
+														</chart:ChartAxisTitle>
+													</chart:NumericalAxis.Title>
+												</chart:NumericalAxis>
+											</chart:SfChart.PrimaryAxis>
+											<chart:SfChart.SecondaryAxis>
+												<chart:NumericalAxis RangePadding="Additional">
+													<chart:NumericalAxis.Title>
+														<chart:ChartAxisTitle Text="LBS">
+														</chart:ChartAxisTitle>
+													</chart:NumericalAxis.Title>
+												</chart:NumericalAxis>
+											</chart:SfChart.SecondaryAxis>
+											<chart:SfChart.Series>
+												<chart:LineSeries ItemsSource="{Binding OpcoSalesChartItems}" XBindingPath="Period" YBindingPath="LBS" Color="#bababa"/>
+												<chart:AreaSeries ItemsSource="{Binding OpcoSalesChartItems}" XBindingPath="Period" YBindingPath="LBS" Color="#ebebeb">
+													<chart:AreaSeries.DataMarker>
+														<chart:ChartDataMarker MarkerColor="Black" MarkerHeight="10" MarkerWidth="10" LabelContent="YValue" ShowMarker="True" ShowLabel="False">
+															<chart:ChartDataMarker.LabelStyle>
+																<chart:DataMarkerLabelStyle Font="Small" TextColor="White" BackgroundColor="Black" LabelPosition="Center" />
+															</chart:ChartDataMarker.LabelStyle>
+														</chart:ChartDataMarker>
+													</chart:AreaSeries.DataMarker>
+												</chart:AreaSeries>
+											</chart:SfChart.Series>
+										</chart:SfChart>
+									</Grid>
+									<StackLayout Orientation="Horizontal" BackgroundColor="Transparent" x:Name="stack" RelativeLayout.WidthConstraint="{ConstraintExpression&#xD;&#xA;												Type=RelativeToParent,Property=Width,Factor=1,Constant=0}">
+										<!--control:BindablePicker  Margin="20, 0, 0, 0" WidthRequest="200"  HorizontalOptions="CenterAndExpand"
                               x:Name="OpcoPicker"
                               ItemsSource="{Binding Path=Opcos}"
                               DisplayMemberPath="OPCO"
                               SelectedValuePath="OPCO"
                               SelectedValue="{Binding Path=CurrentOpco, Mode=TwoWay}" /-->
-                    <!--p:DropDownOPCOList Margin="20, 0, 0, 0" WidthRequest="200" x:Name="dropDownList" HorizontalOptions="CenterAndExpand"/-->
-                    <Label Text="{Binding Revenue}" FontSize="Micro" TextColor="{StaticResource DefaultDarkColor}" HorizontalOptions="EndAndExpand" Margin="7" />
-                  </StackLayout>
-                </RelativeLayout>
-              </StackLayout>
-              <StackLayout BackgroundColor="{StaticResource MainBgColor}" Padding="0, 10">
-                <!--<StackLayout Orientation="Horizontal" HorizontalOptions="End" Padding="5">
+										<!--p:DropDownOPCOList Margin="20, 0, 0, 0" WidthRequest="200" x:Name="dropDownList" HorizontalOptions="CenterAndExpand"/-->
+										<Label Text="{Binding Revenue}" FontSize="Micro" TextColor="{StaticResource DefaultDarkColor}" HorizontalOptions="EndAndExpand" Margin="7" />
+									</StackLayout>
+								</RelativeLayout>
+							</StackLayout>
+							<StackLayout BackgroundColor="{StaticResource MainBgColor}" Padding="0, 10">
+								<!--<StackLayout Orientation="Horizontal" HorizontalOptions="End" Padding="5">
 								<StackLayout.GestureRecognizers>
 					            	<TapGestureRecognizer Command="{Binding DetailsCommand}"/>
 					            </StackLayout.GestureRecognizers>
 								<Label Text="Details" TextColor="#E59006" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="15"/>
 								<Label Text=">" FontFamily="{x:Static p:Styles.FontHNRegular}" TextColor="{StaticResource DefaultDarkColor}" FontSize="15"/>
 							</StackLayout>-->
-                <Label 
-                  Text="{Binding Path=CurrentOpco, StringFormat= 'LOST SALES - {0}'}" 
-                  HorizontalOptions="CenterAndExpand" FontFamily="{x:Static p:Styles.FontHNMedium}" 
-                  TextColor="{StaticResource DefaultDarkColor}" FontSize="15"/>
-              </StackLayout>
-              <Label Margin="5" Text="SEP - OCT GAIN(LOSS)" TextColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" FontAttributes="Bold"/>
-              <BoxView Style="{StaticResource HorizontalSeparatorStyle}"/>
-            </StackLayout>
-          </DataTemplate>
-        </ListView.HeaderTemplate>
-        <ListView.ItemTemplate>
-          <DataTemplate>
-            <ViewCell>
-              <ViewCell.View>
-                <StackLayout>
-                  <Grid Margin="10">
-                    <Grid.RowDefinitions>
-                      <RowDefinition Height="Auto"/>
-                      <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="*"/>
-                      <ColumnDefinition Width="*"/>
-                      <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Grid.Row="0" Text="{Binding ItemCode}" FontAttributes="Bold"/>
-                    <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Text="{Binding Description}" FontSize="Small"/>
-                    <Label Grid.Column="0" Grid.Row="1" Text="{Binding Period1StartDate, StringFormat='{0:MMM/yy}' }" FontSize="Small"/>
-                    <Label Grid.Column="1" Grid.Row="1" Text="{Binding Period2EndDate, StringFormat='{0:MMM/yy}'  }" FontSize="Small"/>
-                    <Label Grid.Column="2" Grid.Row="1" Text="{Binding GainLoss}" FontSize="Small"/>
-                  </Grid>
-                  <BoxView Style="{StaticResource HorizontalSeparatorStyle}"/>
-                </StackLayout>
-              </ViewCell.View>
-            </ViewCell>
-          </DataTemplate>
-        </ListView.ItemTemplate>
-        <ListView.Footer>
-          <!--Deviations-->
-          <StackLayout BackgroundColor="{StaticResource MainBgColor}">
-            <Label Text="Deviations" FontSize="Medium" TextColor="#8B572A" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-            <Grid  >
-              
-              <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-
-              </Grid.RowDefinitions>
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-              </Grid.ColumnDefinitions>
-              <Label Grid.Row="0" Grid.Column="0" Text="Pending Aproval" FontSize="Small" HorizontalOptions="EndAndExpand"/>
-              <Label Grid.Row="1" Grid.Column="0"  Text="Active" FontSize="Small" HorizontalOptions="EndAndExpand"/>
-              <Label Grid.Row="2" Grid.Column="0"  Text="Expiring" FontSize="Small" HorizontalOptions="EndAndExpand"/>
-              <Label Grid.Row="3" Grid.Column="0"  Text="Expired" FontSize="Small" HorizontalOptions="EndAndExpand"/>
-              <Grid Grid.Row="0" Grid.Column="1" Margin="10,0" >
-                <Label Text="{Binding Path=DeviationSummaryItems[0].Submitted}" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
-              </Grid>
-              <Grid Grid.Row="1" Grid.Column="1" Margin="10,0" >
-                <Label Text="{Binding Path=DeviationSummaryItems[0].Active}" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
-              </Grid>
-              <Grid Grid.Row="2" Grid.Column="1" Margin="10,0" >
-                <Label Text="{Binding Path=DeviationSummaryItems[0].Expiring}" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
-              </Grid>
-              <Grid Grid.Row="3" Grid.Column="1" Margin="10,0" >
-                <Label Text="{Binding Path=DeviationSummaryItems[0].Expired}" HorizontalOptions="StartAndExpand" FontAttributes="Bold"/>
-              </Grid>
-
-            </Grid>
-          </StackLayout>
-        </ListView.Footer>
-      </ListView>
-    </StackLayout>
-  </Grid>
+								<Label Text="{Binding Path=CurrentOpco, StringFormat= 'LOST SALES - {0}'}" HorizontalOptions="CenterAndExpand" FontFamily="{x:Static p:Styles.FontHNMedium}" TextColor="{StaticResource DefaultDarkColor}" FontSize="15" />
+							</StackLayout>
+							<Label Margin="5" Text="SEP - OCT GAIN(LOSS)" TextColor="{StaticResource DefaultMainColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" FontAttributes="Bold" />
+							<BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+						</StackLayout>
+					</DataTemplate>
+				</ListView.HeaderTemplate>
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<ViewCell.View>
+								<StackLayout>
+									<Grid Margin="10">
+										<Grid.RowDefinitions>
+											<RowDefinition Height="Auto" />
+											<RowDefinition Height="Auto" />
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="*" />
+											<ColumnDefinition Width="*" />
+											<ColumnDefinition Width="*" />
+										</Grid.ColumnDefinitions>
+										<Label Grid.Column="0" Grid.Row="0" Text="{Binding ItemCode}" FontAttributes="Bold" />
+										<Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Text="{Binding Description}" FontSize="Small" />
+										<Label Grid.Column="0" Grid.Row="1" Text="{Binding Period1StartDate, StringFormat='{0:MMM/yy}' }" FontSize="Small" />
+										<Label Grid.Column="1" Grid.Row="1" Text="{Binding Period2EndDate, StringFormat='{0:MMM/yy}'  }" FontSize="Small" />
+										<Label Grid.Column="2" Grid.Row="1" Text="{Binding GainLoss}" FontSize="Small" />
+									</Grid>
+									<BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+								</StackLayout>
+							</ViewCell.View>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+				<ListView.Footer>
+					<!--Deviations-->
+					<StackLayout BackgroundColor="{StaticResource MainBgColor}">
+						<Label Text="Deviations" FontSize="Medium" TextColor="#8B572A" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Label Grid.Row="0" Grid.Column="0" Text="Pending Aproval" FontSize="Small" HorizontalOptions="EndAndExpand" />
+							<Label Grid.Row="1" Grid.Column="0" Text="Active" FontSize="Small" HorizontalOptions="EndAndExpand" />
+							<Label Grid.Row="2" Grid.Column="0" Text="Expiring" FontSize="Small" HorizontalOptions="EndAndExpand" />
+							<Label Grid.Row="3" Grid.Column="0" Text="Expired" FontSize="Small" HorizontalOptions="EndAndExpand" />
+							<Grid Grid.Row="0" Grid.Column="1" Margin="10,0">
+								<Label Text="{Binding Path=DeviationSummaryItems[0].Submitted}" HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
+							</Grid>
+							<Grid Grid.Row="1" Grid.Column="1" Margin="10,0">
+								<Label Text="{Binding Path=DeviationSummaryItems[0].Active}" HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
+							</Grid>
+							<Grid Grid.Row="2" Grid.Column="1" Margin="10,0">
+								<Label Text="{Binding Path=DeviationSummaryItems[0].Expiring}" HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
+							</Grid>
+							<Grid Grid.Row="3" Grid.Column="1" Margin="10,0">
+								<Label Text="{Binding Path=DeviationSummaryItems[0].Expired}" HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
+							</Grid>
+						</Grid>
+					</StackLayout>
+				</ListView.Footer>
+			</ListView>
+		</StackLayout>
+	</Grid>
 </ContentPage>

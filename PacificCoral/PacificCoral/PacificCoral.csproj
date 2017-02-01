@@ -179,6 +179,11 @@
       <DependentUpon>ProfileView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\DropDownOPCOList.cs" />
+    <Compile Include="Controls\Accordion\AccordionButton.cs" />
+    <Compile Include="Controls\Accordion\AccordionSource.cs" />
+    <Compile Include="Controls\Accordion\Accordion.cs" />
+    <Compile Include="Cell\ChartDataViewCell.cs" />
+    <Compile Include="Cell\LostSalesPCSViewCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Mono.Android">
@@ -370,6 +375,10 @@
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Controls\Accordion\" />
+    <Folder Include="Cell\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Fody.1.29.4\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\..\packages\Fody.1.29.4\build\portable-net+sl+win+wpa+wp\Fody.targets')" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

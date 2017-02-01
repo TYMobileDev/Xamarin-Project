@@ -11,121 +11,70 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Prism.Navigation;
 using Xamarin.Forms;
+using PacificCoral.Controls;
 
 namespace PacificCoral.ViewModels
 {
-
-    
 	public class DashBoardViewModel : BasePageViewModel
-    {
-        private readonly INavigationService _navigationService;
-        private string _currentOpco = "";
-        public  DashBoardViewModel(INavigationService navigationService)
-        {
-            _navigationService = navigationService;
+	{
+		private readonly INavigationService _navigationService;
+		private string _currentOpco = "";
 
-            var sales = new ObservableCollection<SalesModel>();
-            for (var i = 0; i < 15; i++)
-            {
-                sales.Add(new SalesModel() { Code = "421127", Shrimp = "SHRIMP WHT 71/90", Sep1 = "SEP::63,451", Sep2 = "SEP::63,451", GL = "G(L)(21,335)" });
-            }
-            Sales = sales;
+		public DashBoardViewModel(INavigationService navigationService)
+		{
+			_navigationService = navigationService;
 
-            //init fake data for chart
+			var sales = new ObservableCollection<SalesModel>();
+			for (var i = 0; i < 15; i++)
+			{
+				sales.Add(new SalesModel() { Code = "421127", Shrimp = "SHRIMP WHT 71/90", Sep1 = "SEP::63,451", Sep2 = "SEP::63,451", GL = "G(L)(21,335)" });
+			}
+			Sales = sales;
 
-            RefreshDashboardTables();
+			//init fake data for chart
 
-            Opcos = DataManager.DefaultManager.OPCOs;
-        }
+			RefreshDashboardTables();
+			InitAccordionSource();
+		}
 
 		#region -- Public properties --
 
-        private void RefreshDashboardTables()
-        {
-            OpcoSalesChartItemsAsync();
+		private ObservableCollection<AccordionSource> _AccordionSource;
+		public ObservableCollection<AccordionSource> AccordionSource
+		{
+			get { return _AccordionSource; }
+			set { SetProperty(ref _AccordionSource, value); }
+		}
 
-            LostSalesPCSItemsAsync();
+		public ObservableCollection<OpcoSalesSummaries> OpcoSalesChartItems { get; set; }
 
-            DeviationSummaryItemsAsync();
-        }
+		public ObservableCollection<DeviationSummary> DeviationSummaryItems { get; set; }
 
-        public ObservableCollection<OpcoSalesSummaries> OpcoSalesChartItems { get; set; }
+		public ObservableCollection<LostSalesPCS> LostSalesPCSItems { get; set; }
 
-        private async void OpcoSalesChartItemsAsync()
-        {
-            try
-            {
-                _currentOpco  = await DataManager.DefaultManager.GetCurrentOpcoAsync();
-                OpcoSalesChartItems  = await DataManager.DefaultManager.getOpcoSalesSummaryForOpcoAsync(_currentOpco );
-                // calculate growth
-                double p1 = OpcoSalesChartItems.Where(p => p.Period >= 9).Sum(p => p.LBS);
-                double p2 = OpcoSalesChartItems.Where(p => p.Period >= 6 && p.Period<9).Sum(p => p.LBS);
-                Revenue = string.Format("QTR {0} = {1:N0} LBS", p1 > p2 ? "Growth" : "Loss", Math.Abs(p1 - p2));
-            }
-            catch (Exception ex)
-            {
+		public ObservableCollection<RepOpcoMap> Opcos { get; set; } = DataManager.DefaultManager.OPCOs;
 
-            }
-        }
-        public ObservableCollection<DeviationSummary> DeviationSummaryItems {
-            get;
-            set; }
+		public ObservableCollection<SalesModel> Sales { get; set; }
 
-        public ObservableCollection<LostSalesPCS > LostSalesPCSItems
-        {
-            get;
-            set; }
-
-        private async void LostSalesPCSItemsAsync()
-        {
-            try
-            {
-                _currentOpco  = await DataManager.DefaultManager.GetCurrentOpcoAsync();
-                LostSalesPCSItems = await DataManager.DefaultManager.getLostSalesPCSForOpcoAsync(_currentOpco );
-              
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        private async void DeviationSummaryItemsAsync()
-        {
-            try
-            {
-                DeviationSummaryItems = await DataManager.DefaultManager.getDeviationSummaryAsync();
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        public ObservableCollection<RepOpcoMap > Opcos {
-            get;
-            set; }
-
-        public ObservableCollection<SalesModel> Sales { get; set; }
-
-        public string CurrentOpco { get
-            {
-                return Globals.CurrentOpco == string.Empty ? "No Opco Selected" : Globals.CurrentOpco;
-            }
-            set
-            {
-                Globals.CurrentOpco = value;
-                SetProperty<string>(ref _currentOpco , value);
-                RefreshDashboardTables(); // update chart, lost sales, etc with current opco- calls asyn methods
-           }
-        }
+		public string CurrentOpco
+		{
+			get
+			{
+				return Globals.CurrentOpco == string.Empty ? "No Opco Selected" : Globals.CurrentOpco;
+			}
+			set
+			{
+				Globals.CurrentOpco = value;
+				SetProperty<string>(ref _currentOpco, value);
+				RefreshDashboardTables(); // update chart, lost sales, etc with current opco- calls asyn methods
+			}
+		}
 
 		private string _Revenue;
 		public string Revenue
 		{
 			get { return _Revenue; }
-			set { SetProperty( ref _Revenue, value);}
+			set { SetProperty(ref _Revenue, value); }
 		}
 
 		public ICommand ViewTrackMileageCommand
@@ -172,6 +121,78 @@ namespace PacificCoral.ViewModels
 			return _navigationService.NavigateAsync("DashBoard2View", animated: false);
 		}
 
+		private async void LostSalesPCSItemsAsync()
+		{
+			try
+			{
+				_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
+				LostSalesPCSItems = await DataManager.DefaultManager.getLostSalesPCSForOpcoAsync(_currentOpco);
+
+			}
+			catch (Exception ex)
+			{
+
+			}
+		}
+
+		private async void DeviationSummaryItemsAsync()
+		{
+			try
+			{
+				DeviationSummaryItems = await DataManager.DefaultManager.getDeviationSummaryAsync();
+
+			}
+			catch (Exception ex)
+			{
+
+			}
+		}
+
+		private async void OpcoSalesChartItemsAsync()
+		{
+			try
+			{
+				_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
+				OpcoSalesChartItems = await DataManager.DefaultManager.getOpcoSalesSummaryForOpcoAsync(_currentOpco);
+				// calculate growth
+				double p1 = OpcoSalesChartItems.Where(p => p.Period >= 9).Sum(p => p.LBS);
+				double p2 = OpcoSalesChartItems.Where(p => p.Period >= 6 && p.Period < 9).Sum(p => p.LBS);
+				Revenue = string.Format("QTR {0} = {1:N0} LBS", p1 > p2 ? "Growth" : "Loss", Math.Abs(p1 - p2));
+			}
+			catch (Exception ex)
+			{
+
+			}
+		}
+
+		private void RefreshDashboardTables()
+		{
+			OpcoSalesChartItemsAsync();
+
+			LostSalesPCSItemsAsync();
+
+			DeviationSummaryItemsAsync();
+		}
+
+		private void InitAccordionSource()
+		{
+			AccordionSource = new ObservableCollection<AccordionSource>();
+
+			var chartViewOne = new ListView()
+			{
+				ItemsSource = OpcoSalesChartItems,
+				ItemTemplate = new DataTemplate(typeof(ChartDataViewCell))
+			};
+			var chartFirstAccord = new AccordionSource()
+			{
+				HeaderText = "Sales history",
+				HeaderTextColor = Color.Black,
+				HeaderBackGroundColor = Color.White,
+				ContentItems = chartViewOne
+			};
+			AccordionSource.Add(chartFirstAccord);
+		}
+
 		#endregion
-    }
+	}
 }
