@@ -185,6 +185,10 @@
     <Compile Include="Cell\ChartDataViewCell.cs" />
     <Compile Include="Cell\LostSalesPCSViewCell.cs" />
     <Compile Include="Controls\DeviationsView.cs" />
+    <Compile Include="Controls\Accordion\AccordionControl.cs" />
+    <Compile Include="Controls\Accordion\AccordionEntry.cs" />
+    <Compile Include="Controls\Accordion\AccordionCell.cs" />
+    <Compile Include="Controls\Accordion\AccordionModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Mono.Android">
@@ -259,12 +263,6 @@
     <Reference Include="Plugin.Media">
       <HintPath>..\..\packages\Xam.Plugin.Media.2.6.2.16-beta\lib\portable-net45+wp80+win8+wpa81\Plugin.Media.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.Settings.Abstractions">
-      <HintPath>..\..\packages\Xam.Plugins.Settings.2.6.0.12-beta\lib\portable-net45+wp80+win8+wpa81\Plugin.Settings.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Settings">
-      <HintPath>..\..\packages\Xam.Plugins.Settings.2.6.0.12-beta\lib\portable-net45+wp80+win8+wpa81\Plugin.Settings.dll</HintPath>
-    </Reference>
     <Reference Include="FFImageLoading">
       <HintPath>..\..\packages\Xamarin.FFImageLoading.2.2.6-pre-241\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.dll</HintPath>
     </Reference>
@@ -288,6 +286,12 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Maps">
       <HintPath>..\..\packages\Xamarin.Forms.Maps.2.3.3.175\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Settings.Abstractions">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.2.5.2.1\lib\portable-net45+wp80+win8+wpa81\Plugin.Settings.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Settings">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.2.5.2.1\lib\portable-net45+wp80+win8+wpa81\Plugin.Settings.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

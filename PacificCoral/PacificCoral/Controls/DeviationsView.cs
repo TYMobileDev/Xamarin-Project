@@ -7,7 +7,7 @@ namespace PacificCoral.Control
 	{
 		public DeviationsView()
 		{
-			BackgroundColor = StyleManager.GetAppResource<Color>("MainBgColor");
+			BackgroundColor = Color.White;
 			ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
 			ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
 			RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
@@ -97,36 +97,3 @@ namespace PacificCoral.Control
 		}
 	}
 }
-
-//<!--Deviations-->
-//					<StackLayout BackgroundColor = "{StaticResource MainBgColor}" >
-//						< Label Text="Deviations" FontSize="Medium" TextColor="#8B572A" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-//						<Grid>
-//							<Grid.RowDefinitions>
-//								<RowDefinition Height = "Auto" />
-//								< RowDefinition Height="Auto" />
-//								<RowDefinition Height = "Auto" />
-//								< RowDefinition Height="Auto" />
-//							</Grid.RowDefinitions>
-//							<Grid.ColumnDefinitions>
-//								<ColumnDefinition Width = "*" />
-//								< ColumnDefinition Width="*" />
-//							</Grid.ColumnDefinitions>
-//							<Label Grid.Row="0" Grid.Column= "0" Text= "Pending Aproval" FontSize= "Small" HorizontalOptions= "EndAndExpand" />
-//							< Label Grid.Row= "1" Grid.Column= "0" Text= "Active" FontSize= "Small" HorizontalOptions= "EndAndExpand" />
-//							< Label Grid.Row= "2" Grid.Column= "0" Text= "Expiring" FontSize= "Small" HorizontalOptions= "EndAndExpand" />
-//							< Label Grid.Row= "3" Grid.Column= "0" Text= "Expired" FontSize= "Small" HorizontalOptions= "EndAndExpand" />
-//							< Grid Grid.Row= "0" Grid.Column= "1" Margin= "10,0" >
-//								< Label Text= "{Binding Path=DeviationSummaryItems[0].Submitted}" HorizontalOptions= "StartAndExpand" FontAttributes= "Bold" />
-//							</ Grid >
-//							< Grid Grid.Row= "1" Grid.Column= "1" Margin= "10,0" >
-//								< Label Text= "{Binding Path=DeviationSummaryItems[0].Active}" HorizontalOptions= "StartAndExpand" FontAttributes= "Bold" />
-//							</ Grid >
-//							< Grid Grid.Row= "2" Grid.Column= "1" Margin= "10,0" >
-//								< Label Text= "{Binding Path=DeviationSummaryItems[0].Expiring}" HorizontalOptions= "StartAndExpand" FontAttributes= "Bold" />
-//							</ Grid >
-//							< Grid Grid.Row= "3" Grid.Column= "1" Margin= "10,0" >
-//								< Label Text= "{Binding Path=DeviationSummaryItems[0].Expired}" HorizontalOptions= "StartAndExpand" FontAttributes= "Bold" />
-//							</ Grid >
-//						</ Grid >
-//					</ StackLayout >

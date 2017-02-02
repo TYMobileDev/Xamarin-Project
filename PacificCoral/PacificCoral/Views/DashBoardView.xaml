@@ -63,11 +63,13 @@
 					</StackLayout>
 				</p:ClickableContentView>
 			</Grid>
-			<StackLayout BackgroundColor="White">
+<!--			<StackLayout BackgroundColor="White">
 				<control:BindablePicker Margin="0, 0, 0, 0" HeightRequest="40" WidthRequest="350" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" x:Name="OpcoPicker" BackgroundColor="#22888888" ItemsSource="{Binding Path=Opcos}" DisplayMemberPath="OPCO" SelectedValuePath="OPCO"
 					SelectedValue="{Binding Path=CurrentOpco, Mode=TwoWay}" />
-			</StackLayout>
+			</StackLayout>-->
 		</StackLayout>
-		<control:Accordion Grid.Row="1" ItemsSource="{Binding AccordionSource}"/>
+		<!--		<control:Accordion Grid.Row="1" ItemsSource="{Binding AccordionSource}"/>-->
+		<!--<control:AccordionControl Grid.Row="1" ItemsSource="{Binding AccordionSource}"/>-->
+		<control:AccordionControl Grid.Row="1" ItemsSource="{Binding AccordionSource}" Margin="10"/>
 	</Grid>
 </ContentPage>

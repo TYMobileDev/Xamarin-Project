@@ -26,11 +26,11 @@ namespace PacificCoral
 		public App()
 		{
 			InitializeComponent();
-			MainPage = new SignInView
-			{
-				BindingContext = Resolve<SignInViewModel>()
-			};
-			//MainPage = new DashBoardView();
+			//MainPage = new SignInView
+			//{
+			//	BindingContext = Resolve<SignInViewModel>()
+			//};
+			MainPage = new DashBoardView();
 		}
 
 		#region -- Overrides --
