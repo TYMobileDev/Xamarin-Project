@@ -39,22 +39,31 @@
     <Compile Include="Controls\NavigationPanel.xaml.cs">
       <DependentUpon>NavigationPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\FirstLetterOfStringConverter.cs" />
+    <Compile Include="Data\AsyncDataHelper.cs" />
     <Compile Include="Data\DataManager.cs" />
+    <Compile Include="Extensions\ExpressionExtensions.cs" />
     <Compile Include="Extensions\NavigationServiceExtensions.cs" />
     <Compile Include="Helpers\Authentication.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\Globals.cs" />
+    <Compile Include="Helpers\Grouping.cs" />
     <Compile Include="Helpers\INetworkConnection.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Model\ChartSourceItem.cs" />
+    <Compile Include="Model\CustomerCodes.cs" />
     <Compile Include="Model\CustomerModel.cs" />
+    <Compile Include="Model\Customers.cs" />
     <Compile Include="Model\DeviationDetails.cs" />
     <Compile Include="Model\DeviationMaster.cs" />
     <Compile Include="Model\DeviationSummary.cs" />
+    <Compile Include="Model\ItemCodes.cs" />
     <Compile Include="Model\LostSalesPCS.cs" />
     <Compile Include="Model\OpcoModel.cs" />
     <Compile Include="Model\OpcoSalesSummaries.cs" />
     <Compile Include="Model\PageTypeGroup.cs" />
+    <Compile Include="Model\PODetail.cs" />
+    <Compile Include="Model\POMaster.cs" />
     <Compile Include="Model\RepOpcoMap.cs" />
     <Compile Include="Model\SalesModel.cs" />
     <Compile Include="Model\TodoItem.cs" />

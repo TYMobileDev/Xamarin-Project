@@ -116,7 +116,7 @@ namespace PacificCoral
             {
                 UserInfo = null;
                 AuthenticationContext ac = new AuthenticationContext(authority);
-                //ac.TokenCache.Clear();
+             //   ac.TokenCache.Clear();
                 AuthenticationResult ar = await ac.AcquireTokenAsync(resourceId, clientId,
                     new Uri(redirectUri), platform);
                 UserInfo  = ar.UserInfo;

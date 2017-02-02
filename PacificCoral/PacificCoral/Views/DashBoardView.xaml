@@ -6,8 +6,10 @@
 		prism:ViewModelLocator.AutowireViewModel="True"
 		xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
 		x:Class="PacificCoral.Views.DashBoardView"
+    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
 		BackgroundColor="{StaticResource MainBgColor}"
 		Icon="dashboardtabbar">
+  
 
   <ContentPage.Resources>
     <ResourceDictionary>
@@ -56,11 +58,12 @@
         <p:ClickableContentView  Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill" Command="{Binding ViewAccountsCommand}">
           <StackLayout VerticalOptions="Center">
             <Image Source="account" Style="{StaticResource tabButtonImageStyle}"/>
-            <Label Text="View accounts" Style="{StaticResource tabButtonLabelStyle}"/>
+            <Label  Text="View accounts" Style="{StaticResource tabButtonLabelStyle}"/>
           </StackLayout>
         </p:ClickableContentView>
-        <p:ClickableContentView  Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill" >
-          <!--Command="{Binding ViewOrdersCommand}"-->
+        <p:ClickableContentView  Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill" 
+                                 
+          Command="{Binding ViewOrdersCommand}">
           <StackLayout VerticalOptions="Center">
             <Image Source="items" Style="{StaticResource tabButtonImageStyle}"/>
             <Label Text="Items" Style="{StaticResource tabButtonLabelStyle}"/>
@@ -87,6 +90,9 @@
             <StackLayout Spacing="0">
               <!-- Chart -->
               <StackLayout InputTransparent="false">
+                      <View.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChartTappedCommand}"/>
+                      </View.GestureRecognizers>                
                 <RelativeLayout InputTransparent="false">
                   <Grid HeightRequest="200" BackgroundColor="White" InputTransparent="true"
 												RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
@@ -95,8 +101,8 @@
 													ElementName=stack,Property=X,Factor=1,Constant=0}"
 											RelativeLayout.WidthConstraint="{ConstraintExpression
 												Type=RelativeToParent,Property=Width,Factor=1,Constant=0}">
-                    <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3">
-                      <chart:SfChart.PrimaryAxis>
+                    <chart:SfChart  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3">
+                      <chart:SfChart.PrimaryAxis >
                         <chart:NumericalAxis   Minimum="0" Maximum="12" >
                           <chart:NumericalAxis.Title>
                             <chart:ChartAxisTitle Text="Running 30 Day Period" >

@@ -31,7 +31,7 @@ namespace PacificCoral.Controls
             };
             image1.GestureRecognizers.Add(tapGestureRecognizer1);
             image1Active.GestureRecognizers.Add(tapGestureRecognizer1);
-
+            
             var tapGestureRecognizer2 = new TapGestureRecognizer();
             tapGestureRecognizer2.Tapped += async (s, e) =>
             {

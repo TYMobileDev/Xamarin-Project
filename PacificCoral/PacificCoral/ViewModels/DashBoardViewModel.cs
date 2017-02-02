@@ -30,12 +30,12 @@ namespace PacificCoral.ViewModels
                 sales.Add(new SalesModel() { Code = "421127", Shrimp = "SHRIMP WHT 71/90", Sep1 = "SEP::63,451", Sep2 = "SEP::63,451", GL = "G(L)(21,335)" });
             }
             Sales = sales;
-
+            
             //init fake data for chart
-
             RefreshDashboardTables();
 
             Opcos = DataManager.DefaultManager.OPCOs;
+            
         }
 
 		#region -- Public properties --
@@ -56,7 +56,9 @@ namespace PacificCoral.ViewModels
             try
             {
                 _currentOpco  = await DataManager.DefaultManager.GetCurrentOpcoAsync();
-                OpcoSalesChartItems  = await DataManager.DefaultManager.getOpcoSalesSummaryForOpcoAsync(_currentOpco );
+                if (_currentOpco == null || _currentOpco.Trim() == "") return;
+              //  OpcoSalesChartItems  = await DataManager.DefaultManager.getOpcoSalesSummaryForOpcoAsync(_currentOpco );
+                OpcoSalesChartItems = await DataManager.DefaultManager.OpcoSalesSummaryTable.GetFilteredTable(_currentOpco);
                 // calculate growth
                 double p1 = OpcoSalesChartItems.Where(p => p.Period >= 9).Sum(p => p.LBS);
                 double p2 = OpcoSalesChartItems.Where(p => p.Period >= 6 && p.Period<9).Sum(p => p.LBS);
@@ -81,7 +83,9 @@ namespace PacificCoral.ViewModels
             try
             {
                 _currentOpco  = await DataManager.DefaultManager.GetCurrentOpcoAsync();
-                LostSalesPCSItems = await DataManager.DefaultManager.getLostSalesPCSForOpcoAsync(_currentOpco );
+                if (_currentOpco == null)
+                    return;
+                LostSalesPCSItems = await DataManager.DefaultManager.LostSalesPCSTable.GetFilteredTable(_currentOpco);
               
             }
             catch (Exception ex)
@@ -94,7 +98,7 @@ namespace PacificCoral.ViewModels
         {
             try
             {
-                DeviationSummaryItems = await DataManager.DefaultManager.getDeviationSummaryAsync();
+                DeviationSummaryItems = await DataManager.DefaultManager.DeviationSummaryTable.GetFilteredTable(Authentication.DefaultAthenticator.CurrentUserID);
 
             }
             catch (Exception ex)
@@ -109,16 +113,18 @@ namespace PacificCoral.ViewModels
 
         public ObservableCollection<SalesModel> Sales { get; set; }
 
-        public string CurrentOpco { get
+        public string CurrentOpco
+        {
+            get
             {
                 return Globals.CurrentOpco == string.Empty ? "No Opco Selected" : Globals.CurrentOpco;
             }
             set
             {
                 Globals.CurrentOpco = value;
-                SetProperty<string>(ref _currentOpco , value);
+                SetProperty<string>(ref _currentOpco, value);
                 RefreshDashboardTables(); // update chart, lost sales, etc with current opco- calls asyn methods
-           }
+            }
         }
 
 		private string _Revenue;
@@ -128,7 +134,17 @@ namespace PacificCoral.ViewModels
 			set { SetProperty( ref _Revenue, value);}
 		}
 
-		public ICommand ViewTrackMileageCommand
+        public ICommand ChartTappedCommand
+        {
+            get { return SingleExecutionCommand.FromFunc(OnViewOrdersCommandAsync ); }
+        }
+
+        private Task OnChartTapGestureCommandAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICommand ViewTrackMileageCommand
 		{
 			get { return SingleExecutionCommand.FromFunc(OnViewTrackMileageCommandAsync); }
 		}

@@ -13,6 +13,7 @@ using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 using Microsoft.WindowsAzure.MobileServices.Sync;
 using System.Collections.ObjectModel;
 using PacificCoral.Helpers;
+using System.Linq.Expressions;
 
 namespace PacificCoral
 {
@@ -25,15 +26,21 @@ namespace PacificCoral
 
         // declare sync tables here
         IMobileServiceSyncTable<RepOpcoMap> opcoTable;
-        IMobileServiceSyncTable<OpcoSalesSummaries> opcoSalesSummariesTable;
-        IMobileServiceSyncTable<LostSalesPCS  > lostSalesPCSTable;
-        IMobileServiceSyncTable<DeviationMaster> deviationMasterTable;
-        IMobileServiceSyncTable<DeviationDetails> deviationDetailsTable;
-        IMobileServiceSyncTable<DeviationSummary> deviationSummaryTable;
+        IMobileServiceSyncTable<PODetail> poDetailTable;
+
+        public Data.AsyncDataHelper<OpcoSalesSummaries,string, int,object, object> OpcoSalesSummaryTable;
+        public Data.AsyncDataHelper<LostSalesPCS,string , double, object, object> LostSalesPCSTable;
+        public Data.AsyncDataHelper<DeviationMaster,string, DateTime, object, object> DeviationMasterTable;
+        public Data.AsyncDataHelper<DeviationSummary,string, int, object, object> DeviationSummaryTable;
+        public Data.AsyncDataHelper<DeviationDetails,string, int, Model.DeviationMaster, string>DeviationDetailTable;
+        public Data.AsyncDataHelper<ItemCodes,string, string, object, object> ItemCodesTable;
+        public Data.AsyncDataHelper<POMaster,string, DateTime , object, object> POMasterTable;
+        public Data.AsyncDataHelper<PODetail, int,string, POMaster, int> PODetailTable;
+        public Data.AsyncDataHelper<Customers, string, string, object, object> CustomersTable;
+        public Data.AsyncDataHelper<CustomerCodes, int, string, Customers, int> CustomerCodesTable;
 
         // store static tables for easy reference
         ObservableCollection<RepOpcoMap> opcoTableSnapshot;
-        ObservableCollection<LostSalesPCS> lostSalesPCSTableSnapshot;
 
         // some tables are only generated nightly on the server, so no reason to pull changes more than once a day. 
         // store last refresh times
@@ -41,9 +48,8 @@ namespace PacificCoral
         DateTime LostSalesUpdatedAt = DateTime.MinValue;
 
         bool OpcoTableRefreshed = false;
-        bool OpcoSalesTableRefreshed = false;
-        bool LostSalesTableRefreshed = false;
-        bool DeviationSummaryRefreshed = false;
+        bool OpcoTableRefreshing = false;
+
 
         private DataManager()
         {
@@ -53,28 +59,62 @@ namespace PacificCoral
 
                 var store = new MobileServiceSQLiteStore(offlineDbPath);
                 // define all tables to be stored locally.  Sync and non-synced
-                store.DefineTable<RepOpcoMap >();
+                store.DefineTable<RepOpcoMap>();
                 store.DefineTable<OpcoSalesSummaries>();
                 store.DefineTable<LostSalesPCS>();
-                store.DefineTable<DeviationDetails >();
-                store.DefineTable<DeviationSummary >();
-             //   store.DefineTable<DeviationMaster >();
+                store.DefineTable<DeviationDetails>();
+                store.DefineTable<DeviationSummary>();
+                store.DefineTable<DeviationMaster>();
+                store.DefineTable<ItemCodes>();
+                store.DefineTable<POMaster>();
+                store.DefineTable<PODetail>();
+                store.DefineTable<Customers>();
+                store.DefineTable<CustomerCodes>();
                 //Initializes the SyncContext using the default IMobileServiceSyncHandler.
 
                 this.client.SyncContext.InitializeAsync(store);
 
                 this.opcoTable = client.GetSyncTable<RepOpcoMap>();
-                this.opcoSalesSummariesTable = client.GetSyncTable<OpcoSalesSummaries>();
-                this.lostSalesPCSTable = client.GetSyncTable<LostSalesPCS>();
-                this.deviationMasterTable = client.GetSyncTable<DeviationMaster>();
-                this.deviationDetailsTable = client.GetSyncTable<DeviationDetails>();
-                this.deviationSummaryTable = client.GetSyncTable<DeviationSummary>();
+
+                this.poDetailTable = client.GetSyncTable<PODetail>();
+                OpcoSalesSummaryTable = new Data.AsyncDataHelper<OpcoSalesSummaries,string, int,object , object>(client, (p, s) => p.OPCO.ToUpper().Trim() == s.ToUpper().Trim(), p=>p.Period , false, enumOrderDirection.Ascending);
+                LostSalesPCSTable = new Data.AsyncDataHelper<Model.LostSalesPCS,string, double, object, object>(client, (p, s) => p.OPCO.ToUpper().Trim() == s.ToUpper().Trim(), p => p.GainLoss, false, enumOrderDirection.Ascending);
+                DeviationMasterTable = new Data.AsyncDataHelper<Model.DeviationMaster,string, DateTime, object, object >(client, (p, s) => p.SyscoHouse.Trim().ToUpper() == s.Trim().ToUpper(), p => p.EndDate, true,  enumOrderDirection.Ascending,new TimeSpan(0, 15, 0));
+                DeviationSummaryTable = new Data.AsyncDataHelper<Model.DeviationSummary, string,int,object, object>(client, (p, s) => p.Representative.ToUpper().Trim() == s.Trim().ToUpper(), null, false, enumOrderDirection.Ascending );
+                DeviationDetailTable = new Data.AsyncDataHelper<Model.DeviationDetails,string, int, Model.DeviationMaster, string>(client,
+                    (p,s) =>p.DeviationNumber==s,null, true,
+                    (p, o) => o.Contains(p.DeviationNumber),
+                    DeviationMasterTable.GetFilteredTable,
+                    (oc, s) => oc.Where (p => p.SyscoHouse.Trim().ToUpper() == s.Trim().ToUpper()).Select(p => p.DeviationNumber).ToList(),
+                    new TimeSpan(0, 15, 0)
+                    );
+                ItemCodesTable = new Data.AsyncDataHelper<Model.ItemCodes,string, string, object, object>(client, null, p => p.ItemCode,true, enumOrderDirection.Ascending, new TimeSpan(0, 15, 0));
+                POMasterTable = new Data.AsyncDataHelper<Model.POMaster,string, DateTime, object, object>(client, (p, s) => p.OPCO.ToUpper().Trim() == s.ToUpper().Trim(), p => p.PODate, true, enumOrderDirection.Descending , new TimeSpan(0,15,0));
+                PODetailTable = new Data.AsyncDataHelper<Model.PODetail, int, string, Model.POMaster, int>(client,
+                    (p, s) => p.MasterKey == s,  // general where predicate
+                    p => p.ItemCode, // order by
+                    true, // incremental updates
+                    (p, o) => o.Contains(p.MasterKey),  // contains where predicate
+                    POMasterTable.GetFilteredTable, // mater table
+                    (oc, s) => oc.Where(p => p.OPCO.Trim().ToUpper() == s.Trim().ToUpper()).Select(p => p.key).ToList(), // generate contains list
+                    new TimeSpan(0, 15, 0));
+                CustomersTable = new Data.AsyncDataHelper<Model.Customers, string, string, object, object>(client, (p, s) => p.OPCO.Trim().ToUpper() == s.Trim().ToUpper(), p => p.CustomerName, true, enumOrderDirection.Ascending, new TimeSpan(0,15,0));
+                CustomerCodesTable = new Data.AsyncDataHelper<CustomerCodes, int, string, Customers, int>(client,
+                    (p, s) => p.CustomerNumber == s,
+                    p => p.CustomerCode,
+                    true,
+                    (p,o)=>o.Contains(p.CustomerNumber),
+                    CustomersTable.GetFilteredTable,
+                    (oc, s) => oc.Where(p => p.OPCO.Trim().ToUpper() == s.Trim().ToUpper()).Select(p=>p.CustomerNumber).ToList());
+
             }
             catch (Exception ex)
             {
-				throw new Exception(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
+
+
         public static DataManager DefaultManager
         {
             get
@@ -96,49 +136,59 @@ namespace PacificCoral
             await SyncAsync();
 
             // retreive updated table from server async
-            refreshOpcoSalesSummaryTable();
-            refreshLostSalesPCSTable();
-            refreshDeviationSummaryTable();
-            refreshDeviationMasterTable();
+            OpcoSalesSummaryTable.Refresh();
+            LostSalesPCSTable.Refresh();
+            DeviationMasterTable.Refresh();
+            DeviationSummaryTable.Refresh();
+
+
+
         }
 
 
         public async Task<string> GetCurrentOpcoAsync()
         {
-
-            if (Globals.CurrentOpco != string.Empty)
+            try
             {
-                return Globals.CurrentOpco;
-            }
-            else
-            {
-                if (Settings.LastOPCO != string.Empty)
+                if (Globals.CurrentOpco != string.Empty)
                 {
-                    // verify in current list of opcos.
-                //    var o = await this.opcoTable.Where(p => p.OPCO.ToUpper() == Settings.LastOPCO.ToUpper()).Select(p => p.OPCO.ToUpper()).ToListAsync();
-                    var o = opcoTableSnapshot.Where(p => p.OPCO.ToUpper() == Settings.LastOPCO.ToUpper()).Select(p => p.OPCO.ToUpper()).ToList();
-                    if (o.Count > 0)
-                    {
-                        Globals.CurrentOpco = o[0].ToString();
-                        return Globals.CurrentOpco;
-                    }
-                }
-                // if gets to here, then no currentopco, no lastopco that matches.  get first opco in list
-                var op = await this.opcoTable.Select(p => p.OPCO.ToUpper()).ToListAsync();
-                if (op.Count > 0)
-                {
-                    Globals.CurrentOpco = op[0].ToString();
                     return Globals.CurrentOpco;
                 }
-                // no opcos
-                return string.Empty;
+                else
+                {
+                    if (Settings.LastOPCO != string.Empty && Settings.LastOPCO!=null)
+                    {
+                        System.Diagnostics.Debug.WriteLine(Settings.LastOPCO);
+                        // verify in current list of opcos.
+                        //    var o = await this.opcoTable.Where(p => p.OPCO.ToUpper() == Settings.LastOPCO.ToUpper()).Select(p => p.OPCO.ToUpper()).ToListAsync();
+                        var o = opcoTableSnapshot.Where(p => p.OPCO.ToUpper() == Settings.LastOPCO.ToUpper()).Select(p => p.OPCO.ToUpper()).ToList();
+                        if (o.Count > 0)
+                        {
+                            Globals.CurrentOpco = o[0].ToString();
+                            return Globals.CurrentOpco;
+                        }
+                    }
+                    // if gets to here, then no currentopco, no lastopco that matches.  get first opco in list
+                    var op = await this.opcoTable.Select(p => p.OPCO.ToUpper()).ToListAsync();
+                    if (op.Count > 0)
+                    {
+                        Globals.CurrentOpco = op[0].ToString();
+                        return Globals.CurrentOpco;
+                    }
+                    // no opcos
+                    return string.Empty;
+
+                }
+            }
+            catch (Exception ex)
+            {
 
             }
-
+            return string.Empty;
         }
 
 
-        
+
         public MobileServiceClient CurrentClient
         {
             get
@@ -152,7 +202,7 @@ namespace PacificCoral
             }
         }
 
-       
+
         public async Task SyncAsync()
         {
             ReadOnlyCollection<MobileServiceTableOperationError> syncErrors = null;
@@ -160,17 +210,7 @@ namespace PacificCoral
             try
             {
                 await this.client.SyncContext.PushAsync();
-            //    await this.opcoTable.PullAsync(null, this.opcoTable.CreateQuery());
-            //    await this.opcoSalesSummariesTable.PullAsync(null, this.opcoSalesSummariesTable.CreateQuery());
 
-                //await this.todoTable.PullAsync(
-                //    //The first parameter is a query name that is used internally by the client SDK to implement incremental sync.
-                //    //Use a different query name for each unique query in your program
-                //    "allTodoItems",
-                //    this.todoTable.CreateQuery());
-                //// calling purge and pull without a query name will cause the entire table to be refreshed, not just incremental updates
-                //await this.graphTable.PurgeAsync();
-                //await this.graphTable.PullAsync(null, this.graphTable.CreateQuery());
             }
             catch (MobileServicePushFailedException exc)
             {
@@ -217,248 +257,47 @@ namespace PacificCoral
         }
         public async Task initalizeOpcoTable()
         {
-            // load opco table
-            if (!OpcoTableRefreshed)
+
+            try
             {
-                await updateOpcoTableAsync();
+                // load opco table
+                if (!OpcoTableRefreshed)
+                {
+                    await updateOpcoTableAsync();
+                }
+                var ot = await opcoTable.Where(p => p.Representative == Authentication.DefaultAthenticator.UserInfo.DisplayableId.ToUpper()).ToListAsync();
+                ot = ot.GroupBy(p => p.OPCO).Select(p => p.First()).ToList();
+                opcoTableSnapshot = new ObservableCollection<Model.RepOpcoMap>(ot);
             }
-            var ot = await opcoTable.Where(p => p.Representative == Authentication.DefaultAthenticator.UserInfo.DisplayableId.ToUpper()).ToListAsync();
-            ot = ot.GroupBy(p => p.OPCO).Select(p => p.First()).ToList();
-            opcoTableSnapshot = new ObservableCollection<Model.RepOpcoMap>(ot);
+            catch (Exception ex)
+            {
+
+            }
         }
         private async Task updateOpcoTableAsync()
         {
+            if (!Authentication.DefaultAthenticator.IsAuthenticated) return;
+            if (OpcoTableRefreshing ) return;
+            try
+            {
+                OpcoTableRefreshing = true;
+                await opcoTable.PurgeAsync();
+                await opcoTable.PullAsync(null, opcoTable.CreateQuery());
+                var ot = await opcoTable.ToListAsync();
+                ot = ot.GroupBy(p => p.OPCO).Select(p => p.First()).ToList();
+                opcoTableSnapshot = new ObservableCollection<Model.RepOpcoMap>(ot);
+                OpcoTableRefreshed = true;
+            }
+            catch (Exception ex)
+            {
 
-            await opcoTable.PurgeAsync();
-            await opcoTable.PullAsync(null, opcoTable.CreateQuery());
-            var ot = await opcoTable.ToListAsync();
-            ot = ot.GroupBy(p => p.OPCO).Select(p => p.First()).ToList();
-            opcoTableSnapshot = new ObservableCollection<Model.RepOpcoMap>(ot);
-            OpcoTableRefreshed = true;
+            }
+            finally
+            {
+                OpcoTableRefreshing = false;
+            }
         }
         #endregion OPCOTable
-
-        #region DeviationSummary
-
-        public async Task<ObservableCollection<DeviationSummary >> getDeviationSummaryAsync()
-        {
-            //store local store table
-            try
-            {
-                if (!DeviationSummaryRefreshed )
-                {
-                    await refreshDeviationSummaryTable();
-                }
-                var o = await this.deviationSummaryTable.Where(p => p.Representative.ToUpper().Trim()==Authentication.DefaultAthenticator.CurrentUserID ).ToEnumerableAsync();
-                // refresh local store from sql server async
-                return new ObservableCollection<DeviationSummary >(o);
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return null;
-        }
-
-        public async Task refreshDeviationSummaryTable()
-        {
-            // only update once per day
-            if (DeviationSummaryRefreshed ) return;
-            // invalidate offline table
-            try
-            {
-                await this.deviationSummaryTable.PurgeAsync();
-                await this.deviationSummaryTable.PullAsync(null, this.deviationSummaryTable .CreateQuery());
-                DeviationSummaryRefreshed  = true;
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-        #endregion
-
-        #region DeviationDetails
-
-        public async Task<ObservableCollection<DeviationDetails>> getDeviationDetailsAsync()
-        {
-            //store local store table
-            try
-            {
-                await refreshDeviationDetailsTable();
-                var o = await this.deviationDetailsTable.ToEnumerableAsync();
-                // refresh local store from sql server async
-                return new ObservableCollection<DeviationDetails>(o);
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return null;
-        }
-        public async Task<ObservableCollection<DeviationDetails>> getDeviationDetailsForOpcoAsync(string OPCO)
-        {
-            //store local store table
-            try
-            {
-                await refreshDeviationDetailsTable();
-                var o = await this.deviationMasterTable.Where(p => p.SyscoHouse.Trim().ToUpper() == OPCO.Trim().ToUpper()).Select(p=>p.DeviationNumber ).ToListAsync();
-                var r = await this.deviationDetailsTable.Where(p => o.Contains(p.DeviationNumber)).ToEnumerableAsync();
-                // refresh local store from sql server async
-                return new ObservableCollection<DeviationDetails>(r);
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return null;
-        }
-
-        public async Task refreshDeviationDetailsTable()
-        {
-
-            // bring in incremental syncs
-            try
-            {
-                await this.deviationDetailsTable.PullAsync("DeviationDetails", this.deviationDetailsTable.CreateQuery());
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        #endregion
-
-        #region DeviationMaster
-
-        public async Task<ObservableCollection<DeviationMaster>> getDeviationMasterAsync()
-        {
-            //store local store table
-            try
-            {
-                await refreshDeviationMasterTable();
-                var o = await this.deviationMasterTable.ToEnumerableAsync();
-                // refresh local store from sql server async
-                return new ObservableCollection<DeviationMaster>(o);
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return null;
-        }
-        public async Task<ObservableCollection<DeviationMaster>> getDeviationMasterForOpcoAsync(string OPCO)
-        {
-            //store local store table
-            try
-            {
-                await refreshDeviationMasterTable();
-                var o = await this.deviationMasterTable.Where(p=>p.SyscoHouse.Trim().ToUpper()==OPCO.Trim().ToUpper()).ToEnumerableAsync();
-                // refresh local store from sql server async
-                return new ObservableCollection<DeviationMaster>(o);
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return null;
-        }
-
-        public async Task refreshDeviationMasterTable()
-        {
-
-            // bring in incremental syncs
-            try
-            {
-                await this.deviationMasterTable.PullAsync("DeviationMaster", this.deviationMasterTable.CreateQuery());
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        #endregion 
-
-        #region LostSalesTable
-
-        public async Task<ObservableCollection<LostSalesPCS>> getLostSalesPCSForOpcoAsync(string opco)
-        {
-            //store local store table
-            try
-            {
-                if (!LostSalesTableRefreshed)
-                {
-                    await refreshLostSalesPCSTable();
-                }
-                var o = await this.lostSalesPCSTable.Where(p => p.OPCO.ToUpper().Trim() == opco.ToUpper().Trim()).OrderBy(p => p.GainLoss).ToEnumerableAsync();
-                // refresh local store from sql server async
-                return new ObservableCollection<LostSalesPCS>(o);
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return null;
-        }
-        public async Task refreshLostSalesPCSTable()
-        {
-            // only update once per day
-            if (DateTime.Now.Date == LostSalesUpdatedAt.Date) return;
-            // invalidate offline table
-            try
-            {
-                await this.lostSalesPCSTable.PurgeAsync();
-                await this.lostSalesPCSTable.PullAsync(null, this.lostSalesPCSTable.CreateQuery());
-                LostSalesUpdatedAt = DateTime.Now.Date;
-                LostSalesTableRefreshed = true;
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        #endregion LostSalesTable
-        #region OpcoSalesSummaryTable
-        public async Task<ObservableCollection<OpcoSalesSummaries>> getOpcoSalesSummaryForOpcoAsync(string opco)
-        {
-            //store local store table
-            try
-            {
-                if (!LostSalesTableRefreshed)
-                {
-                    await refreshOpcoSalesSummaryTable();
-                }
-                var o = await this.opcoSalesSummariesTable.Where(p => p.OPCO.ToUpper() == opco.ToUpper()).OrderBy(p => p.Period).ToEnumerableAsync();
-                // refresh local store from sql server async
-                return new ObservableCollection<OpcoSalesSummaries>(o);
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return null;
-        }
-
-        public async Task refreshOpcoSalesSummaryTable()
-        {
-            // invalidate offline table, pull entire table from server for current user
-            if (DateTime.Now.Date == OpcoSalesSummaryUpdatedAt.Date) return;
-            try
-            {
-                await this.opcoSalesSummariesTable.PurgeAsync();
-                await this.opcoSalesSummariesTable.PullAsync(null, this.opcoSalesSummariesTable.CreateQuery());
-                OpcoSalesSummaryUpdatedAt = DateTime.Now.Date;
-                OpcoSalesTableRefreshed = true;
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-        #endregion
 
 
     }

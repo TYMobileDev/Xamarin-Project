@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 using Xamarin.Forms;
 
@@ -18,12 +19,17 @@ namespace PacificCoral.Views
             {
                 InitializeComponent();
                 NavigationPage.SetHasNavigationBar(this, false);
+
                 //
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
             }
-        }       
+        }  
+        public void ChartTapped(object o, EventArgs e)
+        {
+            int a = 0;
+        }    
     }
 }
