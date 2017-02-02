@@ -3,7 +3,7 @@ using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
 namespace PacificCoral
 {
-	public class ChartDataViewCell : ViewCell
+	public class ChartDataViewCell : StackLayout
 	{
 		public ChartDataViewCell()
 		{
@@ -23,7 +23,7 @@ namespace PacificCoral
 
 			//Initializing line series
 			LineSeries lineSeries = new LineSeries();
-			//TODO: lineSeries.SetBinding(ChartSeries.ItemsSourceProperty, "OpcoSalesChartItems");
+			lineSeries.SetBinding(ChartSeries.ItemsSourceProperty, "OpcoSalesChartItems[0]");
 			lineSeries.XBindingPath = "Period";
 			lineSeries.YBindingPath = "LBS";
 			lineSeries.Color = Color.FromHex("#bababa");
@@ -31,7 +31,7 @@ namespace PacificCoral
 
 			//Initializing area series
 			AreaSeries areaSeries = new AreaSeries();
-			//TODO: lineSeries.SetBinding(ChartSeries.ItemsSourceProperty, "OpcoSalesChartItems");
+			lineSeries.SetBinding(ChartSeries.ItemsSourceProperty, "OpcoSalesChartItems[0]");
 			areaSeries.XBindingPath = "Period";
 			areaSeries.YBindingPath = "LBS";
 			areaSeries.Color = Color.FromHex("#ebebeb");
@@ -52,9 +52,19 @@ namespace PacificCoral
 			};
 			chart.Series.Add(areaSeries);
 
-			//Content = chart;
+			//this.Content = chart;
 
-			View = chart;
+			//View = chart;
+
+			var label = new Label()
+			{
+				Text = "dfdfdfdfdfdfd",
+				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+
+			};
+
+			Children.Add(chart);
+			Children.Add(label);
 		}
 	}
 }

@@ -184,6 +184,7 @@
     <Compile Include="Controls\Accordion\Accordion.cs" />
     <Compile Include="Cell\ChartDataViewCell.cs" />
     <Compile Include="Cell\LostSalesPCSViewCell.cs" />
+    <Compile Include="Controls\DeviationsView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Mono.Android">

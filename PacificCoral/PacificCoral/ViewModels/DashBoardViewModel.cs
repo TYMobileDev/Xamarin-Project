@@ -12,6 +12,7 @@ using System.Windows.Input;
 using Prism.Navigation;
 using Xamarin.Forms;
 using PacificCoral.Controls;
+using PacificCoral.Control;
 
 namespace PacificCoral.ViewModels
 {
@@ -178,19 +179,37 @@ namespace PacificCoral.ViewModels
 		{
 			AccordionSource = new ObservableCollection<AccordionSource>();
 
-			var chartViewOne = new ListView()
-			{
-				ItemsSource = OpcoSalesChartItems,
-				ItemTemplate = new DataTemplate(typeof(ChartDataViewCell))
-			};
+			//var chartViewOne = new ListView()
+			//{
+			//	ItemsSource = OpcoSalesChartItems,
+			//	ItemTemplate = new DataTemplate(typeof(ChartDataViewCell))
+			//};
 			var chartFirstAccord = new AccordionSource()
 			{
 				HeaderText = "Sales history",
 				HeaderTextColor = Color.Black,
 				HeaderBackGroundColor = Color.White,
-				ContentItems = chartViewOne
+				//ContentItems = chartViewOne
+				ContentItems = new ChartDataViewCell(),
 			};
 			AccordionSource.Add(chartFirstAccord);
+
+			//var vViewLayout = new StackLayout()
+			//{
+			//	Children = {
+			//		new Label { Text = "Static Content:" },
+			//		new Label { Text = "Sales history" },
+			//		new Label { Text = "Sales history" }
+			//	}
+			//};
+			var deviationsThirdAccord = new AccordionSource()
+			{
+				HeaderText = "Deviations",
+				HeaderTextColor = Color.Black,
+				HeaderBackGroundColor = Color.White,
+				ContentItems = new DeviationsView(),
+			};
+			AccordionSource.Add(deviationsThirdAccord);
 		}
 
 		#endregion

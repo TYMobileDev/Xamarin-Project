@@ -57,7 +57,7 @@
 			<StackLayout Grid.Row="1" Grid.Column="0" VerticalOptions="End">
 				<Image Source="coral.png" Margin="0,10,0,0" />
 			</StackLayout>
-			<StackLayout Grid.Row="0" Grid.Column="0">
+			<StackLayout Grid.Row="0" Grid.Column="0" InputTransparent="true">
 				<ActivityIndicator HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsVisible="{Binding WaitVisible}" IsEnabled="{Binding WaitVisible}" IsRunning="{Binding WaitVisible}" Color="Gray" Opacity="0.5" x:Name="loginIndicator">
 				</ActivityIndicator>
 			</StackLayout>

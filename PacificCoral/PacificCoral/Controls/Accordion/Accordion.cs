@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using PacificCoral.Controls;
 using Xamarin.Forms;
 
-namespace PacificCoral
+namespace PacificCoral.Controls
 {
 	public class Accordion : ContentView
 	{
@@ -13,15 +13,16 @@ namespace PacificCoral
 
 		public Accordion()
 		{
-			var mMainLayout = new StackLayout();
-			Content = mMainLayout;
+			//var mMainLayout = new StackLayout();
+			//Content = mMainLayout;
+			SetItems();
 		}
 
-		public Accordion(List<AccordionSource> aSource)
-		{
-			//ItemsSource = aSource;
-			DataBind();
-		}
+		//public Accordion(List<AccordionSource> aSource)
+		//{
+		//	//ItemsSource = aSource;
+		//	DataBind();
+		//}
 
 		#region -- Public properties --
 
@@ -37,17 +38,26 @@ namespace PacificCoral
 		}
 
 		public static readonly BindableProperty ItemsSourceProperty =
-   BindableProperty.Create(nameof(ItemsSource), typeof(List<AccordionSource>), typeof(Accordion), default(List<AccordionSource>));
+   BindableProperty.Create(nameof(ItemsSource), typeof(IList<AccordionSource>), typeof(Accordion), default(IList<AccordionSource>),BindingMode.TwoWay, null, ItemsSourceChanged);
 
-		public List<AccordionSource> ItemsSource
+		public IList<AccordionSource> ItemsSource
 		{
-			get { return (List<AccordionSource>)GetValue(ItemsSourceProperty); }
+			get { return (IList<AccordionSource>)GetValue(ItemsSourceProperty); }
 			set { SetValue(ItemsSourceProperty, value); }
 		}
 
 		#endregion
 
-		public void DataBind()
+
+		#region -- Private helpers --
+
+		private static void ItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
+		{
+			var control = (Accordion)bindable;
+			control.SetItems();
+		}
+
+		private void SetItems()
 		{
 			var vMainLayout = new StackLayout();
 			var vFirst = true;
@@ -55,7 +65,6 @@ namespace PacificCoral
 			{
 				foreach (var vSingleItem in ItemsSource)
 				{
-
 					var vHeaderButton = new AccordionButton()
 					{
 						Text = vSingleItem.HeaderText,
@@ -78,16 +87,13 @@ namespace PacificCoral
 					vHeaderButton.Clicked += OnAccordionButtonClicked;
 					vMainLayout.Children.Add(vHeaderButton);
 					vMainLayout.Children.Add(vAccordionContent);
-
 				}
 			}
 			mMainLayout = vMainLayout;
 			Content = mMainLayout;
 		}
 
-		#region -- Private helpers --
-
-		void OnAccordionButtonClicked(object sender, EventArgs args)
+		private void OnAccordionButtonClicked(object sender, EventArgs args)
 		{
 			foreach (var vChildItem in mMainLayout.Children)
 			{
