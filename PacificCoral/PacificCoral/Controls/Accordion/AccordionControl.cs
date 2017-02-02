@@ -17,9 +17,7 @@ namespace PacificCoral.Controls
 
 		#region -- Public properties --
 
-		public static readonly BindableProperty ItemsSourceProperty =
-BindableProperty.Create(nameof(ItemsSource), typeof(IList<AccordionModel>), typeof(AccordionControl), default(IList<AccordionModel>), BindingMode.TwoWay, null, ItemsSourceChanged);
-
+		public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(IList<AccordionModel>), typeof(AccordionControl), default(IList<AccordionModel>), BindingMode.TwoWay, null, ItemsSourceChanged);
 		public IList<AccordionModel> ItemsSource
 		{
 			get { return (IList<AccordionModel>)GetValue(ItemsSourceProperty); }
@@ -63,7 +61,6 @@ BindableProperty.Create(nameof(ItemsSource), typeof(IList<AccordionModel>), type
 
 		#endregion
 
-		//public AccordionControl(View header = null)
 		public AccordionControl()
 		{
 			AnimationDuration = 400;
@@ -105,6 +102,8 @@ BindableProperty.Create(nameof(ItemsSource), typeof(IList<AccordionModel>), type
 			//	Children.Add(m_shadowImage, 0, 1);
 			//}
 		}
+
+		#region -- Private helpers --
 
 		private void CreateStacklayout()
 		{
@@ -154,7 +153,7 @@ BindableProperty.Create(nameof(ItemsSource), typeof(IList<AccordionModel>), type
 			}
 		}
 
-		public void Clear()
+		private void Clear()
 		{
 			m_entries.Clear();
 			m_cellStackLayout.Children.Clear();
@@ -214,7 +213,7 @@ BindableProperty.Create(nameof(ItemsSource), typeof(IList<AccordionModel>), type
 		/// Raises the cell touch up inside event.
 		/// </summary>
 		/// <param name="cellIndex">cell index.</param>
-		void OnCellTouchUpInside(int cellIndex)
+		private void OnCellTouchUpInside(int cellIndex)
 		{
 			var touchedEntry = m_entries[cellIndex];
 			bool isTouchingToClose = touchedEntry.IsOpen;
@@ -238,5 +237,7 @@ BindableProperty.Create(nameof(ItemsSource), typeof(IList<AccordionModel>), type
 			var control = (AccordionControl)bindable;
 			control.BuildContent();
 		}
+
+		#endregion
 	}
 }

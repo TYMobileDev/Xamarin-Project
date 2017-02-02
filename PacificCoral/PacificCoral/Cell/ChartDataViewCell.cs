@@ -7,6 +7,9 @@ namespace PacificCoral
 	{
 		public ChartDataViewCell()
 		{
+			BackgroundColor = Color.White;
+			Margin = new Thickness(0, 10, 0, 10);
+
 			SfChart chart = new SfChart();
 
 			//Initializing Primary Axis   
@@ -23,7 +26,7 @@ namespace PacificCoral
 
 			//Initializing line series
 			LineSeries lineSeries = new LineSeries();
-			lineSeries.SetBinding(ChartSeries.ItemsSourceProperty, "OpcoSalesChartItems[0]");
+			lineSeries.SetBinding(LineSeries.ItemsSourceProperty, new Binding("OpcoSalesChartItems", BindingMode.TwoWay));
 			lineSeries.XBindingPath = "Period";
 			lineSeries.YBindingPath = "LBS";
 			lineSeries.Color = Color.FromHex("#bababa");
@@ -31,7 +34,7 @@ namespace PacificCoral
 
 			//Initializing area series
 			AreaSeries areaSeries = new AreaSeries();
-			lineSeries.SetBinding(ChartSeries.ItemsSourceProperty, "OpcoSalesChartItems[0]");
+			areaSeries.SetBinding(AreaSeries.ItemsSourceProperty, "OpcoSalesChartItems");
 			areaSeries.XBindingPath = "Period";
 			areaSeries.YBindingPath = "LBS";
 			areaSeries.Color = Color.FromHex("#ebebeb");
@@ -58,10 +61,10 @@ namespace PacificCoral
 
 			var label = new Label()
 			{
-				Text = "dfdfdfdfdfdfd",
+				//Text = "dfdfdfdfdfdfd",
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-
 			};
+			label.SetBinding(Label.TextProperty, "OpcoSalesChartItems[0].LBS");
 
 			Children.Add(chart);
 			Children.Add(label);

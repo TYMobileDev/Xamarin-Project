@@ -9,41 +9,33 @@ namespace PacificCoral
 		{
 			Orientation = StackOrientation.Horizontal;
 			BackgroundColor = Color.White;
-			Margin = new Thickness(0, 0, 0, 10);
+			Margin = new Thickness(0, 5, 0, 5);
 			HeightRequest = 50;
+			BindingContext = this;
 
-			var nameLabel = new Label()
+			var titleLabel = new Label()
 			{
 				HorizontalOptions = LayoutOptions.Start,
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
 				VerticalOptions = LayoutOptions.Center,
-				TextColor = Color.Yellow,
-				//Text = Name,
+				TextColor = Color.Black,
+				Margin = new Thickness(20, 0, 0, 0),
 			};
-			//nameLabel.SetBinding(Label.TextProperty, NameCellProperty.PropertyName);
+			titleLabel.SetBinding(Label.TextProperty, "TitleCell");
+			var icon = new Image()
+			{
+				Source = "open_cell",
+				Margin = new Thickness(10),
+				HorizontalOptions = LayoutOptions.EndAndExpand,
+			};
 
-			nameLabel.Text = Name;
-
-			Children.Add(nameLabel);
+			Children.Add(titleLabel);
+			Children.Add(icon);
 		}
 
 		#region -- Public properties --
 
-		public string Name { get; set; }
-
-		public static readonly BindableProperty NameCellProperty =
-			BindableProperty.Create(nameof(NameCell), typeof(string), typeof(AccordionCell), default(string));
-		public string NameCell
-		{
-			get
-			{
-				return (string)GetValue(NameCellProperty);
-			}
-			set
-			{
-				SetValue(NameCellProperty, value);
-			}
-		}
+		public string TitleCell { get; set;}
 
 		#endregion
 	}

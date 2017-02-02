@@ -189,7 +189,30 @@ namespace PacificCoral.ViewModels
 			try
 			{
 				_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
-				OpcoSalesChartItems = await DataManager.DefaultManager.getOpcoSalesSummaryForOpcoAsync(_currentOpco);
+				//OpcoSalesChartItems = await DataManager.DefaultManager.getOpcoSalesSummaryForOpcoAsync(_currentOpco);
+				OpcoSalesChartItems = new ObservableCollection<OpcoSalesSummaries>()
+				{
+					new OpcoSalesSummaries()
+					{
+						LBS = 200,
+						Period = 2,
+					},
+					new OpcoSalesSummaries()
+					{
+						LBS = 400,
+						Period = 4,
+					},
+					new OpcoSalesSummaries()
+					{
+						LBS = 600,
+						Period = 6,
+					},
+					new OpcoSalesSummaries()
+					{
+						LBS = 800,
+						Period = 8,
+					},
+				};
 				// calculate growth
 				double p1 = OpcoSalesChartItems.Where(p => p.Period >= 9).Sum(p => p.LBS);
 				double p2 = OpcoSalesChartItems.Where(p => p.Period >= 6 && p.Period < 9).Sum(p => p.LBS);
@@ -280,12 +303,14 @@ namespace PacificCoral.ViewModels
 					new Label { Text = "Static Content:" },
 					new Label { Text = "Sales history" },
 					new Label { Text = "Sales history" }
-				}
+				},
+				BackgroundColor = Color.White,
+				Margin = new Thickness(5, 10, 5, 10),
 			};
 
 			var cell = new AccordionCell()
 			{
-				Name = "Deviations",
+				TitleCell = "Static 1",
 			};
 
 			var item = new AccordionModel()
@@ -296,7 +321,7 @@ namespace PacificCoral.ViewModels
 
 			var cell1 = new AccordionCell()
 			{
-				Name = "Deviations fd",
+				TitleCell = "Static 2",
 			};
 
 			var viewLayout1 = new StackLayout()
@@ -305,7 +330,9 @@ namespace PacificCoral.ViewModels
 					new Label { Text = "Static Content:" },
 					new Label { Text = "Sales history" },
 					new Label { Text = "Sales history" }
-				}
+				},
+				BackgroundColor = Color.White,
+				Margin = new Thickness(5, 10, 5, 10),
 			};
 
 			var item1 = new AccordionModel()
@@ -324,20 +351,20 @@ namespace PacificCoral.ViewModels
 			AccordionSource.Add(item1);
 
 			//real
-			var deviationsCell = new AccordionCell()
+			var chartCell = new AccordionCell()
 			{
-				Name = "Deviations",
+				TitleCell = "Sales history",
 			};
 
-			var deviationsThirdAccord = new AccordionModel()
+			var chartFirstAccord = new AccordionModel()
 			{
-				CellAccordion = deviationsCell,
-				ViewAccordion = new DeviationsView(),
+				CellAccordion = chartCell,
+				ViewAccordion = new ChartDataViewCell(),
 			};
 
 			var lostSalesPCSCell = new AccordionCell()
 			{
-				Name = "Sales history",
+				TitleCell = "Lost Sales",
 			};
 
 			var lostSalesPCSViewTwo = new ListView()
@@ -352,6 +379,18 @@ namespace PacificCoral.ViewModels
  				ViewAccordion = lostSalesPCSViewTwo
 			};
 
+			var deviationsCell = new AccordionCell()
+			{
+				TitleCell = "Deviations",
+			};
+
+			var deviationsThirdAccord = new AccordionModel()
+			{
+				CellAccordion = deviationsCell,
+				ViewAccordion = new DeviationsView(),
+			};
+
+			AccordionSource.Add(chartFirstAccord);
 			AccordionSource.Add(lostSalesPCSSecondAccord);
 			AccordionSource.Add(deviationsThirdAccord);
 		}

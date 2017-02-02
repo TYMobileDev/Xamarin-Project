@@ -68,8 +68,6 @@
 					SelectedValue="{Binding Path=CurrentOpco, Mode=TwoWay}" />
 			</StackLayout>-->
 		</StackLayout>
-		<!--		<control:Accordion Grid.Row="1" ItemsSource="{Binding AccordionSource}"/>-->
-		<!--<control:AccordionControl Grid.Row="1" ItemsSource="{Binding AccordionSource}"/>-->
 		<control:AccordionControl Grid.Row="1" ItemsSource="{Binding AccordionSource}" Margin="10"/>
 	</Grid>
 </ContentPage>
