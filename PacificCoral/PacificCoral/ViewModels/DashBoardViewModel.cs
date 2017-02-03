@@ -36,16 +36,29 @@ namespace PacificCoral.ViewModels
 
 			RefreshDashboardTables();
 			InitAccordionSource();
+
+			Opcos = new ObservableCollection<RepOpcoMap>()
+			{
+				new RepOpcoMap()
+				{
+					OPCO = "Opco 1",
+				},
+				new RepOpcoMap()
+				{
+					OPCO = "Opco 2",
+				},
+				new RepOpcoMap()
+				{
+					OPCO = "Opco 3",
+				},
+				new RepOpcoMap()
+				{
+					OPCO = "Opco 4",
+				},
+			};
 		}
 
 		#region -- Public properties --
-
-		//private ObservableCollection<AccordionSource> _AccordionSource;
-		//public ObservableCollection<AccordionSource> AccordionSource
-		//{
-		//	get { return _AccordionSource; }
-		//	set { SetProperty(ref _AccordionSource, value); }
-		//}
 
 		//cell, view
 		private IList<AccordionModel> _AccordionSource;
@@ -61,7 +74,7 @@ namespace PacificCoral.ViewModels
 
 		public ObservableCollection<LostSalesPCS> LostSalesPCSItems { get; set; }
 
-		public ObservableCollection<RepOpcoMap> Opcos { get; set; } = DataManager.DefaultManager.OPCOs;
+		public ObservableCollection<RepOpcoMap> Opcos { get; set; }// = DataManager.DefaultManager.OPCOs;
 
 		public ObservableCollection<SalesModel> Sales { get; set; }
 
@@ -135,24 +148,24 @@ namespace PacificCoral.ViewModels
 			try
 			{
 				_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
-				LostSalesPCSItems = await DataManager.DefaultManager.getLostSalesPCSForOpcoAsync(_currentOpco);
-				//LostSalesPCSItems = new ObservableCollection<LostSalesPCS>()
-				//{
-				//	new LostSalesPCS()
-				//	{
-				//		ItemCode = "8754",
-				//		Description = "SHRIMP WHT 71/90",
-				//		Period2EndDate = DateTime.Today,
-				//		GainLoss = 70,
-				//	},
-				//	new LostSalesPCS()
-				//	{
-				//		ItemCode = "8754",
-				//		Description = "SHRIMP WHT 71/90",
-				//		Period2EndDate = DateTime.Today,
-				//		GainLoss = 70,
-				//	}
-				//};
+				//LostSalesPCSItems = await DataManager.DefaultManager.getLostSalesPCSForOpcoAsync(_currentOpco);
+				LostSalesPCSItems = new ObservableCollection<LostSalesPCS>()
+				{
+					new LostSalesPCS()
+					{
+						ItemCode = "8754",
+						Description = "SHRIMP WHT 71/90",
+						Period2EndDate = DateTime.Today,
+						GainLoss = 70,
+					},
+					new LostSalesPCS()
+					{
+						ItemCode = "8754",
+						Description = "SHRIMP WHT 71/90",
+						Period2EndDate = DateTime.Today,
+						GainLoss = 70,
+					}
+				};
 
 			}
 			catch (Exception ex)
@@ -165,17 +178,17 @@ namespace PacificCoral.ViewModels
 		{
 			try
 			{
-				DeviationSummaryItems = await DataManager.DefaultManager.getDeviationSummaryAsync();
-				//DeviationSummaryItems = new ObservableCollection<DeviationSummary>()
-				//{
-				//	new DeviationSummary()
-				//	{
-				//		Submitted = 20,
-				//		Active = 200,
-				//		Expired = 100,
-				//		Expiring = 28,	
-				//	}
-				//};
+				//DeviationSummaryItems = await DataManager.DefaultManager.getDeviationSummaryAsync();
+				DeviationSummaryItems = new ObservableCollection<DeviationSummary>()
+				{
+					new DeviationSummary()
+					{
+						Submitted = 20,
+						Active = 200,
+						Expired = 100,
+						Expiring = 28,	
+					}
+				};
 
 			}
 			catch (Exception ex)
@@ -213,6 +226,7 @@ namespace PacificCoral.ViewModels
 						Period = 8,
 					},
 				};
+
 				// calculate growth
 				double p1 = OpcoSalesChartItems.Where(p => p.Period >= 9).Sum(p => p.LBS);
 				double p2 = OpcoSalesChartItems.Where(p => p.Period >= 6 && p.Period < 9).Sum(p => p.LBS);
@@ -329,7 +343,52 @@ namespace PacificCoral.ViewModels
 				Children = {
 					new Label { Text = "Static Content:" },
 					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" }
+					new Label { Text = "Sales history" },
+					new Label { Text = "Static Content:" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Static Content:" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Static Content:" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Static Content:" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Static Content:" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Static Content:" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Static Content:" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Static Content:" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Static Content:" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Static Content:" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Static Content:" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Static Content:" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Static Content:" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Static Content:" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Static Content:" },
+					new Label { Text = "Sales history" },
+					new Label { Text = "Sales history" },
 				},
 				BackgroundColor = Color.White,
 				Margin = new Thickness(5, 10, 5, 10),

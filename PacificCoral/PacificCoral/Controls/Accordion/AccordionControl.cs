@@ -61,7 +61,8 @@ namespace PacificCoral.Controls
 
 		#endregion
 
-		public AccordionControl()
+		//public AccordionControl()
+		public AccordionControl(View header)
 		{
 			AnimationDuration = 400;
 			BackgroundColor = DefaultButtonBackgroundColor;
@@ -96,11 +97,11 @@ namespace PacificCoral.Controls
 
 			Children.Add(m_scrollView, 0, 1);
 
-			//if (header != null)
-			//{
-			//	Children.Add(header, 0, 0);
-			//	Children.Add(m_shadowImage, 0, 1);
-			//}
+			if (header != null)
+			{
+				Children.Add(header, 0, 0);
+				//Children.Add(m_shadowImage, 0, 1);
+			}
 		}
 
 		#region -- Private helpers --

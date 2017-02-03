@@ -55,7 +55,7 @@ namespace PacificCoral.Controls
 
 			var stack = new StackLayout
 			{
-				BackgroundColor = Color.Red,//StyleManager.GetAppResource<Color>("darktwo"),
+				BackgroundColor = StyleManager.GetAppResource<Color>("DefaultMainColor"),
 				Padding = new Thickness(5),
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Orientation = StackOrientation.Horizontal,
@@ -142,13 +142,13 @@ namespace PacificCoral.Controls
 		}
 
 		public static readonly BindableProperty ItemsSourceProperty =
-			BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable<string>), typeof(ButtonForPicker), default(IEnumerable<string>));
+			BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable<object>), typeof(ButtonForPicker), default(IEnumerable<object>));
 
-		public IEnumerable<string> ItemsSource
+		public IEnumerable<object> ItemsSource
 		{
 			get
 			{
-				return (IEnumerable<string>)GetValue(ItemsSourceProperty);
+				return (IEnumerable<object>)GetValue(ItemsSourceProperty);
 			}
 			set
 			{
@@ -200,7 +200,7 @@ namespace PacificCoral.Controls
 				return;
 			if (SelectedIndex >= 0 && ItemsSource != null && ItemsSource.Count() > SelectedIndex)
 			{
-				DisplayedValue = ItemsSource.ElementAt(SelectedIndex);
+				DisplayedValue = (string)ItemsSource.ElementAt(SelectedIndex);
 			}
 			else {
 				DisplayedValue = string.Empty;
@@ -213,7 +213,7 @@ namespace PacificCoral.Controls
 			if (ItemsSource != null)
 				foreach (var item in ItemsSource)
 				{
-					_picker.Items.Add(item);
+					_picker.Items.Add((string)item);
 				}
 		}
 

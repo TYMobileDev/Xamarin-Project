@@ -9,7 +9,7 @@ namespace PacificCoral
 		{
 			Orientation = StackOrientation.Horizontal;
 			BackgroundColor = Color.White;
-			Margin = new Thickness(0, 5, 0, 5);
+			Margin = new Thickness(5, 5, 5, 5);
 			HeightRequest = 50;
 			BindingContext = this;
 
