@@ -37,25 +37,25 @@ namespace PacificCoral.ViewModels
 			RefreshDashboardTables();
 			InitAccordionSource();
 
-			Opcos = new ObservableCollection<RepOpcoMap>()
-			{
-				new RepOpcoMap()
-				{
-					OPCO = "Opco 1",
-				},
-				new RepOpcoMap()
-				{
-					OPCO = "Opco 2",
-				},
-				new RepOpcoMap()
-				{
-					OPCO = "Opco 3",
-				},
-				new RepOpcoMap()
-				{
-					OPCO = "Opco 4",
-				},
-			};
+			//Opcos = new ObservableCollection<RepOpcoMap>()
+			//{
+			//	new RepOpcoMap()
+			//	{
+			//		OPCO = "Opco 1",
+			//	},
+			//	new RepOpcoMap()
+			//	{
+			//		OPCO = "Opco 2",
+			//	},
+			//	new RepOpcoMap()
+			//	{
+			//		OPCO = "Opco 3",
+			//	},
+			//	new RepOpcoMap()
+			//	{
+			//		OPCO = "Opco 4",
+			//	},
+			//};
 		}
 
 		#region -- Public properties --
@@ -74,7 +74,7 @@ namespace PacificCoral.ViewModels
 
 		public ObservableCollection<LostSalesPCS> LostSalesPCSItems { get; set; }
 
-		public ObservableCollection<RepOpcoMap> Opcos { get; set; }// = DataManager.DefaultManager.OPCOs;
+		public ObservableCollection<RepOpcoMap> Opcos { get; set; } = DataManager.DefaultManager.OPCOs;
 
 		public ObservableCollection<SalesModel> Sales { get; set; }
 
@@ -125,22 +125,22 @@ namespace PacificCoral.ViewModels
 
 		private Task OnViewTrackMileageCommandAsync()
 		{
-			return _navigationService.NavigateAsync("TrackMileageView", animated: false);
+			return _navigationService.NavigateAsync("TrackMileageView");
 		}
 
 		private Task OnViewAccountsCommandAsync()
 		{
-			return _navigationService.NavigateAsync("AccountsView", animated: false);
+			return _navigationService.NavigateAsync("AccountsView");
 		}
 
 		private Task OnViewOrdersCommandAsync()
 		{
-			return _navigationService.NavigateAsync("OrdersView", animated: false);
+			return _navigationService.NavigateAsync("OrdersView");
 		}
 
 		private Task OnDetailsCommandAsync()
 		{
-			return _navigationService.NavigateAsync("DashBoard2View", animated: false);
+			return _navigationService.NavigateAsync("DashBoard2View");
 		}
 
 		private async void LostSalesPCSItemsAsync()

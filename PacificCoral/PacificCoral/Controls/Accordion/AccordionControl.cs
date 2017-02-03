@@ -47,18 +47,6 @@ namespace PacificCoral.Controls
 		/// </summary>
 		public event Action<int> CellTouched;
 
-		/// <summary>
-		/// Gets the number of elements in the Accordion.
-		/// </summary>
-		/// <value>The count.</value>
-		//public int Count
-		//{
-		//	get
-		//	{
-		//		return m_entries.Count;
-		//	}
-		//}
-
 		#endregion
 
 		//public AccordionControl()
@@ -78,15 +66,6 @@ namespace PacificCoral.Controls
 
 			CreateStacklayout();
 
-			//m_shadowImage = new Image()
-			//{
-			//	Source = "HeaderShadow.png",
-			//	InputTransparent = true,
-			//	VerticalOptions = LayoutOptions.Start,
-			//	HorizontalOptions = LayoutOptions.FillAndExpand,
-			//	Aspect = Aspect.Fill
-			//};
-
 			m_scrollView = new ScrollView()
 			{
 				BackgroundColor = DefaultButtonBackgroundColor,
@@ -100,7 +79,6 @@ namespace PacificCoral.Controls
 			if (header != null)
 			{
 				Children.Add(header, 0, 0);
-				//Children.Add(m_shadowImage, 0, 1);
 			}
 		}
 

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using PacificCoral.Model;
 using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
 namespace PacificCoral
@@ -9,6 +11,7 @@ namespace PacificCoral
 		{
 			BackgroundColor = Color.White;
 			Margin = new Thickness(0, 10, 0, 10);
+			BindingContext = this;
 
 			SfChart chart = new SfChart();
 
@@ -68,6 +71,30 @@ namespace PacificCoral
 
 			Children.Add(chart);
 			Children.Add(label);
+
+			var OpcoSalesChartItems = new ObservableCollection<OpcoSalesSummaries>()
+			{
+					new OpcoSalesSummaries()
+					{
+						LBS = 200,
+						Period = 2,
+					},
+					new OpcoSalesSummaries()
+					{
+						LBS = 400,
+						Period = 4,
+					},
+					new OpcoSalesSummaries()
+					{
+						LBS = 600,
+						Period = 6,
+					},
+					new OpcoSalesSummaries()
+					{
+						LBS = 800,
+						Period = 8,
+					},
+			};
 		}
 	}
 }
