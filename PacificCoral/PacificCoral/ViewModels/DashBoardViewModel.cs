@@ -135,24 +135,24 @@ namespace PacificCoral.ViewModels
 			try
 			{
 				_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
-				//LostSalesPCSItems = await DataManager.DefaultManager.getLostSalesPCSForOpcoAsync(_currentOpco);
-				LostSalesPCSItems = new ObservableCollection<LostSalesPCS>()
-				{
-					new LostSalesPCS()
-					{
-						ItemCode = "8754",
-						Description = "SHRIMP WHT 71/90",
-						Period2EndDate = DateTime.Today,
-						GainLoss = 70,
-					},
-					new LostSalesPCS()
-					{
-						ItemCode = "8754",
-						Description = "SHRIMP WHT 71/90",
-						Period2EndDate = DateTime.Today,
-						GainLoss = 70,
-					}
-				};
+				LostSalesPCSItems = await DataManager.DefaultManager.getLostSalesPCSForOpcoAsync(_currentOpco);
+				//LostSalesPCSItems = new ObservableCollection<LostSalesPCS>()
+				//{
+				//	new LostSalesPCS()
+				//	{
+				//		ItemCode = "8754",
+				//		Description = "SHRIMP WHT 71/90",
+				//		Period2EndDate = DateTime.Today,
+				//		GainLoss = 70,
+				//	},
+				//	new LostSalesPCS()
+				//	{
+				//		ItemCode = "8754",
+				//		Description = "SHRIMP WHT 71/90",
+				//		Period2EndDate = DateTime.Today,
+				//		GainLoss = 70,
+				//	}
+				//};
 
 			}
 			catch (Exception ex)
@@ -165,17 +165,17 @@ namespace PacificCoral.ViewModels
 		{
 			try
 			{
-				//DeviationSummaryItems = await DataManager.DefaultManager.getDeviationSummaryAsync();
-				DeviationSummaryItems = new ObservableCollection<DeviationSummary>()
-				{
-					new DeviationSummary()
-					{
-						Submitted = 20,
-						Active = 200,
-						Expired = 100,
-						Expiring = 28,	
-					}
-				};
+				DeviationSummaryItems = await DataManager.DefaultManager.getDeviationSummaryAsync();
+				//DeviationSummaryItems = new ObservableCollection<DeviationSummary>()
+				//{
+				//	new DeviationSummary()
+				//	{
+				//		Submitted = 20,
+				//		Active = 200,
+				//		Expired = 100,
+				//		Expiring = 28,	
+				//	}
+				//};
 
 			}
 			catch (Exception ex)

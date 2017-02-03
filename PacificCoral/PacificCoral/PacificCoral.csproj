@@ -189,6 +189,8 @@
     <Compile Include="Controls\Accordion\AccordionEntry.cs" />
     <Compile Include="Controls\Accordion\AccordionCell.cs" />
     <Compile Include="Controls\Accordion\AccordionModel.cs" />
+    <Compile Include="Controls\Picker\ExtendedPicker.cs" />
+    <Compile Include="Controls\Picker\ButtonForPicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Mono.Android">
@@ -383,6 +385,7 @@
   <ItemGroup>
     <Folder Include="Controls\Accordion\" />
     <Folder Include="Cell\" />
+    <Folder Include="Controls\Picker\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Fody.1.29.4\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\..\packages\Fody.1.29.4\build\portable-net+sl+win+wpa+wp\Fody.targets')" />

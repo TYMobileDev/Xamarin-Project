@@ -8,8 +8,7 @@
 
     public class BindablePicker : Picker
     {
-
-        Boolean _disableNestedCalls;
+		Boolean _disableNestedCalls;
 
         public static readonly BindableProperty ItemsSourceProperty =
             BindableProperty.Create("ItemsSource", typeof(IEnumerable), typeof(BindablePicker),
