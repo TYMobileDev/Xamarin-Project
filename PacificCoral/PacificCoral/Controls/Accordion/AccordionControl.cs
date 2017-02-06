@@ -49,7 +49,6 @@ namespace PacificCoral.Controls
 
 		#endregion
 
-		//public AccordionControl()
 		public AccordionControl(View header)
 		{
 			AnimationDuration = 400;

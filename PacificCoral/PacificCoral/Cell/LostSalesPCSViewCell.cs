@@ -8,15 +8,17 @@ namespace PacificCoral
 		{
 			var mainStack = new StackLayout()
 			{
-
+				BackgroundColor = StyleManager.GetAppResource<Color>("DefaultLightColor"),
+				//Margin = new Thickness(5, 0, 5, 0),
 			};
 
 			var grid = new Grid()
 			{
-				Margin = new Thickness(10),
+				//Margin = new Thickness(10),
+				Padding = new Thickness(5),
 				RowDefinitions = {
-					new RowDefinition { Height = GridLength.Auto },
-					new RowDefinition { Height = GridLength.Auto },
+					new RowDefinition { Height = GridLength.Star  },
+					new RowDefinition { Height = GridLength.Star },
 				},
 				ColumnDefinitions = {
 					new ColumnDefinition { Width = GridLength.Star },
@@ -41,7 +43,7 @@ namespace PacificCoral
 			{
 				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
 			};
-			period1StartDateLabel.SetBinding(Label.TextProperty, new Binding("Period1StartDate",stringFormat:"{0:MMM/yy}"));
+			period1StartDateLabel.SetBinding(Label.TextProperty, new Binding("Period1BeginDate",stringFormat:"{0:MMM/yy}"));
 
 			var period2EndDateLabel = new Label()
 			{
@@ -57,7 +59,7 @@ namespace PacificCoral
 
 
 			grid.Children.Add(itemCodeLabel, 0, 1, 0, 1);
-			grid.Children.Add(descriptionLabel, 1, 2, 0, 1);
+			grid.Children.Add(descriptionLabel, 1, 3, 0, 1);
 			grid.Children.Add(period1StartDateLabel, 0, 1, 1, 2);
 			grid.Children.Add(period2EndDateLabel, 1, 2, 1, 2);
 			grid.Children.Add(gainLossLabel, 2, 3, 1, 2);

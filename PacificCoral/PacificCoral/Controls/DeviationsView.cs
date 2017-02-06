@@ -7,6 +7,7 @@ namespace PacificCoral.Control
 	{
 		public DeviationsView()
 		{
+			Margin = new Thickness(5);
 			BackgroundColor = Color.White;
 			ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
 			ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });

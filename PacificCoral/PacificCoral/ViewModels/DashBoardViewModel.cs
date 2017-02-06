@@ -13,6 +13,7 @@ using Prism.Navigation;
 using Xamarin.Forms;
 using PacificCoral.Controls;
 using PacificCoral.Control;
+using NControl.Controls;
 
 namespace PacificCoral.ViewModels
 {
@@ -36,6 +37,8 @@ namespace PacificCoral.ViewModels
 
 			RefreshDashboardTables();
 			InitAccordionSource();
+
+			Opcos = DataManager.DefaultManager.OPCOs;
 
 			//Opcos = new ObservableCollection<RepOpcoMap>()
 			//{
@@ -68,15 +71,41 @@ namespace PacificCoral.ViewModels
 			set { SetProperty(ref _AccordionSource, value); }
 		}
 
-		public ObservableCollection<OpcoSalesSummaries> OpcoSalesChartItems { get; set; }
+		private ObservableCollection<OpcoSalesSummaries> _OpcoSalesChartItems;
+		public ObservableCollection<OpcoSalesSummaries> OpcoSalesChartItems 
+		{ 
+			get { return _OpcoSalesChartItems; } 
+			set { SetProperty(ref _OpcoSalesChartItems, value); }
+		}
 
-		public ObservableCollection<DeviationSummary> DeviationSummaryItems { get; set; }
+		private ObservableCollection<DeviationSummary> _DeviationSummaryItems;
+		public ObservableCollection<DeviationSummary> DeviationSummaryItems 
+		{ 	
+			get { return _DeviationSummaryItems; }
+			set { SetProperty(ref _DeviationSummaryItems, value); }
+		}
 
-		public ObservableCollection<LostSalesPCS> LostSalesPCSItems { get; set; }
+		private ObservableCollection<LostSalesPCS> _LostSalesPCSItems;
+		public ObservableCollection<LostSalesPCS> LostSalesPCSItems 
+		{ 
+			get { return _LostSalesPCSItems; }
+			set { SetProperty(ref _LostSalesPCSItems, value); } 
+		}
 
-		public ObservableCollection<RepOpcoMap> Opcos { get; set; } = DataManager.DefaultManager.OPCOs;
+		private ObservableCollection<RepOpcoMap> _Opcos;
+		public ObservableCollection<RepOpcoMap> Opcos 
+		{ 
+			get { return _Opcos; }
+			set { SetProperty(ref _Opcos, value); }
 
-		public ObservableCollection<SalesModel> Sales { get; set; }
+		}
+
+		private ObservableCollection<SalesModel> _Sales;
+		public ObservableCollection<SalesModel> Sales 
+		{ 
+			get { return _Sales; }
+			set { SetProperty(ref _Sales, value); }
+		}
 
 		public string CurrentOpco
 		{
@@ -147,26 +176,21 @@ namespace PacificCoral.ViewModels
 		{
 			try
 			{
-				_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
+				//_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
 				//LostSalesPCSItems = await DataManager.DefaultManager.getLostSalesPCSForOpcoAsync(_currentOpco);
-				LostSalesPCSItems = new ObservableCollection<LostSalesPCS>()
+				LostSalesPCSItems = new ObservableCollection<LostSalesPCS>();
+				for (var i = 0; i < 10; i++)
 				{
-					new LostSalesPCS()
+					var sale = new LostSalesPCS()
 					{
 						ItemCode = "8754",
-						Description = "SHRIMP WHT 71/90",
+						Description = "SHRIMP WHT 71/90 SHRIMP WHT 71/90",
 						Period2EndDate = DateTime.Today,
-						GainLoss = 70,
-					},
-					new LostSalesPCS()
-					{
-						ItemCode = "8754",
-						Description = "SHRIMP WHT 71/90",
-						Period2EndDate = DateTime.Today,
-						GainLoss = 70,
-					}
-				};
-
+						GainLoss = 100,
+						Period1BeginDate = DateTime.Today,
+					};
+					LostSalesPCSItems.Add(sale);
+				}
 			}
 			catch (Exception ex)
 			{
@@ -201,7 +225,7 @@ namespace PacificCoral.ViewModels
 		{
 			try
 			{
-				_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
+				//_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
 				//OpcoSalesChartItems = await DataManager.DefaultManager.getOpcoSalesSummaryForOpcoAsync(_currentOpco);
 				OpcoSalesChartItems = new ObservableCollection<OpcoSalesSummaries>()
 				{
@@ -217,13 +241,23 @@ namespace PacificCoral.ViewModels
 					},
 					new OpcoSalesSummaries()
 					{
-						LBS = 600,
+						LBS = 300,
 						Period = 6,
 					},
 					new OpcoSalesSummaries()
 					{
 						LBS = 800,
 						Period = 8,
+					},
+					new OpcoSalesSummaries()
+					{
+						LBS = 100,
+						Period = 10,
+					},
+					new OpcoSalesSummaries()
+					{
+						LBS = 1000,
+						Period = 12,
 					},
 				};
 
@@ -249,176 +283,23 @@ namespace PacificCoral.ViewModels
 
 		private void InitAccordionSource()
 		{
-			//AccordionSource = new ObservableCollection<AccordionSource>();
-
-			//var chartFirstAccord = new AccordionSource()
-			//{
-			//	HeaderText = "Sales history",
-			//	HeaderTextColor = Color.Black,
-			//	HeaderBackGroundColor = Color.White,
-			//	//ContentItems = chartViewOne
-			//	ContentItems = new ChartDataViewCell(),
-			//};
-			//AccordionSource.Add(chartFirstAccord);
-
-			//var lostSalesPCSViewTwo = new ListView()
-			//{
-			//	ItemsSource = LostSalesPCSItems,
-			//	ItemTemplate = new DataTemplate(typeof(LostSalesPCSViewCell))
-			//};
-			//var lostSalesPCSSecondAccord = new AccordionSource()
-			//{
-			//	HeaderText = "Lost Sales",
-			//	HeaderTextColor = Color.Black,
-			//	HeaderBackGroundColor = Color.White,
-			//	ContentItems = lostSalesPCSViewTwo,
-			//};
-			//AccordionSource.Add(lostSalesPCSSecondAccord);
-
-			////var vViewLayout = new StackLayout()
-			////{
-			////	Children = {
-			////		new Label { Text = "Static Content:" },
-			////		new Label { Text = "Sales history" },
-			////		new Label { Text = "Sales history" }
-			////	}
-			////};
-			//var deviationsThirdAccord = new AccordionSource()
-			//{
-			//	HeaderText = "Deviations",
-			//	HeaderTextColor = Color.Black,
-			//	HeaderBackGroundColor = Color.White,
-			//	ContentItems = new DeviationsView(),
-			//};
-			//AccordionSource.Add(deviationsThirdAccord);
-
-			//var vViewLayout = new StackLayout()
-			//{
-			//	Children = {
-			//		new Label { Text = "Static Content:" },
-			//		new Label { Text = "Sales history" },
-			//		new Label { Text = "Sales history" }
-			//	}
-			//};
-			//var vViewAccord = new AccordionSource()
-			//{
-			//	HeaderText = "Deviations",
-			//	HeaderTextColor = Color.Black,
-			//	HeaderBackGroundColor = Color.White,
-			//	ContentItems = vViewLayout,
-			//};
-			//AccordionSource.Add(vViewAccord);
-
 			AccordionSource = new List<AccordionModel>();
 
-			var viewLayout = new StackLayout()
-			{
-				Children = {
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" }
-				},
-				BackgroundColor = Color.White,
-				Margin = new Thickness(5, 10, 5, 10),
-			};
-
-			var cell = new AccordionCell()
-			{
-				TitleCell = "Static 1",
-			};
-
-			var item = new AccordionModel()
-			{
-				CellAccordion = cell,
-				ViewAccordion = viewLayout,
-			};
-
-			var cell1 = new AccordionCell()
-			{
-				TitleCell = "Static 2",
-			};
-
-			var viewLayout1 = new StackLayout()
-			{
-				Children = {
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Static Content:" },
-					new Label { Text = "Sales history" },
-					new Label { Text = "Sales history" },
-				},
-				BackgroundColor = Color.White,
-				Margin = new Thickness(5, 10, 5, 10),
-			};
-
-			var item1 = new AccordionModel()
-			{
-				CellAccordion = cell1,
-				ViewAccordion = viewLayout1,
-			};
-
-			var item2 = new AccordionModel()
-			{
-				CellAccordion = cell,
-				ViewAccordion = viewLayout,
-			};
-
-			AccordionSource.Add(item);
-			AccordionSource.Add(item1);
-
-			//real
 			var chartCell = new AccordionCell()
 			{
 				TitleCell = "Sales history",
 			};
 
+			var chartDataView = new ChartDataView()
+			{
+				//BindingContext = this,
+			};
+			//chartDataView.SetBinding(ChartDataView.OpcoSalesChartItemsProperty, nameof(OpcoSalesChartItems));
+
 			var chartFirstAccord = new AccordionModel()
 			{
 				CellAccordion = chartCell,
-				ViewAccordion = new ChartDataViewCell(),
+				ViewAccordion = chartDataView,
 			};
 
 			var lostSalesPCSCell = new AccordionCell()
@@ -428,14 +309,27 @@ namespace PacificCoral.ViewModels
 
 			var lostSalesPCSViewTwo = new ListView()
 			{
-				ItemsSource = LostSalesPCSItems,
-				ItemTemplate = new DataTemplate(typeof(LostSalesPCSViewCell))
+				BindingContext = this,
+				ItemTemplate = new DataTemplate(typeof(LostSalesPCSViewCell)),
+				SeparatorVisibility = SeparatorVisibility.None,
+				HasUnevenRows = true,
+				Margin = new Thickness(5),
 			};
+			lostSalesPCSViewTwo.SetBinding(ListView.ItemsSourceProperty, nameof(LostSalesPCSItems));
+
+			//var lostSalesPCSViewRepeaterListTwo = new RepeaterControl<LostSalesPCS>()
+			//{
+			//	ItemTemplate = new DataTemplate(typeof(LostSalesPCSViewCell)),
+			//	BindingContext = this,
+			//	Margin = new Thickness(5),
+			//};
+			//lostSalesPCSViewRepeaterListTwo.SetBinding(RepeaterControl<LostSalesPCS>.ItemsSourceProperty, nameof(LostSalesPCSItems));
 
 			var lostSalesPCSSecondAccord = new AccordionModel()
 			{
 				CellAccordion = lostSalesPCSCell,
  				ViewAccordion = lostSalesPCSViewTwo
+				//ViewAccordion = lostSalesPCSViewRepeaterListTwo,
 			};
 
 			var deviationsCell = new AccordionCell()

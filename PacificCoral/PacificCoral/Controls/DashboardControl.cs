@@ -145,6 +145,7 @@ namespace PacificCoral.Controls
 				SelectedValuePath = "OPCO",
 				DisplayMemberPath = "OPCO",
 				Margin = new Thickness(5),
+				Title = "No Opco Selected",
 			};
 			picker.SetBinding(BindablePicker.ItemsSourceProperty, "Opcos");
 			picker.SetBinding(BindablePicker.SelectedValueProperty, new Xamarin.Forms.Binding("CurrentOpco", BindingMode.TwoWay));
