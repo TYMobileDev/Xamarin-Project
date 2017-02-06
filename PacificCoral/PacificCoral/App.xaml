@@ -107,6 +107,18 @@
 					</Setter.Value>
 				</Setter>
 	        </Style>
+
+			<Style x:Key="tabButtonImageStyle" TargetType="Image">
+				<Setter Property="HeightRequest" Value="15" />
+				<Setter Property="WidthRequest" Value="15" />
+				<Setter Property="HorizontalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="tabButtonLabelStyle" TargetType="Label">
+				<Setter Property="HorizontalOptions" Value="Center" />
+				<Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
+				<Setter Property="FontSize" Value="11" />
+				<Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+			</Style>
 			
 			<!-- Converters -->
 			<p:DateTimeConverter x:Key="DateTimeConverter" />
