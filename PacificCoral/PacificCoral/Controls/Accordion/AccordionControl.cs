@@ -13,8 +13,7 @@ namespace PacificCoral.Controls
 		readonly List<AccordionEntry> m_entries = new List<AccordionEntry>();
 		private ScrollView m_scrollView;
 		private StackLayout m_cellStackLayout;
-		private Image m_shadowImage;
-
+	
 		#region -- Public properties --
 
 		public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(IList<AccordionModel>), typeof(AccordionControl), default(IList<AccordionModel>), BindingMode.TwoWay, null, ItemsSourceChanged);

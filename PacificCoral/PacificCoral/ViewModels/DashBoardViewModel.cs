@@ -26,6 +26,9 @@ namespace PacificCoral.ViewModels
 		{
 			_navigationService = navigationService;
 
+
+			//Test();
+
 			var sales = new ObservableCollection<SalesModel>();
 			for (var i = 0; i < 15; i++)
 			{
@@ -38,28 +41,36 @@ namespace PacificCoral.ViewModels
 			RefreshDashboardTables();
 			InitAccordionSource();
 
-			Opcos = DataManager.DefaultManager.OPCOs;
+			//Opcos = DataManager.DefaultManager.OPCOs;
 
-			//Opcos = new ObservableCollection<RepOpcoMap>()
-			//{
-			//	new RepOpcoMap()
-			//	{
-			//		OPCO = "Opco 1",
-			//	},
-			//	new RepOpcoMap()
-			//	{
-			//		OPCO = "Opco 2",
-			//	},
-			//	new RepOpcoMap()
-			//	{
-			//		OPCO = "Opco 3",
-			//	},
-			//	new RepOpcoMap()
-			//	{
-			//		OPCO = "Opco 4",
-			//	},
-			//};
+			Opcos = new ObservableCollection<RepOpcoMap>()
+			{
+				new RepOpcoMap()
+				{
+					OPCO = "Opco 1",
+				},
+				new RepOpcoMap()
+				{
+					OPCO = "Opco 2",
+				},
+				new RepOpcoMap()
+				{
+					OPCO = "Opco 3",
+				},
+				new RepOpcoMap()
+				{
+					OPCO = "Opco 4",
+				},
+			};
 		}
+
+		//async void Test()
+		//{
+		//	//await Task.Delay(2000);
+		//	IsBusy = true;
+		//	await Task.Delay(10000);
+		//	IsBusy = false;
+		//}
 
 		#region -- Public properties --
 
@@ -148,6 +159,13 @@ namespace PacificCoral.ViewModels
 			get { return SingleExecutionCommand.FromFunc(OnDetailsCommandAsync); }
 		}
 
+		private bool _IsBusy;
+		public bool IsBusy
+		{
+			get { return _IsBusy; }
+			set { SetProperty(ref _IsBusy, value); }
+		}
+
 		#endregion
 
 		#region -- Private helpers --
@@ -176,6 +194,8 @@ namespace PacificCoral.ViewModels
 		{
 			try
 			{
+				//IsBusy = true;
+				//await Task.Delay(10000);
 				//_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
 				//LostSalesPCSItems = await DataManager.DefaultManager.getLostSalesPCSForOpcoAsync(_currentOpco);
 				LostSalesPCSItems = new ObservableCollection<LostSalesPCS>();
@@ -191,6 +211,8 @@ namespace PacificCoral.ViewModels
 					};
 					LostSalesPCSItems.Add(sale);
 				}
+
+				//IsBusy = false;
 			}
 			catch (Exception ex)
 			{

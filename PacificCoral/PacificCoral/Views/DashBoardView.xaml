@@ -1,20 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-		xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral" 
-		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-		xmlns:control="clr-namespace:PacificCoral.Controls;assembly=PacificCoral" 
-		xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
-		prism:ViewModelLocator.AutowireViewModel="True" 
-		xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" 
-		x:Class="PacificCoral.Views.DashBoardView" 
-		BackgroundColor="{StaticResource MainBgColor}" 
-		Icon="dashboardtabbar">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:control="clr-namespace:PacificCoral.Controls;assembly=PacificCoral" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" x:Class="PacificCoral.Views.DashBoardView" BackgroundColor="{StaticResource MainBgColor}" Icon="dashboardtabbar">
 	<ContentPage.Resources>
 		<ResourceDictionary>
-
 		</ResourceDictionary>
 	</ContentPage.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		
+		<control:DashboardControl Grid.Row="0"/>
+		<!--<ActivityIndicator Grid.Row="0" Grid.Column="0" 
+				HorizontalOptions="Fill" 
+				VerticalOptions="Fill" 
+				IsRunning="{Binding IsBusy}"
+
+				Color="{StaticResource DefaultMainColor}"
+				BackgroundColor="Green">
+		</ActivityIndicator>-->
+	</Grid>
+<!--	
+				IsVisible="{Binding IsBusy}" 
+				IsEnabled="{Binding IsBusy}" 
+				IsRunning="{Binding IsBusy}" 
 	
-	<control:DashboardControl/>
-	
+	<RelativeLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+		<StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" 
+				Padding="10" RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}" 
+				RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}">
+			<control:DashboardControl />
+		</StackLayout>
+		<ActivityIndicator IsVisible="{Binding IsBusy}" 
+			IsRunning="{Binding IsBusy}"
+			VerticalOptions="CenterAndExpand" 
+			HorizontalOptions="CenterAndExpand"
+			Color="{StaticResource DefaultMainColor}"
+			RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.33}" 
+			RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.33}" />
+	</RelativeLayout>-->
 </ContentPage>

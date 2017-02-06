@@ -42,7 +42,7 @@ namespace PacificCoral
 
 			_chart = new SfChart()
 			{
-				Margin = new Thickness(5),
+				Margin = new Thickness(10),
 			};
 			//Initializing Primary Axis   
 			CategoryAxis primaryAxis = new CategoryAxis();

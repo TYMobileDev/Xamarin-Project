@@ -17,6 +17,38 @@ namespace PacificCoral.Controls
 			accordionView = new AccordionControl(header);
 			accordionView.SetBinding(AccordionControl.ItemsSourceProperty, "AccordionSource");
 
+			//ActivityIndicator ai = new ActivityIndicator()
+			//{
+			//	Color = Color.Red,
+			//};
+			//ai.SetBinding(ActivityIndicator.IsEnabledProperty, "IsBusy");
+			//ai.SetBinding(ActivityIndicator.IsVisibleProperty, "IsBusy");
+			//ai.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+
+			//var grid = new Grid()
+			//{
+			//	Children = {
+			//		accordionView,
+			//		//ai,
+			//	}
+			//};
+
+			//var overlay = new AbsoluteLayout();
+			//var content = new StackLayout();
+			////content.Children.Add(accordionView);
+			//var loadingIndicator = new ActivityIndicator();
+			//loadingIndicator.SetBinding(ActivityIndicator.IsEnabledProperty, "IsBusy");
+			//loadingIndicator.SetBinding(ActivityIndicator.IsVisibleProperty, "IsBusy");
+			//loadingIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+			//AbsoluteLayout.SetLayoutFlags(content, AbsoluteLayoutFlags.PositionProportional);
+			//AbsoluteLayout.SetLayoutBounds(content, new Rectangle(0f, 0f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+			//AbsoluteLayout.SetLayoutFlags(loadingIndicator, AbsoluteLayoutFlags.PositionProportional);
+			//AbsoluteLayout.SetLayoutBounds(loadingIndicator, new Rectangle(0.5, 0.5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+			//overlay.Children.Add(content);
+			//overlay.Children.Add(loadingIndicator);
+
+			//Content = overlay;
+
 			Content = accordionView;
 		}
 
@@ -145,7 +177,7 @@ namespace PacificCoral.Controls
 				SelectedValuePath = "OPCO",
 				DisplayMemberPath = "OPCO",
 				Margin = new Thickness(5),
-				Title = "No Opco Selected",
+				Title = "Select Opco...",
 			};
 			picker.SetBinding(BindablePicker.ItemsSourceProperty, "Opcos");
 			picker.SetBinding(BindablePicker.SelectedValueProperty, new Xamarin.Forms.Binding("CurrentOpco", BindingMode.TwoWay));
@@ -172,12 +204,20 @@ namespace PacificCoral.Controls
 			//picker_1.SetBinding(BindablePicker.ItemsSourceProperty, "Opcos");
 			//picker_1.SetBinding(BindablePicker.SelectedValueProperty, new Xamarin.Forms.Binding("CurrentOpco", BindingMode.TwoWay));
 
+			//ActivityIndicator ai = new ActivityIndicator()
+			//{
+			//	Color = Color.Red,
+			//};
+			//ai.SetBinding(ActivityIndicator.IsEnabledProperty, "IsBusy");
+			//ai.SetBinding(ActivityIndicator.IsVisibleProperty, "IsBusy");
+			//ai.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+
 
 			header.Children.Add(banner);
 			header.Children.Add(tabStack);
 			header.Children.Add(separator);
 			header.Children.Add(picker);
-		//	header.Children.Add(picker_1);
+			//header.Children.Add(ai);
 		}
 
 		#endregion
