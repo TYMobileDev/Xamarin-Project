@@ -152,9 +152,6 @@
     <Reference Include="HockeySDK">
       <HintPath>..\..\packages\HockeySDK.Xamarin.4.1.0\lib\MonoAndroid403\HockeySDK.dll</HintPath>
     </Reference>
-    <Reference Include="Acr.Support.Android">
-      <HintPath>..\..\packages\Acr.Support.2.1.0\lib\MonoAndroid10\Acr.Support.Android.dll</HintPath>
-    </Reference>
     <Reference Include="AndHUD">
       <HintPath>..\..\packages\AndHUD.1.2.0\lib\MonoAndroid\AndHUD.dll</HintPath>
     </Reference>
@@ -210,9 +207,6 @@
       <HintPath>..\..\packages\BottomNavigationBar.1.4.0.2\lib\MonoAndroid403\BottomNavigationBar.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.9.0.2-beta1\lib\netstandard1.1\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Plugin.Media.Abstractions">
       <HintPath>..\..\packages\Xam.Plugin.Media.2.6.2.21-beta\lib\MonoAndroid10\Plugin.Media.Abstractions.dll</HintPath>
     </Reference>
@@ -272,6 +266,15 @@
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.Platform">
       <HintPath>..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.13.8\lib\MonoAndroid10\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.Support.Android">
+      <HintPath>..\..\packages\Acr.Support.2.1.0\lib\MonoAndroid10\Acr.Support.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Settings.Abstractions">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.2.5.3\lib\MonoAndroid10\Plugin.Settings.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Settings">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.2.5.3\lib\MonoAndroid10\Plugin.Settings.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

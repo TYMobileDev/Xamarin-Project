@@ -19,23 +19,4 @@
 				Color="Gray">
 		</ActivityIndicator>
 	</Grid>
-<!--	
-				IsVisible="{Binding IsBusy}" 
-				IsEnabled="{Binding IsBusy}" 
-				IsRunning="{Binding IsBusy}" 
-	
-	<RelativeLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-		<StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" 
-				Padding="10" RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}" 
-				RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}">
-			<control:DashboardControl />
-		</StackLayout>
-		<ActivityIndicator IsVisible="{Binding IsBusy}" 
-			IsRunning="{Binding IsBusy}"
-			VerticalOptions="CenterAndExpand" 
-			HorizontalOptions="CenterAndExpand"
-			Color="{StaticResource DefaultMainColor}"
-			RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.33}" 
-			RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.33}" />
-	</RelativeLayout>-->
 </ContentPage>

@@ -29,12 +29,10 @@ namespace PacificCoral
 		public App()
 		{
 			InitializeComponent();
-			//throw new Exception();
 			MainPage = new SignInView
 			{
 				BindingContext = Resolve<SignInViewModel>()
 			};
-			//MainPage = new DashBoardView();
 		}
 
 		#region -- Overrides --
@@ -50,6 +48,7 @@ namespace PacificCoral
 			Container.RegisterInstance<IUserDialogs>(UserDialogs.Instance);
 			Container.RegisterInstance<ISettings>(CrossSettings.Current);
 			Container.RegisterInstance<IMedia>(CrossMedia.Current);
+
 			Container.RegisterInstance<IAppSettingsService>(Container.Resolve<AppSettingsService>());
 
 			var userMocks = true;
