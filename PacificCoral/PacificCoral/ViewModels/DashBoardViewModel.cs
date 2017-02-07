@@ -26,9 +26,6 @@ namespace PacificCoral.ViewModels
 		{
 			_navigationService = navigationService;
 
-
-			//Test();
-
 			var sales = new ObservableCollection<SalesModel>();
 			for (var i = 0; i < 15; i++)
 			{
@@ -41,36 +38,8 @@ namespace PacificCoral.ViewModels
 			RefreshDashboardTables();
 			InitAccordionSource();
 
-			//Opcos = DataManager.DefaultManager.OPCOs;
-
-			Opcos = new ObservableCollection<RepOpcoMap>()
-			{
-				new RepOpcoMap()
-				{
-					OPCO = "Opco 1",
-				},
-				new RepOpcoMap()
-				{
-					OPCO = "Opco 2",
-				},
-				new RepOpcoMap()
-				{
-					OPCO = "Opco 3",
-				},
-				new RepOpcoMap()
-				{
-					OPCO = "Opco 4",
-				},
-			};
+			Opcos = DataManager.DefaultManager.OPCOs;
 		}
-
-		//async void Test()
-		//{
-		//	//await Task.Delay(2000);
-		//	IsBusy = true;
-		//	await Task.Delay(10000);
-		//	IsBusy = false;
-		//}
 
 		#region -- Public properties --
 
@@ -194,25 +163,10 @@ namespace PacificCoral.ViewModels
 		{
 			try
 			{
-				//IsBusy = true;
-				//await Task.Delay(10000);
-				//_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
-				//LostSalesPCSItems = await DataManager.DefaultManager.getLostSalesPCSForOpcoAsync(_currentOpco);
-				LostSalesPCSItems = new ObservableCollection<LostSalesPCS>();
-				for (var i = 0; i < 10; i++)
-				{
-					var sale = new LostSalesPCS()
-					{
-						ItemCode = "8754",
-						Description = "SHRIMP WHT 71/90 SHRIMP WHT 71/90",
-						Period2EndDate = DateTime.Today,
-						GainLoss = 100,
-						Period1BeginDate = DateTime.Today,
-					};
-					LostSalesPCSItems.Add(sale);
-				}
-
-				//IsBusy = false;
+				IsBusy = true;
+				_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
+				LostSalesPCSItems = await DataManager.DefaultManager.getLostSalesPCSForOpcoAsync(_currentOpco);
+				IsBusy = false;
 			}
 			catch (Exception ex)
 			{
@@ -224,18 +178,9 @@ namespace PacificCoral.ViewModels
 		{
 			try
 			{
-				//DeviationSummaryItems = await DataManager.DefaultManager.getDeviationSummaryAsync();
-				DeviationSummaryItems = new ObservableCollection<DeviationSummary>()
-				{
-					new DeviationSummary()
-					{
-						Submitted = 20,
-						Active = 200,
-						Expired = 100,
-						Expiring = 28,	
-					}
-				};
-
+				IsBusy = true;
+				DeviationSummaryItems = await DataManager.DefaultManager.getDeviationSummaryAsync();
+				IsBusy = false;
 			}
 			catch (Exception ex)
 			{
@@ -247,41 +192,10 @@ namespace PacificCoral.ViewModels
 		{
 			try
 			{
-				//_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
-				//OpcoSalesChartItems = await DataManager.DefaultManager.getOpcoSalesSummaryForOpcoAsync(_currentOpco);
-				OpcoSalesChartItems = new ObservableCollection<OpcoSalesSummaries>()
-				{
-					new OpcoSalesSummaries()
-					{
-						LBS = 200,
-						Period = 2,
-					},
-					new OpcoSalesSummaries()
-					{
-						LBS = 400,
-						Period = 4,
-					},
-					new OpcoSalesSummaries()
-					{
-						LBS = 300,
-						Period = 6,
-					},
-					new OpcoSalesSummaries()
-					{
-						LBS = 800,
-						Period = 8,
-					},
-					new OpcoSalesSummaries()
-					{
-						LBS = 100,
-						Period = 10,
-					},
-					new OpcoSalesSummaries()
-					{
-						LBS = 1000,
-						Period = 12,
-					},
-				};
+				IsBusy = true;
+				_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
+				OpcoSalesChartItems = await DataManager.DefaultManager.getOpcoSalesSummaryForOpcoAsync(_currentOpco);
+				IsBusy = false;
 
 				// calculate growth
 				double p1 = OpcoSalesChartItems.Where(p => p.Period >= 9).Sum(p => p.LBS);
@@ -312,16 +226,10 @@ namespace PacificCoral.ViewModels
 				TitleCell = "Sales history",
 			};
 
-			var chartDataView = new ChartDataView()
-			{
-				//BindingContext = this,
-			};
-			//chartDataView.SetBinding(ChartDataView.OpcoSalesChartItemsProperty, nameof(OpcoSalesChartItems));
-
 			var chartFirstAccord = new AccordionModel()
 			{
 				CellAccordion = chartCell,
-				ViewAccordion = chartDataView,
+				ViewAccordion = new ChartDataView(),
 			};
 
 			var lostSalesPCSCell = new AccordionCell()
@@ -329,29 +237,30 @@ namespace PacificCoral.ViewModels
 				TitleCell = "Lost Sales",
 			};
 
-			var lostSalesPCSViewTwo = new ListView()
-			{
-				BindingContext = this,
-				ItemTemplate = new DataTemplate(typeof(LostSalesPCSViewCell)),
-				SeparatorVisibility = SeparatorVisibility.None,
-				HasUnevenRows = true,
-				Margin = new Thickness(5),
-			};
-			lostSalesPCSViewTwo.SetBinding(ListView.ItemsSourceProperty, nameof(LostSalesPCSItems));
-
-			//var lostSalesPCSViewRepeaterListTwo = new RepeaterControl<LostSalesPCS>()
+			//var lostSalesPCSViewTwo = new ListView()
 			//{
-			//	ItemTemplate = new DataTemplate(typeof(LostSalesPCSViewCell)),
 			//	BindingContext = this,
+			//	ItemTemplate = new DataTemplate(typeof(LostSalesPCSViewCell)),
+			//	SeparatorVisibility = SeparatorVisibility.None,
+			//	HasUnevenRows = true,
 			//	Margin = new Thickness(5),
 			//};
-			//lostSalesPCSViewRepeaterListTwo.SetBinding(RepeaterControl<LostSalesPCS>.ItemsSourceProperty, nameof(LostSalesPCSItems));
+			//lostSalesPCSViewTwo.SetBinding(ListView.ItemsSourceProperty, nameof(LostSalesPCSItems));
+
+			var lostSalesPCSViewRepeaterListTwo = new RepeaterControl<LostSalesPCS>()
+			{
+				ItemTemplate = new DataTemplate(typeof(LostSalesPCSView)),
+				BindingContext = this,
+				Margin = new Thickness(5),
+				ItemsSource = LostSalesPCSItems,
+			};
+			lostSalesPCSViewRepeaterListTwo.SetBinding(RepeaterControl<LostSalesPCS>.ItemsSourceProperty, nameof(LostSalesPCSItems));
 
 			var lostSalesPCSSecondAccord = new AccordionModel()
 			{
 				CellAccordion = lostSalesPCSCell,
- 				ViewAccordion = lostSalesPCSViewTwo
-				//ViewAccordion = lostSalesPCSViewRepeaterListTwo,
+ 				//ViewAccordion = lostSalesPCSViewTwo
+				ViewAccordion = lostSalesPCSViewRepeaterListTwo,
 			};
 
 			var deviationsCell = new AccordionCell()

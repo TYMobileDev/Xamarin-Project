@@ -6,36 +6,15 @@
 	</ContentPage.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="*"/>
+			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
-		
-		<control:DashboardControl Grid.Row="0"/>
-		<!--<ActivityIndicator Grid.Row="0" Grid.Column="0" 
-				HorizontalOptions="Fill" 
-				VerticalOptions="Fill" 
-				IsRunning="{Binding IsBusy}"
-
-				Color="{StaticResource DefaultMainColor}"
-				BackgroundColor="Green">
-		</ActivityIndicator>-->
-	</Grid>
-<!--	
-				IsVisible="{Binding IsBusy}" 
-				IsEnabled="{Binding IsBusy}" 
+		<control:DashboardControl Grid.Row="0" />
+		<ActivityIndicator Grid.Row="0" 
+				InputTransparent="true" 
+				HorizontalOptions="CenterAndExpand" 
+				VerticalOptions="CenterAndExpand" 
 				IsRunning="{Binding IsBusy}" 
-	
-	<RelativeLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-		<StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" 
-				Padding="10" RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}" 
-				RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}">
-			<control:DashboardControl />
-		</StackLayout>
-		<ActivityIndicator IsVisible="{Binding IsBusy}" 
-			IsRunning="{Binding IsBusy}"
-			VerticalOptions="CenterAndExpand" 
-			HorizontalOptions="CenterAndExpand"
-			Color="{StaticResource DefaultMainColor}"
-			RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.33}" 
-			RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.33}" />
-	</RelativeLayout>-->
+				Color="Gray">
+		</ActivityIndicator>
+	</Grid>
 </ContentPage>

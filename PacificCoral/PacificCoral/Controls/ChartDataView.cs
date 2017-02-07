@@ -10,26 +10,6 @@ namespace PacificCoral
 {
 	public class ChartDataView : Grid
 	{
-		SfChart _chart;
-
-		#region -- Public properties --
-
-		//public static readonly BindableProperty OpcoSalesChartItemsProperty =
-		//	BindableProperty.Create(nameof(OpcoSalesChartItems), typeof(IList<OpcoSalesSummaries>), typeof(LostSalesPCSViewCell), default(IList<OpcoSalesSummaries>),BindingMode.TwoWay); //, propertyChanged: OnOpcoSalesChartItemsPropertyChange
-		//public IList<OpcoSalesSummaries> OpcoSalesChartItems
-		//{
-		//	get
-		//	{
-		//		return (IList<OpcoSalesSummaries>)GetValue(OpcoSalesChartItemsProperty);
-		//	}
-		//	set
-		//	{
-		//		SetValue(OpcoSalesChartItemsProperty, value);
-		//	}
-		//}
-
-		#endregion
-
 		public ChartDataView()
 		{
 			RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
@@ -38,32 +18,32 @@ namespace PacificCoral
 			HeightRequest = 250;
 
 			BackgroundColor = StyleManager.GetAppResource<Color>("DefaultLightColor");
-			Margin = new Thickness(5, 10, 5, 10);
+			Margin = new Thickness(5, 5, 5, 10);
 
-			_chart = new SfChart()
+			SfChart chart = new SfChart()
 			{
 				Margin = new Thickness(10),
 			};
+
 			//Initializing Primary Axis   
 			CategoryAxis primaryAxis = new CategoryAxis();
 			primaryAxis.Title = new ChartAxisTitle() { Text = "Running 30 Day Period" };
 			primaryAxis.MaximumLabels = 12;
-			_chart.PrimaryAxis = primaryAxis;
+			chart.PrimaryAxis = primaryAxis;
 
 			//Initializing Secondary Axis
 			NumericalAxis secondaryAxis = new NumericalAxis();
 			secondaryAxis.Title = new ChartAxisTitle() { Text = "LBS" };
 			secondaryAxis.RangePadding = NumericalPadding.Additional;
-			_chart.SecondaryAxis = secondaryAxis;
+			chart.SecondaryAxis = secondaryAxis;
 
 			//Initializing line series
 			LineSeries lineSeries = new LineSeries();
 			lineSeries.SetBinding(ChartSeries.ItemsSourceProperty, new Binding("OpcoSalesChartItems", BindingMode.TwoWay));
-			//lineSeries.SetBinding(LineSeries.ItemsSourceProperty, OpcoSalesChartItemsProperty.PropertyName);
 			lineSeries.XBindingPath = "Period";
 			lineSeries.YBindingPath = "LBS";
 			lineSeries.Color = Color.FromHex("#bababa");
-			_chart.Series.Add(lineSeries);
+			chart.Series.Add(lineSeries);
 
 			//Initializing area series
 			AreaSeries areaSeries = new AreaSeries();
@@ -87,11 +67,7 @@ namespace PacificCoral
 					LabelPosition = DataMarkerLabelPosition.Center,
 				},
 			};
-			_chart.Series.Add(areaSeries);
-				
-			//this.Content = chart;
-
-			//View = chart;
+			chart.Series.Add(areaSeries);
 
 			var label = new Label()
 			{
@@ -102,47 +78,8 @@ namespace PacificCoral
 			};
 			label.SetBinding(Label.TextProperty, "Revenue");
 
-			Children.Add(_chart, 0, 2);
+			Children.Add(chart, 0, 2);
 			Children.Add(label, 0, 1);
 		}
-
-		private void BuildChartDataView()
-		{
-			
-
-			//var OpcoSalesChartItems = new ObservableCollection<OpcoSalesSummaries>()
-			//{
-			//		new OpcoSalesSummaries()
-			//		{
-			//			LBS = 200,
-			//			Period = 2,
-			//		},
-			//		new OpcoSalesSummaries()
-			//		{
-			//			LBS = 400,
-			//			Period = 4,
-			//		},
-			//		new OpcoSalesSummaries()
-			//		{
-			//			LBS = 600,
-			//			Period = 6,
-			//		},
-			//		new OpcoSalesSummaries()
-			//		{
-			//			LBS = 800,
-			//			Period = 8,
-			//		},
-			//};
-		}
-
-		#region -- Private helpers --
-
-		//private static void OnOpcoSalesChartItemsPropertyChanged(BindableObject bindable, Object oldValue, Object newValue)
-		//{
-		//	var control = (ChartDataView)bindable;
-		//	control.BuildChartDataView();
-		//}
-
-		#endregion
 	}
 }

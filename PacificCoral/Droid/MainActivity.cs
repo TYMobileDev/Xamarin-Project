@@ -31,12 +31,12 @@ namespace PacificCoral.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-			#if !DEBUG
+#if !DEBUG
 
 			CrashManager.Register(this, HOCKEY_APP_KEY);
 			MetricsManager.Register(Application, HOCKEY_APP_KEY);
 
-			#endif
+#endif
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 			Xamarin.FormsMaps.Init(this, bundle);

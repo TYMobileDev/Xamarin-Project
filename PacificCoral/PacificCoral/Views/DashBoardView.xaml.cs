@@ -14,19 +14,7 @@ namespace PacificCoral.Views
     {
         public DashBoardView()
         {
-
-			//InitializeComponent();
-
-            try
-            {
-                InitializeComponent();
-                NavigationPage.SetHasNavigationBar(this, false);
-                
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
+            InitializeComponent();
         }       
     }
 }

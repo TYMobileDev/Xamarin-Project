@@ -5,25 +5,22 @@ using System.Windows.Input;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
-using PropertyChanged;
-using PacificCoral.Helpers;
 using Acr.UserDialogs;
 using System.Net.Http;
 using System.Collections.Generic;
 using System;
+using PacificCoral.Helpers;
 
 namespace PacificCoral.ViewModels
 {
-	[ImplementPropertyChanged]
-    public class SignInViewModel : BindableBase
+    public class SignInViewModel : BasePageViewModel
     {
         private readonly INavigationService _navigationService;
-        private bool isOnline = false;
         private bool waitVisible = false;
 
         public SignInViewModel() { }
 
-        public SignInViewModel(INavigationService navigationService)
+		public SignInViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
         }

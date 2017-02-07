@@ -9,12 +9,10 @@ namespace PacificCoral
 			var mainStack = new StackLayout()
 			{
 				BackgroundColor = StyleManager.GetAppResource<Color>("DefaultLightColor"),
-				//Margin = new Thickness(5, 0, 5, 0),
 			};
 
 			var grid = new Grid()
 			{
-				//Margin = new Thickness(10),
 				Padding = new Thickness(5),
 				RowDefinitions = {
 					new RowDefinition { Height = GridLength.Star  },
@@ -73,6 +71,7 @@ namespace PacificCoral
 			mainStack.Children.Add(separator);
 
 			View = mainStack;
+
 		}
 	}
 }
