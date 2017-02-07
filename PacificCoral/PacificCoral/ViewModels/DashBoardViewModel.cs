@@ -165,12 +165,15 @@ namespace PacificCoral.ViewModels
 			{
 				IsBusy = true;
 				_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
-				LostSalesPCSItems = await DataManager.DefaultManager.getLostSalesPCSForOpcoAsync(_currentOpco);
-				IsBusy = false;
+				LostSalesPCSItems = await DataManager.DefaultManager.LostSalesPCSTable.GetFilteredTable(_currentOpco);
 			}
 			catch (Exception ex)
 			{
 
+			}
+			finally
+			{
+				IsBusy = false;
 			}
 		}
 
@@ -179,12 +182,15 @@ namespace PacificCoral.ViewModels
 			try
 			{
 				IsBusy = true;
-				DeviationSummaryItems = await DataManager.DefaultManager.getDeviationSummaryAsync();
-				IsBusy = false;
+				DeviationSummaryItems = await DataManager.DefaultManager.DeviationSummaryTable.GetTable();
 			}
 			catch (Exception ex)
 			{
 
+			}
+			finally
+			{
+				IsBusy = false;
 			}
 		}
 
@@ -194,8 +200,7 @@ namespace PacificCoral.ViewModels
 			{
 				IsBusy = true;
 				_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
-				OpcoSalesChartItems = await DataManager.DefaultManager.getOpcoSalesSummaryForOpcoAsync(_currentOpco);
-				IsBusy = false;
+				OpcoSalesChartItems = await DataManager.DefaultManager.OpcoSalesSummaryTable.GetFilteredTable(_currentOpco);
 
 				// calculate growth
 				double p1 = OpcoSalesChartItems.Where(p => p.Period >= 9).Sum(p => p.LBS);
@@ -206,10 +211,15 @@ namespace PacificCoral.ViewModels
 			{
 
 			}
+			finally
+			{
+				IsBusy = false;
+			}
 		}
 
-		private void RefreshDashboardTables()
+		private async void RefreshDashboardTables()
 		{
+			await DataManager.DefaultManager.GetCurrentOpcoAsync();
 			OpcoSalesChartItemsAsync();
 
 			LostSalesPCSItemsAsync();
