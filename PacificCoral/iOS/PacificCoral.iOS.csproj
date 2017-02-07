@@ -107,8 +107,8 @@
     <Compile Include="Renderers\ExtendedListViewRenderer.cs" />
     <Compile Include="Renderers\TabbedPageRenderer.cs" />
     <Compile Include="AuthentificateImplementation.cs" />
-    <Compile Include="Helpers\Settings.cs" />
     <None Include="Resources\open_cell.png" />
+    <Compile Include="Helpers\Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />

@@ -8,6 +8,8 @@ using PacificCoral.Views;
 using PacificCoral.ViewModels;
 using Plugin.Media.Abstractions;
 using Plugin.Media;
+using Plugin.Settings.Abstractions;
+using Plugin.Settings;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace PacificCoral
@@ -44,7 +46,9 @@ namespace PacificCoral
 		{
 			Container.RegisterInstance<INavigationService>(Container.Resolve<Prism.Unity.Navigation.UnityPageNavigationService>());
 			Container.RegisterInstance<IUserDialogs>(UserDialogs.Instance);
+			//Container.RegisterInstance<ISettings>(CrossSettings.Current);
 			Container.RegisterInstance<IMedia>(CrossMedia.Current);
+			Container.RegisterInstance<IAppSettingsService>(Container.Resolve<AppSettingsService>());
 
 			var userMocks = true;
 			if (userMocks)

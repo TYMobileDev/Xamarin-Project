@@ -26,7 +26,14 @@ namespace PacificCoral
         private static Authentication defaultAthenticator = new Authentication();
         private UserInfo userInfo;
         private string currentUserID = string.Empty;
-        public  IAuthenticate Authenticator { get; private set; }
+		private readonly IAppSettingsService _settingsService;
+
+        public IAuthenticate Authenticator { get; private set; }
+
+		//public Authentication(ISettingsService settingsService)
+		//{
+		//	_settingsService = settingsService;
+		//}
 
         public static Authentication DefaultAthenticator
         {
@@ -98,7 +105,7 @@ namespace PacificCoral
             }
         }
 
-        public  void Init(IAuthenticate authenticator)
+        public void Init(IAuthenticate authenticator)
         {
             Authenticator = authenticator;
         }

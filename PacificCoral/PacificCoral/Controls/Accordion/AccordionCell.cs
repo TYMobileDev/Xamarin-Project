@@ -24,7 +24,7 @@ namespace PacificCoral
 			titleLabel.SetBinding(Label.TextProperty, "TitleCell");
 			var icon = new Image()
 			{
-				Source = "open_cell",
+				Source = "open_cell.png",
 				Margin = new Thickness(10),
 				HorizontalOptions = LayoutOptions.EndAndExpand,
 			};

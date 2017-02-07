@@ -38,7 +38,7 @@ namespace PacificCoral
 			HeightRequest = 250;
 
 			BackgroundColor = StyleManager.GetAppResource<Color>("DefaultLightColor");
-			Margin = new Thickness(5, 10, 5, 10);
+			Margin = new Thickness(5, 5, 5, 10);
 
 			_chart = new SfChart()
 			{

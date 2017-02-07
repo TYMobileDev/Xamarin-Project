@@ -6,11 +6,12 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using PropertyChanged;
-using PacificCoral.Helpers;
 using Acr.UserDialogs;
 using System.Net.Http;
 using System.Collections.Generic;
 using System;
+using Plugin.Settings.Abstractions;
+using PacificCoral.Helpers;
 
 namespace PacificCoral.ViewModels
 {
@@ -18,14 +19,16 @@ namespace PacificCoral.ViewModels
     public class SignInViewModel : BindableBase
     {
         private readonly INavigationService _navigationService;
+		private readonly IAppSettingsService _appSettingsService;
         private bool isOnline = false;
         private bool waitVisible = false;
 
         public SignInViewModel() { }
 
-        public SignInViewModel(INavigationService navigationService)
+		public SignInViewModel(INavigationService navigationService, IAppSettingsService appSettingsService)
         {
             _navigationService = navigationService;
+			_appSettingsService = appSettingsService;
         }
 
         public ICommand SignInCommand
@@ -68,6 +71,7 @@ namespace PacificCoral.ViewModels
                     {
                         // unable to login client
                         Settings.LastLoggedinUser = Authentication.DefaultAthenticator.UserInfo.DisplayableId;
+						//_appSettingsService.LastLoggedinUser = Authentication.DefaultAthenticator.UserInfo.DisplayableId;
                         UserDialogs.Instance.Alert("WARNING:  Failure logging in application to server.  Application will run in OFFLINE mode with limitted functionality.", "Login Problems");
                         await _navigationService.NavigateAsync<DashBoardView>();
                     }

@@ -190,6 +190,8 @@
     <Compile Include="Controls\DashboardControl.cs" />
     <Compile Include="Controls\BindablePicker_1.cs" />
     <Compile Include="Controls\ChartDataView.cs" />
+    <Compile Include="Helpers\AppSettingsService.cs" />
+    <Compile Include="Helpers\IAppSettingsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Mono.Android">
