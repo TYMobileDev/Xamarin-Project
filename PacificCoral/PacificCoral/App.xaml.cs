@@ -10,6 +10,7 @@ using Plugin.Media.Abstractions;
 using Plugin.Media;
 using Plugin.Settings.Abstractions;
 using Plugin.Settings;
+using System;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace PacificCoral
@@ -28,6 +29,7 @@ namespace PacificCoral
 		public App()
 		{
 			InitializeComponent();
+			//throw new Exception();
 			MainPage = new SignInView
 			{
 				BindingContext = Resolve<SignInViewModel>()

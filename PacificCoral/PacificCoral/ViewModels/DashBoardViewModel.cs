@@ -311,10 +311,12 @@ namespace PacificCoral.ViewModels
 		{
 			AccordionSource = new List<AccordionModel>();
 
+			//var title = "Sales history";
 			var chartCell = new AccordionCell()
 			{
 				TitleCell = "Sales history",
 			};
+			//chartCell.SetBinding(AccordionCell.TitleCellProperty, title);
 
 			var chartDataView = new ChartDataView()
 			{
