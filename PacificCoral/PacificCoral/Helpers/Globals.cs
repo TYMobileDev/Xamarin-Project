@@ -24,4 +24,19 @@ namespace PacificCoral
             }
         }
     }
+    #region enumerations
+
+    public enum enumRefreshTableStatus
+    {
+        NotRefreshing,
+        Begin,
+        End
+    }
+    public enum enumOrderDirection
+    {
+        Ascending,
+        Descending
+    }
+
+    #endregion
 }

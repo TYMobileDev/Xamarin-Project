@@ -32,7 +32,7 @@ namespace PacificCoral.Model
         public string MAName { get { return maName; } set { maName = value; } }
 
         [StringLength(50)]
-        public string SyscoCustomerName { get { return SyscoCustomerName; } set { syscoCustomerName = value; } }
+        public string SyscoCustomerName { get { return syscoCustomerName; } set { syscoCustomerName = value; } }
 
         public DateTime StartDate { get { return startDate; } set { startDate = value; } }
 

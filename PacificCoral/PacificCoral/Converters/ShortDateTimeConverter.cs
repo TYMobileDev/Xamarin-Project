@@ -10,8 +10,8 @@ namespace PacificCoral
 
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			//TODO: implement
-			return "10/12/2016";
+            //TODO: implement
+            return ((DateTime)value).Date.ToString("MM/dd/yy", culture );
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

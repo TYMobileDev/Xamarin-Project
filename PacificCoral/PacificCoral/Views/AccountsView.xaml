@@ -40,13 +40,13 @@
 		<ContentView Grid.Row="1" BackgroundColor="White" Margin="5,5,5,0" HeightRequest="40">
 			<p:ExtendedSearchBar VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Placeholder="Search" HeightRequest="50" HorizontalTextAlignment="Center"/>
 		</ContentView>
-		<p:ExtendedListView Grid.Row="2" VerticalOptions="Fill" SeparatorColor="Transparent" Margin="5,0,5,0" BackgroundColor="{StaticResource MainBgColor}" ItemsSource="{Binding Customers}" HasUnevenRows="True" TappedCommand="{Binding CustomerSelectedCommand}"
-			GroupDisplayBinding="{Binding Title}" IsGroupingEnabled="true" GroupShortNameBinding="{Binding Title}" >
+		<p:ExtendedListView Grid.Row="2" VerticalOptions="Fill" SeparatorColor="#DDDDDD" Margin="5,0,5,0" BackgroundColor="{StaticResource MainBgColor}" ItemsSource="{Binding Customer}" HasUnevenRows="True" TappedCommand="{Binding CustomerSelectedCommand}"
+			GroupDisplayBinding="{Binding Key}" IsGroupingEnabled="true" GroupShortNameBinding="{Binding Key}" >
 			<p:ExtendedListView.GroupHeaderTemplate>
 				<DataTemplate>
 					<ViewCell>
-						<ContentView Margin="0,5,5,0" BackgroundColor="White" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="15,0,15,0">
-							<Label VerticalOptions="Center" FontFamily="{x:Static p:Styles.FontHNRegular}" TextColor="{StaticResource DefaultDarkColor}" FontSize="17" Text="{Binding Title}"/>
+						<ContentView Margin="0,5,5,0" BackgroundColor="#E0E0E0" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="15,0,15,0">
+							<Label VerticalOptions="Center" FontFamily="{x:Static p:Styles.FontHNRegular}" TextColor="{StaticResource DefaultDarkColor}" FontSize="17" Text="{Binding Key}"/>
 						</ContentView>
 					</ViewCell>
 				</DataTemplate>
@@ -56,13 +56,13 @@
 					<ViewCell>
 						<ViewCell.View>
 							<StackLayout Padding="5, 0" BackgroundColor="White" Orientation="Horizontal" Margin="0,0,5,0">
-								<Image Source="{Binding PhotoUrl}" HeightRequest="50" BackgroundColor="Transparent"/>
+                <!-->Image Source="{Binding PhotoUrl}" HeightRequest="50" BackgroundColor="Transparent"/-->
 								<StackLayout VerticalOptions="CenterAndExpand" Margin="0,10">
-									<Label Text="{Binding UserName}" TextColor="{StaticResource DefaultDarkColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="15"/>
+									<Label Text="{Binding CustomerName}" TextColor="{StaticResource DefaultDarkColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="15"/>
 									<Label Text="{Binding Address}" TextColor="{StaticResource DefaultGreyColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="10"/>
-									<Label Text="{Binding PhoneNumber}" TextColor="{StaticResource DefaultGreyColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="13"/>
+									<Label Text="{Binding Telephone}" TextColor="{StaticResource DefaultGreyColor}" FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="13"/>
 								</StackLayout>
-							</StackLayout>
+              </StackLayout>
 						</ViewCell.View>
 					</ViewCell>
 				</DataTemplate>

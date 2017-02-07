@@ -1,8 +1,10 @@
 ﻿using PacificCoral.Model;
 using PacificCoral.Views;
 using PacificCoral.Extensions;
+using PacificCoral.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -19,22 +21,39 @@ namespace PacificCoral.ViewModels
 	public class AccountsViewModel: BasePageViewModel
     {
         private readonly INavigationService _navigationService;
+        private string _title;
 
-        public AccountsViewModel(INavigationService navigationService)
+        public  AccountsViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            Customers = PageTypeGroup();
+            InitializeData();
+        }
+        private async Task InitializeData()
+        {
+            var l = await DataManager.DefaultManager.CustomersTable.GetFilteredTable(Globals.CurrentOpco);
+            var sorted = l.OrderBy(p => p.CustomerName).GroupBy(p => p.NameSort).
+                Select(gp => new Grouping<string, Customers>(gp.Key, gp));
+            Customer = new ObservableCollection<Helpers.Grouping<string, Model.Customers>>(sorted);
+
+            Title = Globals.CurrentOpco.Trim() + " - Customers";
         }
 
 		#region -- Public properties --
 
-		private List<PageTypeGroup> _Customers;
-
-		public List<PageTypeGroup> Customers
-		{
-			get { return _Customers; }
-			set { SetProperty(ref _Customers, value); }
-		}
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                SetProperty<string>(ref _title, value);
+            }
+        }
+        public ObservableCollection<Grouping<string, Customers>> Customer {
+            get;
+            set; }
 
 		public ICommand CustomerSelectedCommand
 		{
@@ -56,40 +75,6 @@ namespace PacificCoral.ViewModels
 
 		#region -- Private helpers --
 
-		private static List<PageTypeGroup> PageTypeGroup()
-		{
-			var list = new List<PageTypeGroup>();
-			var A = (int)'A';
-			var r = new Random();
-			for (int i = 0; i < 26; i++)
-			{
-				var letter = ((char)(A + i)).ToString();
-				var group = new PageTypeGroup(letter);
-				var customersCount = r.Next(1, 8);
-				for (int j = 0; j < customersCount; j++)
-				{
-					group.Add(new CustomerModel()
-					{
-						PhotoUrl = "customerPhoto.png",
-						UserName = letter + " User Name " + j,
-						Address = "Miami, the USA",
-						PhoneNumber = "+39876534677"
-					});
-
-				}
-				list.Add(group);
-
-			}
-			list.Sort((x, y) => x.Title.CompareTo(y.Title));
-
-			foreach (var item in list)
-			{
-				item.Sort((x, y) => x.UserName.CompareTo(y.UserName));
-
-			}
-
-			return list;
-		}
 
 		private Task OnCustomerSelectedCommandAsync(object customerObj)
 		{

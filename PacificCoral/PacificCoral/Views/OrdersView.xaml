@@ -19,21 +19,25 @@
 			<Style x:Key="deliveryStatusLabelStyle" TargetType="Label">
 				<Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
 	            <Setter Property="TextColor" Value="{StaticResource NotactiveColor}" />
-				<Setter Property="FontSize" Value="16" />
+				<Setter Property="FontSize" Value="14" />
 			</Style>
 			<Style x:Key="dateLabelStyle" TargetType="Label">
 				<Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
 	            <Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
-				<Setter Property="FontSize" Value="10" />
+				<Setter Property="FontSize" Value="12" />
 			</Style>
 			<Style x:Key="statusLabelStyle" TargetType="Label">
 				<Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
 	            <Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
-	            <Setter Property="VerticalOptions" Value="Fill" />
 	            <Setter Property="HorizontalTextAlignment" Value="End" />
-	            <Setter Property="VerticalTextAlignment" Value="Center" />
 				<Setter Property="FontSize" Value="14" />
 			</Style>
+      <Style x:Key="lbsLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
+        <Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+        <Setter Property="HorizontalTextAlignment" Value="End" />
+        <Setter Property="FontSize" Value="12" />
+      </Style>
 			<!-- Converters -->
 			<p:OrderDeliveryStatusToObjectConverter x:Key="deliveryToStringConverter" DeliveredObj="Delivered"/>
 			<p:OrderStatusToObjectConverter x:Key="statusToStringConverter" OpenObj="OPEN" ConfirmedObj="CONFIRMED" InvoicedObj="INVOICED" />
@@ -80,28 +84,30 @@
 				<Label Grid.Column="0" Grid.Row="0" Text="Status" Style="{StaticResource headetTitleStyle}" HorizontalTextAlignment="End"/>
 			</Grid>
 			<BoxView Style="{StaticResource HorizontalSeparatorStyle}"/>
-			<p:ExtendedListView ItemsSource="{Binding Orders}" HasUnevenRows="true" TappedCommand="{Binding OrderSelectedCommand}" SeparatorVisibility="None">
+			<p:ExtendedListView ItemsSource="{Binding POMasters}" HasUnevenRows="true" TappedCommand="{Binding OrderSelectedCommand}" SeparatorVisibility="None">
 				<p:ExtendedListView.ItemTemplate>
 					<DataTemplate>
 						<ViewCell>
 							<Grid Padding="5, 10, 0, 0">
 								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="1*"/>
 									<ColumnDefinition Width="3*"/>
 									<ColumnDefinition Width="3*"/>
 									<ColumnDefinition Width="3*"/>
 								</Grid.ColumnDefinitions>
-								<nc:RoundCornerView Grid.Column="0" BackgroundColor="#7ED321" HeightRequest="12" WidthRequest="12" CornerRadius="6" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
-								<StackLayout Grid.Column="1" Grid.ColumnSpan="3">
-									<Label Text="{Binding CustomerNumber}" Style="{StaticResource customerNumberLabelStyle}" />
-									<Label Text="{Binding DeliveryStatus,Converter={StaticResource deliveryToStringConverter}}" Style="{StaticResource deliveryStatusLabelStyle}" />
-								</StackLayout>
-								<StackLayout Grid.Column="2" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand">
-									<Label Text="{Binding OrderDate,Converter={StaticResource ShortDateTimeConverter}}" Style="{StaticResource dateLabelStyle}" />
+                <!--nc:RoundCornerView Grid.Column="0" BackgroundColor="#7ED321" HeightRequest="12" WidthRequest="12" CornerRadius="6" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" /-->
+								<StackLayout Grid.Column="0" Grid.ColumnSpan="3">
+									<Label Text="{Binding PO}" Style="{StaticResource customerNumberLabelStyle}" />
+                  <Label Text="{Binding DeliveryType}" Style="{StaticResource deliveryStatusLabelStyle}" />
+                </StackLayout>
+								<StackLayout Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand">
+									<Label Text="{Binding PODate,Converter={StaticResource ShortDateTimeConverter}}" Style="{StaticResource dateLabelStyle}" />
 									<Label Text="{Binding ShipDate,Converter={StaticResource ShortDateTimeConverter}}" Style="{StaticResource dateLabelStyle}" />
 								</StackLayout>
-								<Label Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding Status,Converter={StaticResource statusToStringConverter}}" Style="{StaticResource statusLabelStyle}" />
-								<BoxView Grid.Column="0" Grid.ColumnSpan="4" Margin="5, 0, 0, 0" Style="{StaticResource HorizontalSeparatorStyle}" BackgroundColor="{StaticResource NotactiveColor}" VerticalOptions="EndAndExpand" />
+                <StackLayout Grid.Column="2" Grid.ColumnSpan="2" Padding="0,0,5,0">
+                  <Label  Text="{Binding Status}" Style="{StaticResource statusLabelStyle}" />
+                  <Label  Text="{Binding TotalLBS, StringFormat='LBS: {0:N0}'}" Style="{StaticResource lbsLabelStyle}" />
+                </StackLayout>
+                  <BoxView Grid.Column="0" Grid.ColumnSpan="3" Margin="5, 0, 0, 0" Style="{StaticResource HorizontalSeparatorStyle}" BackgroundColor="{StaticResource NotactiveColor}" VerticalOptions="EndAndExpand" />
 							</Grid>
 						</ViewCell>
 					</DataTemplate>

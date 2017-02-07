@@ -3,6 +3,8 @@ using Prism.Navigation;
 using System.Collections.Generic;
 using System.Windows.Input;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using PacificCoral.Model;
 
 namespace PacificCoral
 {
@@ -14,19 +16,26 @@ namespace PacificCoral
 		{
 			_navigationService = navigationService;
 			Init();
+
+            initializeTables();
+
 		}
 
 		#region -- Public properties --
 
+        public ObservableCollection<POMaster > POMasters { get; set; }
 		private IEnumerable<OrderModel> _Orders;
+        private string _currentOpco;
 
-		public IEnumerable<OrderModel> Orders
+        public IEnumerable<OrderModel> Orders
 		{
 			get { return _Orders; }
 			set { SetProperty(ref _Orders, value); }
 		}
 
-		public ICommand AddCommand
+
+
+        public ICommand AddCommand
 		{
 			get { return SingleExecutionCommand.FromFunc(OnAddCommandAsync); }
 		}
@@ -50,9 +59,14 @@ namespace PacificCoral
 
 		#region -- Private helpers --
 
+        private async Task initializeTables()
+        {
+            if (Globals.CurrentOpco == string.Empty) return;
+            POMasters = await DataManager.DefaultManager.POMasterTable.GetFilteredTable(Globals.CurrentOpco);
+        }
 		private void Init()
 		{
-			Title = "Orders";
+            Title = String.Format("{0} - ORDERS", Globals.CurrentOpco.Trim());
 			var orders = new List<OrderModel>();
 			var r = new Random();
 			for (int i = 0; i < 10; i++)

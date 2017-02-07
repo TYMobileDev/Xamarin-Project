@@ -125,6 +125,7 @@
 			<p:ShortDateTimeConverter x:Key="ShortDateTimeConverter" />
 			<p:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
 			<p:ObjectToBoolConverter x:Key="ObjectToBoolConverter" />
+      <p:FirstLetterOfStringConverter x:Key="FirstLetterOfStringConverter"/>
 			
 		</ResourceDictionary>
 	</Application.Resources>
