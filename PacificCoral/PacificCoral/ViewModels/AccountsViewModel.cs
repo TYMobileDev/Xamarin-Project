@@ -11,7 +11,6 @@ using System.Windows.Input;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
-using PropertyChanged;
 using Xamarin.Forms;
 using System.Runtime.InteropServices.WindowsRuntime;
 

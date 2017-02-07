@@ -5,7 +5,6 @@ using System.Windows.Input;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
-using PropertyChanged;
 using Acr.UserDialogs;
 using System.Net.Http;
 using System.Collections.Generic;
@@ -15,7 +14,6 @@ using PacificCoral.Helpers;
 
 namespace PacificCoral.ViewModels
 {
-	[ImplementPropertyChanged]
     public class SignInViewModel : BindableBase
     {
         private readonly INavigationService _navigationService;
