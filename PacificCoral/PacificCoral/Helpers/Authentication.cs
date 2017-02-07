@@ -14,7 +14,6 @@ namespace PacificCoral
     public interface IAuthenticate
     {
         Task<bool> Authenticate();
-        //Task AuthenticateAsync();
     }
 
     // Azure AD OATH2 Authentication.  Requires specific version to be installed in nuget
@@ -26,14 +25,8 @@ namespace PacificCoral
         private static Authentication defaultAthenticator = new Authentication();
         private UserInfo userInfo;
         private string currentUserID = string.Empty;
-		private readonly IAppSettingsService _settingsService;
 
         public IAuthenticate Authenticator { get; private set; }
-
-		//public Authentication(ISettingsService settingsService)
-		//{
-		//	_settingsService = settingsService;
-		//}
 
         public static Authentication DefaultAthenticator
         {

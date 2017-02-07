@@ -13,19 +13,16 @@ using PacificCoral.Helpers;
 
 namespace PacificCoral.ViewModels
 {
-    public class SignInViewModel : BasePageViewModel //BindableBase
+    public class SignInViewModel : BasePageViewModel
     {
         private readonly INavigationService _navigationService;
-		private readonly IAppSettingsService _appSettingsService;
-        private bool isOnline = false;
         private bool waitVisible = false;
 
         public SignInViewModel() { }
 
-		public SignInViewModel(INavigationService navigationService, IAppSettingsService appSettingsService)
+		public SignInViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-			_appSettingsService = appSettingsService;
         }
 
         public ICommand SignInCommand
@@ -68,7 +65,6 @@ namespace PacificCoral.ViewModels
                     {
                         // unable to login client
                         Settings.LastLoggedinUser = Authentication.DefaultAthenticator.UserInfo.DisplayableId;
-						//_appSettingsService.LastLoggedinUser = Authentication.DefaultAthenticator.UserInfo.DisplayableId;
                         UserDialogs.Instance.Alert("WARNING:  Failure logging in application to server.  Application will run in OFFLINE mode with limitted functionality.", "Login Problems");
                         await _navigationService.NavigateAsync<DashBoardView>();
                     }

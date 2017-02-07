@@ -49,8 +49,6 @@ namespace PacificCoral
 			Container.RegisterInstance<ISettings>(CrossSettings.Current);
 			Container.RegisterInstance<IMedia>(CrossMedia.Current);
 
-			Container.RegisterInstance<IAppSettingsService>(Container.Resolve<AppSettingsService>());
-
 			var userMocks = true;
 			if (userMocks)
 			{

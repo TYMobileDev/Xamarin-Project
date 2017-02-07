@@ -188,10 +188,8 @@
     <Compile Include="Controls\Picker\ExtendedPicker.cs" />
     <Compile Include="Controls\Picker\ButtonForPicker.cs" />
     <Compile Include="Controls\DashboardControl.cs" />
-    <Compile Include="Controls\BindablePicker_1.cs" />
     <Compile Include="Controls\ChartDataView.cs" />
-    <Compile Include="Helpers\AppSettingsService.cs" />
-    <Compile Include="Helpers\IAppSettingsService.cs" />
+    <Compile Include="Controls\LostSalesPCSView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Syncfusion.SfChart.XForms">

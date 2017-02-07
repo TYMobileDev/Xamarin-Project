@@ -37,7 +37,7 @@ namespace PacificCoral.Droid
 			MetricsManager.Register(Application, HOCKEY_APP_KEY);
 
 #endif
-			//CrossSettings.Current;
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
 			Xamarin.FormsMaps.Init(this, bundle);
 			UserDialogs.Init(Application);

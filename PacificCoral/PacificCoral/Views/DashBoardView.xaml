@@ -4,18 +4,16 @@
 		<ResourceDictionary>
 		</ResourceDictionary>
 	</ContentPage.Resources>
-	
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="*"/>
+			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
-		
-		<control:DashboardControl Grid.Row="0"/>
-		<ActivityIndicator Grid.Row="0" Grid.Column="0" 
-				InputTransparent="true"
-				HorizontalOptions="Fill" 
-				VerticalOptions="Fill" 
-				IsRunning="{Binding IsBusy}"
+		<control:DashboardControl Grid.Row="0" />
+		<ActivityIndicator Grid.Row="0" 
+				InputTransparent="true" 
+				HorizontalOptions="CenterAndExpand" 
+				VerticalOptions="CenterAndExpand" 
+				IsRunning="{Binding IsBusy}" 
 				Color="Gray">
 		</ActivityIndicator>
 	</Grid>
