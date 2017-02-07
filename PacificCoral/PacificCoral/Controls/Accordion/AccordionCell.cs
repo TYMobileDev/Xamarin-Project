@@ -7,19 +7,19 @@ namespace PacificCoral
 	{
 		#region -- Public properties --
 
-		//public static readonly BindableProperty TitleCellProperty =
-		//	BindableProperty.Create(nameof(TitleCell), typeof(string), typeof(LostSalesPCSViewCell), default(string),BindingMode.TwoWay);
-		//public string TitleCell
-		//{
-		//	get
-		//	{
-		//		return (string)GetValue(TitleCellProperty);
-		//	}
-		//	set
-		//	{
-		//		SetValue(TitleCellProperty, value);
-		//	}
-		//}
+		public static readonly BindableProperty TitleCellProperty =
+			BindableProperty.Create(nameof(TitleCell), typeof(string), typeof(AccordionCell), default(string));
+		public string TitleCell
+		{
+			get
+			{
+				return (string)GetValue(TitleCellProperty);
+			}
+			set
+			{
+				SetValue(TitleCellProperty, value);
+			}
+		}
 
 		#endregion
 
@@ -29,7 +29,8 @@ namespace PacificCoral
 			BackgroundColor = Color.White;
 			Margin = new Thickness(5, 5, 5, 5);
 			HeightRequest = 50;
-			//BindingContext = this;
+
+			BindingContext = this;
 
 			var titleLabel = new Label()
 			{
@@ -39,23 +40,17 @@ namespace PacificCoral
 				TextColor = Color.Black,
 				Margin = new Thickness(20, 0, 0, 0),
 			};
-			titleLabel.SetBinding(Label.TextProperty, "TitleCell");
+			titleLabel.SetBinding(Label.TextProperty, TitleCellProperty.PropertyName);
 
 			var icon = new Image()
 			{
 				Source = "open_cell",
 				Margin = new Thickness(10),
-				HorizontalOptions = LayoutOptions.EndAndExpand,
+				HorizontalOptions = LayoutOptions.End,
 			};
 
 			Children.Add(titleLabel);
 			Children.Add(icon);
 		}
-
-		#region -- Public properties --
-
-		public string TitleCell { get; set;}
-
-		#endregion
 	}
 }
