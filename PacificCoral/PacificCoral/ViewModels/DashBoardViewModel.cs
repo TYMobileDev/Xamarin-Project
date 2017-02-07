@@ -26,9 +26,6 @@ namespace PacificCoral.ViewModels
 		{
 			_navigationService = navigationService;
 
-
-			//Test();
-
 			var sales = new ObservableCollection<SalesModel>();
 			for (var i = 0; i < 15; i++)
 			{
@@ -63,14 +60,6 @@ namespace PacificCoral.ViewModels
 			//	},
 			//};
 		}
-
-		//async void Test()
-		//{
-		//	//await Task.Delay(2000);
-		//	IsBusy = true;
-		//	await Task.Delay(10000);
-		//	IsBusy = false;
-		//}
 
 		#region -- Public properties --
 

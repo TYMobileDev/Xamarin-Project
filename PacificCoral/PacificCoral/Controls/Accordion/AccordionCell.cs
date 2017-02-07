@@ -46,7 +46,7 @@ namespace PacificCoral
 			{
 				Source = "open_cell",
 				Margin = new Thickness(10),
-				HorizontalOptions = LayoutOptions.End,
+				HorizontalOptions = LayoutOptions.EndAndExpand,
 			};
 
 			Children.Add(titleLabel);

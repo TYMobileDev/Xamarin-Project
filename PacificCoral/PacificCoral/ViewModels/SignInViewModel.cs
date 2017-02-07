@@ -9,12 +9,11 @@ using Acr.UserDialogs;
 using System.Net.Http;
 using System.Collections.Generic;
 using System;
-using Plugin.Settings.Abstractions;
 using PacificCoral.Helpers;
 
 namespace PacificCoral.ViewModels
 {
-    public class SignInViewModel : BindableBase
+    public class SignInViewModel : BasePageViewModel //BindableBase
     {
         private readonly INavigationService _navigationService;
 		private readonly IAppSettingsService _appSettingsService;

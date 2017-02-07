@@ -48,7 +48,7 @@ namespace PacificCoral
 		{
 			Container.RegisterInstance<INavigationService>(Container.Resolve<Prism.Unity.Navigation.UnityPageNavigationService>());
 			Container.RegisterInstance<IUserDialogs>(UserDialogs.Instance);
-			//Container.RegisterInstance<ISettings>(CrossSettings.Current);
+			Container.RegisterInstance<ISettings>(CrossSettings.Current);
 			Container.RegisterInstance<IMedia>(CrossMedia.Current);
 			Container.RegisterInstance<IAppSettingsService>(Container.Resolve<AppSettingsService>());
 
@@ -66,7 +66,6 @@ namespace PacificCoral
 			Container.RegisterTypeForNavigation<AccountsView>("AccountsView");
 			Container.RegisterTypeForNavigation<CustomerAccountView, CustomerAccountViewModel>();
 			Container.RegisterTypeForNavigation<DashBoard2View>("DashBoard2View");
-			//Container.RegisterTypeForNavigation<DashBoardView, DashBoardViewModel>();
 			Container.RegisterTypeForNavigation<DashBoardView>("DashBoardView");
 			Container.RegisterTypeForNavigation<InventoryView, InventoryViewModel>();
 			Container.RegisterTypeForNavigation<PinLocationView, PinLocationViewModel>();
