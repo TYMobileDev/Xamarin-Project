@@ -128,13 +128,6 @@ namespace PacificCoral.ViewModels
 			get { return SingleExecutionCommand.FromFunc(OnDetailsCommandAsync); }
 		}
 
-		private bool _IsBusy;
-		public bool IsBusy
-		{
-			get { return _IsBusy; }
-			set { SetProperty(ref _IsBusy, value); }
-		}
-
 		#endregion
 
 		#region -- Private helpers --
@@ -151,7 +144,7 @@ namespace PacificCoral.ViewModels
 
 		private Task OnViewOrdersCommandAsync()
 		{
-			return _navigationService.NavigateAsync("OrdersView");
+			return _navigationService.NavigateAsync("DetailsView");
 		}
 
 		private Task OnDetailsCommandAsync()

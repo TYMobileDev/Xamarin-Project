@@ -14,10 +14,14 @@ namespace PacificCoral
 			set { SetProperty(ref _Title, value); }
 		}
 
-
+		private bool _IsBusy;
+		public bool IsBusy
+		{
+			get { return _IsBusy; }
+			set { SetProperty(ref _IsBusy, value); }
+		}
 
 		#endregion
-
 
 		#region -- IViewActionsHandler implementation --
 

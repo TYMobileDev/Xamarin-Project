@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:ncontrols="clr-namespace:NControl.Controls;assembly=NControl.Controls" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PacificCoral.DetailsView" xmlns:p="clr-namespace:PacificCoral;assembly=PacificCoral">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<!--Style for Orders -->
+			<Style x:Key="headetTitleStyle" TargetType="Label">
+				<Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
+				<Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+				<Setter Property="HorizontalOptions" Value="Fill" />
+				<Setter Property="FontSize" Value="10" />
+			</Style>
+			<Style x:Key="customerNumberLabelStyle" TargetType="Label">
+				<Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNMedium}" />
+				<Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+				<Setter Property="FontSize" Value="15" />
+			</Style>
+			<Style x:Key="deliveryStatusLabelStyle" TargetType="Label">
+				<Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
+				<Setter Property="TextColor" Value="{StaticResource NotactiveColor}" />
+				<Setter Property="FontSize" Value="14" />
+			</Style>
+			<Style x:Key="dateLabelStyle" TargetType="Label">
+				<Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
+				<Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+				<Setter Property="FontSize" Value="12" />
+			</Style>
+			<Style x:Key="statusLabelStyle" TargetType="Label">
+				<Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
+				<Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+				<Setter Property="HorizontalTextAlignment" Value="End" />
+				<Setter Property="FontSize" Value="14" />
+			</Style>
+			<Style x:Key="lbsLabelStyle" TargetType="Label">
+				<Setter Property="FontFamily" Value="{x:Static p:Styles.FontHNRegular}" />
+				<Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+				<Setter Property="HorizontalTextAlignment" Value="End" />
+				<Setter Property="FontSize" Value="12" />
+			</Style>
+			<!-- Converters -->
+			<p:OrderDeliveryStatusToObjectConverter x:Key="deliveryToStringConverter" DeliveredObj="Delivered" />
+			<p:StatusToColorConverter x:Key="statusToColorConverter" />
+			<p:OrderStatusToObjectConverter x:Key="statusToStringConverter" OpenObj="OPEN" ConfirmedObj="CONFIRMED" InvoicedObj="INVOICED" />
+			<!--Style for Header -->
+			<Style x:Key="StripButtonLabel" TargetType="Label">
+				<Setter Property="HorizontalOptions" Value="Center" />
+				<Setter Property="FontSize" Value="13" />
+			</Style>
+			<Style x:Key="DetailHeaderSectionLabelStyle" BaseResourceKey="DetailSectionTitleStyle" TargetType="Label">
+				<Setter Property="FontAttributes" Value="Bold" />
+				<Setter Property="TextColor" Value="{StaticResource DefaultDarkColor}" />
+			</Style>
+			<Style x:Key="DetailSectionStyle" BaseResourceKey="DetailSectionTitleStyle" TargetType="Label">
+				<Setter Property="TextColor" Value="{StaticResource DefaultGreyColor}" />
+				<Setter Property="FontAttributes" Value="None" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<Grid>
+			<Grid.Padding>
+				<OnPlatform x:TypeArguments="Thickness" iOS="15, 25, 15, 0" Android="15, 5, 15, 0" />
+			</Grid.Padding>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<!--HEADER-->
+			<Image Grid.Column="1" Grid.Row="0" Style="{StaticResource titleLogoStyle}" />
+			<p:ClickableContentView Grid.Row="0" Grid.Column="0" Style="{StaticResource NavbarItemStyle}" Command="{Binding BackCommand}">
+				<Image Source="backbutton" />
+			</p:ClickableContentView>
+			<p:ClickableContentView Grid.Column="2" Grid.Row="0" Style="{StaticResource NavbarItemStyle}">
+				<Image Source="plus" />
+			</p:ClickableContentView>
+			<p:ClickableContentView Grid.Column="3" Grid.Row="0" Style="{StaticResource NavbarItemStyle}">
+				<Image Source="zoom" />
+			</p:ClickableContentView>
+			<!--CONTENT-->
+			<p:TabStrip Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" TabBackColor="Transparent" VerticalOptions="FillAndExpand" ActivePageIndex="{Binding ActivePageIndex, Mode=TwoWay}" TabHeight="48">
+				<p:TabStrip.Children>
+					<p:TabItem>
+						<p:TabItem.ButtonView>
+							<StackLayout VerticalOptions="Center">
+								<Image Source="items" Style="{StaticResource tabButtonImageStyle}" />
+								<Label Text="Orders" Style="{StaticResource tabButtonLabelStyle}" />
+							</StackLayout>
+						</p:TabItem.ButtonView>
+						<p:TabItem.View>
+							<p:ExtendedListView ItemsSource="{Binding Orders}" HasUnevenRows="true" SeparatorVisibility="None">
+								<p:ExtendedListView.ItemTemplate>
+									<DataTemplate>
+										<ViewCell>
+											<Grid Padding="0, 10, 0, 10">
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="3*" />
+													<ColumnDefinition Width="3*" />
+													<ColumnDefinition Width="3*" />
+												</Grid.ColumnDefinitions>
+												<ncontrols:RoundCornerView Grid.Column="0" BackgroundColor="{Binding Status,Converter={StaticResource statusToColorConverter}}" HeightRequest="12" WidthRequest="12" CornerRadius="6" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+												<StackLayout Grid.Column="0" Grid.ColumnSpan="3" Margin="15, 0, 0, 0">
+													<Label Text="{Binding CustomerNumber}" Style="{StaticResource customerNumberLabelStyle}" />
+													<Label Text="{Binding DeliveryStatus}" Style="{StaticResource deliveryStatusLabelStyle}" />
+												</StackLayout>
+												<StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand">
+													<StackLayout Orientation="Horizontal">
+														<Label Text="PO Date:" FontSize="10" />
+														<Label Text="{Binding PODate,Converter={StaticResource ShortDateTimeConverter}}" FontSize="10" Style="{StaticResource dateLabelStyle}" />
+													</StackLayout>
+													<StackLayout Orientation="Horizontal">
+														<Label Text="Ship:" FontSize="10" />
+														<Label Text="{Binding ShipDate,Converter={StaticResource ShortDateTimeConverter}}" FontSize="10" Style="{StaticResource dateLabelStyle}" />
+													</StackLayout>
+												</StackLayout>
+												<Label Text="{Binding Status,Converter={StaticResource statusToStringConverter}}" Style="{StaticResource statusLabelStyle}" Grid.Column="2" Margin="0,0,5,0" />
+												<BoxView Grid.Column="0" Grid.ColumnSpan="3" Margin="3, 0, 0, 0" Style="{StaticResource HorizontalSeparatorStyle}" BackgroundColor="{StaticResource NotactiveColor}" VerticalOptions="EndAndExpand" />
+											</Grid>
+										</ViewCell>
+									</DataTemplate>
+								</p:ExtendedListView.ItemTemplate>
+							</p:ExtendedListView>
+						</p:TabItem.View>
+					</p:TabItem>
+					<p:TabItem>
+						<p:TabItem.ButtonView>
+							<StackLayout VerticalOptions="Center">
+								<Image Source="items" Style="{StaticResource tabButtonImageStyle}" />
+								<Label Text="Header" Style="{StaticResource tabButtonLabelStyle}" />
+							</StackLayout>
+						</p:TabItem.ButtonView>
+						<p:TabItem.View>
+							<StackLayout>
+								<StackLayout Orientation="Horizontal" Margin="10">
+									<Label Text="Purchase Order:" Style="{StaticResource DetailHeaderSectionLabelStyle}" />
+									<Label Text="dsdsdsdsdsd" Style="{StaticResource DetailSectionStyle}" />
+								</StackLayout>
+								<StackLayout Orientation="Horizontal" Margin="10">
+									<Label Text="Customer:" Style="{StaticResource DetailHeaderSectionLabelStyle}" />
+									<Label Text="dsdsdsdsdsd" Style="{StaticResource DetailSectionStyle}" />
+								</StackLayout>
+								<StackLayout Orientation="Horizontal" Margin="10">
+									<Label Text="PO Date:" Style="{StaticResource DetailHeaderSectionLabelStyle}" />
+									<Label Text="dsdsdsdsdsd" Style="{StaticResource DetailSectionStyle}" />
+								</StackLayout>
+								<StackLayout Orientation="Horizontal" Margin="10">
+									<Label Text="Deliver Date:" Style="{StaticResource DetailHeaderSectionLabelStyle}" />
+									<Label Text="dsdsdsdsdsd" Style="{StaticResource DetailSectionStyle}" />
+								</StackLayout>
+								<StackLayout Orientation="Horizontal" Margin="10">
+									<Label Text="Delivery Method:" Style="{StaticResource DetailHeaderSectionLabelStyle}" />
+									<Label Text="dsdsdsdsdsd" Style="{StaticResource DetailSectionStyle}" />
+								</StackLayout>
+								<StackLayout Orientation="Horizontal" Margin="10">
+									<Label Text="PO Status:" Style="{StaticResource DetailHeaderSectionLabelStyle}" />
+									<Label Text="dsdsdsdsdsd" Style="{StaticResource DetailSectionStyle}" />
+								</StackLayout>
+							</StackLayout>
+						</p:TabItem.View>
+					</p:TabItem>
+					<p:TabItem>
+						<p:TabItem.ButtonView VerticalOptions="Center">
+							<StackLayout>
+								<Image Source="items" Style="{StaticResource tabButtonImageStyle}" />
+								<Label Text="Details" Style="{StaticResource tabButtonLabelStyle}" />
+							</StackLayout>
+						</p:TabItem.ButtonView>
+						<p:TabItem.View>
+							<Label Text="Details" />
+						</p:TabItem.View>
+					</p:TabItem>
+				</p:TabStrip.Children>
+			</p:TabStrip>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

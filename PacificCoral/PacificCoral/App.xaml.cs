@@ -33,6 +33,8 @@ namespace PacificCoral
 			{
 				BindingContext = Resolve<SignInViewModel>()
 			};
+			//MainPage = new DetailsView();
+			//MainPage = new OrdersView();
 		}
 
 		#region -- Overrides --
@@ -75,6 +77,7 @@ namespace PacificCoral
 			Container.RegisterTypeForNavigation<OrdersView>("OrdersView");
 			Container.RegisterTypeForNavigation<InventoryItemView, InventoryItemViewModel>();
 			Container.RegisterTypeForNavigation<RootPage>("Root");
+			Container.RegisterTypeForNavigation<DetailsView>("DetailsView");
 		}
 
 		protected override void OnStart()

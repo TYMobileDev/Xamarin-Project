@@ -129,7 +129,7 @@ namespace PacificCoral.Controls
 					}
 				}
 			};
-			//itemsItem.SetBinding(ClickableContentView.CommandProperty, "ViewOrdersCommand");
+			itemsItem.SetBinding(ClickableContentView.CommandProperty, "ViewOrdersCommand");
 
 			var settingsItem = new ClickableContentView()
 			{
