@@ -29,10 +29,11 @@ namespace PacificCoral
 		public App()
 		{
 			InitializeComponent();
-			MainPage = new SignInView
-			{
-				BindingContext = Resolve<SignInViewModel>()
-			};
+			//MainPage = new SignInView
+			//{
+			//	BindingContext = Resolve<SignInViewModel>()
+			//};
+			MainPage = new DashBoardView();
 		}
 
 		#region -- Overrides --
@@ -75,6 +76,7 @@ namespace PacificCoral
 			Container.RegisterTypeForNavigation<OrdersView>("OrdersView");
 			Container.RegisterTypeForNavigation<InventoryItemView, InventoryItemViewModel>();
 			Container.RegisterTypeForNavigation<RootPage>("Root");
+			Container.RegisterTypeForNavigation<SettingsView>("SettingsView");
 		}
 
 		protected override void OnStart()

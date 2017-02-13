@@ -150,7 +150,7 @@ namespace PacificCoral.Controls
 					}
 				}
 			};
-			//settingsItem.SetBinding(ClickableContentView.CommandProperty, "ViewOrdersCommand");
+			settingsItem.SetBinding(ClickableContentView.CommandProperty, "SettingsCommand");
 
 			var tabStack = new StackLayout()
 			{
