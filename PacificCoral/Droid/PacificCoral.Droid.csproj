@@ -320,6 +320,11 @@
     <AndroidResource Include="Resources\drawable\backbutton.png" />
     <AndroidResource Include="Resources\drawable\arrow_down.png" />
     <AndroidResource Include="Resources\drawable\open_cell.png" />
+    <AndroidResource Include="Resources\drawable\detailbutton.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\settings.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\exit_ic.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\pencil_ic.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\settings_ic.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

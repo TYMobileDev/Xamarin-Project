@@ -129,6 +129,11 @@ namespace PacificCoral.ViewModels
 			get { return SingleExecutionCommand.FromFunc(OnDetailsCommandAsync); }
 		}
 
+		public ICommand SettingsCommand
+		{
+			get { return SingleExecutionCommand.FromFunc(OnSettingsCommandAsync); }
+		}
+
 		#endregion
 
 		#region -- Private helpers --
@@ -152,6 +157,12 @@ namespace PacificCoral.ViewModels
 		{
 			return _navigationService.NavigateAsync("DashBoard2View");
 		}
+
+		private Task OnSettingsCommandAsync()
+		{
+			return _navigationService.NavigateAsync("SettingsView");
+		}
+
 
 		private async void LostSalesPCSItemsAsync()
 		{

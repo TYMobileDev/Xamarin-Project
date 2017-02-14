@@ -14,7 +14,9 @@ namespace PacificCoral
     public interface IAuthenticate
     {
         Task<bool> Authenticate();
-        //Task AuthenticateAsync();
+		//Task AuthenticateAsync();
+
+		Task<bool> Logout();
     }
 
     // Azure AD OATH2 Authentication.  Requires specific version to be installed in nuget
@@ -130,6 +132,7 @@ namespace PacificCoral
                 await DataManager.DefaultManager.initalizeOpcoTable();
                 // pull tables from server async
                 DataManager.DefaultManager.initializeStoreAsync();
+
                 return true;
             }
             catch (Exception ex)
@@ -140,5 +143,18 @@ namespace PacificCoral
 
         }
 
+		public async Task<bool> Logout()
+		{
+			try
+			{
+				await DataManager.DefaultManager.CurrentClient.LogoutAsync();
+				isAuthenticated = false;
+			}
+			catch (Exception ex)
+			{
+				UserDialogs.Instance.Alert(ex.ToString(), "Logout Error");
+			}
+			return isAuthenticated;
+		}
     }
 }

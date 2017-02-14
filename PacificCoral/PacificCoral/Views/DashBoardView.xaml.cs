@@ -14,7 +14,14 @@ namespace PacificCoral.Views
     {
         public DashBoardView()
         {
-            InitializeComponent();
+			try
+			{
+				  InitializeComponent();
+			}
+			catch (Exception ex)
+			{
+				
+			}
         }       
     }
 }

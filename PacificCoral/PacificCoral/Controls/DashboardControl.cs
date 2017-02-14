@@ -107,7 +107,7 @@ namespace PacificCoral.Controls
 					Children = {
 						new Image()
 						{
-							Source = "items",
+							Source = "settings",
 							Style = StyleManager.GetAppResource<Style>("tabButtonImageStyle"),
 						},
 						new Label()
@@ -118,7 +118,7 @@ namespace PacificCoral.Controls
 					}
 				}
 			};
-			//settingsItem.SetBinding(ClickableContentView.CommandProperty, "ViewOrdersCommand");
+			settingsItem.SetBinding(ClickableContentView.CommandProperty, "SettingsCommand");
 
 			var tabStack = new StackLayout()
 			{
