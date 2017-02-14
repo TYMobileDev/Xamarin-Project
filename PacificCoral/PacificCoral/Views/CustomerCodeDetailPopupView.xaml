@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="PacificCoral.Views.CustomerCodeDetailPopupView">
+  <!--Animations use example-->
+  <pages:PopupPage.Animation>
+    <animations:MoveAnimation
+      PositionIn="Top"
+      PositionOut="Top"
+      DurationIn="200"
+      DurationOut="200"
+      EasingIn="SinIn"
+      EasingOut="SinOut"
+      HasBackgroundAnimation="True"/>
+
+  </pages:PopupPage.Animation>
+  <!-- Content -->
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="100"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <StackLayout  Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Start" BackgroundColor= "{StaticResource DefaultMainColor}" Padding="2">
+      <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White" Padding="20">
+        <Grid ColumnSpacing="5" >
+          <Grid.RowDefinitions>
+            <RowDefinition Height=" 2*"/>
+            <RowDefinition Height=" 2*"/>
+            <RowDefinition Height=" 1*"/>
+            <RowDefinition Height=" 2*"/>
+            <RowDefinition Height=" 2*"/>
+            <RowDefinition Height=" 1*"/>
+            <RowDefinition Height=" 2*"/>
+            <RowDefinition Height=" 2*"/>
+
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <Label Margin="10" Text="Contact Name:" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="End" FontAttributes="Bold" FontSize="Small" TextColor= "{StaticResource DefaultMainColor}" />
+          <Label Margin="10" Text="{Binding ContactName}" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Start"  FontSize="Small" />
+          <Label Margin="10" Text="Position:" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="End" FontAttributes="Bold" FontSize="Small" TextColor= "{StaticResource DefaultMainColor}" />
+          <Label Margin="10" Text="{Binding ContactPosition}" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Start" FontSize="Small" />
+          <Label Margin="10" Text="Address:" Grid.Row="3" Grid.Column="0" HorizontalTextAlignment="End" FontAttributes="Bold" FontSize="Small" TextColor= "{StaticResource DefaultMainColor}"/>
+          <Label Margin="10" Text="{Binding Address}" Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="Start" FontSize="Small" />
+          <Label Margin="10" Text="{Binding CityStateZip}" Grid.Row="4" Grid.Column="1" HorizontalTextAlignment="Start" FontSize="Small" />
+          <Label Margin="10" Text="Telephone:" Grid.Row="6" Grid.Column="0" HorizontalTextAlignment="End" FontAttributes="Bold" FontSize="Small" TextColor= "{StaticResource DefaultMainColor}"/>
+          <Label Margin="10" Text="{Binding Telephone}" Grid.Row="6" Grid.Column="1" HorizontalTextAlignment="Start" FontSize="Small" />
+          <Label Margin="10" Text="Email:" Grid.Row="7" Grid.Column="0" HorizontalTextAlignment="End" FontAttributes="Bold" FontSize="Small" TextColor= "{StaticResource DefaultMainColor}"/>
+          <Label Margin="10" Text="{Binding Email}" Grid.Row="7" Grid.Column="1" HorizontalTextAlignment="Start" FontSize="Small" />
+        </Grid>
+      </StackLayout>
+    </StackLayout>
+  </Grid>
+</pages:PopupPage>

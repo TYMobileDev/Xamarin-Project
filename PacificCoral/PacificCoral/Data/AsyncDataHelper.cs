@@ -8,26 +8,27 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using PacificCoral.Extensions;
+using PacificCoral.Helpers;
 
 namespace PacificCoral.Data
 {
-    public class AsyncDataHelper<TModel,TWhere, TOrder, TMaster, TContains>
+    public class AsyncDataHelper<TModel, TWhere, TOrder, TMaster, TContains>
     {
         //enumRefreshTableStatus enumRefreshStatus = enumRefreshTableStatus.NotRefreshing;
         DateTime _lastRefreshTime = DateTime.MinValue;
         TimeSpan _refreshInterval = new TimeSpan(12, 0, 0);
         bool _isRefreshing = false;
-        Expression<Func<TModel,TWhere , bool>> _wherePredicate = null;
-        Expression<Func<TModel, List<TContains >, bool>> _whereContainsPredicate = null;
+        Expression<Func<TModel, TWhere, bool>> _wherePredicate = null;
+        Expression<Func<TModel, List<TContains>, bool>> _whereContainsPredicate = null;
 
         Expression<Func<TModel, TOrder>> _orderClause = null;
         IMobileServiceSyncTable<TModel> _table;
         Func<Task> _refreshMethod;
 
         Func<string, Task<ObservableCollection<TMaster>>> _funcFilteredMasterTable = null;
-        Func<ObservableCollection <TMaster>, string, List<TContains>> _funcGetMasterCollection = null;
+        Func<ObservableCollection<TMaster>, string, List<TContains>> _funcGetMasterCollection = null;
         enumOrderDirection _orderDirection = enumOrderDirection.Ascending;
-        public AsyncDataHelper(MobileServiceClient client,Expression<Func<TModel,TWhere ,bool>> WhereClause=null, Expression<Func<TModel,TOrder>> OrderClause=null, bool isIncremental = true, enumOrderDirection OrderDirection= enumOrderDirection.Ascending, TimeSpan? RefreshInterval=null )
+        public AsyncDataHelper(MobileServiceClient client, Expression<Func<TModel, TWhere, bool>> WhereClause = null, Expression<Func<TModel, TOrder>> OrderClause = null, bool isIncremental = true, enumOrderDirection OrderDirection = enumOrderDirection.Ascending, TimeSpan? RefreshInterval = null)
         {
             _table = client.GetSyncTable<TModel>();
             _wherePredicate = WhereClause;
@@ -46,9 +47,9 @@ namespace PacificCoral.Data
                 _refreshMethod = refreshPurgeTable;
             }
         }
-        public AsyncDataHelper(MobileServiceClient client, Expression<Func<TModel,TWhere , bool>> WhereClause = null, Expression<Func<TModel, TOrder>> OrderClause = null, bool isIncremental = true, Expression<Func<TModel, List<TContains>, bool>> WhereContainsClause = null, Func<string,Task< ObservableCollection<TMaster>>> funcMasterTable = null, Func<ObservableCollection  <TMaster>, string, List<TContains >> detailList = null, TimeSpan? RefreshInterval = null)
+        public AsyncDataHelper(MobileServiceClient client, Expression<Func<TModel, TWhere, bool>> WhereClause = null, Expression<Func<TModel, TOrder>> OrderClause = null, bool isIncremental = true, Expression<Func<TModel, List<TContains>, bool>> WhereContainsClause = null, Func<string, Task<ObservableCollection<TMaster>>> funcMasterTable = null, Func<ObservableCollection<TMaster>, string, List<TContains>> detailList = null, TimeSpan? RefreshInterval = null)
         {
-            
+
             _table = client.GetSyncTable<TModel>();
             _wherePredicate = WhereClause;
             _whereContainsPredicate = WhereContainsClause;
@@ -73,14 +74,17 @@ namespace PacificCoral.Data
         {
             return _refreshMethod();
         }
-
-        public async Task< ObservableCollection<TModel>> GetTable()
+        public async Task Purge()
+        {
+            await _table.PurgeAsync();
+        }
+        public async Task<ObservableCollection<TModel>> GetTable()
         {
             await _refreshMethod();
             return new ObservableCollection<TModel>(await _table.ToEnumerableAsync());
         }
 
-        public async Task<ObservableCollection<TModel>> GetFilteredTable(string filterVal)
+        public async Task<ObservableCollection<TModel>> GetFilteredTable(TWhere filterVal)
         {
             try
             {
@@ -126,7 +130,7 @@ namespace PacificCoral.Data
                 // convert to list of keys
                 var l2 = _funcGetMasterCollection(l, filter);
                 // now, can return detail from contained keys
-                var body = _whereContainsPredicate .Body.ReplaceParameter(_whereContainsPredicate .Parameters[1], Expression.Constant(l2));
+                var body = _whereContainsPredicate.Body.ReplaceParameter(_whereContainsPredicate.Parameters[1], Expression.Constant(l2));
                 var lambda = Expression.Lambda<Func<TModel, bool>>(body, _whereContainsPredicate.Parameters[0]);
                 if (_orderClause != null)
                 {
@@ -166,9 +170,9 @@ namespace PacificCoral.Data
             // bring in incremental syncs
             try
             {
-              //  enumRefreshStatus = enumRefreshTableStatus.Begin;
+                //  enumRefreshStatus = enumRefreshTableStatus.Begin;
                 _isRefreshing = true;
-                await _table.PullAsync(typeof(TModel).Name , _table.CreateQuery());
+                await _table.PullAsync(typeof(TModel).Name + Settings.LastPurgeSequence.ToString(), _table.CreateQuery());
                 _lastRefreshTime = DateTime.Now;
             }
             catch (Exception ex)
@@ -177,14 +181,14 @@ namespace PacificCoral.Data
             }
             finally
             {
-               // enumRefreshStatus  = enumRefreshTableStatus.End;
+                // enumRefreshStatus  = enumRefreshTableStatus.End;
                 _isRefreshing = false;
             }
         }
         private async Task refreshPurgeTable()
         {
             if (!Authentication.DefaultAthenticator.IsAuthenticated) return;
-          //  if (enumRefreshStatus != enumRefreshTableStatus.NotRefreshing) return;
+            //  if (enumRefreshStatus != enumRefreshTableStatus.NotRefreshing) return;
             if (_isRefreshing) return;
             if (DateTime.Now.Subtract(_lastRefreshTime) < _refreshInterval) return;
             // bring in incremental syncs
@@ -202,7 +206,7 @@ namespace PacificCoral.Data
             }
             finally
             {
-             //   enumRefreshStatus = enumRefreshTableStatus.End;
+                //   enumRefreshStatus = enumRefreshTableStatus.End;
                 _isRefreshing = false;
             }
         }

@@ -7,7 +7,7 @@ namespace PacificCoral.Model
 {
     public class Customers
     {
-        string id, customerName, opco, address, city, state, zip, telephone , email;
+        string id, customerName, opco, address, city, state, zip, telephone , email, primaryCustomerCode;
         int customerNumber;
         bool isProspect, hasDeviation;
 
@@ -43,11 +43,13 @@ namespace PacificCoral.Model
         [Version]
         public string Version { get; set; }
 
+        public string PrimaryCustomerCode { get { return primaryCustomerCode; } set { primaryCustomerCode = value; } }
+
         public string NameSort
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(CustomerName ) || CustomerName.Length == 0)
+                if (string.IsNullOrWhiteSpace(CustomerName) || CustomerName.Length == 0)
                     return "?";
 
                 return CustomerName[0].ToString().ToUpper();

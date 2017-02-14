@@ -114,7 +114,7 @@ namespace PacificCoral
             }
         }
 
-
+        
         public static DataManager DefaultManager
         {
             get
@@ -128,10 +128,23 @@ namespace PacificCoral
             }
         }
 
-
+        public async Task PurgeAllTables()
+        {
+            Settings.LastPurgeSequence++;
+            await OpcoSalesSummaryTable.Purge();
+            await LostSalesPCSTable.Purge();
+            await DeviationMasterTable.Purge();
+            await DeviationSummaryTable.Purge();
+            await DeviationDetailTable.Purge();
+            await ItemCodesTable.Purge();
+            await POMasterTable.Purge();
+            await PODetailTable.Purge();
+            await CustomersTable.Purge();
+            await CustomerCodesTable.Purge();
+        }
         public async void initializeStoreAsync()
         {
-
+           // await PurgeAllTables();
             //  push any changes from local stores
             await SyncAsync();
 
