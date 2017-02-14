@@ -18,9 +18,6 @@ namespace PacificCoral
 		{
 			_navigationService = navigationService;
 
-			//PurchaseOrder = "1233445";
-			//Customer = "PFG TAMPA";
-
 			InitializeTables();
 		}
 

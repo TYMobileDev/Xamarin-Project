@@ -33,8 +33,6 @@ namespace PacificCoral
 			{
 				BindingContext = Resolve<SignInViewModel>()
 			};
-			//MainPage = new DetailsView();
-			//MainPage = new OrdersView();
 		}
 
 		#region -- Overrides --
