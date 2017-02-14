@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Acr.UserDialogs;
 using PacificCoral.Model;
 using Prism.Navigation;
 using Xamarin.Forms;
@@ -92,29 +93,33 @@ namespace PacificCoral
 
 		private async void InitializeTables()
 		{
-			if (Globals.CurrentOpco == string.Empty) return;
-			POMasters = await DataManager.DefaultManager.POMasterTable.GetFilteredTable(Globals.CurrentOpco);
-			var orders = new List<OrderModel>();
-
-			foreach(var item in POMasters)
+			using (UserDialogs.Instance.Loading())
 			{
-				var order = new OrderModel();
+				if (Globals.CurrentOpco == string.Empty) return;
+				POMasters = await DataManager.DefaultManager.POMasterTable.GetFilteredTable(Globals.CurrentOpco);
+				var orders = new List<OrderModel>();
 
-				if (item.Status == "Confirmation_Ack")
-					order.Status = EOrderStatus.Confirmed;
-				else if (item.Status == "Invoice_Ack")
-					order.Status = EOrderStatus.Invoiced;
-				else
-					order.Status = EOrderStatus.Open;
+				foreach (var item in POMasters)
+				{
+					var order = new OrderModel();
 
-				order.DeliveryStatus = EOrderDeliveryStatus.Delivered;
-				order.CustomerNumber = Int32.Parse(item.PO);
-				order.ShipDate = item.ShipDate;
-				order.PODate = item.PODate;
-				orders.Add(order);
+					if (item.Status == "Confirmation_Ack")
+						order.Status = EOrderStatus.Confirmed;
+					else if (item.Status == "Invoice_Ack")
+						order.Status = EOrderStatus.Invoiced;
+					else
+						order.Status = EOrderStatus.Open;
+
+					order.DeliveryStatus = EOrderDeliveryStatus.Delivered;
+					order.CustomerNumber = Int32.Parse(item.PO);
+					order.ShipDate = item.ShipDate;
+					order.PODate = item.PODate;
+					orders.Add(order);
+				}
+
+				Orders = orders;
 			}
 
-			Orders = orders;
 		}
 
 		private Task OnBackCommandAsync()

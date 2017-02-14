@@ -135,7 +135,7 @@
 						</p:TabItem.ButtonView>
 						<p:TabItem.View>
 							<StackLayout>
-								<StackLayout Orientation="Horizontal" Margin="10">
+								<StackLayout Orientation="Horizontal" >
 									<Label Text="Purchase Order:" Style="{StaticResource DetailHeaderSectionLabelStyle}" />
 									<Label Text="dsdsdsdsdsd" Style="{StaticResource DetailSectionStyle}" />
 								</StackLayout>

@@ -14,7 +14,7 @@ namespace PacificCoral
 			if (status == EOrderStatus.Open)
 				return Color.Yellow;
 			else if (status == EOrderStatus.Confirmed)
-				return Color.Green;
+				return Color.FromHex("#7ED321");
 			else if (status == EOrderStatus.Invoiced)
 				return Color.Red;
 			else
