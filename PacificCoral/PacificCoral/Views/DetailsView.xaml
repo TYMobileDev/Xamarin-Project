@@ -137,27 +137,27 @@
 							<StackLayout>
 								<StackLayout Orientation="Horizontal" >
 									<Label Text="Purchase Order:" Style="{StaticResource DetailHeaderSectionLabelStyle}" />
-									<Label Text="dsdsdsdsdsd" Style="{StaticResource DetailSectionStyle}" />
+									<Label Text="#1233445" Style="{StaticResource DetailSectionStyle}" />
 								</StackLayout>
 								<StackLayout Orientation="Horizontal" Margin="10">
 									<Label Text="Customer:" Style="{StaticResource DetailHeaderSectionLabelStyle}" />
-									<Label Text="dsdsdsdsdsd" Style="{StaticResource DetailSectionStyle}" />
+									<Label Text="PFG TAMPA" Style="{StaticResource DetailSectionStyle}" />
 								</StackLayout>
 								<StackLayout Orientation="Horizontal" Margin="10">
 									<Label Text="PO Date:" Style="{StaticResource DetailHeaderSectionLabelStyle}" />
-									<Label Text="dsdsdsdsdsd" Style="{StaticResource DetailSectionStyle}" />
+									<Label Text="1/2/2017" Style="{StaticResource DetailSectionStyle}" />
 								</StackLayout>
 								<StackLayout Orientation="Horizontal" Margin="10">
 									<Label Text="Deliver Date:" Style="{StaticResource DetailHeaderSectionLabelStyle}" />
-									<Label Text="dsdsdsdsdsd" Style="{StaticResource DetailSectionStyle}" />
+									<Label Text="1/9/2017" Style="{StaticResource DetailSectionStyle}" />
 								</StackLayout>
 								<StackLayout Orientation="Horizontal" Margin="10">
 									<Label Text="Delivery Method:" Style="{StaticResource DetailHeaderSectionLabelStyle}" />
-									<Label Text="dsdsdsdsdsd" Style="{StaticResource DetailSectionStyle}" />
+									<Label Text="OWN CARRIER" Style="{StaticResource DetailSectionStyle}" />
 								</StackLayout>
 								<StackLayout Orientation="Horizontal" Margin="10">
 									<Label Text="PO Status:" Style="{StaticResource DetailHeaderSectionLabelStyle}" />
-									<Label Text="dsdsdsdsdsd" Style="{StaticResource DetailSectionStyle}" />
+									<Label Text="CONFIRMED" Style="{StaticResource DetailSectionStyle}" />
 								</StackLayout>
 							</StackLayout>
 						</p:TabItem.View>
@@ -170,7 +170,39 @@
 							</StackLayout>
 						</p:TabItem.ButtonView>
 						<p:TabItem.View>
-							<Label Text="Details" />
+							<p:ExtendedListView ItemsSource="{Binding Orders}" HasUnevenRows="true" SeparatorVisibility="None">
+								<p:ExtendedListView.ItemTemplate>
+									<DataTemplate>
+										<ViewCell>
+											<Grid Padding="0, 10, 0, 10">
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="3*" />
+													<ColumnDefinition Width="3*" />
+													<ColumnDefinition Width="3*" />
+												</Grid.ColumnDefinitions>
+												<StackLayout Grid.Column="0" VerticalOptions="CenterAndExpand">
+													<Label Text="EMPIRE" FontSize="10" />
+													<Label Text="SHRIM 8/12 " FontSize="10" TextColor="{StaticResource DefaultGreyColor}"/>
+													<StackLayout Orientation="Horizontal">
+														<Label Text="PO Date:" FontSize="10" />
+														<Label Text="{Binding PODate,Converter={StaticResource ShortDateTimeConverter}}" FontSize="10" Style="{StaticResource dateLabelStyle}" />
+													</StackLayout>
+													<StackLayout Orientation="Horizontal">
+														<Label Text="Ship:" FontSize="10" />
+														<Label Text="{Binding ShipDate,Converter={StaticResource ShortDateTimeConverter}}" FontSize="10" Style="{StaticResource dateLabelStyle}" />
+													</StackLayout>
+												</StackLayout>
+												<StackLayout Grid.Column="1" Grid.ColumnSpan="3" Margin="15, 0, 0, 0">
+													<Label Text="{Binding Cost, StringFormat='{0}$'}" />
+													<Label Text="{Binding Count, StringFormat='{0} cases'}" />
+												</StackLayout>
+												<Label Text="{Binding Status,Converter={StaticResource statusToStringConverter}}" Style="{StaticResource statusLabelStyle}" Grid.Column="2" Margin="0,0,5,0" />
+												<BoxView Grid.Column="0" Grid.ColumnSpan="3" Margin="3, 0, 0, 0" Style="{StaticResource HorizontalSeparatorStyle}" BackgroundColor="{StaticResource NotactiveColor}" VerticalOptions="EndAndExpand" />
+											</Grid>
+										</ViewCell>
+									</DataTemplate>
+								</p:ExtendedListView.ItemTemplate>
+							</p:ExtendedListView>
 						</p:TabItem.View>
 					</p:TabItem>
 				</p:TabStrip.Children>
