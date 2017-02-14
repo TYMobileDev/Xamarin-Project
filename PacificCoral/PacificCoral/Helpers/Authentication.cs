@@ -69,23 +69,31 @@ namespace PacificCoral
             }
         }
 
-        public UserInfo UserInfo
-        {
-            get
-            {
-                return userInfo;
-            }
+		public UserInfo UserInfo
+		{
+			get
+			{
+				return userInfo;
+			}
 
-            set
-            {
-                try
-                {
-                    CurrentUserID = value.DisplayableId.ToUpper().Trim();
-                }
-                catch { }
-                userInfo = value;
-            }
-        }
+			set
+			{
+				try
+				{
+					if (value != null)
+					{
+						CurrentUserID = value.DisplayableId.ToUpper().Trim();
+					}
+				}
+
+				catch (Exception ex)
+				{
+
+				}
+
+				userInfo = value;
+			}
+		}
 
         public string CurrentUserID
         {
