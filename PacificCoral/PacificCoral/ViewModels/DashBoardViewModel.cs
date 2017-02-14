@@ -159,7 +159,6 @@ namespace PacificCoral.ViewModels
 			{
 				try
 				{
-					//IsBusy = true;
 					_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
 					LostSalesPCSItems = await DataManager.DefaultManager.LostSalesPCSTable.GetFilteredTable(_currentOpco);
 				}
@@ -168,11 +167,6 @@ namespace PacificCoral.ViewModels
 
 				}
 			}
-
-			//finally
-			//{
-			//	IsBusy = false;
-			//}
 		}
 
 		private async void DeviationSummaryItemsAsync()
@@ -181,17 +175,12 @@ namespace PacificCoral.ViewModels
 			{
 				try
 				{
-					//IsBusy = true;
 					DeviationSummaryItems = await DataManager.DefaultManager.DeviationSummaryTable.GetTable();
 				}
 				catch (Exception ex)
 				{
 
 				}
-				//finally
-				//{
-				//	IsBusy = false;
-				//}
 			}
 
 		}
@@ -202,7 +191,6 @@ namespace PacificCoral.ViewModels
 			{
 				try
 				{
-					//IsBusy = true;
 					_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
 					OpcoSalesChartItems = await DataManager.DefaultManager.OpcoSalesSummaryTable.GetFilteredTable(_currentOpco);
 
@@ -215,10 +203,6 @@ namespace PacificCoral.ViewModels
 				{
 
 				}
-				//finally
-				//{
-				//	IsBusy = false;
-				//}
 			}
 
 		}
