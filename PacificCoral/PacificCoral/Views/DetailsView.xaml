@@ -96,14 +96,14 @@
 								<p:ExtendedListView.ItemTemplate>
 									<DataTemplate>
 										<ViewCell>
-											<Grid Padding="0, 10, 0, 10">
+											<Grid>
 												<Grid.ColumnDefinitions>
 													<ColumnDefinition Width="3*" />
 													<ColumnDefinition Width="3*" />
 													<ColumnDefinition Width="3*" />
 												</Grid.ColumnDefinitions>
 												<ncontrols:RoundCornerView Grid.Column="0" BackgroundColor="{Binding Status,Converter={StaticResource statusToColorConverter}}" HeightRequest="12" WidthRequest="12" CornerRadius="6" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
-												<StackLayout Grid.Column="0" Grid.ColumnSpan="3" Margin="15, 0, 0, 0">
+												<StackLayout Grid.Column="0" Margin="15, 0, 0, 0">
 													<Label Text="{Binding CustomerNumber}" Style="{StaticResource customerNumberLabelStyle}" />
 													<Label Text="{Binding DeliveryStatus}" Style="{StaticResource deliveryStatusLabelStyle}" />
 												</StackLayout>
@@ -117,7 +117,7 @@
 														<Label Text="{Binding ShipDate,Converter={StaticResource ShortDateTimeConverter}}" FontSize="10" Style="{StaticResource dateLabelStyle}" />
 													</StackLayout>
 												</StackLayout>
-												<Label Text="{Binding Status,Converter={StaticResource statusToStringConverter}}" Style="{StaticResource statusLabelStyle}" Grid.Column="2" Margin="0,0,5,0" />
+												<Label Text="{Binding Status,Converter={StaticResource statusToStringConverter}}" Style="{StaticResource statusLabelStyle}" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" />
 												<BoxView Grid.Column="0" Grid.ColumnSpan="3" Margin="3, 0, 0, 0" Style="{StaticResource HorizontalSeparatorStyle}" BackgroundColor="{StaticResource NotactiveColor}" VerticalOptions="EndAndExpand" />
 											</Grid>
 										</ViewCell>
@@ -135,7 +135,7 @@
 						</p:TabItem.ButtonView>
 						<p:TabItem.View>
 							<StackLayout>
-								<StackLayout Orientation="Horizontal" >
+								<StackLayout Orientation="Horizontal" Margin="10">
 									<Label Text="Purchase Order:" Style="{StaticResource DetailHeaderSectionLabelStyle}" />
 									<Label Text="#1233445" Style="{StaticResource DetailSectionStyle}" />
 								</StackLayout>
@@ -174,15 +174,15 @@
 								<p:ExtendedListView.ItemTemplate>
 									<DataTemplate>
 										<ViewCell>
-											<Grid Padding="0, 10, 0, 10">
+											<Grid>
 												<Grid.ColumnDefinitions>
 													<ColumnDefinition Width="3*" />
-													<ColumnDefinition Width="3*" />
+													<ColumnDefinition Width="2*" />
 													<ColumnDefinition Width="3*" />
 												</Grid.ColumnDefinitions>
-												<StackLayout Grid.Column="0" VerticalOptions="CenterAndExpand">
-													<Label Text="EMPIRE" FontSize="10" />
-													<Label Text="SHRIM 8/12 " FontSize="10" TextColor="{StaticResource DefaultGreyColor}"/>
+												<StackLayout Grid.Column="0">
+													<Label Text="EMPIRE" Style="{StaticResource DetailHeaderSectionLabelStyle}" />
+													<Label Text="SHRIM 8/12 SHRIM 8/12" FontSize="10" TextColor="{StaticResource DefaultGreyColor}"/>
 													<StackLayout Orientation="Horizontal">
 														<Label Text="PO Date:" FontSize="10" />
 														<Label Text="{Binding PODate,Converter={StaticResource ShortDateTimeConverter}}" FontSize="10" Style="{StaticResource dateLabelStyle}" />
@@ -192,11 +192,13 @@
 														<Label Text="{Binding ShipDate,Converter={StaticResource ShortDateTimeConverter}}" FontSize="10" Style="{StaticResource dateLabelStyle}" />
 													</StackLayout>
 												</StackLayout>
-												<StackLayout Grid.Column="1" Grid.ColumnSpan="3" Margin="15, 0, 0, 0">
-													<Label Text="{Binding Cost, StringFormat='{0}$'}" />
-													<Label Text="{Binding Count, StringFormat='{0} cases'}" />
+												<StackLayout Grid.Column="1" VerticalOptions="Center">
+													<!--<Label Text="{Binding Cost, StringFormat='{0}$'}" />
+													<Label Text="{Binding Count, StringFormat='{0} cases'}" />-->
+													<Label Text="200$" Style="{StaticResource DetailHeaderSectionLabelStyle}" FontSize="17" HorizontalOptions="Center"/>
+													<Label Text="20 cases" Style="{StaticResource DetailHeaderSectionLabelStyle}" HorizontalOptions="Center"/>
 												</StackLayout>
-												<Label Text="{Binding Status,Converter={StaticResource statusToStringConverter}}" Style="{StaticResource statusLabelStyle}" Grid.Column="2" Margin="0,0,5,0" />
+												<Label Text="{Binding Status,Converter={StaticResource statusToStringConverter}}" Style="{StaticResource statusLabelStyle}" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End"/>
 												<BoxView Grid.Column="0" Grid.ColumnSpan="3" Margin="3, 0, 0, 0" Style="{StaticResource HorizontalSeparatorStyle}" BackgroundColor="{StaticResource NotactiveColor}" VerticalOptions="EndAndExpand" />
 											</Grid>
 										</ViewCell>
