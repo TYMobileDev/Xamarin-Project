@@ -59,7 +59,7 @@ namespace PacificCoral
 
 			}
 
-			Container.RegisterTypeForNavigation<SignInView, SignInViewModel>();
+			Container.RegisterTypeForNavigation<SignInView>("SignInView");
 			Container.RegisterTypeForNavigation<AccountsView>("AccountsView");
 			Container.RegisterTypeForNavigation<CustomerAccountView, CustomerAccountViewModel>();
 			Container.RegisterTypeForNavigation<DashBoard2View>("DashBoard2View");
@@ -75,6 +75,7 @@ namespace PacificCoral
 			Container.RegisterTypeForNavigation<OrdersView>("OrdersView");
 			Container.RegisterTypeForNavigation<InventoryItemView, InventoryItemViewModel>();
 			Container.RegisterTypeForNavigation<RootPage>("Root");
+			Container.RegisterTypeForNavigation<SettingsView>("SettingsView");
 		}
 
 		protected override void OnStart()

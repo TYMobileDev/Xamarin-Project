@@ -59,7 +59,6 @@ namespace PacificCoral.ViewModels
 
 		#region -- Private helpers --
 
-
 		private Task OnDetailsCommandAsync()
 		{
 			return _navigationService.NavigateAsync<LostSaleDetailsView>();
