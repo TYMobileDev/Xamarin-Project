@@ -31,9 +31,9 @@
 					<Image Source="zoom" />
 				</p:ClickableContentView>
 				<!--CONTENT-->
-				<Image Source="edit" Grid.Row="2" Grid.Column="0" HeightRequest="10" />
+				<Image Source="pencil_ic" Grid.Row="2" Grid.Column="0" HeightRequest="10" />
 				<Label Text="EDIT DETAILS" Grid.Row="2" Grid.Column="1" />
-				<Image Source="pencil_ic" HorizontalOptions="End" HeightRequest="15" Grid.Row="2" Grid.Column="2" />
+				<Image Source="detailbutton" HorizontalOptions="End" HeightRequest="15" Grid.Row="2" Grid.Column="2" />
 				<BoxView Style="{StaticResource HorizontalSeparatorStyle}" Margin="5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" />
 				<p:ClickableContentView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Command="{Binding EditDetailsCommand}" />
 				<Image Source="settings_ic" Grid.Row="4" Grid.Column="0" HeightRequest="10" />

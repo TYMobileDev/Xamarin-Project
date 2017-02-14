@@ -68,8 +68,10 @@ namespace PacificCoral
 					await _navigationService.NavigateAsync("SignInView");
 				}
 			}
-
-			UserDialogs.Instance.Alert("Logout Failure.  Please try again.", "Logout Failure");
+			else
+			{
+				UserDialogs.Instance.Alert("Logout Failure.  Please try again.", "Logout Failure");
+			}
 		}
 
 		#endregion
