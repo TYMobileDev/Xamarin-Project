@@ -59,7 +59,7 @@ namespace PacificCoral
 
 			}
 
-			Container.RegisterTypeForNavigation<SignInView, SignInViewModel>();
+			Container.RegisterTypeForNavigation<SignInView>("SignInView");
 			Container.RegisterTypeForNavigation<AccountsView>("AccountsView");
 			Container.RegisterTypeForNavigation<CustomerAccountView, CustomerAccountViewModel>();
 			Container.RegisterTypeForNavigation<DashBoard2View>("DashBoard2View");

@@ -139,7 +139,7 @@ namespace PacificCoral.Controls
 					Children = {
 						new Image()
 						{
-							Source = "items",
+							Source = "settings",
 							Style = StyleManager.GetAppResource<Style>("tabButtonImageStyle"),
 						},
 						new Label()

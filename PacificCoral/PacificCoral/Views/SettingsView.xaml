@@ -33,10 +33,10 @@
 				<!--CONTENT-->
 				<Image Source="edit" Grid.Row="2" Grid.Column="0" HeightRequest="10" />
 				<Label Text="EDIT DETAILS" Grid.Row="2" Grid.Column="1" />
-				<Image Source="detailbutton" HorizontalOptions="End" HeightRequest="15" Grid.Row="2" Grid.Column="2" />
+				<Image Source="pencil_ic" HorizontalOptions="End" HeightRequest="15" Grid.Row="2" Grid.Column="2" />
 				<BoxView Style="{StaticResource HorizontalSeparatorStyle}" Margin="5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" />
 				<p:ClickableContentView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Command="{Binding EditDetailsCommand}" />
-				<Image Source="edit" Grid.Row="4" Grid.Column="0" HeightRequest="10" />
+				<Image Source="settings_ic" Grid.Row="4" Grid.Column="0" HeightRequest="10" />
 				<Label Text="SETTINGS" Grid.Row="4" Grid.Column="1" />
 				<Image Source="detailbutton" HorizontalOptions="End" HeightRequest="15" Grid.Row="4" Grid.Column="2" />
 				<BoxView Style="{StaticResource HorizontalSeparatorStyle}" Margin="5" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" />
@@ -55,7 +55,7 @@
 						<RowDefinition Height="2*" />
 						<RowDefinition Height="1*" />
 					</Grid.RowDefinitions>
-					<Image Grid.Column="1" Grid.Row="1" Source="edit" HeightRequest="10" />
+					<Image Grid.Column="1" Grid.Row="1" Source="exit_ic" HeightRequest="10" />
 					<Label Grid.Column="2" Grid.Row="1" Text="LOGOUT" />
 				</Grid>
 				<p:ClickableContentView Grid.Row="7" Grid.Column="1" Command="{Binding LogoutCommand}" Margin="30, 0, 30, 0" />

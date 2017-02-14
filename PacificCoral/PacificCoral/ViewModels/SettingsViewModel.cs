@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Acr.UserDialogs;
 using Prism.Navigation;
 using Xamarin.Forms;
 
@@ -56,9 +57,19 @@ namespace PacificCoral
 			return _navigationService.NavigateAsync("DashBoardView");
 		}
 
-		private Task OnLogoutCommandAsync()
+		private async Task OnLogoutCommandAsync()
 		{
-			return _navigationService.NavigateAsync("DashBoardView");
+			if (Authentication.DefaultAthenticator != null)
+			{
+				await Authentication.DefaultAthenticator.Authenticator.Logout();
+
+				if (!Authentication.DefaultAthenticator.IsAuthenticated)
+				{
+					await _navigationService.NavigateAsync("SignInView");
+				}
+			}
+
+			UserDialogs.Instance.Alert("Logout Failure.  Please try again.", "Logout Failure");
 		}
 
 		#endregion

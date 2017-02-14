@@ -17,6 +17,7 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Android.Content;
+using Android.Webkit;
 
 [assembly: UsesFeature("android.hardware.wifi", Required = false)]
 namespace PacificCoral.Droid
@@ -55,6 +56,15 @@ namespace PacificCoral.Droid
         {
             return await Authentication.DefaultAthenticator.Auth(new PlatformParameters(this));
 		}
+
+		public async Task<bool> Logout()
+		{
+			CookieManager.Instance.RemoveAllCookie();
+
+			var res = await Authentication.DefaultAthenticator.Logout();
+			return res;
+		}
+
         // required for Azure AD Auth to fire
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
 		{
