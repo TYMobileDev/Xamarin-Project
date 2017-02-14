@@ -199,6 +199,11 @@
     <Compile Include="Controls\DashboardControl.cs" />
     <Compile Include="Controls\ChartDataView.cs" />
     <Compile Include="Controls\LostSalesPCSView.cs" />
+    <Compile Include="Views\DetailsView.xaml.cs">
+      <DependentUpon>DetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\DetailsViewModel.cs" />
+    <Compile Include="Converters\StatusToColorConverter.cs" />
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
@@ -351,6 +356,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ProfileView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DetailsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SettingsView.xaml">

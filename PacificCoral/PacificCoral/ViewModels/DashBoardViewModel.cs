@@ -14,6 +14,7 @@ using Xamarin.Forms;
 using PacificCoral.Controls;
 using PacificCoral.Control;
 using NControl.Controls;
+using Acr.UserDialogs;
 
 namespace PacificCoral.ViewModels
 {
@@ -133,14 +134,6 @@ namespace PacificCoral.ViewModels
 			get { return SingleExecutionCommand.FromFunc(OnSettingsCommandAsync); }
 		}
 
-
-		private bool _IsBusy;
-		public bool IsBusy
-		{
-			get { return _IsBusy; }
-			set { SetProperty(ref _IsBusy, value); }
-		}
-
 		#endregion
 
 		#region -- Private helpers --
@@ -157,7 +150,7 @@ namespace PacificCoral.ViewModels
 
 		private Task OnViewOrdersCommandAsync()
 		{
-			return _navigationService.NavigateAsync("OrdersView");
+			return _navigationService.NavigateAsync("DetailsView");
 		}
 
 		private Task OnDetailsCommandAsync()
@@ -173,60 +166,56 @@ namespace PacificCoral.ViewModels
 
 		private async void LostSalesPCSItemsAsync()
 		{
-			try
+			using (UserDialogs.Instance.Loading())
 			{
-				IsBusy = true;
-				_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
-				LostSalesPCSItems = await DataManager.DefaultManager.LostSalesPCSTable.GetFilteredTable(_currentOpco);
-			}
-			catch (Exception ex)
-			{
+				try
+				{
+					_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
+					LostSalesPCSItems = await DataManager.DefaultManager.LostSalesPCSTable.GetFilteredTable(_currentOpco);
+				}
+				catch (Exception ex)
+				{
 
-			}
-			finally
-			{
-				IsBusy = false;
+				}
 			}
 		}
 
 		private async void DeviationSummaryItemsAsync()
 		{
-			try
+			using (UserDialogs.Instance.Loading())
 			{
-				IsBusy = true;
-				DeviationSummaryItems = await DataManager.DefaultManager.DeviationSummaryTable.GetTable();
-			}
-			catch (Exception ex)
-			{
+				try
+				{
+					DeviationSummaryItems = await DataManager.DefaultManager.DeviationSummaryTable.GetTable();
+				}
+				catch (Exception ex)
+				{
 
+				}
 			}
-			finally
-			{
-				IsBusy = false;
-			}
+
 		}
 
 		private async void OpcoSalesChartItemsAsync()
 		{
-			try
+			using (UserDialogs.Instance.Loading())
 			{
-				IsBusy = true;
-				_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
-				OpcoSalesChartItems = await DataManager.DefaultManager.OpcoSalesSummaryTable.GetFilteredTable(_currentOpco);
+				try
+				{
+					_currentOpco = await DataManager.DefaultManager.GetCurrentOpcoAsync();
+					OpcoSalesChartItems = await DataManager.DefaultManager.OpcoSalesSummaryTable.GetFilteredTable(_currentOpco);
 
-				// calculate growth
-				double p1 = OpcoSalesChartItems.Where(p => p.Period >= 9).Sum(p => p.LBS);
-				double p2 = OpcoSalesChartItems.Where(p => p.Period >= 6 && p.Period < 9).Sum(p => p.LBS);
-				Revenue = string.Format("QTR {0} = {1:N0} LBS", p1 > p2 ? "Growth" : "Loss", Math.Abs(p1 - p2));
-			}
-			catch (Exception ex)
-			{
+					// calculate growth
+					double p1 = OpcoSalesChartItems.Where(p => p.Period >= 9).Sum(p => p.LBS);
+					double p2 = OpcoSalesChartItems.Where(p => p.Period >= 6 && p.Period < 9).Sum(p => p.LBS);
+					Revenue = string.Format("QTR {0} = {1:N0} LBS", p1 > p2 ? "Growth" : "Loss", Math.Abs(p1 - p2));
+				}
+				catch (Exception ex)
+				{
 
+				}
 			}
-			finally
-			{
-				IsBusy = false;
-			}
+
 		}
 
 		private async void RefreshDashboardTables()

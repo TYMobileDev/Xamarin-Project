@@ -94,7 +94,7 @@
 									<ColumnDefinition Width="3*"/>
 									<ColumnDefinition Width="3*"/>
 								</Grid.ColumnDefinitions>
-                <!--nc:RoundCornerView Grid.Column="0" BackgroundColor="#7ED321" HeightRequest="12" WidthRequest="12" CornerRadius="6" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" /-->
+                <!--nc:RoundCornerView Grid.Column="0" BackgroundColor="" HeightRequest="12" WidthRequest="12" CornerRadius="6" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" /-->
 								<StackLayout Grid.Column="0" Grid.ColumnSpan="3">
 									<Label Text="{Binding PO}" Style="{StaticResource customerNumberLabelStyle}" />
                   <Label Text="{Binding DeliveryType}" Style="{StaticResource deliveryStatusLabelStyle}" />
