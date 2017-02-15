@@ -200,35 +200,55 @@
 					<RowDefinition Height="*"/>
 				</Grid.RowDefinitions>
 
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*"/>
-					<ColumnDefinition Width="*"/>
-					<ColumnDefinition Width="*"/>
-					<ColumnDefinition Width="0.5*"/>
-				</Grid.ColumnDefinitions>
-					<Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Source="customerPhoto.png" HeightRequest="70"/>
-					<p:ClickableContentView Grid.Row="0" Grid.Column="3" Padding="5" HorizontalOptions="End" Command="{Binding ShowCustomerLocationCommand}">
-					<Image Source="location" HeightRequest="25" WidthRequest="20"/>
-					</p:ClickableContentView>
-					<Button Grid.Row="3" Grid.Column="0"  Text="Follow Up" BorderColor="{StaticResource DefaultMainColor}" 
-							FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12" 
-							TextColor="{StaticResource DefaultGreyColor}" WidthRequest="100" HeightRequest="26" 
-							BorderRadius="13"
-						BackgroundColor="Transparent" BorderWidth="1" HorizontalOptions="Start"/>
-					<RelativeLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="4"  Grid.ColumnSpan="2" BackgroundColor="White">
-						<Label x:Name="label" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Joe Stone Crab" FontAttributes="Bold" FontSize="Small"/>
-						<Label Grid.Row="1" Grid.Column="1" Margin="7" Grid.ColumnSpan="2" Text="PrimaryID" FontSize="Small" BackgroundColor="White"
-								RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
-									ElementName=label,Property=Y,Factor=1,Constant=15}"
-								RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Source="customerPhoto.png" HeightRequest="70"/>
+        <p:ClickableContentView Grid.Row="0" Grid.Column="3" Padding="5" HorizontalOptions="End" Command="{Binding ShowCustomerLocationCommand}">
+          <Image Source="location" HeightRequest="25" WidthRequest="20"/>
+        </p:ClickableContentView>
+        <Button Grid.Row="3" Grid.Column="0"  Text="Follow Up" BorderColor="{StaticResource DefaultMainColor}"
+            FontFamily="{x:Static p:Styles.FontHNRegular}" FontSize="12"
+            TextColor="{StaticResource DefaultGreyColor}" WidthRequest="100" HeightRequest="26"
+            BorderRadius="13"
+          BackgroundColor="Transparent" BorderWidth="1" HorizontalOptions="Start"/>
+        <RelativeLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="4"  Grid.ColumnSpan="2" BackgroundColor="White"  >
+          <Label x:Name="label" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding CustomerName}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Small" BindingContext="{Binding CurrentCustomer}"/>
+          <Label Grid.Row="1" Grid.Column="1" Margin="0,7,7,0" Grid.ColumnSpan="2" Text="PrimaryID" FontSize="Small" BackgroundColor="White"
+              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+									ElementName=label,Property=Y,Factor=1,Constant=25}"
+              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
 								ElementName=label,Property=X,Factor=1,Constant=-105}"/>
+          <control:BindablePicker Margin="0, 0, 0, 0"  WidthRequest="100" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand"
+            BackgroundColor="Transparent"
+            ItemsSource="{Binding Path=CustomerCodes}"
+            DisplayMemberPath="CustomerCode"
+            SelectedValuePath="CustomerCode"
+            SelectedValue="{Binding CurrentCustomer.PrimaryCustomerCode, Mode=TwoWay}" 
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,ElementName=label,Property=Y,Factor=1,Constant=25}"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,ElementName=label,Property=X,Factor=1,Constant=-30}"/>
+                                  
+          
+           <p:ClickableContentView  Command="{Binding ShowCusomerCodeContactDetailsCommand}"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,ElementName=label,Property=Y,Factor=1,Constant=70}"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,ElementName=label,Property=X,Factor=1,Constant=-105}">
+            <StackLayout  Orientation="Horizontal" Spacing="5">
+              <Label Text="Contact Information" />
+              <Image Source="arrow_down" HeightRequest="10" ></Image>
+            </StackLayout >
+          </p:ClickableContentView>
+          <!--p:DropDownList WidthRequest="200"
+               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,ElementName=label,Property=Y,Factor=1,Constant=55}"
+               RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,ElementName=label,Property=X,Factor=1,Constant=-105}"/-->
 
-						<p:DropDownList WidthRequest="200"
-								RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,ElementName=label,Property=Y,Factor=1,Constant=55}"
-								RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,ElementName=label,Property=X,Factor=1,Constant=-105}"/>
-						<p:AutoCompleteList WidthRequest="120"
+
+
+          <!--p:AutoCompleteList WidthRequest="120"
 								RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,ElementName=label,Property=Y,Factor=1,Constant=15}"
-								RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,ElementName=label,Property=X,Factor=1,Constant=-30}"/>
+								RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,ElementName=label,Property=X,Factor=1,Constant=-30}"/-->
 					</RelativeLayout>
 				</Grid>
 			</StackLayout>

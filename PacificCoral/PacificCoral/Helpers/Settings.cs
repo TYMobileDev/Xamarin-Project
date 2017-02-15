@@ -20,10 +20,12 @@ namespace PacificCoral.Helpers
 
 		#region Setting Constants
 
-		private const string LastLoggedinUserKey = "LastLoggedinUser";
-		private static readonly string LastLoggedinUserDefault = string.Empty;
-		private const string LastOPCOKey = "LastOPCO";
-		private static readonly string LastOPCODefault = string.Empty;
+        private const string LastLoggedinUserKey = "LastLoggedinUser";
+        private static readonly string LastLoggedinUserDefault = string.Empty;
+        private const string LastOPCOKey = "LastOPCO";
+        private static readonly string LastOPCODefault = string.Empty;
+        private const string LastPurgeSequenceKey = "LastPurgeSequence";
+        private static readonly int LastPurgeSequenceDefault = 0;
 
 		#endregion
 
@@ -40,17 +42,28 @@ namespace PacificCoral.Helpers
 			}
 		}
 
-		public static string LastOPCO
-		{
-			get
-			{
-				return AppSettings.GetValueOrDefault<string>(LastOPCOKey, LastOPCODefault);
-			}
-			set
-			{
-				AppSettings.AddOrUpdateValue<string>(LastOPCOKey, value);
-			}
-		}
+        public static string LastOPCO
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault<string>(LastOPCOKey, LastOPCODefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue<string>(LastOPCOKey, value);
+            }
+        }
+        public static int LastPurgeSequence
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault<int>(LastPurgeSequenceKey, LastPurgeSequenceDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue<int>(LastPurgeSequenceKey, value);
+            }
+        }
 
 	}
 }

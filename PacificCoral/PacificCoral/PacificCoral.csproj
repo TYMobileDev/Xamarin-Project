@@ -70,6 +70,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AccountsViewModel.cs" />
     <Compile Include="ViewModels\CustomerAccountViewModel.cs" />
+    <Compile Include="ViewModels\CustomerCodeDetailPopupViewModel.cs" />
     <Compile Include="ViewModels\DashBoard2ViewModel.cs" />
     <Compile Include="ViewModels\DashBoardViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
@@ -78,6 +79,9 @@
     </Compile>
     <Compile Include="Views\CustomerAccountView.xaml.cs">
       <DependentUpon>CustomerAccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomerCodeDetailPopupView.xaml.cs">
+      <DependentUpon>CustomerCodeDetailPopupView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DashBoard2View.xaml.cs">
       <DependentUpon>DashBoard2View.xaml</DependentUpon>
@@ -210,6 +214,14 @@
     <Compile Include="ViewModels\SettingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Rg.Plugins.Popup, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.0.4\lib\portable-win+net45+wp8+win8+wpa81\Rg.Plugins.Popup.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.0.4\lib\portable-win+net45+wp8+win8+wpa81\Rg.Plugins.Popup.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Syncfusion.SfChart.XForms">
       <HintPath>..\..\Libs\pcl\Syncfusion.SfChart.XForms.dll</HintPath>
     </Reference>
@@ -395,11 +407,11 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Controls\Accordion\" />
-    <Folder Include="Cell\" />
-    <Folder Include="Controls\Picker\" />
+    <EmbeddedResource Include="Views\CustomerCodeDetailPopupView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
