@@ -215,7 +215,6 @@ namespace PacificCoral.ViewModels
 
 				}
 			}
-
 		}
 
 		private async void RefreshDashboardTables()
