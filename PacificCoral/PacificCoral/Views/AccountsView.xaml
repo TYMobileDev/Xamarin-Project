@@ -40,7 +40,8 @@
 		<ContentView Grid.Row="1" BackgroundColor="White" Margin="5,5,5,0" HeightRequest="40">
 			<p:ExtendedSearchBar VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Placeholder="Search" HeightRequest="50" HorizontalTextAlignment="Center"/>
 		</ContentView>
-		<p:ExtendedListView Grid.Row="2" VerticalOptions="Fill" SeparatorColor="#DDDDDD" Margin="5,0,5,0" BackgroundColor="{StaticResource MainBgColor}" ItemsSource="{Binding Customer}" HasUnevenRows="True" TappedCommand="{Binding CustomerSelectedCommand}"
+		<p:ExtendedListView Grid.Row="2" VerticalOptions="Fill" SeparatorColor="#DDDDDD" Margin="5,0,5,0" BackgroundColor="{StaticResource MainBgColor}" 
+				ItemsSource="{Binding Customer}" HasUnevenRows="True" TappedCommand="{Binding CustomerSelectedCommand}"
 			GroupDisplayBinding="{Binding Key}" IsGroupingEnabled="true" GroupShortNameBinding="{Binding Key}" >
 			<p:ExtendedListView.GroupHeaderTemplate>
 				<DataTemplate>

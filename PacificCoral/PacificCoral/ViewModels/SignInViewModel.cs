@@ -53,7 +53,8 @@ namespace PacificCoral.ViewModels
 					if (Authentication.DefaultAthenticator.IsAuthenticated)
 					{
 						// var s = await api();
-						await _navigationService.NavigateAsync<DashBoardView>();
+						//await _navigationService.NavigateAsync<DashBoardView>();
+						await _navigationService.NavigateAsync("/Root");
 					}
 					else // authentication failure
 					{
@@ -68,7 +69,8 @@ namespace PacificCoral.ViewModels
 							// unable to login client
 							Settings.LastLoggedinUser = Authentication.DefaultAthenticator.UserInfo.DisplayableId;
 							UserDialogs.Instance.Alert("WARNING:  Failure logging in application to server.  Application will run in OFFLINE mode with limitted functionality.", "Login Problems");
-							await _navigationService.NavigateAsync<DashBoardView>();
+							//await _navigationService.NavigateAsync<DashBoardView>();
+							await _navigationService.NavigateAsync("/Root");
 						}
 					}
 				}
@@ -78,7 +80,8 @@ namespace PacificCoral.ViewModels
 					if (Settings.LastLoggedinUser != string.Empty)
 					{
 						UserDialogs.Instance.Alert("WARNING: The phone is not connected to the internet.  Failure logging in application to server.  Application will run in OFFLINE mode with limitted functionality.", "Conneciton Error");
-						await _navigationService.NavigateAsync<DashBoardView>();
+						//await _navigationService.NavigateAsync<DashBoardView>();
+						await _navigationService.NavigateAsync("/Root");
 					}
 					else
 					{
