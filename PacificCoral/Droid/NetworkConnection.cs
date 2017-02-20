@@ -45,7 +45,7 @@ namespace PacificCoral.Droid
             System.Net.NetworkInformation.Ping p = new System.Net.NetworkInformation.Ping();
             try
             {
-                System.Net.NetworkInformation.PingReply pr = p.Send("8.8.8.8", 128);
+                System.Net.NetworkInformation.PingReply pr = p.Send("8.8.8.8", 1280);
                 if (pr != null && pr.Status == System.Net.NetworkInformation.IPStatus.Success)
                     return true;
                 else

@@ -142,17 +142,17 @@ namespace PacificCoral
 			await CustomersTable.Purge();
 			await CustomerCodesTable.Purge();
 		}
-		public async void initializeStoreAsync()
+		public async Task initializeStoreAsync()
 		{
-			 await PurgeAllTables();
+			// await PurgeAllTables();
 			//  push any changes from local stores
 			await SyncAsync();
 
 			// retreive updated table from server async
-			OpcoSalesSummaryTable.Refresh();
-			LostSalesPCSTable.Refresh();
-			DeviationMasterTable.Refresh();
-			DeviationSummaryTable.Refresh();
+			await OpcoSalesSummaryTable.Refresh();
+			await LostSalesPCSTable.Refresh();
+			await DeviationMasterTable.Refresh();
+			await DeviationSummaryTable.Refresh();
 		}
 
 

@@ -139,7 +139,7 @@ namespace PacificCoral
                 // get opcos
                 await DataManager.DefaultManager.initalizeOpcoTable();
                 // pull tables from server async
-                DataManager.DefaultManager.initializeStoreAsync();
+                await DataManager.DefaultManager.initializeStoreAsync();
 
                 return true;
             }

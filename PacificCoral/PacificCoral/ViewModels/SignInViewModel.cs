@@ -77,7 +77,7 @@ namespace PacificCoral.ViewModels
 					// If has previous login, use in offline mode
 					if (Settings.LastLoggedinUser != string.Empty)
 					{
-						UserDialogs.Instance.Alert("WARNING:  Failure logging in application to server.  Application will run in OFFLINE mode with limitted functionality.", "Conneciton Error");
+						UserDialogs.Instance.Alert("WARNING: The phone is not connected to the internet.  Failure logging in application to server.  Application will run in OFFLINE mode with limitted functionality.", "Conneciton Error");
 						await _navigationService.NavigateAsync<DashBoardView>();
 					}
 					else
