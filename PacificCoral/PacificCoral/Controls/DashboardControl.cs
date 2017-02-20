@@ -17,6 +17,8 @@ namespace PacificCoral.Controls
 			accordionView = new AccordionControl(header);
 			accordionView.SetBinding(AccordionControl.ItemsSourceProperty, "AccordionSource");
 
+			Margin = new Thickness(0, 0, 0, Device.OnPlatform(0, 50, 0));
+
 			Content = accordionView;
 		}
 

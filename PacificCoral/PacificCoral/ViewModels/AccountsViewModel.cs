@@ -26,14 +26,17 @@ namespace PacificCoral.ViewModels
         public  AccountsViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
+
             InitializeData();
         }
-        private async Task InitializeData()
+        
+		private async void InitializeData()
         {
             var l = await DataManager.DefaultManager.CustomersTable.GetFilteredTable(Globals.CurrentOpco);
             var sorted = l.OrderBy(p => p.CustomerName).GroupBy(p => p.NameSort).
                 Select(gp => new Grouping<string, Customers>(gp.Key, gp));
-            Customer = new ObservableCollection<Helpers.Grouping<string, Model.Customers>>(sorted);
+            
+			Customer = new ObservableCollection<Helpers.Grouping<string, Model.Customers>>(sorted);
 
             Title = Globals.CurrentOpco.Trim() + " - Customers";
         }
