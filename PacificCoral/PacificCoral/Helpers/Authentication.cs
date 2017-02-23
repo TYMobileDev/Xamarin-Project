@@ -28,7 +28,12 @@ namespace PacificCoral
         private static Authentication defaultAthenticator = new Authentication();
         private UserInfo userInfo;
         private string currentUserID = string.Empty;
-        public  IAuthenticate Authenticator { get; private set; }
+        string authority = "https://login.windows.net/danazarihotmail502.onmicrosoft.com";
+        string resourceId = "75a34115-29ac-4a0c-87c5-821f861d9448";
+        string clientId = "26fc813e-1331-4868-8c16-ec5962036f5b";
+        string redirectUri = "https://pacificcoralmobileclient.azurewebsites.net/.auth/login/done";
+
+        public IAuthenticate Authenticator { get; private set; }
 
         public static Authentication DefaultAthenticator
         {
@@ -117,16 +122,13 @@ namespace PacificCoral
         {
             var success = false;
             isAuthenticated = false;
-            string authority = "https://login.windows.net/danazarihotmail502.onmicrosoft.com";
-            string resourceId = "75a34115-29ac-4a0c-87c5-821f861d9448";
-            string clientId = "26fc813e-1331-4868-8c16-ec5962036f5b";
-            string redirectUri = "https://pacificcoralmobileclient.azurewebsites.net/.auth/login/done";
+
             // string redirectUri = "https://localhost";
             try
             {
                 UserInfo = null;
                 AuthenticationContext ac = new AuthenticationContext(authority);
-                ac.TokenCache.Clear();
+                //ac.TokenCache.Clear();
                 AuthenticationResult ar = await ac.AcquireTokenAsync(resourceId, clientId,
                     new Uri(redirectUri), platform);
                 UserInfo  = ar.UserInfo;
@@ -137,7 +139,10 @@ namespace PacificCoral
                 isAuthenticated = true;
                 Helpers.Settings.LastLoggedinUser = userInfo.DisplayableId;
                 // get opcos
-                await DataManager.DefaultManager.initalizeOpcoTable();
+                // see if opco table has entries for current user
+                var ot = await DataManager.DefaultManager.OpcoTable.GetLocalTable();
+                int opcoCount = ot.Where(p => p.Representative.ToUpper().Trim() == userInfo.DisplayableId.ToUpper().Trim()).ToList().Count;
+                if (opcoCount==0) await DataManager.DefaultManager.OpcoTable.Refresh();  // no opco loaded for current user
                 // pull tables from server async
                 await DataManager.DefaultManager.initializeStoreAsync();
 
@@ -153,9 +158,15 @@ namespace PacificCoral
 
 		public async Task<bool> Logout()
 		{
-			try
-			{
-				await DataManager.DefaultManager.CurrentClient.LogoutAsync();
+            try
+            {
+                // clear azure ad cache            
+                AuthenticationContext ac = new AuthenticationContext(authority);
+                ac.TokenCache.Clear();
+                // purge local databases, since they only contain info pertinent to current user
+                await DataManager.DefaultManager.PurgeAllTables();
+
+                await DataManager.DefaultManager.CurrentClient.LogoutAsync();
 				isAuthenticated = false;
 			}
 			catch (Exception ex)

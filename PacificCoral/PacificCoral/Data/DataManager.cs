@@ -14,6 +14,7 @@ using Microsoft.WindowsAzure.MobileServices.Sync;
 using System.Collections.ObjectModel;
 using PacificCoral.Helpers;
 using System.Linq.Expressions;
+using Acr.UserDialogs;
 
 namespace PacificCoral
 {
@@ -26,8 +27,9 @@ namespace PacificCoral
 
 		// declare sync tables here
 		IMobileServiceSyncTable<RepOpcoMap> opcoTable;
-		IMobileServiceSyncTable<PODetail> poDetailTable;
+		//IMobileServiceSyncTable<PODetail> poDetailTable;
 
+        public Data.AsyncDataHelper<RepOpcoMap, string, string, object, object> OpcoTable;
 		public Data.AsyncDataHelper<OpcoSalesSummaries, string, int, object, object> OpcoSalesSummaryTable;
 		public Data.AsyncDataHelper<LostSalesPCS, string, double, object, object> LostSalesPCSTable;
 		public Data.AsyncDataHelper<DeviationMaster, string, DateTime, object, object> DeviationMasterTable;
@@ -40,15 +42,14 @@ namespace PacificCoral
 		public Data.AsyncDataHelper<CustomerCodes, int, string, Customers, int> CustomerCodesTable;
 
 		// store static tables for easy reference
-		ObservableCollection<RepOpcoMap> opcoTableSnapshot;
+		//ObservableCollection<RepOpcoMap> opcoTableSnapshot;
 
 		// some tables are only generated nightly on the server, so no reason to pull changes more than once a day. 
 		// store last refresh times
 		DateTime OpcoSalesSummaryUpdatedAt = DateTime.MinValue;
 		DateTime LostSalesUpdatedAt = DateTime.MinValue;
 
-		bool OpcoTableRefreshed = false;
-		bool OpcoTableRefreshing = false;
+
 
 
 		private DataManager()
@@ -75,8 +76,8 @@ namespace PacificCoral
 				this.client.SyncContext.InitializeAsync(store);
 
 				this.opcoTable = client.GetSyncTable<RepOpcoMap>();
+                OpcoTable = new Data.AsyncDataHelper<Model.RepOpcoMap, string, string, object, object>(client, (p, s) =>p.Representative.ToUpper().Trim() == s.ToUpper().Trim(), p => p.OPCO, false, enumOrderDirection.Ascending);
 
-				this.poDetailTable = client.GetSyncTable<PODetail>();
 				OpcoSalesSummaryTable = new Data.AsyncDataHelper<OpcoSalesSummaries, string, int, object, object>(client, (p, s) => p.OPCO.ToUpper().Trim() == s.ToUpper().Trim(), p => p.Period, false, enumOrderDirection.Ascending);
 				LostSalesPCSTable = new Data.AsyncDataHelper<Model.LostSalesPCS, string, double, object, object>(client, (p, s) => p.OPCO.ToUpper().Trim() == s.ToUpper().Trim(), p => p.GainLoss, false, enumOrderDirection.Ascending);
 				DeviationMasterTable = new Data.AsyncDataHelper<Model.DeviationMaster, string, DateTime, object, object>(client, (p, s) => p.SyscoHouse.Trim().ToUpper() == s.Trim().ToUpper(), p => p.EndDate, true, enumOrderDirection.Ascending, new TimeSpan(0, 15, 0));
@@ -144,16 +145,16 @@ namespace PacificCoral
 		}
 		public async Task initializeStoreAsync()
 		{
-			// await PurgeAllTables();
+
 			//  push any changes from local stores
 			await SyncAsync();
 
-			// retreive updated table from server async
-			await OpcoSalesSummaryTable.Refresh();
-			await LostSalesPCSTable.Refresh();
-			await DeviationMasterTable.Refresh();
-			await DeviationSummaryTable.Refresh();
-		}
+            // retreive updated table from server async
+            await OpcoSalesSummaryTable.Refresh();
+            await LostSalesPCSTable.Refresh();
+            await DeviationMasterTable.Refresh();
+            await DeviationSummaryTable.Refresh();
+        }
 
 
 		public async Task<string> GetCurrentOpcoAsync()
@@ -169,9 +170,10 @@ namespace PacificCoral
 					if (Settings.LastOPCO != string.Empty && Settings.LastOPCO != null)
 					{
 						System.Diagnostics.Debug.WriteLine(Settings.LastOPCO);
-						// verify in current list of opcos.
-						//    var o = await this.opcoTable.Where(p => p.OPCO.ToUpper() == Settings.LastOPCO.ToUpper()).Select(p => p.OPCO.ToUpper()).ToListAsync();
-						var o = opcoTableSnapshot.Where(p => p.OPCO.ToUpper() == Settings.LastOPCO.ToUpper()).Select(p => p.OPCO.ToUpper()).ToList();
+                        // verify in current list of opcos.
+                        //    var o = await this.opcoTable.Where(p => p.OPCO.ToUpper() == Settings.LastOPCO.ToUpper()).Select(p => p.OPCO.ToUpper()).ToListAsync();
+                        var t = await OpcoTable.GetLocalTable();
+                        var o = t.Where(p => p.OPCO.ToUpper() == Settings.LastOPCO.ToUpper()).Select(p => p.OPCO.ToUpper()).ToList();
 						if (o.Count > 0)
 						{
 							Globals.CurrentOpco = o[0].ToString();
@@ -192,9 +194,10 @@ namespace PacificCoral
 			}
 			catch (Exception ex)
 			{
+                UserDialogs.Instance.Alert(ex.ToString(), "Get Current Opco");
 
-			}
-			return string.Empty;
+            }
+            return string.Empty;
 		}
 
 
@@ -231,12 +234,13 @@ namespace PacificCoral
 			}
 			catch (Exception ex)
 			{
+                UserDialogs.Instance.Alert(ex.ToString(), "Sync Error");
 
-			}
+            }
 
-			// Simple error/conflict handling. A real application would handle the various errors like network conditions,
-			// server conflicts and others via the IMobileServiceSyncHandler.
-			if (syncErrors != null)
+            // Simple error/conflict handling. A real application would handle the various errors like network conditions,
+            // server conflicts and others via the IMobileServiceSyncHandler.
+            if (syncErrors != null)
 			{
 				foreach (var error in syncErrors)
 				{
@@ -256,57 +260,60 @@ namespace PacificCoral
 			}
 		}
 
-
+        
 		#region OPCOTable
-		public ObservableCollection<RepOpcoMap> OPCOs
+		public   Task<ObservableCollection<RepOpcoMap>> OPCOs
 		{
 			get
 			{
-				return opcoTableSnapshot;
+
+                return OpcoTable.GetTable();
 			}
 		}
-		public async Task initalizeOpcoTable()
-		{
+		//public async Task initalizeOpcoTable()
+		//{
 
-			try
-			{
-				// load opco table
-				if (!OpcoTableRefreshed)
-				{
-					await updateOpcoTableAsync();
-				}
-				var ot = await opcoTable.Where(p => p.Representative == Authentication.DefaultAthenticator.UserInfo.DisplayableId.ToUpper()).ToListAsync();
-				ot = ot.GroupBy(p => p.OPCO).Select(p => p.First()).ToList();
-				opcoTableSnapshot = new ObservableCollection<Model.RepOpcoMap>(ot);
-			}
-			catch (Exception ex)
-			{
+		//	try
+		//	{
+		//		// load opco table
+		//		if (!OpcoTableRefreshed)
+		//		{
+		//			await updateOpcoTableAsync();
+		//		}
+		//		var ot = await opcoTable.Where(p => p.Representative == Authentication.DefaultAthenticator.UserInfo.DisplayableId.ToUpper()).ToListAsync();
+		//		ot = ot.GroupBy(p => p.OPCO).Select(p => p.First()).ToList();
+		//		opcoTableSnapshot = new ObservableCollection<Model.RepOpcoMap>(ot);
+		//	}
+		//	catch (Exception ex)
+		//	{
+  //              UserDialogs.Instance.Alert(ex.ToString(), "Initialize Opco");
 
-			}
-		}
-		private async Task updateOpcoTableAsync()
-		{
-			if (!Authentication.DefaultAthenticator.IsAuthenticated) return;
-			if (OpcoTableRefreshing) return;
-			try
-			{
-				OpcoTableRefreshing = true;
-				await opcoTable.PurgeAsync();
-				await opcoTable.PullAsync(null, opcoTable.CreateQuery());
-				var ot = await opcoTable.ToListAsync();
-				ot = ot.GroupBy(p => p.OPCO).Select(p => p.First()).ToList();
-				opcoTableSnapshot = new ObservableCollection<Model.RepOpcoMap>(ot);
-				OpcoTableRefreshed = true;
-			}
-			catch (Exception ex)
-			{
+  //          }
+  //      }
+		//private async Task updateOpcoTableAsync()
+		//{
+		//	if (!Authentication.DefaultAthenticator.IsAuthenticated) return;
+		//	if (OpcoTableRefreshing) return;
+		//	try
+		//	{
+		//		OpcoTableRefreshing = true;
+		//		await opcoTable.PurgeAsync();
+		//		await opcoTable.PullAsync(null, opcoTable.CreateQuery());
+		//		var ot = await opcoTable.ToListAsync();
+		//		ot = ot.GroupBy(p => p.OPCO).Select(p => p.First()).ToList();
+		//		opcoTableSnapshot = new ObservableCollection<Model.RepOpcoMap>(ot);
+		//		OpcoTableRefreshed = true;
+		//	}
+		//	catch (Exception ex)
+		//	{
+  //              UserDialogs.Instance.Alert(ex.ToString(), "Update Opco");
 
-			}
-			finally
-			{
-				OpcoTableRefreshing = false;
-			}
-		}
+  //          }
+  //          finally
+		//	{
+		//		OpcoTableRefreshing = false;
+		//	}
+		//}
 		#endregion OPCOTable
 
 
