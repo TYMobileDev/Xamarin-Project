@@ -15,6 +15,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using Xamarin.Forms;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Acr.UserDialogs;
 
 namespace PacificCoral.ViewModels
 {
@@ -32,13 +33,16 @@ namespace PacificCoral.ViewModels
         
 		private async void InitializeData()
         {
-            var l = await DataManager.DefaultManager.CustomersTable.GetFilteredTable(Globals.CurrentOpco);
-            var sorted = l.OrderBy(p => p.CustomerName).GroupBy(p => p.NameSort).
+			using (UserDialogs.Instance.Loading())
+			{
+				var l = await DataManager.DefaultManager.CustomersTable.GetFilteredTable(Globals.CurrentOpco);
+            	var sorted = l.OrderBy(p => p.CustomerName).GroupBy(p => p.NameSort).
                 Select(gp => new Grouping<string, Customers>(gp.Key, gp));
             
-			Customer = new ObservableCollection<Helpers.Grouping<string, Model.Customers>>(sorted);
+				Customers = new ObservableCollection<Helpers.Grouping<string, Model.Customers>>(sorted);
 
-            Title = Globals.CurrentOpco.Trim() + " - Customers";
+            	Title = Globals.CurrentOpco.Trim() + " - Customers";
+			}
         }
 
 		#region -- Public properties --
@@ -54,9 +58,14 @@ namespace PacificCoral.ViewModels
                 SetProperty<string>(ref _title, value);
             }
         }
-        public ObservableCollection<Grouping<string, Customers>> Customer {
-            get;
-            set; }
+
+		private ObservableCollection<Grouping<string, Customers>> _Customers;
+		public ObservableCollection<Grouping<string, Customers>> Customers
+		{
+			get { return _Customers; }
+			set { SetProperty(ref _Customers, value); }
+		}
+
 
 		public ICommand CustomerSelectedCommand
 		{
