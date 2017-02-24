@@ -262,14 +262,15 @@ namespace PacificCoral
 
         
 		#region OPCOTable
+
 		public   Task<ObservableCollection<RepOpcoMap>> OPCOs
 		{
 			get
 			{
-
-                return OpcoTable.GetTable();
+				return OpcoTable.GetTable();
 			}
 		}
+
 		//public async Task initalizeOpcoTable()
 		//{
 

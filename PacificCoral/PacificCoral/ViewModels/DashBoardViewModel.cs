@@ -27,12 +27,8 @@ namespace PacificCoral.ViewModels
 		{
 			_navigationService = navigationService;
 
-
-			//init fake data for chart
-            
-			RefreshDashboardTables();
+			GetOpcoTableAsync();
 			InitAccordionSource();
-
 		}
 
 		#region -- Public properties --
@@ -46,37 +42,37 @@ namespace PacificCoral.ViewModels
 		}
 
 		private ObservableCollection<OpcoSalesSummaries> _OpcoSalesChartItems;
-		public ObservableCollection<OpcoSalesSummaries> OpcoSalesChartItems 
-		{ 
-			get { return _OpcoSalesChartItems; } 
+		public ObservableCollection<OpcoSalesSummaries> OpcoSalesChartItems
+		{
+			get { return _OpcoSalesChartItems; }
 			set { SetProperty(ref _OpcoSalesChartItems, value); }
 		}
 
 		private ObservableCollection<DeviationSummary> _DeviationSummaryItems;
-		public ObservableCollection<DeviationSummary> DeviationSummaryItems 
-		{ 	
+		public ObservableCollection<DeviationSummary> DeviationSummaryItems
+		{
 			get { return _DeviationSummaryItems; }
 			set { SetProperty(ref _DeviationSummaryItems, value); }
 		}
 
 		private ObservableCollection<LostSalesPCS> _LostSalesPCSItems;
-		public ObservableCollection<LostSalesPCS> LostSalesPCSItems 
-		{ 
+		public ObservableCollection<LostSalesPCS> LostSalesPCSItems
+		{
 			get { return _LostSalesPCSItems; }
-			set { SetProperty(ref _LostSalesPCSItems, value); } 
+			set { SetProperty(ref _LostSalesPCSItems, value); }
 		}
 
 		private ObservableCollection<RepOpcoMap> _Opcos;
-		public ObservableCollection<RepOpcoMap> Opcos 
-		{ 
+		public ObservableCollection<RepOpcoMap> Opcos
+		{
 			get { return _Opcos; }
 			set { SetProperty(ref _Opcos, value); }
 
 		}
 
 		private ObservableCollection<SalesModel> _Sales;
-		public ObservableCollection<SalesModel> Sales 
-		{ 
+		public ObservableCollection<SalesModel> Sales
+		{
 			get { return _Sales; }
 			set { SetProperty(ref _Sales, value); }
 		}
@@ -91,7 +87,6 @@ namespace PacificCoral.ViewModels
 			{
 				Globals.CurrentOpco = value;
 				SetProperty<string>(ref _currentOpco, value);
-				RefreshDashboardTables(); // update chart, lost sales, etc with current opco- calls asyn methods
 			}
 		}
 
@@ -129,12 +124,19 @@ namespace PacificCoral.ViewModels
 
 		#endregion
 
-		#region -- Private helpers --
+		#region -- Overrides --
 
-        private async void getOpco()
-        {
-            Opcos=await DataManager.DefaultManager.OPCOs;
-        }
+		protected override void OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs e)
+		{
+			base.OnPropertyChanged(e);
+
+			if (e.PropertyName == nameof(CurrentOpco))
+				RefreshDashboardTables(); // update chart, lost sales, etc with current opco- calls asyn methods		
+		}
+
+		#endregion
+
+		#region -- Private helpers --
 
 		private Task OnViewTrackMileageCommandAsync()
 		{
@@ -191,7 +193,6 @@ namespace PacificCoral.ViewModels
 
 				}
 			}
-
 		}
 
 		private async void OpcoSalesChartItemsAsync()
@@ -215,14 +216,18 @@ namespace PacificCoral.ViewModels
 			}
 		}
 
+		private async void GetOpcoTableAsync()
+		{
+			using (UserDialogs.Instance.Loading())
+			{
+				Opcos = await DataManager.DefaultManager.OPCOs;
+			}
+		}
+
 		private async void RefreshDashboardTables()
 		{
-            Opcos = await DataManager.DefaultManager.OpcoTable.GetTable();
-			await DataManager.DefaultManager.GetCurrentOpcoAsync();
 			OpcoSalesChartItemsAsync();
-
 			LostSalesPCSItemsAsync();
-
 			DeviationSummaryItemsAsync();
 		}
 
@@ -263,12 +268,12 @@ namespace PacificCoral.ViewModels
 				Margin = new Thickness(5),
 				ItemsSource = LostSalesPCSItems,
 			};
-			lostSalesPCSViewRepeaterListTwo.SetBinding(RepeaterControl<LostSalesPCS>.ItemsSourceProperty, nameof(LostSalesPCSItems));
+			lostSalesPCSViewRepeaterListTwo.SetBinding(RepeaterControl<LostSalesPCS>.ItemsSourceProperty, new Binding(nameof(LostSalesPCSItems), BindingMode.TwoWay));
 
 			var lostSalesPCSSecondAccord = new AccordionModel()
 			{
 				CellAccordion = lostSalesPCSCell,
- 				//ViewAccordion = lostSalesPCSViewTwo
+				//ViewAccordion = lostSalesPCSViewTwo
 				ViewAccordion = lostSalesPCSViewRepeaterListTwo,
 			};
 

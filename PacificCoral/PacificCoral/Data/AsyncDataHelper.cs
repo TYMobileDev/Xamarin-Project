@@ -31,7 +31,7 @@ namespace PacificCoral.Data
 		enumOrderDirection _orderDirection = enumOrderDirection.Ascending;
 		public AsyncDataHelper(MobileServiceClient client, Expression<Func<TModel, TWhere, bool>> WhereClause = null, Expression<Func<TModel, TOrder>> OrderClause = null, bool isIncremental = true, enumOrderDirection OrderDirection = enumOrderDirection.Ascending, TimeSpan? RefreshInterval = null)
 		{
-        //    DataManager.DefaultManager.lstDataTables.Add(this);
+			//    DataManager.DefaultManager.lstDataTables.Add(this);
 			_table = client.GetSyncTable<TModel>();
 			_wherePredicate = WhereClause;
 			_orderClause = OrderClause;
@@ -51,8 +51,8 @@ namespace PacificCoral.Data
 		}
 		public AsyncDataHelper(MobileServiceClient client, Expression<Func<TModel, TWhere, bool>> WhereClause = null, Expression<Func<TModel, TOrder>> OrderClause = null, bool isIncremental = true, Expression<Func<TModel, List<TContains>, bool>> WhereContainsClause = null, Func<string, Task<ObservableCollection<TMaster>>> funcMasterTable = null, Func<ObservableCollection<TMaster>, string, List<TContains>> detailList = null, TimeSpan? RefreshInterval = null)
 		{
-         //   lstDataHelpers.Add(this);
-            _table = client.GetSyncTable<TModel>();
+			//   lstDataHelpers.Add(this);
+			_table = client.GetSyncTable<TModel>();
 			_wherePredicate = WhereClause;
 			_whereContainsPredicate = WhereContainsClause;
 			_orderClause = OrderClause;
@@ -85,13 +85,13 @@ namespace PacificCoral.Data
 			await _refreshMethod();
 			return new ObservableCollection<TModel>(await _table.ToEnumerableAsync());
 		}
-        public async Task<ObservableCollection<TModel>> GetLocalTable()
-        {
-            return new ObservableCollection<TModel>(await _table.ToEnumerableAsync());
+		public async Task<ObservableCollection<TModel>> GetLocalTable()
+		{
+			return new ObservableCollection<TModel>(await _table.ToEnumerableAsync());
 
-        }
+		}
 
-        public async Task<ObservableCollection<TModel>> GetFilteredTable(TWhere filterVal)
+		public async Task<ObservableCollection<TModel>> GetFilteredTable(TWhere filterVal)
 		{
 			try
 			{

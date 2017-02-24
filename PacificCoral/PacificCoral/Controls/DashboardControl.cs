@@ -149,45 +149,15 @@ namespace PacificCoral.Controls
 				Margin = new Thickness(5),
 				Title = "Select Opco...",
 			};
-			picker.SetBinding(BindablePicker.ItemsSourceProperty, "Opcos");
-			picker.SetBinding(BindablePicker.SelectedValueProperty, new Xamarin.Forms.Binding("CurrentOpco", BindingMode.TwoWay));
-
-			//var pickerButton = new ButtonForPicker
-			//{
-			//	HeightRequest = 50,
-			//	BackgroundColor = StyleManager.GetAppResource<Color>("DefaultMainColor"),
-			//	EnablePicker = true,
-			//	Title = "Opcos",
-			//	Margin = new Thickness(5),
-			//};
-			//pickerButton.SetBinding(ButtonForPicker.ItemsSourceProperty, "Opcos");
-			//pickerButton.SetBinding(ButtonForPicker.DisplayedValueProperty, "CurrentOpco");
-
-			//var picker_1 = new BindablePicker_1()
-			//{
-			//	HeightRequest = 50,
-			//	BackgroundColor = StyleManager.GetAppResource<Color>("DefaultMainColor"),
-			//	SelectedValuePath = "OPCO",
-			//	DisplayMemberPath = "OPCO",
-			//	Margin = new Thickness(5),
-			//};
-			//picker_1.SetBinding(BindablePicker.ItemsSourceProperty, "Opcos");
-			//picker_1.SetBinding(BindablePicker.SelectedValueProperty, new Xamarin.Forms.Binding("CurrentOpco", BindingMode.TwoWay));
-
-			//ActivityIndicator ai = new ActivityIndicator()
-			//{
-			//	Color = Color.Red,
-			//};
-			//ai.SetBinding(ActivityIndicator.IsEnabledProperty, "IsBusy");
-			//ai.SetBinding(ActivityIndicator.IsVisibleProperty, "IsBusy");
-			//ai.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+			picker.SetBinding(BindablePicker.ItemsSourceProperty, new Xamarin.Forms.Binding("Opcos"));
+			picker.SetBinding(BindablePicker.SelectedValueProperty, new Xamarin.Forms.Binding("CurrentOpco"));
 
 
 			header.Children.Add(banner);
 			header.Children.Add(tabStack);
 			header.Children.Add(separator);
 			header.Children.Add(picker);
-			//header.Children.Add(ai);
+
 		}
 
 		#endregion
